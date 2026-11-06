@@ -1,0 +1,41 @@
+/* Alle designtokens. De hoofdkleur komt uit src/config/branding.ts. */
+:root {
+  --color-brand: #0d0058;
+  --color-on-brand: #ffffff;
+
+  --color-bg: #fbf7ee;
+  --color-surface: #ffffff;
+  --color-text: #1c1b22;
+  --color-text-muted: #4f4c57;
+  --color-border: #8a8578;
+  --color-focus: #0d0058;
+
+  --color-sand: #f0dfb8;
+  --color-sand-outer: #e4cf9f;
+  --color-court-line: #123a6b;
+  --color-net: #1c1b22;
+
+  /* Blauw en vermiljoen blijven te onderscheiden bij kleurenblindheid; team B is ook een vierkant. */
+  --color-team-a: #0b4f9e;
+  --color-team-b: #b5390b;
+  --color-on-team: #ffffff;
+  --color-token-outline: #ffffff;
+
+  --color-ball: #ffd23f;
+  --color-ball-line: #1c1b22;
+  --color-shadow: rgb(28 27 34 / 30%);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+
+  --font-body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.125rem;
+
+  --radius: 0.5rem;
+  --tap-target: 2.75rem; /* 44 px */
+}
