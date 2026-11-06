@@ -106,7 +106,8 @@
             ]
           }
         ],
-        "caption": "Bij de ontvangst verdeel je je helft in tweeën: ieder neemt ongeveer de **helft van de breedte**. Sta niet op de eindlijn: naar voren bewegen gaat makkelijker dan naar achteren."
+        "caption": "Bij de ontvangst verdeel je je helft in tweeën: ieder neemt ongeveer de **helft van de breedte**. Sta niet op de eindlijn: naar voren bewegen gaat makkelijker dan naar achteren.",
+        "tip": "Let op de wind. Die bepaalt vaak of een opslag kort of diep valt."
       },
       {
         "id": "mijn",
@@ -204,7 +205,8 @@
             }
           }
         ],
-        "caption": "Pass de bal **hoog en naar het midden**, een stukje van het net af. Zo heeft je partner tijd om onder de bal te komen. Je partner loopt daar meteen heen."
+        "caption": "Pass de bal **hoog en naar het midden**, een stukje van het net af. Zo heeft je partner tijd om onder de bal te komen. Je partner loopt daar meteen heen.",
+        "tip": "Pass liever iets te laag dan op het net. Een bal op het net geeft je partner geen tijd."
       },
       {
         "id": "middenbal",

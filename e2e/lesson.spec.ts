@@ -34,6 +34,31 @@ test("een les is met Volgende tot het eind te doorlopen", async ({ page }) => {
   await expect(page.getByTestId("quiz-count")).toHaveText("Vraag 1 van 3");
 });
 
+test("een stap kan een tip hebben", async ({ page }) => {
+  await page.goto("./#/les/opbouw");
+  await expect(page.getByTestId("tip")).toHaveCount(0);
+  await page.getByRole("button", { name: "Ga naar stap 4" }).click();
+  await expect(page.getByTestId("tip")).toContainText("schouderlijn");
+});
+
+test("de deelknop ligt niet over de uitleg", async ({ page }) => {
+  await page.setViewportSize({ width: 360, height: 640 });
+  await page.goto("./#/les/opbouw");
+  const share = await page
+    .getByRole("button", { name: "Delen", exact: true })
+    .boundingBox();
+  const caption = await page.getByTestId("caption").boundingBox();
+  if (!share || !caption) throw new Error("Niet zichtbaar");
+  expect(share.y + share.height).toBeLessThanOrEqual(caption.y);
+});
+
+test("afspelen en tempo bestaan niet", async ({ page }) => {
+  await openFirstLesson(page);
+  for (const name of ["Afspelen", "Pauze", "Tempo", "1,5×"]) {
+    await expect(page.getByText(name, { exact: true })).toHaveCount(0);
+  }
+});
+
 test("spelers bewegen tijdens een overgang", async ({ page }) => {
   await openFirstLesson(page);
   await page.getByRole("button", { name: "Ga naar stap 2" }).click();
@@ -44,19 +69,6 @@ test("spelers bewegen tijdens een overgang", async ({ page }) => {
   await expect.poll(() => token.getAttribute("transform")).not.toBe(start);
   const during = await token.getAttribute("transform");
   await expect.poll(() => token.getAttribute("transform")).not.toBe(during);
-});
-
-test("afspelen loopt zelf door en pauze stopt het", async ({ page }) => {
-  await openFirstLesson(page);
-  await page.getByRole("button", { name: "1,5×" }).click();
-  await page.getByRole("button", { name: "Afspelen" }).click();
-  await expect(stepLabel(page)).toHaveText("Stap 2 van 7");
-  await expect(stepLabel(page)).toHaveText("Stap 3 van 7", { timeout: 10_000 });
-
-  await page.getByRole("button", { name: "Pauze" }).click();
-  await expect(page.getByRole("button", { name: "Afspelen" })).toBeVisible();
-  await page.waitForTimeout(3000);
-  await expect(stepLabel(page)).toHaveText("Stap 3 van 7");
 });
 
 test("vorige en de tijdlijn springen direct", async ({ page }) => {
@@ -74,8 +86,6 @@ test("de les is met het toetsenbord te bedienen", async ({ page }) => {
   await expect(stepLabel(page)).toHaveText("Stap 2 van 7");
   await page.keyboard.press("ArrowLeft");
   await expect(stepLabel(page)).toHaveText("Stap 1 van 7");
-  await page.keyboard.press("Space");
-  await expect(page.getByRole("button", { name: "Pauze" })).toBeVisible();
 });
 
 test("zonder beweging springt de animatie direct naar de stap", async ({

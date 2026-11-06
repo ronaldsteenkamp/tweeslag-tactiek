@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { easeInOut, estimateMinutes, frameAt, holdMs } from "./interpolate";
+import { easeInOut, estimateMinutes, frameAt, readingMs } from "./interpolate";
 import type { Keyframe } from "./schema";
 
 const keyframes: Keyframe[] = [
@@ -59,8 +59,8 @@ describe("frameAt", () => {
 
 describe("leestijd", () => {
   it("heeft een minimum en groeit met de tekst", () => {
-    expect(holdMs("Kort")).toBe(2000);
-    expect(holdMs("x".repeat(200))).toBe(9000);
+    expect(readingMs("Kort")).toBe(2000);
+    expect(readingMs("x".repeat(200))).toBe(9000);
   });
 
   it("schat minstens één minuut", () => {

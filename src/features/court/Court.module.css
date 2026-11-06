@@ -46,6 +46,18 @@
   stroke-linecap: round;
 }
 
+.netMesh {
+  stroke: var(--color-net-mesh);
+  stroke-width: 3;
+  stroke-dasharray: 10 10;
+}
+
+.netShadow {
+  stroke: var(--color-shadow);
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
 .post {
   fill: var(--color-net);
 }
@@ -98,7 +110,7 @@
 
 .armOutline {
   stroke: var(--color-token-outline);
-  stroke-width: 30;
+  stroke-width: 25;
 }
 
 .teamA,
@@ -117,8 +129,9 @@
 
 .tokenLabel {
   fill: var(--color-on-team);
-  font-size: 40px;
-  font-weight: 700;
+  font-size: 34px;
+  font-weight: 650;
+  letter-spacing: -0.5px;
   text-anchor: middle;
   pointer-events: none;
 }
@@ -141,16 +154,26 @@
   pointer-events: none;
 }
 
+.zoneCover,
+.zoneTarget,
+.zoneBlocked {
+  stroke-width: 3;
+  stroke-dasharray: 14 10;
+}
+
 .zoneCover {
   fill: var(--color-zone-cover);
+  stroke: var(--color-team-a);
 }
 
 .zoneTarget {
   fill: var(--color-zone-target);
+  stroke: var(--color-right);
 }
 
 .zoneBlocked {
   fill: url(#hatch);
+  stroke: var(--color-arrow-shot);
 }
 
 .hatchLine {
@@ -160,10 +183,11 @@
 .zoneLabel {
   fill: var(--color-text);
   stroke: var(--color-sand);
-  stroke-width: 10;
+  stroke-width: 8;
   paint-order: stroke;
-  font-size: 56px;
-  font-weight: 700;
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: 1px;
   text-anchor: middle;
 }
 
@@ -171,13 +195,13 @@
 .arrowBall,
 .arrowShot {
   fill: none;
-  stroke-width: 12;
+  stroke-width: 8;
   stroke-linecap: round;
 }
 
 .arrowRun {
   stroke: var(--color-arrow-run);
-  stroke-dasharray: 30 24;
+  stroke-dasharray: 22 20;
 }
 
 .arrowBall {
@@ -186,7 +210,7 @@
 
 .arrowShot {
   stroke: var(--color-arrow-shot);
-  stroke-width: 16;
+  stroke-width: 11;
 }
 
 .markerRun {

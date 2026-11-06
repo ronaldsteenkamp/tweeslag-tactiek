@@ -50,6 +50,8 @@ export const keyframeSchema = z.object({
   arrows: z.array(arrowSchema).max(20).optional(),
   zones: z.array(zoneSchema).max(10).optional(),
   caption: z.string().max(600),
+  /** Praktijktip, los van de regels. */
+  tip: z.string().max(160).optional(),
 });
 
 const keyframesSchema = z.array(keyframeSchema).min(1).max(30);

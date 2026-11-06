@@ -55,6 +55,7 @@ Elke stap staat in `keyframes`. Een les heeft 4 tot 7 stappen, want meer past ni
 | `arrows`     | Lijnen op het veld (niet verplicht)                                   |
 | `zones`      | Gekleurde vlakken op het veld (niet verplicht)                        |
 | `caption`    | De uitleg bij deze stap                                               |
+| `tip`        | Een praktijktip, los van de regels (niet verplicht, kort houden)      |
 
 Houd de uitleg kort: **ongeveer 190 tekens** past op een kleine telefoon. Een test waarschuwt als het niet past.
 

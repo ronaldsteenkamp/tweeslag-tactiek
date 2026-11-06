@@ -107,14 +107,28 @@ export const CourtSurface = memo(function CourtSurface({
       <rect className={styles.sandTexture} {...everything} />
       <rect className={styles.court} {...court} />
       <line
+        className={styles.netShadow}
+        x1={net1.sx + 8}
+        y1={net1.sy + 12}
+        x2={net2.sx + 8}
+        y2={net2.sy + 12}
+      />
+      <line
         className={styles.net}
         x1={net1.sx}
         y1={net1.sy}
         x2={net2.sx}
         y2={net2.sy}
       />
-      <circle className={styles.post} cx={net1.sx} cy={net1.sy} r={12} />
-      <circle className={styles.post} cx={net2.sx} cy={net2.sy} r={12} />
+      <line
+        className={styles.netMesh}
+        x1={net1.sx}
+        y1={net1.sy}
+        x2={net2.sx}
+        y2={net2.sy}
+      />
+      <circle className={styles.post} cx={net1.sx} cy={net1.sy} r={13} />
+      <circle className={styles.post} cx={net2.sx} cy={net2.sy} r={13} />
     </g>
   );
 });

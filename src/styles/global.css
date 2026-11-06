@@ -1,5 +1,14 @@
 @import "./tokens.css";
 
+/* Inter wordt meegeleverd: zo ziet de app er op elk toestel gelijk uit, ook offline. */
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../assets/fonts/inter-latin.woff2") format("woff2");
+}
+
 *,
 *::before,
 *::after {
@@ -18,11 +27,35 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: var(--font-size-md);
+  font-feature-settings: "cv11", "ss03";
   line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
 }
 
+h1,
+h2,
+h3 {
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+button,
+a {
+  transition:
+    background-color 120ms ease,
+    border-color 120ms ease,
+    color 120ms ease;
+}
+
 :focus-visible {
-  outline: 3px solid var(--color-focus);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  button,
+  a {
+    transition: none;
+  }
 }

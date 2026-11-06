@@ -5,17 +5,12 @@ import { CourtScene } from "../court/CourtScene";
 import { useOrientation } from "../court/media";
 import { RichText } from "./RichText";
 import styles from "./ScenarioPlayer.module.css";
-import { SPEEDS, useStepPlayer } from "./useStepPlayer";
-
-function formatSpeed(speed: number): string {
-  return `${String(speed).replace(".", ",")}×`;
-}
+import { useStepPlayer } from "./useStepPlayer";
 
 interface ScenarioPlayerProps {
   title: string;
   players: Player[];
   keyframes: Keyframe[];
-  autoPlay?: boolean;
   onStep?: (step: number) => void;
   /** Vervangt de knop Volgende op de laatste stap. */
   finishAction?: ReactNode;
@@ -29,14 +24,13 @@ export function ScenarioPlayer({
   title,
   players,
   keyframes,
-  autoPlay = false,
   onStep,
   finishAction,
   headerAction,
   banner,
 }: ScenarioPlayerProps) {
   const orientation = useOrientation();
-  const player = useStepPlayer(keyframes, autoPlay);
+  const player = useStepPlayer(keyframes);
   const { step, lastStep, keyframe } = player;
   const finished = step === lastStep;
 
@@ -54,10 +48,8 @@ export function ScenarioPlayer({
     function handleKey(event: KeyboardEvent) {
       if (event.ctrlKey || event.metaKey || event.altKey) return;
       if (document.querySelector("dialog[open]")) return;
-      const onControl = (event.target as Element).closest("a, button");
       if (event.key === "ArrowRight") playerRef.current.next();
       else if (event.key === "ArrowLeft") playerRef.current.previous();
-      else if (event.key === " " && !onControl) playerRef.current.togglePlay();
       else return;
       event.preventDefault();
     }
@@ -119,6 +111,12 @@ export function ScenarioPlayer({
             >
               <RichText source={keyframe?.caption ?? ""} />
             </p>
+            {keyframe?.tip ? (
+              <p className={styles.tip} data-testid="tip">
+                <span className={styles.tipLabel}>{t("player.tip")}</span>
+                <RichText source={keyframe.tip} />
+              </p>
+            ) : null}
           </div>
 
           <div className={styles.controls}>
@@ -129,19 +127,6 @@ export function ScenarioPlayer({
               onClick={player.previous}
             >
               {t("player.previous")}
-            </button>
-            <button
-              type="button"
-              className={styles.control}
-              onClick={player.togglePlay}
-            >
-              {t(
-                player.playing
-                  ? "player.pause"
-                  : finished
-                    ? "player.replay"
-                    : "player.play",
-              )}
             </button>
             {finished && finishAction ? (
               finishAction
@@ -155,27 +140,6 @@ export function ScenarioPlayer({
                 {t("player.next")}
               </button>
             )}
-          </div>
-
-          <div
-            className={styles.speeds}
-            role="group"
-            aria-label={t("player.speed")}
-          >
-            <span className={styles.speedLabel} aria-hidden="true">
-              {t("player.speed")}
-            </span>
-            {SPEEDS.map((speed) => (
-              <button
-                key={speed}
-                type="button"
-                className={styles.speed}
-                aria-pressed={player.speed === speed}
-                onClick={() => player.setSpeed(speed)}
-              >
-                {formatSpeed(speed)}
-              </button>
-            ))}
           </div>
         </section>
       </div>

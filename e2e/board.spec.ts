@@ -196,19 +196,6 @@ test("stappen toevoegen, dupliceren, herordenen en verwijderen", async ({
   await expect(button(page, "Stap 3")).toBeHidden();
 });
 
-test("afspelen toont de animatie en keert terug", async ({ page }) => {
-  await page.getByPlaceholder("Uitleg bij deze stap").fill("Begin");
-  await button(page, "+ Stap").click();
-  await page.getByPlaceholder("Uitleg bij deze stap").fill("Einde");
-  await button(page, "Afspelen").click();
-  await expect(page.getByTestId("scene")).toBeVisible();
-  await expect(page.getByTestId("caption")).toHaveText("Einde", {
-    timeout: 8000,
-  });
-  await button(page, "Bewerken").click();
-  await expect(page.getByTestId("court")).toBeVisible();
-});
-
 test("varianten bewaren hun eigen stand", async ({ page }) => {
   await button(page, "Menu").click();
   await button(page, "Variant toevoegen").click();

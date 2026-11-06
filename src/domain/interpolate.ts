@@ -56,21 +56,21 @@ export function frameAt(
   };
 }
 
-const MIN_HOLD_MS = 2000;
-const EMPTY_HOLD_MS = 600;
-const HOLD_MS_PER_CHARACTER = 45;
+const MIN_READING_MS = 2000;
+const READING_MS_PER_CHARACTER = 45;
 
-/** Leestijd bij automatisch afspelen. */
-export function holdMs(caption: string): number {
-  if (!caption) return EMPTY_HOLD_MS;
-  return Math.max(MIN_HOLD_MS, caption.length * HOLD_MS_PER_CHARACTER);
+/** Geschatte tijd om de uitleg bij een stap te lezen. */
+export function readingMs(caption: string): number {
+  return Math.max(MIN_READING_MS, caption.length * READING_MS_PER_CHARACTER);
 }
 
 /** Geschatte duur op normaal tempo, in hele minuten. */
 export function estimateMinutes(keyframes: Keyframe[]): number {
   const totalMs = keyframes.reduce(
     (sum, keyframe, index) =>
-      sum + (index === 0 ? 0 : keyframe.durationMs) + holdMs(keyframe.caption),
+      sum +
+      (index === 0 ? 0 : keyframe.durationMs) +
+      readingMs(keyframe.caption),
     0,
   );
   return Math.max(1, Math.ceil(totalMs / 60_000));

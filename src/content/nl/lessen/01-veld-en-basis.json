@@ -218,7 +218,8 @@
             }
           }
         ],
-        "caption": "Je hebt **5 seconden** na het fluitsignaal om te serveren. Op het moment dat je slaat, mag je de eindlijn niet raken. Daarna mag je gewoon het veld in lopen."
+        "caption": "Je hebt **5 seconden** na het fluitsignaal om te serveren. Op het moment dat je slaat, mag je de eindlijn niet raken. Daarna mag je gewoon het veld in lopen.",
+        "tip": "Varieer je plek achter de lijn. Dan moet de ontvanger steeds opnieuw kijken."
       },
       {
         "id": "zelfde-server",

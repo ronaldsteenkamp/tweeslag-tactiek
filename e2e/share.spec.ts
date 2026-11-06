@@ -37,7 +37,7 @@ test("kopiëren geeft een bevestiging", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   const url = await buildAndShare(page);
   await button(page, "Kopieer link").click();
-  await expect(page.getByText("Link gekopieerd!")).toBeVisible();
+  await expect(page.getByText("Link gekopieerd")).toBeVisible();
   const copied = await page.evaluate(() => navigator.clipboard.readText());
   expect(copied).toBe(url);
 });

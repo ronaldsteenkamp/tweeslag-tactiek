@@ -4,6 +4,10 @@ Punten die de vereniging nog moet bevestigen. JSON kent geen commentaar, dus de 
 
 Spelregels komen uit de FIVB-regels 2025-2028. Tactiek staat daar niet in en is gangbare praktijk, geen regel.
 
+## Tips bij de lessen
+
+- TODO: verifiëren: alle tips (`tip` in de lessen) zijn praktijkadvies en geen regels. De tip over de set in les 3 komt van Ronald; de andere heb ik zelf voorgesteld. Klopt de wind-tip in les 2 voor jullie veld?
+
 ## Regelpagina
 
 - TODO: verifiëren: de mix-nethoogte van 2,35 m. De FIVB-regels noemen geen mix. De hoogte komt uit toernooireglementen en een Decathlon-gids; een ander toernooi gebruikte 2,43 m. Een Nevobo-regel heb ik niet gevonden. Welke hoogte gebruikt Tweeslag?

@@ -49,12 +49,12 @@ test("een meerkeuzevraag goed en fout beantwoorden", async ({ page }) => {
   await page.goto("./#/les/veld-en-basis/quiz");
 
   await page.getByRole("button", { name: "18 × 9 meter" }).click();
-  await expect(page.getByTestId("feedback")).toContainText("Niet helemaal.");
+  await expect(page.getByTestId("feedback")).toContainText("Niet juist");
   await expect(page.getByTestId("feedback")).toContainText("16 × 8 meter");
 
   await page.getByRole("button", { name: "Probeer opnieuw" }).click();
   await page.getByRole("button", { name: "16 × 8 meter" }).click();
-  await expect(page.getByTestId("feedback")).toContainText("Goed!");
+  await expect(page.getByTestId("feedback")).toContainText("Juist");
 });
 
 test("een sleepvraag goed en fout beantwoorden", async ({ page }) => {
@@ -64,12 +64,12 @@ test("een sleepvraag goed en fout beantwoorden", async ({ page }) => {
 
   await dragTokenToMeters(page, "A1", 5, 4);
   await page.getByRole("button", { name: "Controleer" }).click();
-  await expect(page.getByTestId("feedback")).toContainText("Niet helemaal.");
+  await expect(page.getByTestId("feedback")).toContainText("Niet juist");
 
   await page.getByRole("button", { name: "Probeer opnieuw" }).click();
   await dragTokenToMeters(page, "A1", -1.5, 4);
   await page.getByRole("button", { name: "Controleer" }).click();
-  await expect(page.getByTestId("feedback")).toContainText("Goed!");
+  await expect(page.getByTestId("feedback")).toContainText("Juist");
 });
 
 test("de voortgang blijft bewaard na herladen", async ({ page }) => {
@@ -94,7 +94,7 @@ test("de voortgang blijft bewaard na herladen", async ({ page }) => {
   await expect(page.getByTestId("lessons-summary")).toHaveText(
     /^1 van \d+ lessen afgerond$/,
   );
-  await expect(page.getByText("✓ Quiz 2/3")).toBeVisible();
+  await expect(page.getByText("Afgerond 2/3")).toBeVisible();
 });
 
 test("een begonnen les staat als bezig in het overzicht", async ({ page }) => {

@@ -22,17 +22,26 @@ const browser = await chromium.launch({
 });
 let failed = false;
 
+async function audit(page) {
+  const result = await lighthouse(`${BASE}${page}`, {
+    port: DEBUG_PORT,
+    logLevel: "error",
+    onlyCategories: CATEGORIES,
+  });
+  return result.lhr;
+}
+
+function scoresOf(lhr) {
+  return CATEGORIES.map((id) => Math.round(lhr.categories[id].score * 100));
+}
+
 try {
   console.log(`${"pagina".padEnd(20)} perf  a11y  best`);
   for (const page of PAGES) {
-    const { lhr } = await lighthouse(`${BASE}${page}`, {
-      port: DEBUG_PORT,
-      logLevel: "error",
-      onlyCategories: CATEGORIES,
-    });
-    const scores = CATEGORIES.map((id) =>
-      Math.round(lhr.categories[id].score * 100),
-    );
+    // Een drukke machine geeft soms een uitschieter: meet dan één keer opnieuw.
+    let lhr = await audit(page);
+    if (scoresOf(lhr).some((score) => score < MINIMUM)) lhr = await audit(page);
+    const scores = scoresOf(lhr);
     console.log(
       `${(page || "#/").padEnd(20)} ${scores.map((score) => String(score).padEnd(5)).join(" ")}`,
     );

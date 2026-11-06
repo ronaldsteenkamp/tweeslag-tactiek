@@ -63,6 +63,7 @@ function packFrame(frame: Keyframe, playerIds: string[]): unknown[] {
       zone.polygon.flatMap((point) => [toDm(point.x), toDm(point.y)]),
     ]),
     frame.caption,
+    frame.tip ?? "",
   ];
 }
 
@@ -100,13 +101,14 @@ function unpackFrame(
   prefix: string,
   playerIds: string[],
 ): Keyframe {
-  const [duration, players, ball, arrows, zones, caption] = packed as [
+  const [duration, players, ball, arrows, zones, caption, tip] = packed as [
     number,
     number[],
     number[],
     number[][],
     [number, string, number[]][],
     string,
+    string | undefined,
   ];
   const points = unpackPoints(players);
   const [ballX, ballY, height, arc] = ball;
@@ -144,6 +146,7 @@ function unpackFrame(
     ...(unpackedArrows.length ? { arrows: unpackedArrows } : {}),
     ...(unpackedZones.length ? { zones: unpackedZones } : {}),
     caption,
+    ...(tip ? { tip } : {}),
   };
 }
 

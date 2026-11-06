@@ -1,16 +1,16 @@
 .page {
   flex: 1;
   width: 100%;
-  max-width: 44rem;
+  max-width: 46rem;
   margin-inline: auto;
-  padding: var(--space-4);
+  padding: var(--space-6) var(--space-4);
   overflow-y: auto;
 }
 
 .heading {
   margin: 0;
-  font-size: 1.5rem;
-  line-height: 1.2;
+  font-size: var(--font-size-xl);
+  line-height: 1.15;
 }
 
 .intro {
@@ -19,23 +19,28 @@
 }
 
 .sectionTitle {
-  margin: var(--space-6) 0 var(--space-2);
-  font-size: var(--font-size-lg);
+  margin: var(--space-8) 0 var(--space-1);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--font-size-md);
 }
 
 .list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-2);
   margin: 0;
-  padding-left: 1.25rem;
+  padding: 0;
+  list-style: none;
+}
+
+.list li {
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-hairline);
 }
 
 .rule {
-  margin-left: var(--space-2);
+  display: block;
+  margin-top: 0.125rem;
   color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
-  white-space: nowrap;
+  font-size: var(--font-size-xs);
 }
 
 .source {

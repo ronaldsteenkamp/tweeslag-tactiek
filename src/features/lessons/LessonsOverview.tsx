@@ -48,7 +48,7 @@ export function LessonsOverview() {
           <li key={lesson.id}>
             <a className={styles.card} href={paths.lesson(lesson.id)}>
               <span className={styles.number} aria-hidden="true">
-                {lesson.order}
+                {String(lesson.order).padStart(2, "0")}
               </span>
               <span className={styles.body}>
                 <span className={styles.title}>{lesson.scenario.title}</span>

@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { keyframesOf, BASE_VARIANT } from "../../domain/editing";
+import { BASE_VARIANT } from "../../domain/editing";
 import type { Zone } from "../../domain/schema";
 import { t } from "../../i18n";
 import type { MessageKey } from "../../i18n/nl";
 import { useOrientation } from "../court/media";
-import { ScenarioPlayer } from "../lessons/ScenarioPlayer";
 import { ShareDialog } from "../share/ShareDialog";
 import formStyles from "../ui/forms.module.css";
 import { BoardCourt } from "./BoardCourt";
@@ -41,10 +40,8 @@ function isTyping(target: EventTarget | null): boolean {
   );
 }
 
-function useShortcuts(onPlay: () => void, enabled: boolean) {
+function useShortcuts() {
   useEffect(() => {
-    if (!enabled) return;
-
     function handleKey(event: KeyboardEvent) {
       const editor = useEditor.getState();
       const modifier = event.ctrlKey || event.metaKey;
@@ -72,14 +69,13 @@ function useShortcuts(onPlay: () => void, enabled: boolean) {
       else if (key === "escape") editor.setTool("select");
       else if (key === "n") editor.addStep();
       else if (key === "d") editor.duplicateStep();
-      else if (key === "p") onPlay();
       else return;
       event.preventDefault();
     }
 
     window.addEventListener("keydown", handleKey);
     return () => window.removeEventListener("keydown", handleKey);
-  }, [enabled, onPlay]);
+  }, []);
 }
 
 function SelectionBar() {
@@ -167,29 +163,8 @@ export function BoardPage() {
   const canRedo = useEditor((state) => state.history.future.length > 0);
   const editor = useEditor.getState();
   const [dialog, setDialog] = useState<Dialog | null>(null);
-  const [playing, setPlaying] = useState(false);
 
-  useShortcuts(() => setPlaying(true), !playing);
-
-  if (playing) {
-    return (
-      <ScenarioPlayer
-        title={scenario.title}
-        players={scenario.players}
-        keyframes={keyframesOf(scenario, variantId)}
-        autoPlay
-        headerAction={
-          <button
-            type="button"
-            className={formStyles.button}
-            onClick={() => setPlaying(false)}
-          >
-            {t("board.backToEdit")}
-          </button>
-        }
-      />
-    );
-  }
+  useShortcuts();
 
   const variants = scenario.variants ?? [];
 
@@ -290,13 +265,6 @@ export function BoardPage() {
             onClick={editor.redo}
           >
             {t("board.redo")}
-          </button>
-          <button
-            type="button"
-            className={styles.small}
-            onClick={() => setPlaying(true)}
-          >
-            {t("player.play")}
           </button>
           <button
             type="button"

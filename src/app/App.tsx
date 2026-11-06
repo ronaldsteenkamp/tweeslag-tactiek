@@ -101,7 +101,6 @@ export function App() {
         />
         <div className={styles.brand}>
           <p className={styles.title}>{branding.appName}</p>
-          <p className={styles.tagline}>{t("app.tagline")}</p>
         </div>
         <nav className={styles.nav} aria-label={t("nav.label")}>
           <a
@@ -134,7 +133,10 @@ export function App() {
           title={t("app.beachMode")}
           onClick={toggleBeachMode}
         >
-          <span aria-hidden="true">☀</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <circle cx="12" cy="12" r="4.5" />
+            <path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.3 5.3l2.1 2.1M16.6 16.6l2.1 2.1M18.7 5.3l-2.1 2.1M7.4 16.6l-2.1 2.1" />
+          </svg>
         </button>
       </header>
 
