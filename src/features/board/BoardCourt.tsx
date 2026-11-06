@@ -3,6 +3,7 @@ import { GRID_METERS, rectangle } from "../../domain/editing";
 import {
   COURT,
   distance,
+  facingAngle,
   formatMeters,
   metersToSvg,
   nearestWithin,
@@ -40,11 +41,13 @@ type Sketch =
 function PlayerToken({
   player,
   position,
+  ball,
   view,
   interactive,
 }: {
   player: Player;
   position: Position;
+  ball: Position;
   view: CourtView;
   interactive: boolean;
 }) {
@@ -66,7 +69,10 @@ function PlayerToken({
     >
       <circle className={styles.hit} r={HIT_RADIUS_METERS * UNITS_PER_METER} />
       <circle className={styles.focus} r={PLAYER_RADIUS + 22} />
-      <PlayerShape player={player} />
+      <PlayerShape
+        player={player}
+        angle={facingAngle(position, ball, player.team, view)}
+      />
     </g>
   );
 }
@@ -276,6 +282,7 @@ export function BoardCourt({ view }: { view: CourtView }) {
             key={player.id}
             player={player}
             position={position}
+            ball={keyframe.ball}
             view={view}
             interactive={tool === "select"}
           />

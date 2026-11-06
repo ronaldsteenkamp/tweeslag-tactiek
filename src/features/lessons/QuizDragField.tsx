@@ -1,5 +1,6 @@
 import {
   clampToArea,
+  facingAngle,
   formatMeters,
   metersToSvg,
   UNITS_PER_METER,
@@ -83,7 +84,15 @@ export function QuizDragField({
           const { sx, sy } = metersToSvg(place, view);
           return (
             <g key={player.id} transform={`translate(${sx} ${sy})`}>
-              <PlayerShape player={player} />
+              <PlayerShape
+                player={player}
+                angle={facingAngle(
+                  place,
+                  question.setup.ball,
+                  player.team,
+                  view,
+                )}
+              />
             </g>
           );
         })}
@@ -111,7 +120,15 @@ export function QuizDragField({
           />
           <circle className={styles.dragHalo} r={PLAYER_RADIUS + 22} />
           <circle className={styles.focus} r={PLAYER_RADIUS + 34} />
-          <PlayerShape player={dragged} />
+          <PlayerShape
+            player={dragged}
+            angle={facingAngle(
+              position,
+              question.setup.ball,
+              dragged.team,
+              view,
+            )}
+          />
         </g>
       ) : null}
     </svg>

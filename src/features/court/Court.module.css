@@ -11,8 +11,31 @@
   fill: var(--color-sand-outer);
 }
 
-.court {
+.courtSand {
   fill: var(--color-sand);
+}
+
+.sandTexture {
+  fill: url(#sand);
+}
+
+.grainDark {
+  fill: var(--color-grain-dark);
+}
+
+.grainLight {
+  fill: var(--color-grain-light);
+}
+
+.ripple {
+  fill: none;
+  stroke: var(--color-ripple);
+  stroke-width: 16;
+  stroke-linecap: round;
+}
+
+.court {
+  fill: none;
   stroke: var(--color-court-line);
   stroke-width: var(--court-line-width);
 }
@@ -57,6 +80,27 @@
   stroke-width: 10;
 }
 
+.bodyShadow {
+  fill: var(--color-shadow);
+  pointer-events: none;
+}
+
+.arm,
+.armOutline {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.arm {
+  stroke: var(--color-skin);
+  stroke-width: 20;
+}
+
+.armOutline {
+  stroke: var(--color-token-outline);
+  stroke-width: 30;
+}
+
 .teamA,
 .teamB {
   stroke: var(--color-token-outline);
@@ -73,7 +117,7 @@
 
 .tokenLabel {
   fill: var(--color-on-team);
-  font-size: 44px;
+  font-size: 40px;
   font-weight: 700;
   text-anchor: middle;
   pointer-events: none;

@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import {
   clampToArea,
   COURT,
+  facingAngle,
   metersToSvg,
   nearestWithin,
   svgToMeters,
@@ -73,6 +74,27 @@ describe("svgToMeters", () => {
         expect(back.y).toBeCloseTo(position.y);
       }
     }
+  });
+});
+
+describe("facingAngle", () => {
+  const player = { x: 4, y: 4 };
+
+  it("kijkt naar de bal", () => {
+    expect(facingAngle(player, { x: 8, y: 4 }, "A", landscape)).toBeCloseTo(0);
+    expect(facingAngle(player, { x: 4, y: 7 }, "A", landscape)).toBeCloseTo(90);
+  });
+
+  it("draait mee met de weergave", () => {
+    expect(facingAngle(player, { x: 8, y: 4 }, "A", portrait)).toBeCloseTo(-90);
+  });
+
+  it("kijkt naar het net als de bal heel dichtbij is", () => {
+    const near = { x: 4.1, y: 4.1 };
+    expect(facingAngle(player, near, "A", landscape)).toBeCloseTo(0);
+    expect(Math.abs(facingAngle(player, near, "B", landscape))).toBeCloseTo(
+      180,
+    );
   });
 });
 

@@ -76,6 +76,28 @@ export function clampToArea(position: Position): Position {
   };
 }
 
+/** Dichterbij dan dit draait een speler niet naar de bal: de richting zou dan alle kanten op schieten. */
+const MIN_FACING_DISTANCE = 0.7;
+
+/**
+ * De hoek in graden op het scherm waarin een speler kijkt: naar de bal, of naar het net als de bal
+ * vlak bij de speler is. 0 is naar rechts, 90 naar beneden.
+ */
+export function facingAngle(
+  position: Position,
+  ball: Position,
+  team: "A" | "B",
+  view: CourtView,
+): number {
+  const nearBall = distance(position, ball) < MIN_FACING_DISTANCE;
+  const target = nearBall
+    ? { x: position.x + (team === "A" ? 1 : -1), y: position.y }
+    : ball;
+  const from = metersToSvg(position, view);
+  const to = metersToSvg(target, view);
+  return (Math.atan2(to.sy - from.sy, to.sx - from.sx) * 180) / Math.PI;
+}
+
 export function formatMeters(value: number): string {
   return value.toFixed(1).replace(".", ",");
 }

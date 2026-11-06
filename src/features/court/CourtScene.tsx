@@ -1,4 +1,5 @@
 import {
+  facingAngle,
   metersToSvg,
   viewBoxSize,
   type CourtView,
@@ -55,7 +56,10 @@ export function CourtScene({
             transform={`translate(${sx} ${sy})`}
             data-testid={`scene-${player.id}`}
           >
-            <PlayerShape player={player} />
+            <PlayerShape
+              player={player}
+              angle={facingAngle(position, frame.ball, player.team, view)}
+            />
           </g>
         );
       })}

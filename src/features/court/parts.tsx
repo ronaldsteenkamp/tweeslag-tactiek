@@ -19,6 +19,61 @@ const LIFT_PER_METER = 26;
 const GROWTH_PER_METER = 0.07;
 const RUN_ARROW_GAP = 0.6;
 
+const SAND_TILE = 600;
+/** Zand loopt door tot buiten het veld, zodat er op geen enkel scherm een rand zichtbaar is. */
+const SAND_BLEED = 3000;
+
+/** Altijd dezelfde reeks, zodat het zand niet verandert tussen twee keer tekenen. */
+function createRandom(seed: number) {
+  let state = seed;
+  return () => {
+    state = (state * 1664525 + 1013904223) % 4294967296;
+    return state / 4294967296;
+  };
+}
+
+function createGrains() {
+  const random = createRandom(7);
+  return Array.from({ length: 420 }, () => ({
+    x: Math.round(random() * SAND_TILE),
+    y: Math.round(random() * SAND_TILE),
+    r: Number((1.5 + random() * 3).toFixed(1)),
+    dark: random() < 0.6,
+  }));
+}
+
+/** Windribbels lopen aan beide randen op dezelfde hoogte, dus de tegels sluiten naadloos aan. */
+const RIPPLES = [70, 190, 300, 420, 530].map((y, index) => {
+  const swing = index % 2 === 0 ? 16 : -12;
+  return `M 0 ${y} Q 150 ${y - swing} 300 ${y} T ${SAND_TILE} ${y}`;
+});
+
+const GRAINS = createGrains();
+
+function SandPattern() {
+  return (
+    <pattern
+      id="sand"
+      width={SAND_TILE}
+      height={SAND_TILE}
+      patternUnits="userSpaceOnUse"
+    >
+      {RIPPLES.map((path) => (
+        <path key={path} className={styles.ripple} d={path} />
+      ))}
+      {GRAINS.map((grain, index) => (
+        <circle
+          key={index}
+          className={grain.dark ? styles.grainDark : styles.grainLight}
+          cx={grain.x}
+          cy={grain.y}
+          r={grain.r}
+        />
+      ))}
+    </pattern>
+  );
+}
+
 export const CourtSurface = memo(function CourtSurface({
   view,
 }: {
@@ -29,17 +84,28 @@ export const CourtSurface = memo(function CourtSurface({
   const corner2 = metersToSvg({ x: COURT.length, y: COURT.width }, view);
   const net1 = metersToSvg({ x: NET_X, y: -0.5 }, view);
   const net2 = metersToSvg({ x: NET_X, y: COURT.width + 0.5 }, view);
+  const court = {
+    x: Math.min(corner1.sx, corner2.sx),
+    y: Math.min(corner1.sy, corner2.sy),
+    width: Math.abs(corner2.sx - corner1.sx),
+    height: Math.abs(corner2.sy - corner1.sy),
+  };
+  const everything = {
+    x: -SAND_BLEED,
+    y: -SAND_BLEED,
+    width: width + SAND_BLEED * 2,
+    height: height + SAND_BLEED * 2,
+  };
 
   return (
     <g aria-hidden="true">
-      <rect className={styles.sand} width={width} height={height} />
-      <rect
-        className={styles.court}
-        x={Math.min(corner1.sx, corner2.sx)}
-        y={Math.min(corner1.sy, corner2.sy)}
-        width={Math.abs(corner2.sx - corner1.sx)}
-        height={Math.abs(corner2.sy - corner1.sy)}
-      />
+      <defs>
+        <SandPattern />
+      </defs>
+      <rect className={styles.sand} {...everything} />
+      <rect className={styles.courtSand} {...court} />
+      <rect className={styles.sandTexture} {...everything} />
+      <rect className={styles.court} {...court} />
       <line
         className={styles.net}
         x1={net1.sx}
@@ -53,22 +119,49 @@ export const CourtSurface = memo(function CourtSurface({
   );
 });
 
-/** Team A is rond en team B vierkant: zo hangt het verschil niet alleen van kleur af. */
-export function PlayerShape({ player }: { player: Player }) {
+/** Beide armen vanaf de schouders recht naar voren, zoals een speler die klaarstaat. */
+const ARMS = "M 6 -58 L 70 -40 M 6 58 L 70 40";
+
+/**
+ * Een speler van bovenaf, kijkend naar rechts: schouders, armen naar voren en een hoofd.
+ * Alleen het lichaam draait mee; de naam blijft rechtop leesbaar. De letter van het team maakt
+ * het verschil duidelijk zonder op kleur af te gaan.
+ */
+export function PlayerShape({
+  player,
+  angle,
+}: {
+  player: Player;
+  angle: number;
+}) {
+  const shirt = player.team === "A" ? styles.teamA : styles.teamB;
+  const rotation = `rotate(${angle.toFixed(1)})`;
+
   return (
     <>
-      {player.team === "A" ? (
-        <circle className={styles.teamA} r={PLAYER_RADIUS} />
-      ) : (
+      <g transform={`translate(10 14) ${rotation}`}>
         <rect
-          className={styles.teamB}
-          x={-PLAYER_RADIUS * 0.9}
-          y={-PLAYER_RADIUS * 0.9}
-          width={PLAYER_RADIUS * 1.8}
-          height={PLAYER_RADIUS * 1.8}
-          rx={10}
+          className={styles.bodyShadow}
+          x={-25}
+          y={-72}
+          width={50}
+          height={144}
+          rx={25}
         />
-      )}
+      </g>
+      <g transform={rotation}>
+        <path className={styles.armOutline} d={ARMS} />
+        <path className={styles.arm} d={ARMS} />
+        <rect
+          className={shirt}
+          x={-25}
+          y={-72}
+          width={50}
+          height={144}
+          rx={25}
+        />
+      </g>
+      <circle className={shirt} r={34} />
       <text className={styles.tokenLabel} dy="0.36em" aria-hidden="true">
         {player.id}
       </text>

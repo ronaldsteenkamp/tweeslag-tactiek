@@ -10,8 +10,12 @@
   --color-border: #8a8578;
   --color-focus: #0d0058;
 
-  --color-sand: #f0dfb8;
-  --color-sand-outer: #e4cf9f;
+  --color-sand: #efdcae;
+  --color-sand-outer: #e6cf9a;
+  --color-grain-dark: rgb(150 112 60 / 30%);
+  --color-grain-light: rgb(255 248 228 / 55%);
+  --color-ripple: rgb(170 130 75 / 13%);
+  --color-skin: #c98f63;
   --color-court-line: #123a6b;
   --color-net: #1c1b22;
 
@@ -63,6 +67,10 @@
 
   --color-sand: #fff4d6;
   --color-sand-outer: #ffe9ad;
+  --color-grain-dark: rgb(150 112 60 / 16%);
+  --color-grain-light: rgb(255 255 255 / 40%);
+  --color-ripple: rgb(170 130 75 / 7%);
+  --color-skin: #9a5f33;
   --color-court-line: #000000;
   --color-net: #000000;
 
