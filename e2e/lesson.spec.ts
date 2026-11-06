@@ -159,3 +159,25 @@ test("elke uitleg past zonder scrollen op een kleine telefoon", async ({
     }
   }
 });
+
+test("bij veel stappen scrollt de stappenbalk mee op een smalle telefoon", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 360, height: 640 });
+  await page.goto("./");
+  await page.getByRole("checkbox", { name: /Alles ontgrendelen/ }).check();
+  await page.goto("./#/les/blokvarianten");
+  for (let step = 1; step < 8; step += 1) {
+    await page.getByRole("button", { name: "Volgende", exact: true }).click();
+  }
+  const last = page.getByRole("button", { name: "Ga naar stap 8" });
+  await expect(last).toBeInViewport({ ratio: 1 });
+  const box = await last.boundingBox();
+  expect(box?.width).toBeGreaterThanOrEqual(44);
+  expect(box?.height).toBeGreaterThanOrEqual(44);
+  await expect(page.getByRole("link", { name: "Start de quiz" })).toBeVisible();
+  const fits = await page.evaluate(
+    () => document.documentElement.scrollWidth <= innerWidth,
+  );
+  expect(fits).toBe(true);
+});

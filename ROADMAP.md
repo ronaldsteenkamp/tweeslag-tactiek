@@ -20,8 +20,6 @@ Ideeën voor na versie 1. Niets hiervan is gepland; het is een lijst om uit te k
 ## Lessen
 
 - Foto's of tekeningen van de handsignalen in les 4.
-- Lessen over opslagtactiek, wind en zon, en verdedigen zonder blok.
-- Meer vraagtypes, zoals een looplijn tekenen.
 - Een herhaalstand die oude quizvragen terughaalt.
 - Korte links voor lange scenario's. Dat vraagt een kleine server.
 
