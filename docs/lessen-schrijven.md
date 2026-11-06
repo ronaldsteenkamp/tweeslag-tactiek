@@ -19,7 +19,7 @@ Voor een kleine wijziging heb je alleen een GitHub-account met schrijfrechten no
 2. Klik op het potloodje rechtsboven.
 3. Pas de tekst aan. Verander alleen wat tussen aanhalingstekens staat.
 4. Klik op **Commit changes** en schrijf kort wat je hebt veranderd.
-5. Vraag iemand met toegang om `npm test` en `npm run deploy` te draaien.
+5. De tests draaien daarna vanzelf. Slagen ze, dan staat je wijziging na een paar minuten live.
 
 ## Hoe een lesbestand werkt
 

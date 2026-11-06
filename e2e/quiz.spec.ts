@@ -122,6 +122,7 @@ test("de regelpagina toont regels met bron", async ({ page }) => {
   await page.getByRole("link", { name: "Regels" }).click();
   await expect(page.getByRole("heading", { name: "Spelregels" })).toBeVisible();
   await expect(page.getByText(/2,43 m/)).toBeVisible();
+  await expect(page.getByText(/2,35 m/)).toBeVisible();
   await expect(
     page.getByRole("link", { name: /FIVB Official Beach/ }),
   ).toBeVisible();

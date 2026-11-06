@@ -18,6 +18,9 @@
           "rule": "2.1.2"
         },
         {
+          "text": "Bij **mix** (gemengd) is **2,35 m** gebruikelijk. Dit staat niet in de FIVB-regels: de organisator bepaalt het, dus check het per toernooi."
+        },
+        {
           "text": "Er is **geen middenlijn** en **geen aanvalslijn**.",
           "rule": "1.3, 1.4"
         }
@@ -83,6 +86,27 @@
       ]
     },
     {
+      "title": "In of uit",
+      "items": [
+        {
+          "text": "De bal is **in** als hij de lijn raakt, ook maar een klein stukje.",
+          "rule": "8.3"
+        },
+        {
+          "text": "De bal is **uit** als hij helemaal naast de lijnen valt, of als hij de antennes, de palen of het net naast de zijbanden raakt.",
+          "rule": "8.4"
+        },
+        {
+          "text": "De bal moet tussen de antennes over het net. Hij mag het net daarbij raken.",
+          "rule": "10.1, 10.2"
+        },
+        {
+          "text": "Gaat je **eerste** contact buitenom naar de vrije zone van de tegenstander, dan mag je hem terughalen. Speel hem dan aan dezelfde kant buitenom terug. Na het tweede of derde contact is zo'n bal uit.",
+          "rule": "10.1.2"
+        }
+      ]
+    },
+    {
       "title": "De bal spelen",
       "items": [
         {
@@ -100,6 +124,22 @@
         {
           "text": "Verdedig je een **hard geslagen bal**, dan mag het contact met je vingers iets langer duren.",
           "rule": "9.2.2.4"
+        },
+        {
+          "text": "Je mag de bal niet twee keer achter elkaar raken. Dat mag wel na een blok.",
+          "rule": "9.1.1, 14.4.2"
+        },
+        {
+          "text": "Raken twee teamgenoten de bal tegelijk, dan telt dat als twee contacten.",
+          "rule": "9.1.2.1"
+        },
+        {
+          "text": "Raken twee tegenstanders de bal tegelijk boven het net, dan krijgt het team dat de bal ontvangt weer drie contacten.",
+          "rule": "9.1.2.2"
+        },
+        {
+          "text": "Je mag niet op je partner of iets anders steunen om bij de bal te komen.",
+          "rule": "9.1.3"
         }
       ]
     },
@@ -130,6 +170,31 @@
         {
           "text": "Het net tussen de antennes raken tijdens het spelen van de bal is een fout.",
           "rule": "11.3"
+        },
+        {
+          "text": "Bij een blok mag je over het net reiken, maar de bal aan de andere kant pas raken na de aanval van de tegenstander.",
+          "rule": "14.3, 14.6.1"
+        }
+      ]
+    },
+    {
+      "title": "Tijd en onderbrekingen",
+      "items": [
+        {
+          "text": "Tussen het einde van een rally en het fluitsignaal voor de opslag zit normaal maximaal **12 seconden**.",
+          "rule": "16.1.3"
+        },
+        {
+          "text": "De pauze tussen twee sets duurt **1 minuut**.",
+          "rule": "18.1.1"
+        },
+        {
+          "text": "Een geblesseerde speler krijgt maximaal **5 minuten** hersteltijd.",
+          "rule": "17.1.2"
+        },
+        {
+          "text": "Bij officiële FIVB-wedstrijden mag je tijdens de wedstrijd geen coaching van buitenaf krijgen.",
+          "rule": "4.1"
         }
       ]
     }

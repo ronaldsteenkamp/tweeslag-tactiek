@@ -4,6 +4,10 @@ Punten die de vereniging nog moet bevestigen. JSON kent geen commentaar, dus de 
 
 Spelregels komen uit de FIVB-regels 2025-2028. Tactiek staat daar niet in en is gangbare praktijk, geen regel.
 
+## Regelpagina
+
+- TODO: verifiëren: de mix-nethoogte van 2,35 m. De FIVB-regels noemen geen mix. De hoogte komt uit toernooireglementen en een Decathlon-gids; een ander toernooi gebruikte 2,43 m. Een Nevobo-regel heb ik niet gevonden. Welke hoogte gebruikt Tweeslag?
+
 ## Les 1: Het veld en de basis
 
 - Geen twijfels over de regels: alles staat in de FIVB-tekst (1.1, 1.3, 1.4, 6.2, 6.3, 12.2, 12.4, 18).

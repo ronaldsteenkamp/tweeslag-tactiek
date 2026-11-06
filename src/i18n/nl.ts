@@ -122,7 +122,7 @@ export const nl = {
     "Deze link is gemaakt met een andere versie van de app. Werk de app bij en probeer het opnieuw.",
   "rules.heading": "Spelregels",
   "rules.intro":
-    "De belangrijkste regels in het kort. De nummers verwijzen naar de officiële FIVB-regels.",
+    "Een samenvatting van de regels die je in het spel nodig hebt. De nummers verwijzen naar de officiële FIVB-regels. Op een toernooi kan de organisator afwijken.",
   "rules.reference": "(regel {rule})",
   "rules.source": "Bron:",
 } as const;

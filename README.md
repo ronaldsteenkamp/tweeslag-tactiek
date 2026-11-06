@@ -33,7 +33,6 @@ Open daarna het adres dat in de terminal staat.
 | `npm run test:e2e`   | E2e-, toegankelijkheids- en PWA-tests (Playwright) |
 | `npm run lighthouse` | Lighthouse-audit; faalt onder de 90                |
 | `npm run icons`      | App-iconen maken uit `public/logo.svg`             |
-| `npm run deploy`     | Bouwt en zet `dist/` op de `gh-pages`-branch       |
 
 Voor de e2e-tests en Lighthouse is eenmalig `npx playwright install chromium` nodig.
 
@@ -43,7 +42,7 @@ Voor de e2e-tests en Lighthouse is eenmalig `npx playwright install chromium` no
 content/TWIJFELGEVALLEN.md   Inhoud die de vereniging nog moet bevestigen
 docs/lessen-schrijven.md     Handleiding voor wie inhoud aanpast
 e2e/                         Playwright-tests
-scripts/                     Deploy en Lighthouse
+scripts/                     Lighthouse-audit
 src/
   app/                       Paginaopbouw en routing
   config/                    Huisstijl en afspraken van de vereniging
@@ -135,15 +134,9 @@ Alle interfaceteksten staan in `src/i18n/nl.ts`. Voor Engels: voeg `en.ts` toe m
 
 ## Deployen
 
-Een versie zet je live met:
+Elke push naar `main` draait `.github/workflows/ci-deploy.yml`: lint, opmaak, unittests, e2e-tests, build en Lighthouse. Slaagt alles, dan gaat de nieuwe versie live via GitHub Pages. Geïnstalleerde apps werken zichzelf bij als ze weer online zijn.
 
-```bash
-npm run deploy
-```
-
-Dat bouwt de app en zet `dist/` op de branch `gh-pages`, waar GitHub Pages hem vandaan serveert. Wacht een paar minuten tussen twee deploys: snel achter elkaar pushen kan Pages laten vastlopen. Geïnstalleerde apps werken zichzelf bij als ze weer online zijn.
-
-De workflow `.github/workflows/ci-deploy.yml` kan dit automatisch doen bij elke push naar `main`, met alle tests ervoor. Die vraagt een GitHub-token met de scope `workflow` en de Pages-instelling _GitHub Actions_ als bron.
+Pushes naar `.github/workflows/` vragen een GitHub-token met de scope `workflow`.
 
 ## Meer weten
 
