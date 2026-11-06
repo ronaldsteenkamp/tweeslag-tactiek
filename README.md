@@ -130,7 +130,7 @@ Een echte les heeft 4 tot 7 stappen en minstens twee quizvragen; `npm test` cont
 
 ## Aanpassen voor de vereniging
 
-- **Logo en kleur:** `src/config/branding.ts` en `public/logo.svg`. Draai daarna `npm run icons`. Het huidige logo is een tijdelijk ontwerp.
+- **Logo en kleur:** `src/config/branding.ts` en `public/logo.svg`. Draai daarna `npm run icons`..
 - **Kleuren, ruimte en typografie:** `src/styles/tokens.css`. Een test bewaakt het contrast.
 - **Bloksignalen:** `src/config/vereniging.json`.
 

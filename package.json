@@ -15,7 +15,7 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "lighthouse": "npm run build && node scripts/lighthouse.mjs",
-    "icons": "pwa-assets-generator --preset minimal-2023 public/logo.svg"
+    "icons": "pwa-assets-generator"
   },
   "dependencies": {
     "lz-string": "^1.5.0",

@@ -1,8 +1,20 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <title>Tijdelijk logo Tweeslag Tactiek</title>
-  <rect width="512" height="512" fill="#0d0058"/>
-  <rect x="96" y="150" width="320" height="212" rx="6" fill="#f0dfb8"/>
-  <path d="M256 124v264" stroke="#ffffff" stroke-width="16" stroke-linecap="round"/>
-  <circle cx="176" cy="256" r="34" fill="#0b4f9e" stroke="#ffffff" stroke-width="8"/>
-  <rect x="306" y="222" width="68" height="68" rx="8" fill="#b5390b" stroke="#ffffff" stroke-width="8"/>
+  <title>Tweeslag Tactiek</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1c1283"/>
+      <stop offset="1" stop-color="#0d0058"/>
+    </linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f8eac6"/>
+      <stop offset="1" stop-color="#e6cd96"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Het veld van bovenaf, met een baan van speler naar bal over het net -->
+  <rect x="150" y="88" width="212" height="336" rx="8" fill="url(#sand)"/>
+  <path d="M212 352C212 284 246 228 278 202" fill="none" stroke="#0d0058" stroke-width="15" stroke-linecap="round" stroke-dasharray="4 31"/>
+  <rect x="122" y="247" width="268" height="18" rx="9" fill="#ffffff"/>
+  <circle cx="212" cy="360" r="30" fill="#1d4e89"/>
+  <circle cx="302" cy="156" r="38" fill="#f2c230" stroke="#0d0058" stroke-width="10"/>
 </svg>
