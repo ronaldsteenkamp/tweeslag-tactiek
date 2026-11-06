@@ -2,6 +2,14 @@
   "id": "opbouw",
   "order": 3,
   "status": "concept",
+  "niveau": "basis",
+  "vereisten": [],
+  "duurMinuten": 3,
+  "leerdoelen": [
+    "Na deze les ken je de volgorde pass, set, aanval.",
+    "Na deze les snap je waarom de passer meestal aanvalt.",
+    "Na deze les weet je dat een blok als contact telt."
+  ],
   "scenario": {
     "id": "opbouw",
     "title": "De opbouw: pass, set, aanval",

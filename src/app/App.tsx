@@ -1,8 +1,12 @@
 import { lazy, Suspense, useEffect, useRef, type MouseEvent } from "react";
 import { branding } from "../config/branding";
-import { findLesson } from "../content";
+import { findLesson, lessons } from "../content";
+import type { Lesson } from "../domain/schema";
+import { lessonAccess } from "../domain/unlock";
+import { LessonLocked } from "../features/lessons/LessonLocked";
 import { LessonPlayer } from "../features/lessons/LessonPlayer";
 import { LessonsOverview } from "../features/lessons/LessonsOverview";
+import { useUnlockState } from "../features/progress/progress";
 import { useBeachMode } from "../features/theme/beachMode";
 import { t } from "../i18n";
 import styles from "./App.module.css";
@@ -31,6 +35,16 @@ const SharedPage = lazy(() =>
   })),
 );
 
+function LessonRoute({ lesson, quiz }: { lesson: Lesson; quiz: boolean }) {
+  const access = lessonAccess(lesson, lessons, useUnlockState());
+  if (!access.open) return <LessonLocked lesson={lesson} access={access} />;
+  return quiz ? (
+    <LessonQuiz key={lesson.id} lesson={lesson} />
+  ) : (
+    <LessonPlayer key={lesson.id} lesson={lesson} />
+  );
+}
+
 function Page({ route }: { route: Route }) {
   if (route.name === "board") return <BoardPage />;
   if (route.name === "rules") return <RulesPage />;
@@ -39,10 +53,9 @@ function Page({ route }: { route: Route }) {
   }
   if (route.name === "lesson" || route.name === "quiz") {
     const lesson = findLesson(route.id);
-    if (lesson && route.name === "quiz") {
-      return <LessonQuiz key={lesson.id} lesson={lesson} />;
+    if (lesson) {
+      return <LessonRoute lesson={lesson} quiz={route.name === "quiz"} />;
     }
-    if (lesson) return <LessonPlayer key={lesson.id} lesson={lesson} />;
   }
   return <LessonsOverview />;
 }

@@ -89,6 +89,10 @@ describe("lessonSchema", () => {
     id: "les-1",
     order: 1,
     status: "concept",
+    niveau: "basis",
+    vereisten: [],
+    duurMinuten: 3,
+    leerdoelen: ["Na deze les ken je A.", "Na deze les ken je B."],
     scenario,
     quiz: [choice, dragQuestion],
   };
@@ -109,6 +113,54 @@ describe("lessonSchema", () => {
 
   it("eist minstens één quizvraag", () => {
     expect(lessonSchema.safeParse({ ...lesson, quiz: [] }).success).toBe(false);
+  });
+
+  it("eist een bekend niveau", () => {
+    expect(lessonSchema.safeParse({ ...lesson, niveau: "pro" }).success).toBe(
+      false,
+    );
+    expect(
+      lessonSchema.safeParse({ ...lesson, niveau: undefined }).success,
+    ).toBe(false);
+  });
+
+  it("eist geldige les-id's in vereisten", () => {
+    expect(
+      lessonSchema.safeParse({ ...lesson, vereisten: ["peel", "shots"] })
+        .success,
+    ).toBe(true);
+    expect(
+      lessonSchema.safeParse({ ...lesson, vereisten: ["Les 1"] }).success,
+    ).toBe(false);
+  });
+
+  it("eist twee of drie leerdoelen", () => {
+    const goals = (count: number) => ({
+      ...lesson,
+      leerdoelen: Array.from({ length: count }, (_, index) => `Doel ${index}`),
+    });
+    expect(lessonSchema.safeParse(goals(1)).success).toBe(false);
+    expect(lessonSchema.safeParse(goals(3)).success).toBe(true);
+    expect(lessonSchema.safeParse(goals(4)).success).toBe(false);
+  });
+
+  it("eist een duur in hele minuten", () => {
+    expect(
+      lessonSchema.safeParse({ ...lesson, duurMinuten: 2.5 }).success,
+    ).toBe(false);
+    expect(lessonSchema.safeParse({ ...lesson, duurMinuten: 0 }).success).toBe(
+      false,
+    );
+  });
+
+  it("staat verificatiepunten toe, maar niet leeg", () => {
+    expect(
+      lessonSchema.safeParse({ ...lesson, teVerifieren: ["Klopt dit?"] })
+        .success,
+    ).toBe(true);
+    expect(
+      lessonSchema.safeParse({ ...lesson, teVerifieren: [""] }).success,
+    ).toBe(false);
   });
 
   it("eist een geldig id en een bekende status", () => {

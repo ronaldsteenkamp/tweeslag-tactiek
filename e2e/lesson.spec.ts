@@ -13,7 +13,10 @@ test("het overzicht toont de lessen met niveau en duur", async ({ page }) => {
   await page.goto("./");
   await expect(page.getByRole("heading", { name: "Lessen" })).toBeVisible();
   await expect(page.getByRole("link", { name: /Shots/ })).toBeVisible();
-  await expect(page.getByText(/Beginner · \d+ min/).first()).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Basis", level: 2 }),
+  ).toBeVisible();
+  await expect(page.getByText(/^\d+ min/).first()).toBeVisible();
 });
 
 test("een les is met Volgende tot het eind te doorlopen", async ({ page }) => {

@@ -26,6 +26,21 @@
   cursor: pointer;
 }
 
+.goals {
+  margin: 0;
+  padding-left: var(--space-4);
+}
+
+.goals li + li {
+  margin-top: var(--space-1);
+}
+
+.goalsDuration {
+  margin: var(--space-3) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
 .field {
   flex: 1 1 0;
   min-width: 0;

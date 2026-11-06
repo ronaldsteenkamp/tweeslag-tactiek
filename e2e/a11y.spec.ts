@@ -18,6 +18,7 @@ async function expectNoViolations(page: Page) {
 const screens: [string, string, ((page: Page) => Promise<void>)?][] = [
   ["lessenoverzicht", "./"],
   ["les", "./#/les/verdedigen-met-blok"],
+  ["leerdoelen", "./#/les/shots", (page) => button(page, "Doelen").click()],
   [
     "les op de laatste stap",
     "./#/les/shots",

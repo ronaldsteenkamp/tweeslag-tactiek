@@ -1,18 +1,19 @@
 import { paths } from "../../app/router";
 import { lessons } from "../../content";
-import { estimateMinutes } from "../../domain/interpolate";
+import { NIVEAUS, type Lesson, type Niveau } from "../../domain/schema";
+import { isNiveauOpen, lessonAccess } from "../../domain/unlock";
 import { t } from "../../i18n";
 import { InstallBanner } from "../install/InstallBanner";
 import {
   lessonStatus,
   useProgressStore,
+  useUnlockState,
   type LessonProgress,
 } from "../progress/progress";
 import styles from "./LessonsOverview.module.css";
 
 function ProgressLabel({ progress }: { progress?: LessonProgress }) {
   const status = lessonStatus(progress);
-  if (status === "new") return null;
   return (
     <span className={styles.status} data-status={status}>
       {status === "done"
@@ -20,16 +21,96 @@ function ProgressLabel({ progress }: { progress?: LessonProgress }) {
             score: progress?.score ?? 0,
             total: progress?.total ?? 0,
           })
-        : t("lessons.busy")}
+        : t(status === "busy" ? "lessons.busy" : "lessons.new")}
     </span>
   );
 }
 
+function LessonCard({ lesson, locked }: { lesson: Lesson; locked: boolean }) {
+  const progress = useProgressStore((state) => state.lessons[lesson.id]);
+  return (
+    <a
+      className={styles.card}
+      href={paths.lesson(lesson.id)}
+      data-locked={locked || undefined}
+    >
+      <span className={styles.number} aria-hidden="true">
+        {String(lesson.order).padStart(2, "0")}
+      </span>
+      <span className={styles.body}>
+        <span className={styles.title}>{lesson.scenario.title}</span>
+        <span className={styles.description}>
+          {lesson.scenario.description}
+        </span>
+        <span className={styles.meta}>
+          {t("lessons.minutes", { minutes: lesson.duurMinuten })}
+          {locked ? (
+            <span className={styles.status}>{t("lessons.locked")}</span>
+          ) : (
+            <ProgressLabel progress={progress} />
+          )}
+          {lesson.status === "concept" ? (
+            <span className={styles.badge}>{t("lessons.concept")}</span>
+          ) : null}
+        </span>
+      </span>
+    </a>
+  );
+}
+
+function NiveauSection({ niveau }: { niveau: Niveau }) {
+  const unlock = useUnlockState();
+  const items = lessons.filter((lesson) => lesson.niveau === niveau);
+  const done = items.filter((lesson) => unlock.done.has(lesson.id)).length;
+  const open = isNiveauOpen(niveau, lessons, unlock);
+  const previous = NIVEAUS[NIVEAUS.indexOf(niveau) - 1];
+
+  return (
+    <section
+      className={styles.niveau}
+      aria-labelledby={`niveau-${niveau}`}
+      data-testid={`niveau-${niveau}`}
+    >
+      <div className={styles.niveauHeader}>
+        <h2 className={styles.niveauTitle} id={`niveau-${niveau}`}>
+          {t(`niveau.${niveau}`)}
+        </h2>
+        {items.length > 0 ? (
+          <p className={styles.niveauCount}>
+            {t("lessons.niveauCount", { done, total: items.length })}
+          </p>
+        ) : null}
+      </div>
+      {!open && previous ? (
+        <p className={styles.niveauNote}>
+          {t("lessons.niveauLocked", {
+            previous: t(`niveau.${previous}`).toLowerCase(),
+          })}
+        </p>
+      ) : null}
+      {items.length === 0 ? (
+        <p className={styles.niveauNote}>{t("lessons.niveauEmpty")}</p>
+      ) : (
+        <ol className={styles.list}>
+          {items.map((lesson) => (
+            <li key={lesson.id}>
+              <LessonCard
+                lesson={lesson}
+                locked={!lessonAccess(lesson, lessons, unlock).open}
+              />
+            </li>
+          ))}
+        </ol>
+      )}
+    </section>
+  );
+}
+
 export function LessonsOverview() {
-  const progress = useProgressStore((state) => state.lessons);
-  const doneCount = lessons.filter(
-    (lesson) => lessonStatus(progress[lesson.id]) === "done",
-  ).length;
+  const { done } = useUnlockState();
+  const allUnlocked = useProgressStore((state) => state.alleOntgrendeld);
+  const setAllUnlocked = useProgressStore((state) => state.setAlleOntgrendeld);
+  const doneCount = lessons.filter((lesson) => done.has(lesson.id)).length;
 
   return (
     <div className={styles.page}>
@@ -45,33 +126,20 @@ export function LessonsOverview() {
           style={{ width: `${(doneCount / lessons.length) * 100}%` }}
         />
       </div>
-      <ol className={styles.list}>
-        {lessons.map((lesson) => (
-          <li key={lesson.id}>
-            <a className={styles.card} href={paths.lesson(lesson.id)}>
-              <span className={styles.number} aria-hidden="true">
-                {String(lesson.order).padStart(2, "0")}
-              </span>
-              <span className={styles.body}>
-                <span className={styles.title}>{lesson.scenario.title}</span>
-                <span className={styles.description}>
-                  {lesson.scenario.description}
-                </span>
-                <span className={styles.meta}>
-                  {t(`level.${lesson.scenario.level}`)} ·{" "}
-                  {t("lessons.minutes", {
-                    minutes: estimateMinutes(lesson.scenario.keyframes),
-                  })}
-                  <ProgressLabel progress={progress[lesson.id]} />
-                  {lesson.status === "concept" ? (
-                    <span className={styles.badge}>{t("lessons.concept")}</span>
-                  ) : null}
-                </span>
-              </span>
-            </a>
-          </li>
-        ))}
-      </ol>
+      <label className={styles.unlock}>
+        <input
+          type="checkbox"
+          checked={allUnlocked}
+          onChange={(event) => setAllUnlocked(event.target.checked)}
+        />
+        <span>
+          {t("lessons.unlockAll")}
+          <span className={styles.unlockHint}>{t("lessons.unlockHint")}</span>
+        </span>
+      </label>
+      {NIVEAUS.map((niveau) => (
+        <NiveauSection key={niveau} niveau={niveau} />
+      ))}
     </div>
   );
 }

@@ -2,6 +2,13 @@
   "id": "bloksignalen",
   "order": 4,
   "status": "concept",
+  "niveau": "basis",
+  "vereisten": [],
+  "duurMinuten": 3,
+  "leerdoelen": [
+    "Na deze les kun je de bloksignalen van Tweeslag lezen en geven.",
+    "Na deze les weet je welke hand bij welke aanvaller hoort."
+  ],
   "scenario": {
     "id": "bloksignalen",
     "title": "Bloksignalen",

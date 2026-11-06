@@ -2,6 +2,14 @@
   "id": "verdedigen-met-blok",
   "order": 5,
   "status": "concept",
+  "niveau": "basis",
+  "vereisten": [],
+  "duurMinuten": 3,
+  "leerdoelen": [
+    "Na deze les weet je wat blok en verdediger samen dekken.",
+    "Na deze les kun je kiezen waar je staat bij blok lijn en blok hoek.",
+    "Na deze les weet je wat er bij elk blok openligt."
+  ],
   "scenario": {
     "id": "verdedigen-met-blok",
     "title": "Verdedigen met blok",

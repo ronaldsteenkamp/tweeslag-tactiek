@@ -2,6 +2,14 @@
   "id": "veld-en-basis",
   "order": 1,
   "status": "concept",
+  "niveau": "basis",
+  "vereisten": [],
+  "duurMinuten": 3,
+  "leerdoelen": [
+    "Na deze les ken je de maten van het veld en de vrije zone.",
+    "Na deze les weet je wie er serveert na elke rally.",
+    "Na deze les weet je hoe je een set en een wedstrijd wint."
+  ],
   "scenario": {
     "id": "veld-en-basis",
     "title": "Het veld en de basis",

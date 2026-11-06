@@ -2,6 +2,13 @@
   "id": "peel",
   "order": 6,
   "status": "concept",
+  "niveau": "basis",
+  "vereisten": [],
+  "duurMinuten": 3,
+  "leerdoelen": [
+    "Na deze les weet je wanneer een peel zin heeft.",
+    "Na deze les kun je als blokker op tijd terugtrekken en het veld verdelen."
+  ],
   "scenario": {
     "id": "peel",
     "title": "De peel",

@@ -2,7 +2,9 @@ import { z } from "zod";
 import { create } from "zustand";
 import { browserStorage } from "../storage";
 
-const STORAGE_KEY = "tweeslag-tactiek.voortgang.v1";
+const STORAGE_KEY = "tweeslag-tactiek.voortgang.v2";
+/** Blijft staan na de migratie, als reserve voor het geval er iets misgaat. */
+const STORAGE_KEY_V1 = "tweeslag-tactiek.voortgang.v1";
 
 const lessonProgressSchema = z.object({
   /** Hoogste stap die iemand in de les heeft bereikt. */
@@ -12,34 +14,78 @@ const lessonProgressSchema = z.object({
   total: z.number().int().min(1).optional(),
 });
 
-const progressSchema = z.record(z.string(), lessonProgressSchema);
+const lessonsSchema = z.record(z.string(), lessonProgressSchema);
+
+const examResultSchema = z.object({
+  score: z.number().int().min(0),
+  total: z.number().int().min(1),
+});
+
+const progressFileSchema = z.object({
+  version: z.literal(2),
+  lessons: lessonsSchema,
+  /** Voor trainers en ervaren spelers: alle niveaus en lessen zijn open. */
+  alleOntgrendeld: z.boolean(),
+  /** Beste score per niveautoets. */
+  toetsen: z.record(z.string(), examResultSchema),
+});
 
 export type LessonProgress = z.infer<typeof lessonProgressSchema>;
-export type Progress = z.infer<typeof progressSchema>;
+export type Progress = z.infer<typeof lessonsSchema>;
+export type ProgressFile = z.infer<typeof progressFileSchema>;
 export type LessonStatus = "new" | "busy" | "done";
 
 type ProgressStorage = Pick<Storage, "getItem" | "setItem">;
 
-export function loadProgress(storage: ProgressStorage | undefined): Progress {
-  try {
-    const raw = storage?.getItem(STORAGE_KEY);
-    if (!raw) return {};
-    const result = progressSchema.safeParse(JSON.parse(raw));
-    return result.success ? result.data : {};
-  } catch {
-    // Opslag uitgeschakeld of beschadigd: de app werkt dan zonder voortgang.
-    return {};
+function emptyFile(): ProgressFile {
+  return { version: 2, lessons: {}, alleOntgrendeld: false, toetsen: {} };
+}
+
+/** Versie 1 was alleen de lijst met lessen. Eén beschadigde les kost niet de hele voortgang. */
+export function migrateV1(raw: unknown): ProgressFile {
+  const file = emptyFile();
+  if (typeof raw !== "object" || raw === null) return file;
+  for (const [lessonId, value] of Object.entries(raw)) {
+    const lesson = lessonProgressSchema.safeParse(value);
+    if (lesson.success) file.lessons[lessonId] = lesson.data;
   }
+  return file;
+}
+
+function readRaw(storage: ProgressStorage | undefined, key: string): unknown {
+  const raw = storage?.getItem(key);
+  return raw ? JSON.parse(raw) : undefined;
 }
 
 export function saveProgress(
   storage: ProgressStorage | undefined,
-  progress: Progress,
+  file: ProgressFile,
 ): void {
   try {
-    storage?.setItem(STORAGE_KEY, JSON.stringify(progress));
+    storage?.setItem(STORAGE_KEY, JSON.stringify(file));
   } catch {
     // Opslag vol of geweigerd: de voortgang blijft bewaard tot de pagina sluit.
+  }
+}
+
+export function loadProgress(
+  storage: ProgressStorage | undefined,
+): ProgressFile {
+  try {
+    const current = progressFileSchema.safeParse(readRaw(storage, STORAGE_KEY));
+    if (current.success) return current.data;
+  } catch {
+    // Beschadigd: probeer hieronder de oude versie.
+  }
+  try {
+    const old = readRaw(storage, STORAGE_KEY_V1);
+    if (old === undefined) return emptyFile();
+    const migrated = migrateV1(old);
+    saveProgress(storage, migrated);
+    return migrated;
+  } catch {
+    // Opslag uitgeschakeld of beschadigd: de app werkt dan zonder voortgang.
+    return emptyFile();
   }
 }
 
@@ -60,7 +106,8 @@ export function withQuizResult(
   total: number,
 ): Progress {
   const current = progress[lessonId] ?? { maxStep: 0 };
-  const best = Math.max(score, current.score ?? 0);
+  // De quiz kan korter zijn geworden sinds de vorige poging.
+  const best = Math.min(total, Math.max(score, current.score ?? 0));
   return { ...progress, [lessonId]: { ...current, score: best, total } };
 }
 
@@ -69,25 +116,49 @@ export function lessonStatus(lesson: LessonProgress | undefined): LessonStatus {
   return lesson.score === undefined ? "busy" : "done";
 }
 
-interface ProgressState {
-  lessons: Progress;
+export function doneLessonIds(progress: Progress): Set<string> {
+  return new Set(
+    Object.keys(progress).filter((id) => lessonStatus(progress[id]) === "done"),
+  );
+}
+
+interface ProgressState extends Omit<ProgressFile, "version"> {
   reachStep: (lessonId: string, step: number) => void;
   finishQuiz: (lessonId: string, score: number, total: number) => void;
+  setAlleOntgrendeld: (value: boolean) => void;
 }
 
 export const useProgressStore = create<ProgressState>((set, get) => {
   const storage = browserStorage();
+  const persist = () => {
+    const { lessons, alleOntgrendeld, toetsen } = get();
+    saveProgress(storage, { version: 2, lessons, alleOntgrendeld, toetsen });
+  };
   const update = (lessons: Progress) => {
     if (lessons === get().lessons) return;
     set({ lessons });
-    saveProgress(storage, lessons);
+    persist();
   };
+  const { lessons, alleOntgrendeld, toetsen } = loadProgress(storage);
 
   return {
-    lessons: loadProgress(storage),
+    lessons,
+    alleOntgrendeld,
+    toetsen,
     reachStep: (lessonId, step) =>
       update(withStep(get().lessons, lessonId, step)),
     finishQuiz: (lessonId, score, total) =>
       update(withQuizResult(get().lessons, lessonId, score, total)),
+    setAlleOntgrendeld: (value) => {
+      set({ alleOntgrendeld: value });
+      persist();
+    },
   };
 });
+
+/** De stand voor de ontgrendellogica. Gebruik in een component, want de waarden veranderen. */
+export function useUnlockState() {
+  const lessons = useProgressStore((state) => state.lessons);
+  const allUnlocked = useProgressStore((state) => state.alleOntgrendeld);
+  return { done: doneLessonIds(lessons), allUnlocked };
+}

@@ -2,6 +2,13 @@
   "id": "shots",
   "order": 7,
   "status": "concept",
+  "niveau": "basis",
+  "vereisten": [],
+  "duurMinuten": 3,
+  "leerdoelen": [
+    "Na deze les ken je de cut shot, de high line en de pokey.",
+    "Na deze les weet je welk shot past bij de plek van de verdediger."
+  ],
   "scenario": {
     "id": "shots",
     "title": "Shots",

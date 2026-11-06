@@ -1,5 +1,8 @@
 import { describe, expect, it } from "vitest";
+import { estimateMinutes } from "../domain/interpolate";
 import { isInTarget } from "../domain/quiz";
+import { lessonGraphProblems } from "../domain/unlock";
+import { NIVEAUS } from "../domain/schema";
 import { applyClubTerms, lessons, rules } from "./index";
 
 describe("lessen", () => {
@@ -17,6 +20,24 @@ describe("lessen", () => {
       lessons.length,
     );
   });
+
+  it("hebben kloppende vereisten zonder cirkels", () => {
+    expect(lessonGraphProblems(lessons)).toEqual([]);
+  });
+
+  it("staan op volgorde van niveau", () => {
+    const niveaus = lessons.map((lesson) => NIVEAUS.indexOf(lesson.niveau));
+    expect(niveaus).toEqual([...niveaus].sort((a, b) => a - b));
+  });
+
+  it.each(lessons.map((lesson) => [lesson.id, lesson] as const))(
+    "%s duurt minstens zo lang als het lezen en kijken",
+    (_id, lesson) => {
+      expect(lesson.duurMinuten).toBeGreaterThanOrEqual(
+        estimateMinutes(lesson.scenario.keyframes),
+      );
+    },
+  );
 
   it("bevatten geen niet-ingevulde bloksignalen", () => {
     expect(JSON.stringify(lessons)).not.toContain("{signaal");

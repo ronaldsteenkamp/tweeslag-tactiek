@@ -136,11 +136,24 @@ export const quizQuestionSchema = z.union([
   dragQuestionSchema,
 ]);
 
+export const NIVEAUS = ["basis", "gevorderd", "expert"] as const;
+
+const lessonIdSchema = z.string().regex(/^[a-z0-9-]+$/);
+
 export const lessonSchema = z.object({
-  id: z.string().regex(/^[a-z0-9-]+$/),
+  id: lessonIdSchema,
   order: z.number().int().min(1),
   /** concept: nog niet inhoudelijk goedgekeurd door de vereniging. */
   status: z.enum(["concept", "definitief"]),
+  niveau: z.enum(NIVEAUS),
+  /** Id's van lessen die eerst afgerond moeten zijn. */
+  vereisten: z.array(lessonIdSchema).max(6),
+  /** Geschatte duur van de les met quiz. */
+  duurMinuten: z.number().int().min(1).max(60),
+  /** Wat je na de les kunt, in korte zinnen. */
+  leerdoelen: z.array(z.string().min(1).max(120)).min(2).max(3),
+  /** Punten die de vereniging nog moet nakijken. JSON kent geen commentaar. */
+  teVerifieren: z.array(z.string().min(1).max(300)).max(20).optional(),
   scenario: scenarioSchema,
   quiz: z.array(quizQuestionSchema).min(1).max(10),
 });
@@ -157,3 +170,4 @@ export type ChoiceQuestion = z.infer<typeof choiceQuestionSchema>;
 export type DragQuestion = z.infer<typeof dragQuestionSchema>;
 export type QuizQuestion = z.infer<typeof quizQuestionSchema>;
 export type Lesson = z.infer<typeof lessonSchema>;
+export type Niveau = Lesson["niveau"];

@@ -2,6 +2,14 @@
   "id": "pass-ontvangst",
   "order": 2,
   "status": "concept",
+  "niveau": "basis",
+  "vereisten": [],
+  "duurMinuten": 3,
+  "leerdoelen": [
+    "Na deze les kun je samen het veld verdelen bij de ontvangst.",
+    "Na deze les kun je de middenbal vooraf afspreken.",
+    "Na deze les weet je waar een goede pass naartoe gaat."
+  ],
   "scenario": {
     "id": "pass-ontvangst",
     "title": "Pass-ontvangst",
