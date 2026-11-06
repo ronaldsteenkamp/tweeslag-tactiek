@@ -1,0 +1,532 @@
+{
+  "id": "wedstrijdtactiek",
+  "order": 19,
+  "status": "concept",
+  "niveau": "expert",
+  "vereisten": ["opslagtactiek", "aanvaller-lezen", "shotkeuze"],
+  "duurMinuten": 6,
+  "leerdoelen": [
+    "Na deze les kun je tijdens een wedstrijd patronen van de tegenstander herkennen.",
+    "Na deze les kun je jullie plan tijdens een set bijstellen.",
+    "Na deze les kun je time-outs en de kantwissel slim gebruiken."
+  ],
+  "teVerifieren": [
+    "De regel over coaching geldt voor FIVB-wedstrijden (4.1). Wat geldt er op toernooien waar Tweeslag speelt?",
+    "De technische time-out bij 21 punten geldt alleen bij FIVB-wedstrijden (15.4.2). Komt die bij jullie voor?",
+    "Het advies om bij een serie van de tegenstander een time-out te nemen is gangbaar, geen regel."
+  ],
+  "scenario": {
+    "id": "wedstrijdtactiek",
+    "title": "Wedstrijdtactiek",
+    "description": "Scout de tegenstander, stel je plan bij tijdens de set, en gebruik time-outs en de kantwissel slim.",
+    "tags": ["wedstrijd", "scouten", "time-out"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "scouten",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 3,
+            "y": 3
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "Scouten begint bij het inspelen. Kijk welke hand elke speler gebruikt, wie zwak passt en welke aanval elke speler het liefst slaat."
+      },
+      {
+        "id": "patroon",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 3,
+            "y": 3
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z9",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 0.6,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 0
+              },
+              {
+                "x": 4,
+                "y": 1.6
+              },
+              {
+                "x": 0.6,
+                "y": 1.6
+              }
+            ],
+            "label": "3×"
+          },
+          {
+            "id": "z10",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 0.6,
+                "y": 4.8
+              },
+              {
+                "x": 4,
+                "y": 4.8
+              },
+              {
+                "x": 4,
+                "y": 8
+              },
+              {
+                "x": 0.6,
+                "y": 8
+              }
+            ],
+            "label": "1×"
+          }
+        ],
+        "caption": "Tel tijdens de set mee. B1 slaat drie van de vier ballen op de **lijn**. Dat is een **patroon**, en daar kun je iets mee doen."
+      },
+      {
+        "id": "bijstellen",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z11",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 0.2
+              },
+              {
+                "x": 7.5,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 2.8
+              },
+              {
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        ],
+        "caption": "Stel bij: blok de lijn. B1 moet nu de diagonaal slaan, waar A2 staat. Ook de opslag kun je aanpassen. Verander per keer één ding."
+      },
+      {
+        "id": "wie-werkt",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": -1,
+            "y": 2
+          },
+          "A2": {
+            "x": 7,
+            "y": 4
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -1,
+          "y": 2,
+          "height": 2
+        },
+        "caption": "Wat werkt, houd je vast. Passt B2 slecht onder druk? Blijf op B2 serveren tot die een oplossing vindt. Verander dan pas."
+      },
+      {
+        "id": "time-out",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": -1,
+            "y": 2
+          },
+          "A2": {
+            "x": 7,
+            "y": 4
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -1,
+          "y": 2,
+          "height": 2
+        },
+        "caption": "Elk team heeft **één time-out per set** van 30 seconden. Gebruik hem om een serie van de tegenstander te breken of om het plan te veranderen."
+      },
+      {
+        "id": "kantwissel",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": -1,
+            "y": 2
+          },
+          "A2": {
+            "x": 7,
+            "y": 4
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -1,
+          "y": 2,
+          "height": 2
+        },
+        "caption": "Je wisselt na elke **7 punten**, in de derde set na **5**. Doe dat meteen. Neem onderweg kort één afspraak door, en denk aan wind en zon."
+      },
+      {
+        "id": "zelf-doen",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": -1,
+            "y": 2
+          },
+          "A2": {
+            "x": 7,
+            "y": 4
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -1,
+          "y": 2,
+          "height": 2
+        },
+        "caption": "Bij FIVB-wedstrijden mag je geen **coaching** van buitenaf krijgen. Praten met je partner mag altijd. Jullie moeten het dus samen oplossen.",
+        "tip": "Op een ander toernooi kan de organisator andere regels hebben."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "plaats-na-patroon",
+      "kind": "placeBoth",
+      "prompt": "B1 slaat steeds de lijn. Stel bij: zet A1 op blok lijn en A2 in de diagonaal.",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 6,
+            "y": 3.5
+          },
+          "A2": {
+            "x": 3,
+            "y": 1.4
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        }
+      },
+      "targets": [
+        {
+          "playerId": "A1",
+          "target": [
+            {
+              "x": 6.8,
+              "y": 0.2
+            },
+            {
+              "x": 7.9,
+              "y": 0.2
+            },
+            {
+              "x": 7.9,
+              "y": 1.8
+            },
+            {
+              "x": 6.8,
+              "y": 1.8
+            }
+          ],
+          "tolerance": 0.3
+        },
+        {
+          "playerId": "A2",
+          "target": [
+            {
+              "x": 0.5,
+              "y": 3.5
+            },
+            {
+              "x": 5,
+              "y": 3.5
+            },
+            {
+              "x": 5,
+              "y": 7.5
+            },
+            {
+              "x": 0.5,
+              "y": 7.5
+            }
+          ],
+          "tolerance": 0.4
+        }
+      ],
+      "explanation": "Met blok lijn neem je de favoriete aanval weg. B1 moet naar de diagonaal, waar A2 al staat."
+    },
+    {
+      "id": "fout-plan",
+      "kind": "spotError",
+      "prompt": "B1 sloeg de hele set op de lijn, en jullie blijven de hoek blokken. Waar gaat het mis?",
+      "scene": {
+        "alt": "A1 blokt de diagonaal. A2 staat ook in de diagonaal, dus de lijn is leeg. B1 slaat nog een keer op de lijn.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "caption": ""
+          },
+          {
+            "id": "aanval",
+            "durationMs": 900,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 3.2,
+              "y": 1,
+              "height": 0.3
+            },
+            "arrows": [
+              {
+                "id": "s32",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 3.2,
+                  "y": 1
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b2",
+          "label": "B2",
+          "playerId": "B2"
+        }
+      ],
+      "correct": "a2",
+      "explanation": "A1 sluit de diagonaal al af. A2 hoort dan op de lijn te staan: precies waar B1 de hele set al heen slaat."
+    },
+    {
+      "id": "hoeveel-time-outs",
+      "kind": "choice",
+      "prompt": "Hoeveel time-outs heeft een team per set?",
+      "options": [
+        "Eén van 30 seconden",
+        "Twee van 30 seconden",
+        "Eén van 60 seconden"
+      ],
+      "correct": 0,
+      "explanation": "Eén time-out per set, van 30 seconden. Bij officiële FIVB-wedstrijden komt daar in set 1 en 2 een technische time-out bij."
+    },
+    {
+      "id": "kantwissel",
+      "kind": "choice",
+      "prompt": "Wanneer wissel je van kant in de derde set?",
+      "options": [
+        "Na elke 7 punten",
+        "Na elke 5 punten",
+        "Bij 8 punten, één keer"
+      ],
+      "correct": 1,
+      "explanation": "In set 1 en 2 is dat na elke 7 punten, in de derde set na elke 5 punten."
+    },
+    {
+      "id": "coaching",
+      "kind": "choice",
+      "prompt": "Wat mag bij een FIVB-wedstrijd tijdens de rally's?",
+      "options": [
+        "Aanwijzingen van je coach langs het veld",
+        "Praten met je partner",
+        "Allebei"
+      ],
+      "correct": 1,
+      "explanation": "Coaching van buitenaf mag daar niet. Overleggen met je partner mag altijd."
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 import { useRef, useState, type ChangeEvent } from "react";
 import { scenarioSchema, type Scenario } from "../../domain/schema";
-import { newScenario } from "../../domain/editing";
+import { lessonStepJson, newScenario } from "../../domain/editing";
 import { t } from "../../i18n";
 import { Modal } from "../ui/Modal";
 import formStyles from "../ui/forms.module.css";
@@ -146,6 +146,20 @@ export function MenuDialog({
   const fileInput = useRef<HTMLInputElement>(null);
   const [status, setStatus] = useState("");
   const [importError, setImportError] = useState(false);
+  const [stepJson, setStepJson] = useState("");
+  const [stepCopied, setStepCopied] = useState(false);
+
+  async function exportStep() {
+    const json = lessonStepJson(selectKeyframe(useEditor.getState()));
+    setStepJson(json);
+    try {
+      await navigator.clipboard.writeText(json);
+      setStepCopied(true);
+    } catch {
+      // Kopiëren geweigerd: de tekst staat dan in het veld om zelf te selecteren.
+      setStepCopied(false);
+    }
+  }
 
   async function importFile(event: ChangeEvent<HTMLInputElement>) {
     const file = event.target.files?.[0];
@@ -262,6 +276,25 @@ export function MenuDialog({
           {t("board.import")}
         </button>
       </div>
+      <button
+        type="button"
+        className={formStyles.button}
+        onClick={() => void exportStep()}
+      >
+        {t("board.exportStep")}
+      </button>
+      {stepJson ? (
+        <label className={formStyles.field}>
+          {t(stepCopied ? "board.exportStepCopied" : "board.exportStepManual")}
+          <textarea
+            className={formStyles.input}
+            readOnly
+            rows={6}
+            value={stepJson}
+            data-testid="step-json"
+          />
+        </label>
+      ) : null}
       <input
         ref={fileInput}
         className={styles.hiddenFile}

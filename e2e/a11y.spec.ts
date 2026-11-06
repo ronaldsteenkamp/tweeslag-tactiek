@@ -70,6 +70,11 @@ const screens: [string, string, ((page: Page) => Promise<void>)?][] = [
   ["freeze frame", "./#/les/peel/quiz", (page) => skipQuestions(page, 2)],
   ["looplijn", "./#/les/peel/quiz", (page) => skipQuestions(page, 3)],
   ["gesloten niveautoets", "./#/toets/gevorderd"],
+  [
+    "lessenoverzicht met alles open",
+    "./",
+    (page) => page.getByRole("checkbox").check(),
+  ],
   ["vergrendelde les", "./#/les/opslagtactiek"],
   ["regels", "./#/regels"],
   ["tactiekbord", "./#/bord"],

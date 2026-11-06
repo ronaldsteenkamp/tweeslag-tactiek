@@ -1,3 +1,5 @@
+import { keyframeSchema } from "./schema";
+import { lessonStepJson } from "./editing";
 import { describe, expect, it } from "vitest";
 import {
   addArrow,
@@ -186,5 +188,27 @@ describe("varianten", () => {
 
   it("valt bij een onbekende variant terug op de basis", () => {
     expect(keyframesOf(scenario, "weg")).toBe(scenario.keyframes);
+  });
+});
+
+describe("lessonStepJson", () => {
+  it("geeft JSON die weer door het schema komt", () => {
+    const keyframe = {
+      id: "stap-1",
+      durationMs: 1500,
+      players: { A1: { x: 3, y: 2 } },
+      ball: { x: 4, y: 2, height: 1 },
+      arrows: [
+        {
+          id: "aanval",
+          kind: "shot" as const,
+          from: { x: 3, y: 2 },
+          to: { x: 9, y: 2 },
+        },
+      ],
+      caption: "Uitleg",
+    };
+    const parsed = keyframeSchema.parse(JSON.parse(lessonStepJson(keyframe)));
+    expect(parsed).toEqual(keyframe);
   });
 });

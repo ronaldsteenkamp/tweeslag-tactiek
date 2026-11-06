@@ -29,12 +29,15 @@ function Countdown({
   const [left, setLeft] = useState(seconds);
 
   useEffect(() => {
-    if (left === 0) {
-      onExpire();
-      return;
-    }
-    const timer = setTimeout(() => setLeft(left - 1), 1000);
-    return () => clearTimeout(timer);
+    const timer = setInterval(
+      () => setLeft((current) => Math.max(0, current - 1)),
+      1000,
+    );
+    return () => clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    if (left === 0) onExpire();
   }, [left, onExpire]);
 
   return (

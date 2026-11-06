@@ -1,0 +1,503 @@
+{
+  "id": "out-of-system",
+  "order": 18,
+  "status": "concept",
+  "niveau": "expert",
+  "vereisten": ["sets-lastig", "transitie"],
+  "duurMinuten": 5,
+  "leerdoelen": [
+    "Na deze les weet je wie de tweede bal neemt na een slechte pass.",
+    "Na deze les kun je kiezen tussen aanvallen en de bal veilig terugspelen."
+  ],
+  "teVerifieren": [
+    "Wanneer je de bal veilig terugspeelt, is een inschatting. Hebben de trainers een vuistregel?",
+    "De derde bal bovenhands over het net moet loodrecht op de schouderlijn. Ik raad daarom onderhands aan; klopt dat advies?",
+    "“Out of system” is de Engelse term. Gebruikt Tweeslag een Nederlands woord?"
+  ],
+  "scenario": {
+    "id": "out-of-system",
+    "title": "Out of system",
+    "description": "De pass mislukt en het plan vervalt. Wie neemt de tweede bal, en wanneer speel je hem veilig terug?",
+    "tags": ["out of system", "free ball"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "slechte-pass",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 5.5
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 3.5
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 1,
+          "y": 7.6,
+          "height": 3,
+          "arc": 1.5
+        },
+        "arrows": [
+          {
+            "id": "b25",
+            "kind": "ball",
+            "from": {
+              "x": 3,
+              "y": 5.5
+            },
+            "to": {
+              "x": 1,
+              "y": 7.6
+            }
+          }
+        ],
+        "caption": "A1 passt de bal weg, ver achter het veld aan de zijkant. Dit heet **out of system**: de vaste volgorde pass, set, aanval werkt niet meer."
+      },
+      {
+        "id": "wie-neemt",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 5.5
+          },
+          "A2": {
+            "x": 1.4,
+            "y": 7.2
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 1,
+          "y": 7.6,
+          "height": 3,
+          "arc": 1.5
+        },
+        "arrows": [
+          {
+            "id": "r26",
+            "kind": "run",
+            "from": {
+              "x": 6.5,
+              "y": 3.5
+            },
+            "to": {
+              "x": 1.4,
+              "y": 7.2
+            }
+          }
+        ],
+        "caption": "A1 mag de bal niet twee keer na elkaar raken. Dus **A2 moet er heen**, hoe ver het ook is. Vertrek meteen en roep “mijn!”."
+      },
+      {
+        "id": "aanloop-maken",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 3.4,
+            "y": 3.6
+          },
+          "A2": {
+            "x": 1.4,
+            "y": 7.2
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 1,
+          "y": 7.6,
+          "height": 3,
+          "arc": 1.5
+        },
+        "arrows": [
+          {
+            "id": "r27",
+            "kind": "run",
+            "from": {
+              "x": 3,
+              "y": 5.5
+            },
+            "to": {
+              "x": 3.4,
+              "y": 3.6
+            }
+          }
+        ],
+        "caption": "A1 loopt ondertussen weg van de bal naar het midden. Zo heeft A1 ruimte voor een aanloop, en een duidelijke plek voor de tweede bal."
+      },
+      {
+        "id": "hoge-set",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 3.4,
+            "y": 3.6
+          },
+          "A2": {
+            "x": 1.4,
+            "y": 7.2
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 5.8,
+          "y": 3,
+          "height": 4.8,
+          "arc": 3
+        },
+        "arrows": [
+          {
+            "id": "b28",
+            "kind": "ball",
+            "from": {
+              "x": 1.4,
+              "y": 7.2
+            },
+            "to": {
+              "x": 5.8,
+              "y": 3
+            }
+          }
+        ],
+        "caption": "A2 speelt de bal **hoog naar het midden**, ruim van het net af. Een bump set is hier meestal de veiligste keuze."
+      },
+      {
+        "id": "beslis",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": 3.4,
+            "y": 3.6
+          },
+          "A2": {
+            "x": 1.4,
+            "y": 7.2
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 5.8,
+          "y": 3,
+          "height": 4.8,
+          "arc": 3
+        },
+        "caption": "Kan A1 hard aanvallen? Doen. Staat A1 slecht of ligt de bal te ver? Dan speel je hem **veilig terug**. Een fout kost een punt, een veilige bal niet."
+      },
+      {
+        "id": "veilig",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 5.2,
+            "y": 3
+          },
+          "A2": {
+            "x": 1.4,
+            "y": 7.2
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 14.6,
+          "y": 6.6,
+          "height": 0.4,
+          "arc": 3
+        },
+        "arrows": [
+          {
+            "id": "b29",
+            "kind": "ball",
+            "from": {
+              "x": 5.8,
+              "y": 3
+            },
+            "to": {
+              "x": 14.6,
+              "y": 6.6
+            }
+          }
+        ],
+        "caption": "Speel de derde bal onderhands, **hoog en diep** in de hoek. Zo heeft de tegenstander een lange weg, en jullie hebben tijd om terug te komen."
+      },
+      {
+        "id": "terug-op-plek",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 2
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 14.6,
+          "y": 6.6,
+          "height": 0.4,
+          "arc": 3
+        },
+        "arrows": [
+          {
+            "id": "r30",
+            "kind": "run",
+            "from": {
+              "x": 1.4,
+              "y": 7.2
+            },
+            "to": {
+              "x": 3,
+              "y": 4.5
+            }
+          }
+        ],
+        "caption": "Direct terug op je plek voor de verdediging. Een veilige bal komt vaak terug als een goede aanval.",
+        "tip": "Een veilige bal is geen mislukking. Het houdt de rally in leven."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "freeze-wie",
+      "kind": "freeze",
+      "prompt": "A1 passt de bal ver weg. Wie neemt de tweede bal?",
+      "scene": {
+        "alt": "A1 passt de bal ver achter het veld. A2 staat bij het net. Het beeld stopt als de bal in de lucht is.",
+        "keyframes": [
+          {
+            "id": "voor",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 3,
+                "y": 5.5
+              },
+              "A2": {
+                "x": 6.5,
+                "y": 3.5
+              },
+              "B1": {
+                "x": 8.8,
+                "y": 2
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 3,
+              "y": 5.5,
+              "height": 0.8
+            },
+            "caption": ""
+          },
+          {
+            "id": "weg",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 3,
+                "y": 5.5
+              },
+              "A2": {
+                "x": 6.5,
+                "y": 3.5
+              },
+              "B1": {
+                "x": 8.8,
+                "y": 2
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 1,
+              "y": 7.6,
+              "height": 3,
+              "arc": 1.5
+            },
+            "arrows": [
+              {
+                "id": "b31",
+                "kind": "ball",
+                "from": {
+                  "x": 3,
+                  "y": 5.5
+                },
+                "to": {
+                  "x": 1,
+                  "y": 7.6
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "A1, die staat het dichtst bij",
+        "A2",
+        "Niemand, de bal is weg"
+      ],
+      "correct": 1,
+      "explanation": "A1 mag de bal niet twee keer na elkaar raken. A2 moet dus lopen, hoe ver het ook is."
+    },
+    {
+      "id": "route-tweede-bal",
+      "kind": "route",
+      "prompt": "Teken de route van A2 naar de bal die ver is weggepasst.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 5.5
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 3.5
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 1,
+          "y": 7.6,
+          "height": 3
+        }
+      },
+      "target": [
+        {
+          "x": 0.4,
+          "y": 6.8
+        },
+        {
+          "x": 2,
+          "y": 6.8
+        },
+        {
+          "x": 2,
+          "y": 8.4
+        },
+        {
+          "x": 0.4,
+          "y": 8.4
+        }
+      ],
+      "tolerance": 0.3,
+      "maxDetour": 1.3,
+      "explanation": "Elke meter telt. Loop zo recht mogelijk, en draai bij de bal met je borst naar het veld."
+    },
+    {
+      "id": "volgorde-oos",
+      "kind": "order",
+      "prompt": "Zet out of system op volgorde.",
+      "items": [
+        "De pass gaat ver weg",
+        "De partner loopt naar de bal en roept",
+        "De passer loopt naar het midden",
+        "De partner speelt de bal hoog naar het midden",
+        "De derde bal gaat aanvallend of veilig over"
+      ],
+      "explanation": "De passer maakt ruimte en de partner houdt de bal hoog. Daarna kies je wat nog kan."
+    },
+    {
+      "id": "veilig-kiezen",
+      "kind": "choice",
+      "prompt": "De set ligt ver van het net en je staat slecht. Wat doe je met de derde bal?",
+      "options": [
+        "Hard slaan, koste wat kost",
+        "Veilig, hoog en diep over het net",
+        "Laten vallen"
+      ],
+      "correct": 1,
+      "explanation": "Zonder goede aanval is een veilige bal beter dan een fout. De rally gaat dan door."
+    }
+  ]
+}

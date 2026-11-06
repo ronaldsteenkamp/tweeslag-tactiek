@@ -15,7 +15,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "lighthouse": "npm run build && node scripts/lighthouse.mjs",
-    "icons": "pwa-assets-generator"
+    "icons": "pwa-assets-generator",
+    "twijfels": "node scripts/twijfelgevallen.mjs"
   },
   "dependencies": {
     "lz-string": "^1.5.0",

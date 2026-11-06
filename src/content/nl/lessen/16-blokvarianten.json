@@ -1,0 +1,843 @@
+{
+  "id": "blokvarianten",
+  "order": 16,
+  "status": "concept",
+  "niveau": "expert",
+  "vereisten": ["aanvaller-lezen"],
+  "duurMinuten": 7,
+  "leerdoelen": [
+    "Na deze les ken je het lezende blok, het schijnblok en het draaien van je handen.",
+    "Na deze les kun je als verdediger reageren op elke blokvariant."
+  ],
+  "teVerifieren": [
+    "“Ball” betekent hier: geen kant vooraf, en recht op de bal blokken (zoals in les 4). Klopt dat?",
+    "Het moment van terugtrekken bij het schijnblok is een vuistregel. Welke timing leren de trainers?",
+    "De uitleg over het draaien van de handen is beknopt. Willen de trainers dit anders of uitgebreider?"
+  ],
+  "scenario": {
+    "id": "blokvarianten",
+    "title": "Blokvarianten",
+    "description": "Een blok dat leest, een schijnblok en gedraaide handen. Dezelfde aanval met blok lijn, blok hoek of peel zie je in de varianten.",
+    "tags": ["blok", "ball", "schijnblok"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "ball",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "Bij **ball** ({signaal.ball}) kiest A1 vooraf geen kant. A1 leest de aanvaller en blokt recht op de bal."
+      },
+      {
+        "id": "ball-verdediger",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z7",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 1,
+                "y": 2
+              },
+              {
+                "x": 5,
+                "y": 2
+              },
+              {
+                "x": 5,
+                "y": 6
+              },
+              {
+                "x": 1,
+                "y": 6
+              }
+            ],
+            "label": "A2"
+          }
+        ],
+        "caption": "Voor A2 is dit lastig: er is geen afgesproken kant. A2 blijft **centraal**, leest mee en reageert op wat het blok doet."
+      },
+      {
+        "id": "schijnblok",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "Bij een **schijnblok** staat A1 klaar aan het net alsof er een blok komt. De aanvaller rekent daarop en denkt aan een shot over het blok."
+      },
+      {
+        "id": "terugtrekken",
+        "durationMs": 1100,
+        "players": {
+          "A1": {
+            "x": 5,
+            "y": 2
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "r14",
+            "kind": "run",
+            "from": {
+              "x": 7.4,
+              "y": 1.4
+            },
+            "to": {
+              "x": 5,
+              "y": 2
+            }
+          }
+        ],
+        "caption": "Laat in de aanloop trekt A1 **terug**. Te vroeg en de aanvaller ziet het. Te laat en je staat nergens."
+      },
+      {
+        "id": "shot-gepakt",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5,
+            "y": 2
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 5,
+          "y": 2.2,
+          "height": 0.8,
+          "arc": 1
+        },
+        "arrows": [
+          {
+            "id": "s15",
+            "kind": "shot",
+            "from": {
+              "x": 8.8,
+              "y": 1.4
+            },
+            "to": {
+              "x": 5,
+              "y": 2.2
+            }
+          }
+        ],
+        "caption": "B1 speelt een shot over het blok dat er niet is, en A1 staat er precies. Roep het schijnblok vooraf af, zodat A2 weet wat er komt."
+      },
+      {
+        "id": "handen-lijn",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z5",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 0.2
+              },
+              {
+                "x": 7.5,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 2.8
+              },
+              {
+                "x": 0,
+                "y": 0
+              }
+            ]
+          }
+        ],
+        "caption": "Je kunt ook je **handen draaien**. Bij blok lijn draai je de buitenste hand naar het veld toe, zodat de bal op de lijn niet via je hand uit gaat."
+      },
+      {
+        "id": "handen-hoek",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 2.5,
+            "y": 1.2
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z6",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 1.2
+              },
+              {
+                "x": 7.5,
+                "y": 3
+              },
+              {
+                "x": 0,
+                "y": 8
+              },
+              {
+                "x": 0,
+                "y": 4.4
+              }
+            ]
+          }
+        ],
+        "caption": "Bij blok hoek draai je je handen naar de diagonaal. Zo stuurt een geraakte bal terug het veld van de tegenstander in."
+      },
+      {
+        "id": "regels",
+        "durationMs": 600,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 2.5,
+            "y": 1.2
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "Regels: je mag over het net reiken, maar de bal pas raken als de tegenstander heeft aangevallen. Een opslag blokken mag nooit."
+      }
+    ],
+    "variants": [
+      {
+        "id": "blok-lijn",
+        "label": "Blok lijn",
+        "keyframes": [
+          {
+            "id": "plek",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "zones": [
+              {
+                "id": "z5",
+                "kind": "blocked",
+                "polygon": [
+                  {
+                    "x": 7.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2
+                  },
+                  {
+                    "x": 0,
+                    "y": 2.8
+                  },
+                  {
+                    "x": 0,
+                    "y": 0
+                  }
+                ]
+              }
+            ],
+            "caption": "A1 sluit de lijn af, A2 gaat naar de diagonaal."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 3.2,
+              "y": 5.4,
+              "height": 0.6
+            },
+            "arrows": [
+              {
+                "id": "s16",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 3.2,
+                  "y": 5.4
+                }
+              }
+            ],
+            "caption": "Dezelfde aanval gaat de diagonaal in, recht op A2."
+          }
+        ]
+      },
+      {
+        "id": "blok-hoek",
+        "label": "Blok hoek",
+        "keyframes": [
+          {
+            "id": "plek",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 2.5,
+                "y": 1.2
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "zones": [
+              {
+                "id": "z6",
+                "kind": "blocked",
+                "polygon": [
+                  {
+                    "x": 7.5,
+                    "y": 1.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 3
+                  },
+                  {
+                    "x": 0,
+                    "y": 8
+                  },
+                  {
+                    "x": 0,
+                    "y": 4.4
+                  }
+                ]
+              }
+            ],
+            "caption": "A1 sluit de diagonaal af, A2 gaat naar de lijn."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 2.5,
+                "y": 1.2
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 2.8,
+              "y": 1.2,
+              "height": 0.6
+            },
+            "arrows": [
+              {
+                "id": "s17",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 2.8,
+                  "y": 1.2
+                }
+              }
+            ],
+            "caption": "Nu moet de aanval de lijn in, recht op A2."
+          }
+        ]
+      },
+      {
+        "id": "peel",
+        "label": "Peel",
+        "keyframes": [
+          {
+            "id": "plek",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 4.6,
+                "y": 1.8
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "arrows": [
+              {
+                "id": "r18",
+                "kind": "run",
+                "from": {
+                  "x": 7.4,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 4.6,
+                  "y": 1.8
+                }
+              }
+            ],
+            "caption": "Geen blok: A1 peelt en jullie verdedigen samen."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 4.6,
+                "y": 1.8
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 3.2,
+              "y": 5,
+              "height": 0.6
+            },
+            "arrows": [
+              {
+                "id": "s19",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 3.2,
+                  "y": 5
+                }
+              }
+            ],
+            "caption": "De aanval kan alle kanten op, maar nu staan er twee verdedigers."
+          }
+        ]
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "ball-beide",
+      "kind": "placeBoth",
+      "prompt": "Jullie spelen **ball**. Zet A1 aan het net tegenover B1 en A2 centraal achterin.",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 5,
+            "y": 3
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 6
+          },
+          "B1": {
+            "x": 9.4,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 1.4,
+          "height": 3.4
+        }
+      },
+      "targets": [
+        {
+          "playerId": "A1",
+          "target": [
+            {
+              "x": 6.8,
+              "y": 0.6
+            },
+            {
+              "x": 7.9,
+              "y": 0.6
+            },
+            {
+              "x": 7.9,
+              "y": 2.2
+            },
+            {
+              "x": 6.8,
+              "y": 2.2
+            }
+          ],
+          "tolerance": 0.3
+        },
+        {
+          "playerId": "A2",
+          "target": [
+            {
+              "x": 1,
+              "y": 2.5
+            },
+            {
+              "x": 4.5,
+              "y": 2.5
+            },
+            {
+              "x": 4.5,
+              "y": 5.5
+            },
+            {
+              "x": 1,
+              "y": 5.5
+            }
+          ],
+          "tolerance": 0.4
+        }
+      ],
+      "explanation": "Bij ball staat er geen kant vast. De blokker blokt op de bal, en de verdediger blijft centraal om te kunnen reageren."
+    },
+    {
+      "id": "freeze-schijn",
+      "kind": "freeze",
+      "prompt": "Jullie spelen een schijnblok. B1 loopt aan. Wat doet A1 nu?",
+      "scene": {
+        "alt": "De set is in de lucht en B1 loopt aan. A1 staat aan het net alsof het een blok wordt. Het beeld stopt tijdens de aanloop.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 10.4,
+                "y": 2.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11.5,
+              "y": 4,
+              "height": 2
+            },
+            "caption": ""
+          },
+          {
+            "id": "aanloop",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 9.8,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 9,
+              "y": 1.4,
+              "height": 3.4,
+              "arc": 2
+            },
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Springen om te blokken",
+        "Nu terugtrekken van het net",
+        "Naar de kant van A2 lopen"
+      ],
+      "correct": 1,
+      "explanation": "Laat in de aanloop trek je terug. Dan rekent de aanvaller nog op je blok, maar ben je op tijd op je plek."
+    },
+    {
+      "id": "regel-reiken",
+      "kind": "choice",
+      "prompt": "Wanneer mag je als blokker de bal aan de andere kant van het net raken?",
+      "options": [
+        "Altijd",
+        "Pas na de aanval van de tegenstander",
+        "Alleen bij een opslag"
+      ],
+      "correct": 1,
+      "explanation": "Je mag over het net reiken, maar de bal pas raken als de tegenstander heeft aangevallen. Een opslag blokken mag nooit."
+    },
+    {
+      "id": "volgorde-schijn",
+      "kind": "order",
+      "prompt": "Zet het schijnblok op volgorde.",
+      "items": [
+        "Spreek het schijnblok af met je partner",
+        "Sta klaar aan het net",
+        "Trek laat in de aanloop terug",
+        "Verdedig het shot over het blok"
+      ],
+      "explanation": "Je partner moet het vooraf weten. De timing van het terugtrekken maakt het verschil."
+    }
+  ]
+}

@@ -280,3 +280,8 @@ export function removeVariant(scenario: Scenario, variantId: string): Scenario {
     variants: scenario.variants?.filter((variant) => variant.id !== variantId),
   };
 }
+
+/** Een stap als JSON-tekst, klaar om in `keyframes` van een lesbestand te plakken. */
+export function lessonStepJson(keyframe: Keyframe): string {
+  return JSON.stringify(keyframe, null, 2);
+}

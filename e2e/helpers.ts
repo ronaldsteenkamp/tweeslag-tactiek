@@ -71,6 +71,11 @@ export async function skipQuestions(page: Page, count: number) {
   }
 }
 
+/** Start een quiz op expertniveau zonder tijdslimiet. */
+export async function startUntimed(page: Page) {
+  await page.getByRole("button", { name: "Start zonder tijdslimiet" }).click();
+}
+
 /** Zet de stappen van een volgordevraag goed met de knoppen omhoog. */
 export async function solveOrder(page: Page, items: string[]) {
   for (const [place, item] of items.entries()) {

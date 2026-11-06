@@ -144,6 +144,11 @@ export const nl = {
   "board.file": "Bestand",
   "board.export": "Exporteren",
   "board.import": "Importeren",
+  "board.exportStep": "Exporteer als lesstap",
+  "board.exportStepCopied":
+    "Gekopieerd. Plak dit in keyframes van een lesbestand.",
+  "board.exportStepManual":
+    "Kopieer deze tekst naar keyframes van een lesbestand.",
   "board.importError":
     "Dit bestand kan niet worden geopend. Kies een JSON-bestand dat met deze app is geëxporteerd.",
   "board.new": "Nieuw scenario",

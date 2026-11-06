@@ -1,0 +1,601 @@
+{
+  "id": "aanvaller-lezen",
+  "order": 14,
+  "status": "concept",
+  "niveau": "expert",
+  "vereisten": ["blokken-of-peelen"],
+  "duurMinuten": 6,
+  "leerdoelen": [
+    "Na deze les kun je set, aanloop, schouders en arm van een aanvaller lezen.",
+    "Na deze les kun je vlak voor het contact inschatten of er een harde aanval of shot komt."
+  ],
+  "teVerifieren": [
+    "Alle leessignalen zijn aanwijzingen, geen zekerheden. Herkennen de trainers ze zo?",
+    "“Aanvallers slaan vaak in de richting van hun aanloop” is een vuistregel. Vinden de trainers dit passend?",
+    "De lees-volgorde (set, aanloop, schouders, arm) is één manier om het aan te leren."
+  ],
+  "scenario": {
+    "id": "aanvaller-lezen",
+    "title": "De aanvaller lezen",
+    "description": "Set, aanloop, schouders en arm verraden vaak waar de bal heen gaat. Leer ze vlak voor het contact lezen.",
+    "tags": ["lezen", "verdediging"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "volgorde",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.3
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 2.6
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 11.5,
+          "y": 5,
+          "height": 2
+        },
+        "caption": "Lees van groot naar klein: eerst de **set**, dan de **aanloop**, dan de **schouders**, en als laatste de **arm**. Zo win je tijd."
+      },
+      {
+        "id": "set",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.3
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 2.6
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 9.4,
+          "y": 1.6,
+          "height": 3.4,
+          "arc": 2
+        },
+        "zones": [
+          {
+            "id": "z1",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 8.8,
+                "y": 0.8
+              },
+              {
+                "x": 10,
+                "y": 0.8
+              },
+              {
+                "x": 10,
+                "y": 2.4
+              },
+              {
+                "x": 8.8,
+                "y": 2.4
+              }
+            ],
+            "label": "Set"
+          }
+        ],
+        "caption": "De set vertelt het meest. Ligt de bal dicht bij het net en voor de aanvaller, dan kan B1 hard slaan. Ligt hij achter B1 of laag, dan komt er eerder een shot."
+      },
+      {
+        "id": "aanloop",
+        "durationMs": 1100,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.3
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 9.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 9.4,
+          "y": 1.6,
+          "height": 3.4,
+          "arc": 2
+        },
+        "arrows": [
+          {
+            "id": "r1",
+            "kind": "run",
+            "from": {
+              "x": 10.4,
+              "y": 2.6
+            },
+            "to": {
+              "x": 9.6,
+              "y": 1.6
+            }
+          }
+        ],
+        "caption": "Aanvallers slaan vaak in de richting van hun **aanloop**. B1 komt schuin uit het midden naar de zijlijn. De lijn wordt dan waarschijnlijker dan de diagonaal."
+      },
+      {
+        "id": "schouders",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.3
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 9.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 9.4,
+          "y": 1.6,
+          "height": 3.4,
+          "arc": 2
+        },
+        "arrows": [
+          {
+            "id": "s2",
+            "kind": "shot",
+            "from": {
+              "x": 9.2,
+              "y": 1.6
+            },
+            "to": {
+              "x": 3,
+              "y": 1
+            }
+          }
+        ],
+        "caption": "Kijk bij de sprong naar de **schouders**. Wijzen ze naar de lijn, dan staat B1 open voor de lijn. Een bal tegen de schouders in slaan is moeilijker."
+      },
+      {
+        "id": "arm",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.3
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 9.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 9.4,
+          "y": 1.6,
+          "height": 3.4,
+          "arc": 2
+        },
+        "arrows": [
+          {
+            "id": "s3",
+            "kind": "shot",
+            "from": {
+              "x": 9.2,
+              "y": 1.6
+            },
+            "to": {
+              "x": 3,
+              "y": 1
+            }
+          }
+        ],
+        "caption": "Dan de **arm**. Een snelle, volle zwaai met de elleboog hoog is een harde aanval. Remt de arm af of blijft hij laag, dan komt er een shot."
+      },
+      {
+        "id": "moment",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.3
+          },
+          "A2": {
+            "x": 3.4,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 9.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 9.4,
+          "y": 1.6,
+          "height": 3.4,
+          "arc": 2
+        },
+        "arrows": [
+          {
+            "id": "r4",
+            "kind": "run",
+            "from": {
+              "x": 3,
+              "y": 4.5
+            },
+            "to": {
+              "x": 3.4,
+              "y": 3.2
+            }
+          }
+        ],
+        "caption": "Sta **stil en laag** op het moment van de slag. Beweeg daarna pas echt. Wie te vroeg beweegt, laat zien wat er openligt.",
+        "tip": "Oefen dit door hardop te roepen wat je ziet, nog vóór de slag."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "freeze-shot",
+      "kind": "freeze",
+      "prompt": "B1's arm remt af vlak voor het contact, en de set ligt achter B1. Wat verwacht je?",
+      "scene": {
+        "alt": "De set ligt iets achter aanvaller B1. B1 springt, maar de arm remt af. Het beeld stopt vlak voor het contact.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.3
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.6
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11.5,
+              "y": 4,
+              "height": 2
+            },
+            "caption": ""
+          },
+          {
+            "id": "contact",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.3
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.6
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 10,
+              "y": 1.6,
+              "height": 3.2,
+              "arc": 2
+            },
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Een harde aanval over het blok",
+        "Een shot",
+        "De bal wordt niet geraakt"
+      ],
+      "correct": 1,
+      "explanation": "Een set achter de aanvaller en een remmende arm wijzen allebei op een shot."
+    },
+    {
+      "id": "freeze-hard",
+      "kind": "freeze",
+      "prompt": "De set ligt strak voor B1 en de elleboog staat hoog. Wat doet A2?",
+      "scene": {
+        "alt": "De set ligt mooi voor aanvaller B1, dicht bij het net. B1 zwaait vol door met de elleboog hoog. A1 blokt de lijn. Het beeld stopt voor het contact.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11.5,
+              "y": 4,
+              "height": 2
+            },
+            "caption": ""
+          },
+          {
+            "id": "contact",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4,
+              "arc": 2
+            },
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Naar voren rennen voor een korte bal",
+        "Laag en stil blijven voor een harde aanval",
+        "Naar de lijn lopen"
+      ],
+      "correct": 1,
+      "explanation": "Alles wijst op hard. Blijf laag en diep in je zone, want voor een harde aanval heb je weinig tijd."
+    },
+    {
+      "id": "volgorde-lezen",
+      "kind": "order",
+      "prompt": "In welke volgorde lees je de aanvaller?",
+      "items": ["De set", "De aanloop", "De schouders", "De arm"],
+      "explanation": "Van groot naar klein, en dus ook van vroeg naar laat. De arm zie je pas vlak voor het contact."
+    },
+    {
+      "id": "fout-te-vroeg",
+      "kind": "spotError",
+      "prompt": "A2 wil de lijn verdedigen. Waar gaat het mis?",
+      "scene": {
+        "alt": "De set is in de lucht en B1 loopt nog aan. A2 loopt nu al ver naar de lijn. B1 ziet dat en slaat de bal de diagonaal in.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 3,
+                "y": 4
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "caption": ""
+          },
+          {
+            "id": "te-vroeg",
+            "durationMs": 900,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 3,
+                "y": 1.4
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "arrows": [
+              {
+                "id": "r5",
+                "kind": "run",
+                "from": {
+                  "x": 3,
+                  "y": 4
+                },
+                "to": {
+                  "x": 3,
+                  "y": 1.4
+                }
+              }
+            ],
+            "caption": ""
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 3,
+                "y": 1.4
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 3,
+              "y": 6,
+              "height": 0.3
+            },
+            "arrows": [
+              {
+                "id": "s6",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 3,
+                  "y": 6
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b2",
+          "label": "B2",
+          "playerId": "B2"
+        }
+      ],
+      "correct": "a2",
+      "explanation": "A2 bewoog te vroeg. B1 kon zien dat de diagonaal leeg kwam te liggen."
+    }
+  ]
+}

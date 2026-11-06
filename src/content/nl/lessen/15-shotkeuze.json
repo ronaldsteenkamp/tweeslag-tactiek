@@ -1,0 +1,831 @@
+{
+  "id": "shotkeuze",
+  "order": 15,
+  "status": "concept",
+  "niveau": "expert",
+  "vereisten": ["callen"],
+  "duurMinuten": 6,
+  "leerdoelen": [
+    "Na deze les kun je tijdens je aanloop de verdediger lezen en kiezen tussen hard en shot.",
+    "Na deze les kun je als verdediger vroeg of laat bewegen om de aanvaller te misleiden.",
+    "Na deze les weet je hoe je het blok gebruikt om de bal uit te slaan."
+  ],
+  "teVerifieren": [
+    "De koppeling tussen de plek van de verdediger en de shotkeuze is een vuistregel.",
+    "De fake van de verdediger is één voorbeeld. Welke varianten leren de trainers?",
+    "De stap over de bal op het blok slaan is door mij toegevoegd. Hoort dit bij deze les?"
+  ],
+  "scenario": {
+    "id": "shotkeuze",
+    "title": "Shotkeuze tegen de verdediger",
+    "description": "Hard of shot? Je kiest in je aanloop op basis van de verdediger. Andersom probeert die jou te misleiden.",
+    "tags": ["shots", "aanval", "fake"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "blik",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 4.5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "caption": "De set is in de lucht. In je laatste passen kijk je niet alleen naar de bal, maar ook even naar de **verdediger**. Je partner helpt met een call."
+      },
+      {
+        "id": "diep",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 14,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z2",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 8.4,
+                "y": 3.6
+              },
+              {
+                "x": 11,
+                "y": 3.6
+              },
+              {
+                "x": 11,
+                "y": 7
+              },
+              {
+                "x": 8.4,
+                "y": 7
+              }
+            ],
+            "label": "Open"
+          }
+        ],
+        "caption": "Staat B2 **diep**, dan ligt het veld voor B2 open. Speel een **cut shot** kort de diagonaal in. Hard slaan zou recht op de verdediger gaan."
+      },
+      {
+        "id": "dichtbij",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 10.8,
+            "y": 4.5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z3",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 13,
+                "y": 0.2
+              },
+              {
+                "x": 15.8,
+                "y": 0.2
+              },
+              {
+                "x": 15.8,
+                "y": 7.8
+              },
+              {
+                "x": 13,
+                "y": 7.8
+              }
+            ],
+            "label": "Open"
+          }
+        ],
+        "caption": "Staat B2 **dichtbij**, dan ligt het veld daarachter open. Speel hoog en diep, of sla hard: B2 heeft weinig tijd om te reageren."
+      },
+      {
+        "id": "kant",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 1.6
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z4",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 11,
+                "y": 4.6
+              },
+              {
+                "x": 15.6,
+                "y": 4.6
+              },
+              {
+                "x": 15.6,
+                "y": 7.8
+              },
+              {
+                "x": 11,
+                "y": 7.8
+              }
+            ],
+            "label": "Open"
+          }
+        ],
+        "caption": "Staat B2 **op de lijn**, dan sla je hard de diagonaal in. Het blok dekt daar niets, want dat staat op de lijn."
+      },
+      {
+        "id": "blok-uit",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 4.5
+          }
+        },
+        "ball": {
+          "x": 9,
+          "y": 0.2,
+          "height": 2.8
+        },
+        "arrows": [
+          {
+            "id": "s7",
+            "kind": "shot",
+            "from": {
+              "x": 7,
+              "y": 1.6
+            },
+            "to": {
+              "x": 9,
+              "y": -1
+            }
+          }
+        ],
+        "caption": "Sluit het blok alles af? Sla dan op de **buitenkant van de handen**, zodat de bal uit gaat. Na een blokaanraking is dat jouw punt."
+      },
+      {
+        "id": "laat-bewegen",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 3.8
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "caption": "Nu andersom. Als verdediger laat je je pas **laat** zien. Blijf in het midden tot de aanvaller springt, dan moet die kiezen zonder te weten waar jij heen gaat."
+      },
+      {
+        "id": "fake",
+        "durationMs": 1100,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 2.2
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "r8",
+            "kind": "run",
+            "from": {
+              "x": 12,
+              "y": 3.8
+            },
+            "to": {
+              "x": 12,
+              "y": 2.2
+            }
+          }
+        ],
+        "caption": "Of je gebruikt een **fake**: stap vroeg naar de lijn, zodat de aanvaller de diagonaal kiest."
+      },
+      {
+        "id": "terug",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 5.4
+          }
+        },
+        "ball": {
+          "x": 12.2,
+          "y": 5.6,
+          "height": 0.7
+        },
+        "arrows": [
+          {
+            "id": "r9",
+            "kind": "run",
+            "from": {
+              "x": 12,
+              "y": 2.2
+            },
+            "to": {
+              "x": 12,
+              "y": 5.4
+            }
+          },
+          {
+            "id": "s10",
+            "kind": "shot",
+            "from": {
+              "x": 7,
+              "y": 1.6
+            },
+            "to": {
+              "x": 12.2,
+              "y": 5.6
+            }
+          }
+        ],
+        "caption": "Vlak voor de slag spring je terug naar de diagonaal, waar je de bal al verwachtte. De aanvaller dacht dat die openlag.",
+        "tip": "Doe dit niet altijd. Een fake werkt alleen als het onverwacht komt."
+      }
+    ],
+    "variants": [
+      {
+        "id": "hard",
+        "label": "Hard",
+        "keyframes": [
+          {
+            "id": "kijk",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.9
+              },
+              "B2": {
+                "x": 12,
+                "y": 1.6
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4
+            },
+            "caption": "B2 staat op de lijn en B1 blokt de lijn. De diagonaal is leeg."
+          },
+          {
+            "id": "slag",
+            "durationMs": 700,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.9
+              },
+              "B2": {
+                "x": 12,
+                "y": 1.6
+              }
+            },
+            "ball": {
+              "x": 12.4,
+              "y": 6,
+              "height": 0.3
+            },
+            "arrows": [
+              {
+                "id": "s11",
+                "kind": "shot",
+                "from": {
+                  "x": 7,
+                  "y": 1.6
+                },
+                "to": {
+                  "x": 12.4,
+                  "y": 6
+                }
+              }
+            ],
+            "caption": "A1 slaat hard de diagonaal in."
+          }
+        ]
+      },
+      {
+        "id": "shot",
+        "label": "Shot",
+        "keyframes": [
+          {
+            "id": "kijk",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 14,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4
+            },
+            "caption": "B2 staat diep in de diagonaal. Hard slaan gaat recht op B2 af."
+          },
+          {
+            "id": "slag",
+            "durationMs": 1000,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 14,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 9.6,
+              "y": 5,
+              "height": 0.3,
+              "arc": 0.6
+            },
+            "arrows": [
+              {
+                "id": "s12",
+                "kind": "shot",
+                "from": {
+                  "x": 7,
+                  "y": 1.6
+                },
+                "to": {
+                  "x": 9.6,
+                  "y": 5
+                }
+              }
+            ],
+            "caption": "A1 speelt een cut shot langs het net, vóór de verdediger."
+          }
+        ]
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "freeze-diep",
+      "kind": "freeze",
+      "prompt": "Je loopt aan en ziet de verdediger diep staan. Wat speel je?",
+      "scene": {
+        "alt": "A1 loopt aan op de set. Verdediger B2 staat ver achterin. Vlak achter het net is het leeg. Het beeld stopt voor de sprong.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 5.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 12,
+                "y": 4.5
+              }
+            },
+            "ball": {
+              "x": 6.4,
+              "y": 3.4,
+              "height": 2
+            },
+            "caption": ""
+          },
+          {
+            "id": "aanloop",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 14,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4,
+              "arc": 1.5
+            },
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Een cut shot kort in de diagonaal",
+        "Hard recht op de verdediger",
+        "Hoog en diep"
+      ],
+      "correct": 0,
+      "explanation": "De verdediger staat diep, dus het veld ervoor ligt open."
+    },
+    {
+      "id": "freeze-lijn",
+      "kind": "freeze",
+      "prompt": "De verdediger staat op de lijn, het blok ook. Wat speel je?",
+      "scene": {
+        "alt": "A1 loopt aan. B1 blokt de lijn en verdediger B2 staat ook aan de kant van de lijn. De diagonaal is leeg. Het beeld stopt voor de sprong.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 5.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.9
+              },
+              "B2": {
+                "x": 12,
+                "y": 1.6
+              }
+            },
+            "ball": {
+              "x": 6.4,
+              "y": 3.4,
+              "height": 2
+            },
+            "caption": ""
+          },
+          {
+            "id": "aanloop",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.9
+              },
+              "B2": {
+                "x": 12,
+                "y": 1.6
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4,
+              "arc": 1.5
+            },
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Een high line",
+        "Een pokey over het blok",
+        "Hard de diagonaal in"
+      ],
+      "correct": 2,
+      "explanation": "Blok en verdediger staan aan dezelfde kant. De diagonaal is leeg, dus daar sla je de bal hard in."
+    },
+    {
+      "id": "fout-recht-op",
+      "kind": "spotError",
+      "prompt": "De aanval van A1 wordt makkelijk verdedigd. Waar ging het mis?",
+      "scene": {
+        "alt": "B1 blokt de lijn. B2 staat in de diagonaal. A1 slaat hard de diagonaal in, recht op B2. Verder ligt de korte bal open.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 12,
+                "y": 5.5
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4
+            },
+            "caption": ""
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 6.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 12,
+                "y": 5.5
+              }
+            },
+            "ball": {
+              "x": 12,
+              "y": 5.5,
+              "height": 0.8
+            },
+            "arrows": [
+              {
+                "id": "s13",
+                "kind": "shot",
+                "from": {
+                  "x": 7,
+                  "y": 1.6
+                },
+                "to": {
+                  "x": 12,
+                  "y": 5.5
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b1",
+          "label": "B1",
+          "playerId": "B1"
+        }
+      ],
+      "correct": "a1",
+      "explanation": "A1 sloeg recht op de verdediger. Kijk in je aanloop waar die staat, en kies dan een open plek."
+    },
+    {
+      "id": "blok-uit",
+      "kind": "choice",
+      "prompt": "Je slaat de bal op de handen van het blok, en hij gaat uit. Wie krijgt het punt?",
+      "options": [
+        "Jouw team",
+        "De tegenstander",
+        "De rally wordt overgespeeld"
+      ],
+      "correct": 0,
+      "explanation": "De tegenstander raakte de bal als laatste. Daarom is dit een goede keuze als het blok alles afsluit."
+    },
+    {
+      "id": "volgorde-fake",
+      "kind": "order",
+      "prompt": "Zet de fake van de verdediger op volgorde.",
+      "items": [
+        "Stap vroeg naar de lijn",
+        "De aanvaller ziet de diagonaal open",
+        "Vlak voor de slag terug naar de diagonaal",
+        "De aanval komt in de diagonaal"
+      ],
+      "explanation": "Je laat iets zien, zodat de aanvaller daarop reageert. Daarna ga je terug naar waar je de bal wilde hebben."
+    }
+  ]
+}

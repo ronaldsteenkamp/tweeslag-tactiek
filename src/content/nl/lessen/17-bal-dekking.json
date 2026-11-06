@@ -1,0 +1,512 @@
+{
+  "id": "bal-dekking",
+  "order": 17,
+  "status": "concept",
+  "niveau": "expert",
+  "vereisten": ["transitie"],
+  "duurMinuten": 5,
+  "leerdoelen": [
+    "Na deze les weet je waar je staat om je aanvaller te dekken.",
+    "Na deze les kun je een teruggeblokte bal weer opbouwen."
+  ],
+  "teVerifieren": [
+    "De dekplek (dicht bij de aanvaller, laag, een stap van het net af) is schematisch. Welke afstand leren de trainers?",
+    "De keuze aan welke kant je dekt, verschilt per set. Is de uitleg zo duidelijk?"
+  ],
+  "scenario": {
+    "id": "bal-dekking",
+    "title": "Bal-dekking",
+    "description": "Na je set ben je nog niet klaar. Je dekt de aanvaller, voor het geval het blok de bal terugstuurt.",
+    "tags": ["dekking", "blok"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "na-de-set",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 5.8,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 3.6
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.7,
+          "height": 3.4
+        },
+        "caption": "A2 heeft geset en A1 loopt aan. Veel spelers blijven nu kijken. Maar het blok kan de bal terugsturen, dus A2 is nog niet klaar."
+      },
+      {
+        "id": "dekken",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 6.8,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 5.4,
+            "y": 2.6
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.7,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "r20",
+            "kind": "run",
+            "from": {
+              "x": 6.4,
+              "y": 3.6
+            },
+            "to": {
+              "x": 5.4,
+              "y": 2.6
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "z8",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 4.6,
+                "y": 1.2
+              },
+              {
+                "x": 6.2,
+                "y": 1.2
+              },
+              {
+                "x": 6.2,
+                "y": 3.6
+              },
+              {
+                "x": 4.6,
+                "y": 3.6
+              }
+            ],
+            "label": "Dekking"
+          }
+        ],
+        "caption": "A2 gaat **dicht bij de aanvaller** staan, een stap van het net af, laag en met de handen klaar. Een teruggeblokte bal valt snel en kort."
+      },
+      {
+        "id": "geblokt",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": 6.8,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 5.4,
+            "y": 2.6
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 6,
+          "y": 2.2,
+          "height": 0.8
+        },
+        "arrows": [
+          {
+            "id": "b21",
+            "kind": "ball",
+            "from": {
+              "x": 7.6,
+              "y": 1.7
+            },
+            "to": {
+              "x": 6,
+              "y": 2.2
+            }
+          }
+        ],
+        "caption": "B1 blokt de bal terug. Hij komt snel en steil naar beneden, vlak achter A1. Dekken betekent hier: laag blijven en de bal **omhoog** houden."
+      },
+      {
+        "id": "opgepakt",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 6.8,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 5.8,
+            "y": 2.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 5,
+          "y": 3,
+          "height": 3.4,
+          "arc": 1
+        },
+        "arrows": [
+          {
+            "id": "b22",
+            "kind": "ball",
+            "from": {
+              "x": 6,
+              "y": 2.2
+            },
+            "to": {
+              "x": 5,
+              "y": 3
+            }
+          }
+        ],
+        "caption": "A2 houdt de bal hoog naar het midden. Team A heeft nu weer **drie contacten**: het blok was een contact van de tegenstander."
+      },
+      {
+        "id": "aanvaller-landt",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5,
+            "y": 3.2
+          },
+          "A2": {
+            "x": 5.8,
+            "y": 2.4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 5,
+          "y": 3,
+          "height": 3.4,
+          "arc": 1
+        },
+        "arrows": [
+          {
+            "id": "r23",
+            "kind": "run",
+            "from": {
+              "x": 6.8,
+              "y": 1.7
+            },
+            "to": {
+              "x": 5,
+              "y": 3.2
+            }
+          }
+        ],
+        "caption": "A1 landt, draait zich om en loopt naar de bal om te setten. A2 raakte de bal, dus A1 set. Dezelfde afspraak als bij de transitie."
+      },
+      {
+        "id": "welke-kant",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 6.8,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 5.4,
+            "y": 2.6
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.7,
+          "height": 3.4
+        },
+        "caption": "Dek de kant waar het blok de bal waarschijnlijk heen stuurt. Staat de set dichter op het net, dan sta je dichter bij je aanvaller.",
+        "tip": "Roep “cover” of “ik heb je”, zodat je aanvaller durft door te slaan."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "sleep-dekking",
+      "kind": "drag",
+      "prompt": "A1 valt aan op de lijn. Sleep A2 naar de plek om te dekken.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 6.8,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 6
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.7,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 4.6,
+          "y": 1.2
+        },
+        {
+          "x": 6.4,
+          "y": 1.2
+        },
+        {
+          "x": 6.4,
+          "y": 3.6
+        },
+        {
+          "x": 4.6,
+          "y": 3.6
+        }
+      ],
+      "tolerance": 0.4,
+      "explanation": "Sta dicht bij de aanvaller, een stap van het net af. Een geblokte bal komt kort en snel."
+    },
+    {
+      "id": "fout-kijken",
+      "kind": "spotError",
+      "prompt": "De bal wordt teruggeblokt en valt op de grond. Waar ging het mis?",
+      "scene": {
+        "alt": "A1 slaat aan op de lijn. A2 blijft na de set ver weg staan aan de andere kant van het veld. B1 blokt de bal terug en hij valt vlak achter A1 in het zand.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 6.8,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 6
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.6
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.7,
+              "height": 3.4
+            },
+            "caption": ""
+          },
+          {
+            "id": "geblokt",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 6.8,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 6.4,
+                "y": 6
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.6
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 5.8,
+              "y": 2,
+              "height": 0,
+              "arc": 0.3
+            },
+            "arrows": [
+              {
+                "id": "b24",
+                "kind": "ball",
+                "from": {
+                  "x": 7.6,
+                  "y": 1.7
+                },
+                "to": {
+                  "x": 5.8,
+                  "y": 2
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b1",
+          "label": "B1",
+          "playerId": "B1"
+        }
+      ],
+      "correct": "a2",
+      "explanation": "A2 bleef staan na de set. Had A2 gedekt, dan was deze bal nog te spelen."
+    },
+    {
+      "id": "drie-contacten",
+      "kind": "choice",
+      "prompt": "B1 blokt de aanval van A1 terug. Hoeveel contacten heeft team A?",
+      "options": ["Eén", "Twee", "Drie"],
+      "correct": 2,
+      "explanation": "Het blok is een contact van team B. Team A begint weer opnieuw met drie contacten."
+    },
+    {
+      "id": "route-dekking",
+      "kind": "route",
+      "prompt": "A2 heeft geset. Teken de route van A2 naar de dekking.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 6.8,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 6.4,
+            "y": 5
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.7,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 4.6,
+          "y": 1.2
+        },
+        {
+          "x": 6.4,
+          "y": 1.2
+        },
+        {
+          "x": 6.4,
+          "y": 3.6
+        },
+        {
+          "x": 4.6,
+          "y": 3.6
+        }
+      ],
+      "tolerance": 0.3,
+      "maxDetour": 1.4,
+      "explanation": "Direct naar je aanvaller toe, en een stap van het net af. Daar ben je op tijd voor een geblokte bal."
+    }
+  ]
+}

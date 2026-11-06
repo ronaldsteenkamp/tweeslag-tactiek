@@ -1,5 +1,5 @@
 import { expect, test, type Page } from "@playwright/test";
-import { skipQuestions } from "./helpers";
+import { skipQuestions, startUntimed } from "./helpers";
 
 const KEY_V1 = "tweeslag-tactiek.voortgang.v1";
 const KEY_V2 = "tweeslag-tactiek.voortgang.v2";
@@ -228,4 +228,48 @@ test("de niveautoets gevorderd werkt", async ({ page }) => {
   await page.getByRole("button", { name: "Start de toets" }).click();
   await skipQuestions(page, 12);
   await expect(page.getByTestId("exam-score")).toHaveText(/van de 12 vragen/);
+});
+
+test("de niveautoets expert werkt, ook zonder tijdslimiet", async ({
+  page,
+}) => {
+  await seedV2(page, {}, true);
+  await page.goto("./#/toets/expert");
+  await expect(page.getByText("12 gemengde vragen")).toBeVisible();
+  await startUntimed(page);
+  await expect(page.getByTestId("timer")).toBeHidden();
+  await skipQuestions(page, 12);
+  await expect(page.getByTestId("exam-score")).toHaveText(/van de 12 vragen/);
+});
+
+test("een expertquiz kondigt de tijdslimiet vooraf aan", async ({ page }) => {
+  await seedV2(page, {}, true);
+  await page.clock.install();
+  await page.goto("./#/les/wedstrijdtactiek/quiz");
+  await expect(page.getByText(/met een tijdslimiet doen/)).toBeVisible();
+  await page.getByRole("button", { name: "Start met tijdslimiet" }).click();
+
+  // Beide spelers plaatsen krijgt 35 seconden.
+  await expect(page.getByTestId("timer")).toHaveText("Nog 35 s");
+  await page.clock.runFor(10_000);
+  await expect(page.getByTestId("timer")).toHaveText("Nog 25 s");
+  await page.clock.runFor(26_000);
+
+  const feedback = page.getByTestId("feedback");
+  await expect(feedback).toContainText("De tijd is om.");
+  await expect(
+    feedback.getByRole("button", { name: "Probeer opnieuw" }),
+  ).toBeHidden();
+  await feedback.getByRole("button", { name: "Volgende vraag" }).click();
+  await expect(page.getByTestId("timer")).toBeVisible();
+});
+
+test("elke les heeft een quiz die uit te spelen is", async ({ page }) => {
+  await seedV2(page, {}, true);
+  for (const lesson of ["blokvarianten", "bal-dekking", "out-of-system"]) {
+    await page.goto(`./#/les/${lesson}/quiz`);
+    await startUntimed(page);
+    await skipQuestions(page, 4);
+    await expect(page.getByTestId("quiz-score")).toBeVisible();
+  }
 });

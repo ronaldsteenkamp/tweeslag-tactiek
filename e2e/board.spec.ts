@@ -292,3 +292,14 @@ for (const [width, height] of viewports) {
     expect(fits).toBe(true);
   });
 }
+
+test("een stap exporteren als lesstap", async ({ page, context }) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("./#/bord");
+  await page.getByRole("button", { name: "Menu", exact: true }).click();
+  await page.getByRole("button", { name: "Exporteer als lesstap" }).click();
+  const json = await page.getByTestId("step-json").inputValue();
+  const step = JSON.parse(json);
+  expect(step.players).toBeDefined();
+  expect(step.durationMs).toBeGreaterThanOrEqual(0);
+});
