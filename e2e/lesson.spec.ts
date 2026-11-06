@@ -12,7 +12,7 @@ async function openFirstLesson(page: Page) {
 test("het overzicht toont de lessen met niveau en duur", async ({ page }) => {
   await page.goto("./");
   await expect(page.getByRole("heading", { name: "Lessen" })).toBeVisible();
-  await expect(page.getByRole("listitem")).toHaveCount(3);
+  await expect(page.getByRole("listitem")).toHaveCount(7);
   await expect(page.getByText(/Beginner · \d+ min/).first()).toBeVisible();
 });
 
@@ -29,10 +29,9 @@ test("een les is met Volgende tot het eind te doorlopen", async ({ page }) => {
     await next.click();
     await expect(stepLabel(page)).toHaveText(`Stap ${step} van 7`);
   }
-  await expect(page.getByText("Les klaar!")).toBeVisible();
-  await expect(next).toBeDisabled();
-  await page.getByRole("link", { name: /Verder met: Pass-ontvangst/ }).click();
-  await expect(stepLabel(page)).toHaveText("Stap 1 van 6");
+  await expect(next).toBeHidden();
+  await page.getByRole("link", { name: "Start de quiz" }).click();
+  await expect(page.getByTestId("quiz-count")).toHaveText("Vraag 1 van 3");
 });
 
 test("spelers bewegen tijdens een overgang", async ({ page }) => {
@@ -107,7 +106,7 @@ for (const [width, height] of viewports) {
 
     await expect(page.getByTestId("scene")).toBeInViewport();
     await expect(
-      page.getByRole("button", { name: "Volgende" }),
+      page.getByRole("link", { name: "Start de quiz" }),
     ).toBeInViewport();
     const box = await page.getByTestId("scene").boundingBox();
     expect(box?.height).toBeGreaterThan(150);

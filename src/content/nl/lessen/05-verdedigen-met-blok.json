@@ -1,0 +1,552 @@
+{
+  "id": "verdedigen-met-blok",
+  "order": 5,
+  "status": "concept",
+  "scenario": {
+    "id": "verdedigen-met-blok",
+    "title": "Verdedigen met blok",
+    "description": "Blok en verdediger verdelen het veld. Zo weet je wat je dekt en wat openligt.",
+    "tags": ["blok-lijn", "blok-hoek", "verdediging"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "uitgangspunt",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.2
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "B1 krijgt de set dicht bij het net. A1 staat tegenover de aanvaller om te blokken, A2 staat achterin. Eén blokker kan niet alles afsluiten, dus jullie verdelen het veld."
+      },
+      {
+        "id": "blok-lijn",
+        "durationMs": 1300,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "a2-diagonaal",
+            "kind": "run",
+            "from": {
+              "x": 3,
+              "y": 4
+            },
+            "to": {
+              "x": 3,
+              "y": 5.5
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "blok",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 0.2
+              },
+              {
+                "x": 7.5,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 2.8
+              },
+              {
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "label": "Blok"
+          },
+          {
+            "id": "verdediger",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 0.5,
+                "y": 3.5
+              },
+              {
+                "x": 5,
+                "y": 3.5
+              },
+              {
+                "x": 5,
+                "y": 7.5
+              },
+              {
+                "x": 0.5,
+                "y": 7.5
+              }
+            ]
+          }
+        ],
+        "caption": "**Blok lijn**: A1 sluit de lijn af. A2 gaat naar de **diagonaal**, waar de harde aanval nu naartoe moet."
+      },
+      {
+        "id": "aanval-diagonaal",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 3.4,
+          "y": 5.4,
+          "height": 0.6
+        },
+        "arrows": [
+          {
+            "id": "aanval",
+            "kind": "shot",
+            "from": {
+              "x": 8.6,
+              "y": 1.4
+            },
+            "to": {
+              "x": 3.4,
+              "y": 5.4
+            }
+          }
+        ],
+        "caption": "B1 slaat om het blok heen de diagonaal in, precies waar A2 staat. Dit is het plan: het blok stuurt de aanval naar de verdediger."
+      },
+      {
+        "id": "open-bij-lijn",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "kort",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 4.6,
+                "y": 4
+              },
+              {
+                "x": 7.6,
+                "y": 4
+              },
+              {
+                "x": 7.6,
+                "y": 8
+              },
+              {
+                "x": 4.6,
+                "y": 8
+              }
+            ],
+            "label": "Kort"
+          },
+          {
+            "id": "diep",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 2.6,
+                "y": 0
+              },
+              {
+                "x": 2.6,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 2
+              }
+            ],
+            "label": "Diep"
+          }
+        ],
+        "caption": "Wat ligt er open bij blok lijn? De **korte bal** in de diagonaal, en de **diepe lijn** over het blok heen. Daar komen de shots, zie de les over shots."
+      },
+      {
+        "id": "blok-hoek",
+        "durationMs": 1400,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 2.5,
+            "y": 1.2
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "a2-lijn",
+            "kind": "run",
+            "from": {
+              "x": 3,
+              "y": 5.5
+            },
+            "to": {
+              "x": 2.5,
+              "y": 1.2
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "blok",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 1.2
+              },
+              {
+                "x": 7.5,
+                "y": 3
+              },
+              {
+                "x": 0,
+                "y": 8
+              },
+              {
+                "x": 0,
+                "y": 4.4
+              }
+            ],
+            "label": "Blok"
+          },
+          {
+            "id": "verdediger",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 0.5,
+                "y": 0.2
+              },
+              {
+                "x": 5,
+                "y": 0.2
+              },
+              {
+                "x": 5,
+                "y": 2.6
+              },
+              {
+                "x": 0.5,
+                "y": 2.6
+              }
+            ]
+          }
+        ],
+        "caption": "**Blok hoek** is het spiegelbeeld: A1 sluit de diagonaal af en A2 gaat naar de **lijn**."
+      },
+      {
+        "id": "open-bij-hoek",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 2.5,
+            "y": 1.2
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "kort",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 5,
+                "y": 0
+              },
+              {
+                "x": 7.4,
+                "y": 0
+              },
+              {
+                "x": 7.4,
+                "y": 3
+              },
+              {
+                "x": 5,
+                "y": 3
+              }
+            ],
+            "label": "Kort"
+          },
+          {
+            "id": "diep",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 5.4
+              },
+              {
+                "x": 2.8,
+                "y": 5.4
+              },
+              {
+                "x": 2.8,
+                "y": 8
+              },
+              {
+                "x": 0,
+                "y": 8
+              }
+            ],
+            "label": "Diep"
+          }
+        ],
+        "caption": "Bij blok hoek ligt de **korte bal** achter het blok open, en de **diepe diagonaal**. Je kunt niet alles dekken: kies samen wat je weggeeft."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "lijn-a2",
+      "kind": "drag",
+      "prompt": "Je partner blokt de **lijn**. Sleep A2 naar de plek die jij verdedigt.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.2
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 4
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 0.5,
+          "y": 3.5
+        },
+        {
+          "x": 5,
+          "y": 3.5
+        },
+        {
+          "x": 5,
+          "y": 7.5
+        },
+        {
+          "x": 0.5,
+          "y": 7.5
+        }
+      ],
+      "tolerance": 0.4,
+      "explanation": "Bij blok lijn verdedig jij de diagonaal, want daar moet de harde aanval heen."
+    },
+    {
+      "id": "hoek-a2",
+      "kind": "drag",
+      "prompt": "Je partner blokt de **hoek**. Sleep A2 naar de plek die jij verdedigt.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.2
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 4
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 0.5,
+          "y": 0.2
+        },
+        {
+          "x": 5,
+          "y": 0.2
+        },
+        {
+          "x": 5,
+          "y": 2.6
+        },
+        {
+          "x": 0.5,
+          "y": 2.6
+        }
+      ],
+      "tolerance": 0.4,
+      "explanation": "Bij blok hoek verdedig jij de lijn."
+    },
+    {
+      "id": "open-zone",
+      "kind": "choice",
+      "prompt": "Jullie spelen blok lijn en A2 staat diep in de diagonaal. Welke bal is dan het lastigst?",
+      "options": [
+        "Een harde aanval recht in het blok",
+        "Een korte bal in de diagonaal",
+        "Een harde aanval recht op A2"
+      ],
+      "correct": 1,
+      "explanation": "De korte diagonaal ligt voor de verdediger en naast het blok. Daar is niemand."
+    }
+  ]
+}

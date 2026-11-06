@@ -1,0 +1,212 @@
+.page {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.header {
+  padding: var(--space-2) var(--space-4);
+  background: var(--color-surface);
+}
+
+.heading {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  line-height: 1.25;
+}
+
+.count {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.prompt {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.choice {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 40rem;
+  margin-inline: auto;
+  padding: var(--space-4);
+  overflow-y: auto;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.option {
+  min-height: var(--tap-target);
+  padding: var(--space-2) var(--space-3);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.option:disabled {
+  cursor: default;
+}
+
+.option[data-state="right"] {
+  border-color: var(--color-right);
+  background: var(--color-right-bg);
+  font-weight: 700;
+}
+
+.option[data-state="wrong"] {
+  border-color: var(--color-wrong);
+  background: var(--color-wrong-bg);
+}
+
+.drag {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.field {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 10rem;
+  background: var(--color-sand-outer);
+}
+
+.dragPanel {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 0;
+  max-height: 62%;
+  padding: var(--space-3) var(--space-4);
+  overflow-y: auto;
+  background: var(--color-surface);
+}
+
+.right,
+.wrong {
+  padding: var(--space-3);
+  border-left: 6px solid;
+  border-radius: var(--radius);
+}
+
+.right {
+  border-color: var(--color-right);
+  background: var(--color-right-bg);
+}
+
+.wrong {
+  border-color: var(--color-wrong);
+  background: var(--color-wrong-bg);
+}
+
+.verdict {
+  margin: 0;
+  font-weight: 700;
+}
+
+.explanation {
+  margin: var(--space-1) 0 var(--space-3);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.actions > * {
+  flex: 1;
+}
+
+.button,
+.primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--tap-target);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.result {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 32rem;
+  margin-inline: auto;
+  padding: var(--space-6) var(--space-4);
+}
+
+.result p {
+  margin: 0;
+}
+
+.resultActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+/* Op een lage telefoon gaat de ruimte naar het veld; de titel blijft voor schermlezers. */
+@media (orientation: portrait) and (max-height: 44rem) {
+  .heading {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .header {
+    padding-block: var(--space-1);
+  }
+}
+
+@media (orientation: landscape) {
+  .drag {
+    flex-direction: row;
+  }
+
+  .field {
+    min-height: 0;
+  }
+
+  .dragPanel {
+    flex: 0 0 min(24rem, 42%);
+    max-height: none;
+  }
+}

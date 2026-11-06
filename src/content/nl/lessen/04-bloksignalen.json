@@ -1,0 +1,394 @@
+{
+  "id": "bloksignalen",
+  "order": 4,
+  "status": "concept",
+  "scenario": {
+    "id": "bloksignalen",
+    "title": "Bloksignalen",
+    "description": "Met je handen achter je rug spreek je af wat de blokker gaat doen.",
+    "tags": ["blok", "signalen", "communicatie"],
+    "level": "beginner",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "achter-de-rug",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.2,
+            "y": 4
+          },
+          "A2": {
+            "x": -1.2,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -0.6,
+          "y": 5,
+          "height": 1
+        },
+        "caption": "A2 gaat serveren en A1 staat aan het net. Vóór de opslag houdt A1 de handen **achter de rug** en geeft een signaal. A2 ziet het; de tegenstander niet."
+      },
+      {
+        "id": "twee-handen",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 7.2,
+            "y": 4
+          },
+          "A2": {
+            "x": -1.2,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -0.6,
+          "y": 5,
+          "height": 1
+        },
+        "zones": [
+          {
+            "id": "links",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 8,
+                "y": 0
+              },
+              {
+                "x": 16,
+                "y": 0
+              },
+              {
+                "x": 16,
+                "y": 4
+              },
+              {
+                "x": 8,
+                "y": 4
+              }
+            ],
+            "label": "Linkerhand"
+          },
+          {
+            "id": "rechts",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 8,
+                "y": 4
+              },
+              {
+                "x": 16,
+                "y": 4
+              },
+              {
+                "x": 16,
+                "y": 8
+              },
+              {
+                "x": 8,
+                "y": 8
+              }
+            ],
+            "label": "Rechterhand"
+          }
+        ],
+        "caption": "Elke hand hoort bij één aanvaller. De **linkerhand** gaat over de aanvaller links, de **rechterhand** over de aanvaller rechts, gezien vanuit A1 die naar het net kijkt."
+      },
+      {
+        "id": "lijn",
+        "durationMs": 1500,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "blok",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 0.2
+              },
+              {
+                "x": 7.5,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 2.8
+              },
+              {
+                "x": 0,
+                "y": 0
+              }
+            ],
+            "label": "Blok"
+          },
+          {
+            "id": "verdediger",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 0.5,
+                "y": 3.5
+              },
+              {
+                "x": 5,
+                "y": 3.5
+              },
+              {
+                "x": 5,
+                "y": 7.5
+              },
+              {
+                "x": 0.5,
+                "y": 7.5
+              }
+            ]
+          }
+        ],
+        "caption": "Het signaal **{signaal.lijn}** betekent **blok lijn**: A1 sluit de lijn af. A2 weet nu waar de bal naartoe komt en verdedigt de diagonaal."
+      },
+      {
+        "id": "hoek",
+        "durationMs": 1300,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 2.5,
+            "y": 1.2
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "blok",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 1.2
+              },
+              {
+                "x": 7.5,
+                "y": 3
+              },
+              {
+                "x": 0,
+                "y": 8
+              },
+              {
+                "x": 0,
+                "y": 4.4
+              }
+            ],
+            "label": "Blok"
+          },
+          {
+            "id": "verdediger",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 0.5,
+                "y": 0.2
+              },
+              {
+                "x": 5,
+                "y": 0.2
+              },
+              {
+                "x": 5,
+                "y": 2.6
+              },
+              {
+                "x": 0.5,
+                "y": 2.6
+              }
+            ]
+          }
+        ],
+        "caption": "Het signaal **{signaal.hoek}** betekent **blok hoek**, ofwel diagonaal: A1 sluit de diagonaal af. A2 verdedigt nu de lijn."
+      },
+      {
+        "id": "ball",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1.3
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "Het signaal **{signaal.ball}** betekent **“ball”**: A1 kiest geen kant vooraf, maar blokt recht op de bal. A2 begint centraal en reageert op wat er gebeurt."
+      },
+      {
+        "id": "geen-blok",
+        "durationMs": 1300,
+        "players": {
+          "A1": {
+            "x": 4.5,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "terug",
+            "kind": "run",
+            "from": {
+              "x": 7.5,
+              "y": 1.3
+            },
+            "to": {
+              "x": 4.5,
+              "y": 1.4
+            }
+          }
+        ],
+        "caption": "Het signaal **{signaal.geenBlok}** betekent **geen blok**: A1 springt niet en loopt terug van het net. Jullie verdedigen samen. Daarover gaat de les over de peel."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "hoek-zone",
+      "kind": "choice",
+      "prompt": "Je partner geeft **{signaal.hoek}** aan, dus blok hoek. Welke zone verdedig jij?",
+      "options": ["De lijn", "De diagonaal", "De korte bal achter het blok"],
+      "correct": 0,
+      "explanation": "Bij blok hoek sluit je partner de diagonaal af. Jij verdedigt de lijn."
+    },
+    {
+      "id": "linkerhand",
+      "kind": "choice",
+      "prompt": "Je partner houdt de **linkerhand** op met **{signaal.lijn}**. Wat betekent dat?",
+      "options": [
+        "Blok lijn tegen de aanvaller links",
+        "Blok hoek tegen de aanvaller links",
+        "Blok lijn tegen de aanvaller rechts"
+      ],
+      "correct": 0,
+      "explanation": "De hand zegt om welke aanvaller het gaat, de vingers wat de blokker doet."
+    },
+    {
+      "id": "waarom-rug",
+      "kind": "choice",
+      "prompt": "Waarom geef je het signaal achter je rug?",
+      "options": [
+        "Zodat je partner het ziet en de tegenstander niet",
+        "Omdat de regels dat verplichten",
+        "Zodat de scheidsrechter het kan controleren"
+      ],
+      "correct": 0,
+      "explanation": "Het is een tactische afspraak, geen regel: de tegenstander mag niet weten wat je van plan bent."
+    }
+  ]
+}

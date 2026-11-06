@@ -1,18 +1,22 @@
 import { describe, expect, it } from "vitest";
-import { lessons } from "./index";
+import { isInTarget } from "../domain/quiz";
+import { applyClubTerms, lessons, rules } from "./index";
 
 describe("lessen", () => {
-  it("laden allemaal zonder validatiefouten", () => {
-    expect(lessons.length).toBeGreaterThanOrEqual(3);
+  it("zijn er alle zeven en laden zonder validatiefouten", () => {
+    expect(lessons.map((lesson) => lesson.order)).toEqual([
+      1, 2, 3, 4, 5, 6, 7,
+    ]);
   });
 
-  it("hebben unieke id's en volgnummers", () => {
+  it("hebben unieke id's", () => {
     expect(new Set(lessons.map((lesson) => lesson.id)).size).toBe(
       lessons.length,
     );
-    expect(new Set(lessons.map((lesson) => lesson.order)).size).toBe(
-      lessons.length,
-    );
+  });
+
+  it("bevatten geen niet-ingevulde bloksignalen", () => {
+    expect(JSON.stringify(lessons)).not.toContain("{signaal");
   });
 
   it.each(lessons.map((lesson) => [lesson.id, lesson] as const))(
@@ -27,4 +31,48 @@ describe("lessen", () => {
       }
     },
   );
+
+  it.each(lessons.map((lesson) => [lesson.id, lesson] as const))(
+    "%s heeft een quiz met minstens twee vragen",
+    (_id, lesson) => {
+      expect(lesson.quiz.length).toBeGreaterThanOrEqual(2);
+      const ids = lesson.quiz.map((question) => question.id);
+      expect(new Set(ids).size).toBe(ids.length);
+    },
+  );
+
+  it("beginnen sleepvragen buiten de doelzone", () => {
+    for (const lesson of lessons) {
+      for (const question of lesson.quiz) {
+        if (question.kind !== "drag") continue;
+        const start = question.setup.players[question.playerId];
+        expect(start, question.id).toBeDefined();
+        if (start) {
+          expect(
+            isInTarget(start, question.target, question.tolerance),
+            question.id,
+          ).toBe(false);
+        }
+      }
+    }
+  });
+});
+
+describe("applyClubTerms", () => {
+  it("vult een bekend signaal in", () => {
+    expect(applyClubTerms({ caption: "{signaal.lijn}" })).toEqual({
+      caption: "één vinger",
+    });
+  });
+
+  it("weigert een onbekend signaal", () => {
+    expect(() => applyClubTerms("{signaal.onzin}")).toThrow();
+  });
+});
+
+describe("regels", () => {
+  it("hebben een bron en inhoud", () => {
+    expect(rules.sourceUrl).toContain("fivb.com");
+    expect(rules.sections.length).toBeGreaterThan(3);
+  });
 });

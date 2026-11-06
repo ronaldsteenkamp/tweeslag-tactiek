@@ -92,12 +92,55 @@ export const scenarioSchema = z
     }
   });
 
+export const choiceQuestionSchema = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("choice"),
+    prompt: z.string().min(1).max(200),
+    options: z.array(z.string().min(1)).min(2).max(5),
+    correct: z.number().int().min(0),
+    explanation: z.string().min(1).max(300),
+  })
+  .refine((question) => question.correct < question.options.length, {
+    message: "correct moet naar een bestaande optie wijzen",
+    path: ["correct"],
+  });
+
+export const dragQuestionSchema = z
+  .object({
+    id: z.string().min(1),
+    kind: z.literal("drag"),
+    prompt: z.string().min(1).max(200),
+    /** De speler die verplaatst moet worden. */
+    playerId: z.string().min(1),
+    setup: z.object({
+      players: z.record(z.string(), positionSchema),
+      ball: ballSchema,
+    }),
+    arrows: z.array(arrowSchema).optional(),
+    zones: z.array(zoneSchema).optional(),
+    target: z.array(positionSchema).min(3).max(12),
+    /** Hoeveel meter naast de doelzone nog goed rekent. */
+    tolerance: z.number().min(0).max(2),
+    explanation: z.string().min(1).max(300),
+  })
+  .refine((question) => question.playerId in question.setup.players, {
+    message: "playerId moet in de beginopstelling staan",
+    path: ["playerId"],
+  });
+
+export const quizQuestionSchema = z.union([
+  choiceQuestionSchema,
+  dragQuestionSchema,
+]);
+
 export const lessonSchema = z.object({
   id: z.string().regex(/^[a-z0-9-]+$/),
   order: z.number().int().min(1),
   /** concept: nog niet inhoudelijk goedgekeurd door de vereniging. */
   status: z.enum(["concept", "definitief"]),
   scenario: scenarioSchema,
+  quiz: z.array(quizQuestionSchema).min(1).max(10),
 });
 
 export type Position = z.infer<typeof positionSchema>;
@@ -108,4 +151,7 @@ export type Arrow = z.infer<typeof arrowSchema>;
 export type Zone = z.infer<typeof zoneSchema>;
 export type Keyframe = z.infer<typeof keyframeSchema>;
 export type Scenario = z.infer<typeof scenarioSchema>;
+export type ChoiceQuestion = z.infer<typeof choiceQuestionSchema>;
+export type DragQuestion = z.infer<typeof dragQuestionSchema>;
+export type QuizQuestion = z.infer<typeof quizQuestionSchema>;
 export type Lesson = z.infer<typeof lessonSchema>;

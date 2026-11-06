@@ -1,10 +1,10 @@
 import { useEffect, useRef } from "react";
 import { paths } from "../../app/router";
-import { lessons } from "../../content";
 import type { Lesson } from "../../domain/schema";
 import { t } from "../../i18n";
 import { CourtScene } from "../court/CourtScene";
 import { useOrientation } from "../court/media";
+import { useProgressStore } from "../progress/progress";
 import styles from "./LessonPlayer.module.css";
 import { RichText } from "./RichText";
 import { SPEEDS, useStepPlayer } from "./useStepPlayer";
@@ -19,7 +19,11 @@ export function LessonPlayer({ lesson }: { lesson: Lesson }) {
   const player = useStepPlayer(scenario.keyframes);
   const { step, lastStep, keyframe } = player;
   const finished = step === lastStep;
-  const nextLesson = lessons.find((other) => other.order > lesson.order);
+  const reachStep = useProgressStore((state) => state.reachStep);
+
+  useEffect(() => {
+    reachStep(lesson.id, step);
+  }, [lesson.id, reachStep, step]);
 
   // Het toetsenbord werkt op de hele pagina; de laatste versie van de speler staat in een ref.
   const playerRef = useRef(player);
@@ -90,20 +94,6 @@ export function LessonPlayer({ lesson }: { lesson: Lesson }) {
           >
             <RichText source={keyframe?.caption ?? ""} />
           </p>
-          {finished ? (
-            <p className={styles.done}>
-              <strong>{t("player.done")}</strong>{" "}
-              {nextLesson ? (
-                <a href={paths.lesson(nextLesson.id)}>
-                  {t("player.nextLesson", {
-                    title: nextLesson.scenario.title,
-                  })}
-                </a>
-              ) : (
-                <a href={paths.lessons}>{t("player.backToLessons")}</a>
-              )}
-            </p>
-          ) : null}
         </div>
 
         <div className={styles.controls}>
@@ -128,14 +118,19 @@ export function LessonPlayer({ lesson }: { lesson: Lesson }) {
                   : "player.play",
             )}
           </button>
-          <button
-            type="button"
-            className={styles.primary}
-            disabled={finished}
-            onClick={player.next}
-          >
-            {t("player.next")}
-          </button>
+          {finished ? (
+            <a className={styles.primary} href={paths.quiz(lesson.id)}>
+              {t("player.startQuiz")}
+            </a>
+          ) : (
+            <button
+              type="button"
+              className={styles.primary}
+              onClick={player.next}
+            >
+              {t("player.next")}
+            </button>
+          )}
         </div>
 
         <div

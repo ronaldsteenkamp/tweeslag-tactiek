@@ -32,6 +32,11 @@
   --color-zone-target: rgb(0 120 90 / 28%);
   --color-zone-blocked: rgb(163 18 58 / 35%);
 
+  --color-right: #0a6b3d;
+  --color-right-bg: #e0f3e8;
+  --color-wrong: #a3123a;
+  --color-wrong-bg: #fbe6ea;
+
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;

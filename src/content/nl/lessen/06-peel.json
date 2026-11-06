@@ -1,0 +1,315 @@
+{
+  "id": "peel",
+  "order": 6,
+  "status": "concept",
+  "scenario": {
+    "id": "peel",
+    "title": "De peel",
+    "description": "Soms heeft blokken geen zin. Dan trekt de blokker terug en verdedig je samen.",
+    "tags": ["peel", "verdediging"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "set-van-het-net",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.5
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 10.2,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "caption": "De set van team B ligt **ver van het net**. B1 kan de bal niet hard over het blok slaan, en A1 kan vanaf hier weinig afsluiten. Blokken levert nu weinig op."
+      },
+      {
+        "id": "terugtrekken",
+        "durationMs": 1400,
+        "players": {
+          "A1": {
+            "x": 4.6,
+            "y": 1.5
+          },
+          "A2": {
+            "x": 3,
+            "y": 5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 10.2,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "peel",
+            "kind": "run",
+            "from": {
+              "x": 7.4,
+              "y": 1.5
+            },
+            "to": {
+              "x": 4.6,
+              "y": 1.5
+            }
+          }
+        ],
+        "caption": "A1 **peelt**: in plaats van te springen loopt A1 van het net weg en wordt tweede verdediger. Dat moet snel gaan, want de aanval komt eraan."
+      },
+      {
+        "id": "veld-verdelen",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 4.6,
+            "y": 1.5
+          },
+          "A2": {
+            "x": 3,
+            "y": 5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 10.2,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "a1",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 3.2
+              },
+              {
+                "x": 0,
+                "y": 3.2
+              }
+            ]
+          },
+          {
+            "id": "a2",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 3.2
+              },
+              {
+                "x": 8,
+                "y": 3.2
+              },
+              {
+                "x": 8,
+                "y": 8
+              },
+              {
+                "x": 0,
+                "y": 8
+              }
+            ]
+          }
+        ],
+        "caption": "Nu verdelen jullie het veld. In dit voorbeeld pakt A1 de **lijn en de korte bal** aan die kant, en A2 de **diagonaal**."
+      },
+      {
+        "id": "verdedigen",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 4.4,
+            "y": 2
+          },
+          "A2": {
+            "x": 3,
+            "y": 5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 4.8,
+          "y": 2.2,
+          "height": 0.7
+        },
+        "arrows": [
+          {
+            "id": "aanval",
+            "kind": "shot",
+            "from": {
+              "x": 10.2,
+              "y": 1.6
+            },
+            "to": {
+              "x": 4.8,
+              "y": 2.2
+            }
+          }
+        ],
+        "caption": "B1 slaat de lijn in en A1 is op tijd. Zonder peel had A1 aan het net gestaan en was deze bal op de grond gekomen."
+      },
+      {
+        "id": "wanneer",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.5
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 10.2,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "caption": "Kies de peel vooral als de set **ver van het net** ligt, of na afspraak met **{signaal.geenBlok}** achter je rug. Spreek ook af wie welke kant pakt."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "wanneer",
+      "kind": "choice",
+      "prompt": "Wanneer is een peel vooral een goede keuze?",
+      "options": [
+        "Altijd bij de eerste opslag",
+        "Als de set ver van het net ligt",
+        "Als de set strak op het net ligt"
+      ],
+      "correct": 1,
+      "explanation": "Ligt de set ver van het net, dan levert blokken weinig op. Een extra verdediger levert meer op."
+    },
+    {
+      "id": "peel-a1",
+      "kind": "drag",
+      "prompt": "De set ligt ver van het net. Sleep A1 naar een plek om als tweede verdediger te staan.",
+      "playerId": "A1",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.5
+          },
+          "A2": {
+            "x": 3,
+            "y": 5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 10.2,
+          "y": 1.6,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 2.5,
+          "y": 0.3
+        },
+        {
+          "x": 6,
+          "y": 0.3
+        },
+        {
+          "x": 6,
+          "y": 3
+        },
+        {
+          "x": 2.5,
+          "y": 3
+        }
+      ],
+      "tolerance": 0.5,
+      "explanation": "A1 trekt terug van het net en neemt de kant van de lijn. A2 houdt de diagonaal."
+    }
+  ]
+}

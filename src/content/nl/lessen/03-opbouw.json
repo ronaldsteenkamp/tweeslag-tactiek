@@ -299,5 +299,78 @@
         "caption": "Komt de bal terug, dan begint alles opnieuw. Schakel dus meteen naar verdedigen. Onthoud ook: **een blok telt bij beachvolleybal als contact**. Na een blok heb je nog maar twee contacten over."
       }
     ]
-  }
+  },
+  "quiz": [
+    {
+      "id": "contacten",
+      "kind": "choice",
+      "prompt": "Hoeveel contacten heeft een team, en telt een blok mee?",
+      "options": [
+        "Vier, en een blok telt mee",
+        "Drie, en een blok telt mee",
+        "Drie, en een blok telt niet mee"
+      ],
+      "correct": 1,
+      "explanation": "Maximaal drie contacten, en bij beachvolleybal telt een blok als contact."
+    },
+    {
+      "id": "naar-de-bal",
+      "kind": "drag",
+      "prompt": "A1 heeft gepast. Sleep A2 naar de bal om te setten.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 3.6,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 4,
+            "y": 6.5
+          },
+          "B1": {
+            "x": 13,
+            "y": 5
+          },
+          "B2": {
+            "x": 9,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 6.2,
+          "y": 3.9,
+          "height": 3
+        }
+      },
+      "target": [
+        {
+          "x": 5.2,
+          "y": 3
+        },
+        {
+          "x": 7.2,
+          "y": 3
+        },
+        {
+          "x": 7.2,
+          "y": 5
+        },
+        {
+          "x": 5.2,
+          "y": 5
+        }
+      ],
+      "tolerance": 0.4,
+      "explanation": "De speler die niet hoeft te passen, loopt naar de bal om te setten."
+    },
+    {
+      "id": "wie-aanvalt",
+      "kind": "choice",
+      "prompt": "A1 past en A2 set. Wie valt aan?",
+      "options": ["A1", "A2", "Wie het dichtst bij het net staat"],
+      "correct": 0,
+      "explanation": "De passer is meestal de aanvaller: de partner heeft de set al gespeeld."
+    }
+  ]
 }

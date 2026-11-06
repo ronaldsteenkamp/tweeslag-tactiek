@@ -1,0 +1,137 @@
+{
+  "sourceName": "FIVB Official Beach Volleyball Rules 2025-2028",
+  "sourceUrl": "https://www.fivb.com/beach-volleyball/the-game/official-rules-of-the-games/",
+  "sections": [
+    {
+      "title": "Team en veld",
+      "items": [
+        {
+          "text": "Je speelt **2 tegen 2**, zonder wissels.",
+          "rule": "4.1.3, 15.2.2"
+        },
+        {
+          "text": "Het veld is **16 × 8 meter**, met een vrije zone van minimaal 3 meter rondom.",
+          "rule": "1.1"
+        },
+        {
+          "text": "De nethoogte is **2,43 m** voor heren en **2,24 m** voor dames. Voor jeugd tot en met 16 jaar is dat 2,24 m, tot en met 14 jaar 2,12 m en tot en met 12 jaar 2,00 m.",
+          "rule": "2.1.2"
+        },
+        {
+          "text": "Er is **geen middenlijn** en **geen aanvalslijn**.",
+          "rule": "1.3, 1.4"
+        }
+      ]
+    },
+    {
+      "title": "Telling",
+      "items": [
+        {
+          "text": "Elke rally levert een punt op (rally point).",
+          "rule": "6.1"
+        },
+        {
+          "text": "Wie **2 sets** wint, wint de wedstrijd.",
+          "rule": "6.3"
+        },
+        {
+          "text": "Een set gaat tot **21 punten**, een derde set tot **15**. Je wint altijd met minimaal 2 punten verschil.",
+          "rule": "6.2, 6.3"
+        }
+      ]
+    },
+    {
+      "title": "Wisselen en time-outs",
+      "items": [
+        {
+          "text": "Je wisselt van kant na elke **7 punten** samen, in de derde set na elke **5 punten**.",
+          "rule": "18.2"
+        },
+        {
+          "text": "Elk team heeft **één time-out per set**, van 30 seconden.",
+          "rule": "15.1, 15.4"
+        },
+        {
+          "text": "Bij officiële FIVB-wedstrijden komt daar in set 1 en 2 een technische time-out bij, als de punten samen op 21 staan.",
+          "rule": "15.4.2"
+        }
+      ]
+    },
+    {
+      "title": "Opslag",
+      "items": [
+        {
+          "text": "Er zijn **geen rotatie- of positiefouten**: je mag overal op je eigen helft staan. Alleen de serveervolgorde ligt vast.",
+          "rule": "7.4, 7.5, 12.2"
+        },
+        {
+          "text": "Bij de opslag moeten alle spelers binnen hun eigen veld staan, behalve de serveerder.",
+          "rule": "7.4.1"
+        },
+        {
+          "text": "Je serveert vanuit de opslagzone, **binnen 5 seconden** na het fluitsignaal. Je mag de bal één keer opgooien.",
+          "rule": "12.4"
+        },
+        {
+          "text": "Je partner mag het zicht op de opslag niet blokkeren (**screening**), bijvoorbeeld door te zwaaien of opzij te bewegen. Handen boven het hoofd mag ook niet.",
+          "rule": "12.5"
+        },
+        {
+          "text": "De opslag van de tegenstander mag je **niet blokken**, en niet aanvallen als de bal helemaal boven de netrand is.",
+          "rule": "13.2.4, 14.5"
+        }
+      ]
+    },
+    {
+      "title": "De bal spelen",
+      "items": [
+        {
+          "text": "Een team mag de bal **maximaal 3 keer** raken. **Een blok telt als contact.** Na een blok mag iedereen de bal spelen, ook de blokker.",
+          "rule": "9.1, 14.4"
+        },
+        {
+          "text": "Je mag de bal niet vangen of gooien.",
+          "rule": "9.2.2"
+        },
+        {
+          "text": "Bovenhands spel wordt streng beoordeeld: de bal mag bij bovenhands spel niet dubbel contact maken, ook niet bij het eerste contact.",
+          "rule": "9.2.2.2"
+        },
+        {
+          "text": "Verdedig je een **hard geslagen bal**, dan mag het contact met je vingers iets langer duren.",
+          "rule": "9.2.2.4"
+        }
+      ]
+    },
+    {
+      "title": "Aanval",
+      "items": [
+        {
+          "text": "Een aanval met **open hand** (tip) is een fout. Speel je met je vingertoppen, dan moeten die stijf en tegen elkaar zijn.",
+          "rule": "13.2.3"
+        },
+        {
+          "text": "Een pokey met je knokkels mag, zolang de bal je vingertoppen of duim niet raakt. Deze uitleg komt uit het casebook van USA Volleyball; de FIVB-regeltekst noemt knokkels niet.",
+          "rule": "13.2.3"
+        },
+        {
+          "text": "Speel je de bal bovenhands over het net, dan moet die **loodrecht op je schouderlijn** gaan. Dat hoeft niet als je probeert te setten naar je partner.",
+          "rule": "13.2.5"
+        }
+      ]
+    },
+    {
+      "title": "Aan het net",
+      "items": [
+        {
+          "text": "Je mag onder het net door en op de helft van de tegenstander komen, zolang je de ander niet hindert.",
+          "rule": "11.2"
+        },
+        {
+          "text": "Het net tussen de antennes raken tijdens het spelen van de bal is een fout.",
+          "rule": "11.3"
+        }
+      ]
+    }
+  ]
+}

@@ -22,7 +22,6 @@ interface BoardState {
   positions: Record<string, Position>;
   flipped: boolean;
   moveTo: (id: string, position: Position) => void;
-  moveBy: (id: string, dx: number, dy: number) => void;
   toggleFlipped: () => void;
   reset: () => void;
 }
@@ -34,13 +33,6 @@ export const useBoardStore = create<BoardState>((set) => ({
     set((state) => ({
       positions: { ...state.positions, [id]: clampToArea(position) },
     })),
-  moveBy: (id, dx, dy) =>
-    set((state) => {
-      const current = state.positions[id];
-      if (!current) return state;
-      const next = clampToArea({ x: current.x + dx, y: current.y + dy });
-      return { positions: { ...state.positions, [id]: next } };
-    }),
   toggleFlipped: () => set((state) => ({ flipped: !state.flipped })),
   reset: () => set({ positions: START_POSITIONS }),
 }));

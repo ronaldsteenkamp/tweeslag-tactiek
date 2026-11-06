@@ -319,5 +319,77 @@
         "caption": "Wie als eerste **2 sets** wint, wint de wedstrijd. Een set gaat tot **21 punten**, een derde set tot **15**, altijd met 2 punten verschil. Je wisselt van kant na elke **7 punten** samen, in de derde set na elke **5**."
       }
     ]
-  }
+  },
+  "quiz": [
+    {
+      "id": "afmetingen",
+      "kind": "choice",
+      "prompt": "Hoe groot is een beachvolleybalveld?",
+      "options": ["18 × 9 meter", "14 × 7 meter", "16 × 8 meter"],
+      "correct": 2,
+      "explanation": "Een beachveld is 16 × 8 meter: twee helften van 8 × 8 meter."
+    },
+    {
+      "id": "opslagzone",
+      "kind": "drag",
+      "prompt": "A1 moet serveren. Sleep A1 naar een plek waar dat mag.",
+      "playerId": "A1",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 3,
+            "y": 6
+          },
+          "B1": {
+            "x": 13,
+            "y": 2
+          },
+          "B2": {
+            "x": 13,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 3.7,
+          "y": 2.6
+        }
+      },
+      "target": [
+        {
+          "x": -3,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 0
+        },
+        {
+          "x": 0,
+          "y": 8
+        },
+        {
+          "x": -3,
+          "y": 8
+        }
+      ],
+      "tolerance": 0,
+      "explanation": "Je serveert vanuit de opslagzone: 8 meter breed, achter de eindlijn."
+    },
+    {
+      "id": "wie-serveert",
+      "kind": "choice",
+      "prompt": "Team A serveerde, maar team B wint de rally. Wie serveert nu?",
+      "options": [
+        "De speler van team B die het punt maakte",
+        "De speler van team B die de vorige keer niet serveerde",
+        "Dezelfde speler van team A"
+      ],
+      "correct": 1,
+      "explanation": "Team B krijgt de opslag, en de serveervolgorde bepaalt wie: de speler die de vorige keer niet serveerde."
+    }
+  ]
 }

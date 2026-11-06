@@ -87,10 +87,6 @@
   margin: 0;
 }
 
-.done {
-  margin: var(--space-2) 0 0;
-}
-
 .controls {
   display: grid;
   grid-template-columns: 1fr 1fr 1.3fr;
@@ -108,17 +104,20 @@
   color: var(--color-text);
   font: inherit;
   font-weight: 600;
+  text-decoration: none;
   cursor: pointer;
 }
 
 .primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-color: var(--color-brand);
   background: var(--color-brand);
   color: var(--color-on-brand);
 }
 
-.control:disabled,
-.primary:disabled {
+.control:disabled {
   border-color: var(--color-border);
   background: var(--color-surface);
   color: var(--color-text-muted);

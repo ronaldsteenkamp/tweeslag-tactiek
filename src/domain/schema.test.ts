@@ -63,10 +63,52 @@ describe("scenarioSchema", () => {
 });
 
 describe("lessonSchema", () => {
-  const lesson = { id: "les-1", order: 1, status: "concept", scenario };
+  const choice = {
+    id: "v1",
+    kind: "choice",
+    prompt: "Hoeveel?",
+    options: ["Een", "Twee"],
+    correct: 1,
+    explanation: "Twee dus.",
+  };
+  const dragQuestion = {
+    id: "v2",
+    kind: "drag",
+    prompt: "Sleep A1",
+    playerId: "A1",
+    setup: { players: { A1: { x: 1, y: 1 } }, ball: { x: 2, y: 2 } },
+    target: [
+      { x: 0, y: 0 },
+      { x: 1, y: 0 },
+      { x: 1, y: 1 },
+    ],
+    tolerance: 0.5,
+    explanation: "Daar hoort A1.",
+  };
+  const lesson = {
+    id: "les-1",
+    order: 1,
+    status: "concept",
+    scenario,
+    quiz: [choice, dragQuestion],
+  };
 
   it("accepteert een geldige les", () => {
     expect(lessonSchema.safeParse(lesson).success).toBe(true);
+  });
+
+  it("weigert een antwoord dat niet bestaat", () => {
+    const quiz = [{ ...choice, correct: 2 }];
+    expect(lessonSchema.safeParse({ ...lesson, quiz }).success).toBe(false);
+  });
+
+  it("weigert een sleepvraag voor een onbekende speler", () => {
+    const quiz = [{ ...dragQuestion, playerId: "B1" }];
+    expect(lessonSchema.safeParse({ ...lesson, quiz }).success).toBe(false);
+  });
+
+  it("eist minstens één quizvraag", () => {
+    expect(lessonSchema.safeParse({ ...lesson, quiz: [] }).success).toBe(false);
   });
 
   it("eist een geldig id en een bekende status", () => {

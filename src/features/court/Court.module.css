@@ -40,12 +40,26 @@
   fill: transparent;
 }
 
+.dragHalo {
+  fill: none;
+  stroke: var(--color-focus);
+  stroke-width: 8;
+  stroke-dasharray: 18 14;
+}
+
 .focus {
   fill: none;
   stroke: none;
 }
 
-.token:focus-visible .focus {
+.token:focus-visible .dragHalo {
+  fill: none;
+  stroke: var(--color-focus);
+  stroke-width: 8;
+  stroke-dasharray: 18 14;
+}
+
+.focus {
   stroke: var(--color-focus);
   stroke-width: 10;
 }

@@ -1,0 +1,373 @@
+{
+  "id": "shots",
+  "order": 7,
+  "status": "concept",
+  "scenario": {
+    "id": "shots",
+    "title": "Shots",
+    "description": "Cut shot, high line en pokey: zo plaats je de bal naast of over het blok.",
+    "tags": ["shots", "cut-shot", "high-line", "pokey"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "plaatsen",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "Niet elke aanval is een harde klap. Een **shot** is een geplaatste bal naar een plek waar niemand staat. Hier blokt A1 de lijn en staat A2 in de diagonaal."
+      },
+      {
+        "id": "cut-shot",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 5.8,
+          "y": 6.4,
+          "height": 0,
+          "arc": 0.6
+        },
+        "arrows": [
+          {
+            "id": "cut",
+            "kind": "shot",
+            "from": {
+              "x": 8.6,
+              "y": 1.4
+            },
+            "to": {
+              "x": 5.8,
+              "y": 6.4
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "kort",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 4.6,
+                "y": 4
+              },
+              {
+                "x": 7.6,
+                "y": 4
+              },
+              {
+                "x": 7.6,
+                "y": 8
+              },
+              {
+                "x": 4.6,
+                "y": 8
+              }
+            ],
+            "label": "Cut"
+          }
+        ],
+        "caption": "De **cut shot** gaat scherp langs het net, kort de diagonaal in. Hij landt vóór de verdediger die achterin staat."
+      },
+      {
+        "id": "high-line",
+        "durationMs": 1500,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 1,
+          "y": 0.7,
+          "height": 0,
+          "arc": 2.5
+        },
+        "arrows": [
+          {
+            "id": "high",
+            "kind": "shot",
+            "from": {
+              "x": 8.6,
+              "y": 1.4
+            },
+            "to": {
+              "x": 1,
+              "y": 0.7
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "diep",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 2.6,
+                "y": 0
+              },
+              {
+                "x": 2.6,
+                "y": 2
+              },
+              {
+                "x": 0,
+                "y": 2
+              }
+            ],
+            "label": "High line"
+          }
+        ],
+        "caption": "De **high line** gaat hoog over het blok heen en landt diep langs de zijlijn. Hij werkt als de verdediger ver van de lijn staat."
+      },
+      {
+        "id": "pokey",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 5.8,
+          "y": 1.2,
+          "height": 0,
+          "arc": 0.8
+        },
+        "arrows": [
+          {
+            "id": "pokey",
+            "kind": "shot",
+            "from": {
+              "x": 8.6,
+              "y": 1.4
+            },
+            "to": {
+              "x": 5.8,
+              "y": 1.2
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "achter-blok",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 4.6,
+                "y": 0
+              },
+              {
+                "x": 7.2,
+                "y": 0
+              },
+              {
+                "x": 7.2,
+                "y": 2.6
+              },
+              {
+                "x": 4.6,
+                "y": 2.6
+              }
+            ],
+            "label": "Pokey"
+          }
+        ],
+        "caption": "De **pokey** speel je met je **knokkels**: een snelle tik over het blok, kort erachter. Een tip met open hand is een fout. Raak de bal niet met je vingertoppen."
+      },
+      {
+        "id": "kijken",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "Kijk vlak voor je slaat waar de verdediger staat, en speel de open plek. Verdedig je zelf? Beweeg pas als de aanvaller de bal raakt, dan verraad je niet waar je heen gaat."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "cut-landt",
+      "kind": "choice",
+      "prompt": "Waar landt een cut shot?",
+      "options": [
+        "Recht achter het blok",
+        "Kort in de diagonaal, dicht bij het net",
+        "Diep langs de zijlijn"
+      ],
+      "correct": 1,
+      "explanation": "De cut shot gaat scherp langs het net en blijft kort in de diagonaal."
+    },
+    {
+      "id": "wat-mag",
+      "kind": "choice",
+      "prompt": "Welke aanval is een **fout**?",
+      "options": [
+        "Een harde klap met je open handpalm",
+        "De bal plaatsen met open hand, zoals een tip",
+        "Een pokey met je knokkels"
+      ],
+      "correct": 1,
+      "explanation": "Een open-hand tip is een fout. Plaats je de bal met je vingers, houd ze dan stijf en tegen elkaar."
+    },
+    {
+      "id": "verwacht-cut",
+      "kind": "drag",
+      "prompt": "De aanvaller kijkt scherp langs het net en jij verwacht een cut shot. Sleep A2 erheen.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 4,
+          "y": 4
+        },
+        {
+          "x": 7.6,
+          "y": 4
+        },
+        {
+          "x": 7.6,
+          "y": 8
+        },
+        {
+          "x": 4,
+          "y": 8
+        }
+      ],
+      "tolerance": 0.4,
+      "explanation": "Tegen een cut shot moet je naar voren, kort in de diagonaal."
+    }
+  ]
+}

@@ -18,6 +18,26 @@
   color: var(--color-text-muted);
 }
 
+.summary {
+  margin: 0 0 var(--space-1);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+}
+
+.bar {
+  height: 0.5rem;
+  margin-bottom: var(--space-4);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+}
+
+.barFill {
+  height: 100%;
+  background: var(--color-brand);
+}
+
 .list {
   display: flex;
   flex-direction: column;
@@ -71,6 +91,15 @@
   margin-top: var(--space-1);
   font-size: var(--font-size-sm);
   font-weight: 600;
+}
+
+.status {
+  margin-left: var(--space-2);
+  font-weight: 700;
+}
+
+.status[data-status="done"] {
+  color: var(--color-right);
 }
 
 .badge {
