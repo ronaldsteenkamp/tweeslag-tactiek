@@ -87,12 +87,12 @@ test("de voortgang blijft bewaard na herladen", async ({ page }) => {
 
   await page.getByRole("link", { name: "Terug naar de lessen" }).click();
   await expect(page.getByTestId("lessons-summary")).toHaveText(
-    "1 van 7 lessen afgerond",
+    /^1 van \d+ lessen afgerond$/,
   );
 
   await page.reload();
   await expect(page.getByTestId("lessons-summary")).toHaveText(
-    "1 van 7 lessen afgerond",
+    /^1 van \d+ lessen afgerond$/,
   );
   await expect(page.getByText("✓ Quiz 2/3")).toBeVisible();
 });

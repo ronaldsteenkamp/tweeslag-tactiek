@@ -195,6 +195,7 @@ export function BoardPage() {
 
   return (
     <div className={styles.layout}>
+      <h1 className={styles.visuallyHidden}>{t("nav.board")}</h1>
       <div className={styles.field}>
         <BoardCourt view={{ orientation, flipped }} />
       </div>

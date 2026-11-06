@@ -14,7 +14,7 @@
 .court {
   fill: var(--color-sand);
   stroke: var(--color-court-line);
-  stroke-width: 10;
+  stroke-width: var(--court-line-width);
 }
 
 .net {
@@ -60,7 +60,7 @@
 .teamA,
 .teamB {
   stroke: var(--color-token-outline);
-  stroke-width: 6;
+  stroke-width: var(--token-outline-width);
 }
 
 .teamA {

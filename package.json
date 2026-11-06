@@ -14,6 +14,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "lighthouse": "npm run build && node scripts/lighthouse.mjs",
     "icons": "pwa-assets-generator --preset minimal-2023 public/logo.svg",
     "deploy": "npm run build && node scripts/deploy.mjs"
   },
@@ -26,6 +27,7 @@
     "zustand": "^5.0.16"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@eslint/js": "^9.39.5",
     "@playwright/test": "^1.65.0",
     "@types/node": "^26.6.6",
@@ -40,6 +42,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "globals": "^17.14.0",
     "jsqr": "^1.4.0",
+    "lighthouse": "^13.6.0",
     "prettier": "^3.9.10",
     "typescript": "~6.0",
     "typescript-eslint": "^8.72.1",

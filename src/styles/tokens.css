@@ -50,4 +50,39 @@
 
   --radius: 0.5rem;
   --tap-target: 2.75rem; /* 44 px */
+  --court-line-width: 10;
+  --token-outline-width: 6;
+}
+
+/* Strandmodus: maximaal contrast voor fel zonlicht. */
+:root[data-theme="strand"] {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-text-muted: #1c1b22;
+  --color-border: #000000;
+
+  --color-sand: #fff4d6;
+  --color-sand-outer: #ffe9ad;
+  --color-court-line: #000000;
+  --color-net: #000000;
+
+  --color-team-a: #00307a;
+  --color-team-b: #8f2500;
+  --color-token-outline: #000000;
+  --color-ball: #ffc400;
+  --color-ball-line: #000000;
+  --color-shadow: rgb(0 0 0 / 45%);
+
+  --color-arrow-run: #00307a;
+  --color-arrow-ball: #000000;
+  --color-arrow-shot: #8f0029;
+  --color-zone-cover: rgb(0 48 122 / 28%);
+  --color-zone-target: rgb(0 110 70 / 38%);
+  --color-zone-blocked: rgb(143 0 41 / 55%);
+
+  --color-right: #005c30;
+  --color-wrong: #8f0029;
+
+  --court-line-width: 16;
+  --token-outline-width: 8;
 }

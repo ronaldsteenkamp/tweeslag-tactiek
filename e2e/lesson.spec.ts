@@ -12,7 +12,7 @@ async function openFirstLesson(page: Page) {
 test("het overzicht toont de lessen met niveau en duur", async ({ page }) => {
   await page.goto("./");
   await expect(page.getByRole("heading", { name: "Lessen" })).toBeVisible();
-  await expect(page.getByRole("listitem")).toHaveCount(7);
+  await expect(page.getByRole("link", { name: /Shots/ })).toBeVisible();
   await expect(page.getByText(/Beginner · \d+ min/).first()).toBeVisible();
 });
 

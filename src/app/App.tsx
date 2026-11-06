@@ -1,14 +1,35 @@
+import { lazy, Suspense, useEffect, useRef, type MouseEvent } from "react";
 import { branding } from "../config/branding";
 import { findLesson } from "../content";
-import { BoardPage } from "../features/board/BoardPage";
 import { LessonPlayer } from "../features/lessons/LessonPlayer";
-import { LessonQuiz } from "../features/lessons/LessonQuiz";
 import { LessonsOverview } from "../features/lessons/LessonsOverview";
-import { RulesPage } from "../features/rules/RulesPage";
-import { SharedPage } from "../features/share/SharedPage";
+import { useBeachMode } from "../features/theme/beachMode";
 import { t } from "../i18n";
 import styles from "./App.module.css";
 import { parseRoute, paths, useHash, type Route } from "./router";
+
+// Alleen de lessen zitten in de eerste download; de rest laadt bij het eerste gebruik.
+// De service worker bewaart alles, dus offline werkt het ook.
+const BoardPage = lazy(() =>
+  import("../features/board/BoardPage").then((module) => ({
+    default: module.BoardPage,
+  })),
+);
+const LessonQuiz = lazy(() =>
+  import("../features/lessons/LessonQuiz").then((module) => ({
+    default: module.LessonQuiz,
+  })),
+);
+const RulesPage = lazy(() =>
+  import("../features/rules/RulesPage").then((module) => ({
+    default: module.RulesPage,
+  })),
+);
+const SharedPage = lazy(() =>
+  import("../features/share/SharedPage").then((module) => ({
+    default: module.SharedPage,
+  })),
+);
 
 function Page({ route }: { route: Route }) {
   if (route.name === "board") return <BoardPage />;
@@ -26,13 +47,50 @@ function Page({ route }: { route: Route }) {
   return <LessonsOverview />;
 }
 
+function pageTitle(route: Route): string {
+  if (route.name === "board") return t("nav.board");
+  if (route.name === "rules") return t("rules.heading");
+  if (route.name === "shared") return t("shared.pageTitle");
+  if (route.name === "lesson" || route.name === "quiz") {
+    const title = findLesson(route.id)?.scenario.title;
+    if (title && route.name === "quiz") return t("quiz.heading", { title });
+    if (title) return title;
+  }
+  return t("lessons.heading");
+}
+
 export function App() {
-  const route = parseRoute(useHash());
+  const hash = useHash();
+  const route = parseRoute(hash);
+  const mainRef = useRef<HTMLElement>(null);
+  const firstRender = useRef(true);
+  const beachMode = useBeachMode((state) => state.enabled);
+  const toggleBeachMode = useBeachMode((state) => state.toggle);
+  const title = pageTitle(route);
+
+  useEffect(() => {
+    document.title = `${title} · ${branding.appName}`;
+  }, [title]);
+
+  // Een schermlezer merkt een nieuwe pagina anders niet op.
+  useEffect(() => {
+    if (firstRender.current) firstRender.current = false;
+    else mainRef.current?.focus({ preventScroll: true });
+  }, [hash]);
+
+  function skipToContent(event: MouseEvent) {
+    event.preventDefault();
+    mainRef.current?.focus();
+  }
+
   const section =
     route.name === "board" || route.name === "rules" ? route.name : "lessons";
 
   return (
     <div className={styles.shell}>
+      <a className={styles.skip} href="#inhoud" onClick={skipToContent}>
+        {t("app.skip")}
+      </a>
       <header className={styles.header}>
         <img
           className={styles.logo}
@@ -68,10 +126,22 @@ export function App() {
             {t("nav.board")}
           </a>
         </nav>
+        <button
+          type="button"
+          className={styles.beach}
+          aria-label={t("app.beachMode")}
+          aria-pressed={beachMode}
+          title={t("app.beachMode")}
+          onClick={toggleBeachMode}
+        >
+          <span aria-hidden="true">☀</span>
+        </button>
       </header>
 
-      <main className={styles.main}>
-        <Page route={route} />
+      <main ref={mainRef} id="inhoud" className={styles.main} tabIndex={-1}>
+        <Suspense fallback={null}>
+          <Page route={route} />
+        </Suspense>
       </main>
     </div>
   );

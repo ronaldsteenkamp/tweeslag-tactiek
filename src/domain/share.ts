@@ -22,7 +22,7 @@ const FORMAT_VERSION = 1;
 export const MAX_SHARE_CHARS = 8000;
 /** Grens voor het uitpakken, tegen links die opzettelijk enorm uitpakken. */
 const MAX_UNPACKED_CHARS = 200_000;
-/** Hoger wordt een QR-code van een telefoonscherm slecht scanbaar (zie docs). */
+/** Hoger wordt een QR-code van een telefoonscherm slecht scanbaar (zie README). */
 export const MAX_QR_CHARS = 1200;
 
 const LEVELS = ["beginner", "gevorderd"] as const;

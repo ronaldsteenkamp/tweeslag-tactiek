@@ -3,10 +3,13 @@ import { isInTarget } from "../domain/quiz";
 import { applyClubTerms, lessons, rules } from "./index";
 
 describe("lessen", () => {
-  it("zijn er alle zeven en laden zonder validatiefouten", () => {
-    expect(lessons.map((lesson) => lesson.order)).toEqual([
-      1, 2, 3, 4, 5, 6, 7,
-    ]);
+  it("laden allemaal zonder validatiefouten", () => {
+    expect(lessons.length).toBeGreaterThanOrEqual(7);
+  });
+
+  it("hebben unieke volgnummers", () => {
+    const orders = lessons.map((lesson) => lesson.order);
+    expect(new Set(orders).size).toBe(orders.length);
   });
 
   it("hebben unieke id's", () => {

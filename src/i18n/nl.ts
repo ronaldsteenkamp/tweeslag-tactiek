@@ -1,6 +1,8 @@
 export const nl = {
   "app.tagline": "Beachvolleybal: posities en tactiek",
   "app.logoAlt": "Logo van {club}",
+  "app.skip": "Naar de inhoud",
+  "app.beachMode": "Strandmodus",
   "nav.label": "Hoofdmenu",
   "nav.lessons": "Lessen",
   "nav.rules": "Regels",
@@ -107,6 +109,7 @@ export const nl = {
     "Dit scenario is te lang voor een QR-code. De link werkt wel. Maak het korter voor een QR-code, bijvoorbeeld met minder stappen of tekst.",
   "share.tooLarge":
     "Dit scenario is te groot om via een link te delen. Maak het korter, of exporteer het als JSON-bestand.",
+  "shared.pageTitle": "Gedeeld scenario",
   "shared.notice": "Gedeeld scenario: {title}",
   "shared.save": "Opslaan als eigen scenario",
   "shared.saved": "Opgeslagen",
