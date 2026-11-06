@@ -45,7 +45,7 @@ interface QuestionProps {
 const HOLD_MS = 250;
 const HOLD_REDUCED_MS = 1200;
 
-function Feedback({
+export function Feedback({
   correct,
   explanation,
   note,

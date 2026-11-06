@@ -135,16 +135,20 @@ test("elke uitleg past zonder scrollen op een kleine telefoon", async ({
 }) => {
   await page.setViewportSize({ width: 360, height: 640 });
   await page.goto("./");
-  const hrefs = await page
+  await page.getByRole("checkbox", { name: /Alles ontgrendelen/ }).check();
+  const links = await page
     .getByRole("listitem")
     .getByRole("link")
-    .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
+    .evaluateAll((items) => items.map((item) => item.getAttribute("href")));
+  const hrefs = links.filter((href) => href?.startsWith("#/les/"));
+  expect(hrefs.length).toBeGreaterThan(7);
 
   for (const href of hrefs) {
     await page.goto(`./${href}`);
     const steps = await page
       .getByRole("button", { name: /Ga naar stap/ })
       .count();
+    expect(steps, href ?? "").toBeGreaterThan(0);
     for (let step = 1; step <= steps; step += 1) {
       await page.getByRole("button", { name: `Ga naar stap ${step}` }).click();
       const overflow = await page.getByTestId("caption").evaluate((element) => {

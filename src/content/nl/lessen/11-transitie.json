@@ -1,0 +1,429 @@
+{
+  "id": "transitie",
+  "order": 11,
+  "status": "concept",
+  "niveau": "gevorderd",
+  "vereisten": ["blokken-of-peelen"],
+  "duurMinuten": 5,
+  "leerdoelen": [
+    "Na deze les ken je de looplijnen van blokker en verdediger na een verdedigde bal.",
+    "Na deze les weet je wie de set geeft en wie aanvalt.",
+    "Na deze les kun je als blokker na het blok een aanloop maken."
+  ],
+  "teVerifieren": [
+    "“Wie de bal niet raakte, set” is de gangbare afspraak. Wijkt Tweeslag daar ergens van af?",
+    "De looplijnen zijn schematisch: de echte route hangt af van waar de bal is."
+  ],
+  "scenario": {
+    "id": "transitie",
+    "title": "Van verdediging naar aanval",
+    "description": "Na een verdedigde bal moet alles snel: wie set, wie valt aan, en hoe de blokker een aanloop krijgt.",
+    "tags": ["transitie", "looplijnen"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "aanval",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        },
+        "caption": "B1 slaat, A1 blokt de lijn en A2 verdedigt de diagonaal. Op het moment dat de bal wordt verdedigd, begint jullie aanval."
+      },
+      {
+        "id": "verdedigd",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 5,
+          "y": 3.6,
+          "height": 3.5,
+          "arc": 1
+        },
+        "arrows": [
+          {
+            "id": "s14",
+            "kind": "shot",
+            "from": {
+              "x": 8.6,
+              "y": 1.4
+            },
+            "to": {
+              "x": 3.2,
+              "y": 5.4
+            }
+          },
+          {
+            "id": "b15",
+            "kind": "ball",
+            "from": {
+              "x": 3.2,
+              "y": 5.4
+            },
+            "to": {
+              "x": 5,
+              "y": 3.6
+            }
+          }
+        ],
+        "caption": "A2 verdedigt de bal **hoog naar het midden**. Hoog is belangrijker dan precies: dat geeft je partner tijd. De bal blijft op je eigen helft."
+      },
+      {
+        "id": "blokker-draait",
+        "durationMs": 1100,
+        "players": {
+          "A1": {
+            "x": 5.4,
+            "y": 3.2
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 5,
+          "y": 3.6,
+          "height": 3.5,
+          "arc": 1
+        },
+        "arrows": [
+          {
+            "id": "r16",
+            "kind": "run",
+            "from": {
+              "x": 7.5,
+              "y": 1
+            },
+            "to": {
+              "x": 5.4,
+              "y": 3.2
+            }
+          }
+        ],
+        "caption": "A1 landt, draait weg van het net en loopt naar de bal. Afspraak: **wie de bal niet raakte, set**. Dat is hier de blokker."
+      },
+      {
+        "id": "aanloop-verdediger",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.4,
+            "y": 3.2
+          },
+          "A2": {
+            "x": 3,
+            "y": 3
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 5,
+          "y": 3.6,
+          "height": 3.5,
+          "arc": 1
+        },
+        "arrows": [
+          {
+            "id": "r17",
+            "kind": "run",
+            "from": {
+              "x": 3,
+              "y": 5.5
+            },
+            "to": {
+              "x": 3,
+              "y": 3
+            }
+          }
+        ],
+        "caption": "A2 maakt ondertussen ruimte voor een **aanloop**: een paar passen achter de plek van de set, zodat A2 er met snelheid in komt."
+      },
+      {
+        "id": "set",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 5.4,
+            "y": 3.2
+          },
+          "A2": {
+            "x": 5.6,
+            "y": 2.2
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 2,
+          "height": 3.2,
+          "arc": 1.5
+        },
+        "arrows": [
+          {
+            "id": "b18",
+            "kind": "ball",
+            "from": {
+              "x": 5.4,
+              "y": 3.2
+            },
+            "to": {
+              "x": 6.8,
+              "y": 2
+            }
+          },
+          {
+            "id": "r19",
+            "kind": "run",
+            "from": {
+              "x": 3,
+              "y": 3
+            },
+            "to": {
+              "x": 5.6,
+              "y": 2.2
+            }
+          }
+        ],
+        "caption": "A1 set dicht bij het net en A2 loopt aan. Zo is de **verdediger de aanvaller**, net als de passer bij een opslag."
+      },
+      {
+        "id": "blokker-aanval",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 3.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 3.2,
+            "y": 5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 3.2,
+          "y": 5,
+          "height": 1.8
+        },
+        "arrows": [
+          {
+            "id": "r20",
+            "kind": "run",
+            "from": {
+              "x": 7.5,
+              "y": 1
+            },
+            "to": {
+              "x": 3.6,
+              "y": 1.6
+            }
+          }
+        ],
+        "caption": "Moet de blokker aanvallen, omdat de verdediger set? Loop dan **ver genoeg weg van het net**. Zonder afstand heb je geen aanloop en geen kracht."
+      },
+      {
+        "id": "blokcontact",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 7.2,
+          "y": 1.6,
+          "height": 2.8
+        },
+        "caption": "Let op: raakt het blok de bal, dan is dat al **één contact**. Je hebt dan nog twee contacten over. De blokker mag wel de eerste bal daarna spelen."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "route-blokker",
+      "kind": "route",
+      "prompt": "A2 verdedigde de bal naar het midden. Teken de route van blokker A1 naar de bal.",
+      "playerId": "A1",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 1
+          },
+          "A2": {
+            "x": 3,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 5,
+          "y": 3.6,
+          "height": 3.5
+        }
+      },
+      "target": [
+        {
+          "x": 4.4,
+          "y": 2.8
+        },
+        {
+          "x": 5.8,
+          "y": 2.8
+        },
+        {
+          "x": 5.8,
+          "y": 4.4
+        },
+        {
+          "x": 4.4,
+          "y": 4.4
+        }
+      ],
+      "tolerance": 0.3,
+      "maxDetour": 1.4,
+      "explanation": "De blokker raakte de bal niet en geeft dus de set. Loop direct naar de bal en sta er stil onder."
+    },
+    {
+      "id": "volgorde-transitie",
+      "kind": "order",
+      "prompt": "Zet de transitie op volgorde.",
+      "items": [
+        "A2 verdedigt de bal hoog naar het midden",
+        "A1 landt en loopt naar de bal",
+        "A2 maakt ruimte voor een aanloop",
+        "A1 set dicht bij het net",
+        "A2 loopt aan en valt aan"
+      ],
+      "explanation": "Eerst de bal hoog houden, dan looplijnen. De speler die verdedigde, is meestal de aanvaller."
+    },
+    {
+      "id": "wie-set",
+      "kind": "choice",
+      "prompt": "A2 verdedigt de bal. Wie geeft de set?",
+      "options": [
+        "A2, want die heeft de bal gezien",
+        "A1, want die raakte de bal niet",
+        "Maakt niet uit, wie het eerst roept"
+      ],
+      "correct": 1,
+      "explanation": "A2 mag de bal niet twee keer achter elkaar raken. Afspraak is dus: wie de bal niet raakte, set."
+    },
+    {
+      "id": "blok-telt",
+      "kind": "choice",
+      "prompt": "A1 raakt de bal bij het blok. Hoeveel contacten heeft team A dan nog?",
+      "options": ["Twee", "Drie", "Eén"],
+      "correct": 0,
+      "explanation": "Een blokcontact telt als contact van je team. Daarna heb je er nog twee, en de blokker mag de eerste daarvan spelen."
+    }
+  ]
+}

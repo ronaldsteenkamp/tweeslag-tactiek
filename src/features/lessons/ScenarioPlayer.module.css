@@ -26,6 +26,38 @@
   cursor: pointer;
 }
 
+.fieldAction {
+  position: absolute;
+  z-index: 1;
+  top: var(--space-2);
+  left: var(--space-2);
+}
+
+.variants {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+}
+
+.variant {
+  min-height: var(--tap-target);
+  padding: 0 var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.variant[aria-pressed="true"] {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
 .goals {
   margin: 0;
   padding-left: var(--space-4);
@@ -42,6 +74,7 @@
 }
 
 .field {
+  position: relative;
   flex: 1 1 0;
   min-width: 0;
   min-height: 12rem;
@@ -68,10 +101,13 @@
 
 .timeline {
   display: flex;
+  flex: none;
   gap: 2px;
   margin: 0;
   padding: 0;
+  overflow-x: auto;
   list-style: none;
+  scrollbar-width: none;
 }
 
 .timelineItem {

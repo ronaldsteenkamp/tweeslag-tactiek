@@ -24,6 +24,11 @@ const LessonQuiz = lazy(() =>
     default: module.LessonQuiz,
   })),
 );
+const ExamPage = lazy(() =>
+  import("../features/lessons/ExamPage").then((module) => ({
+    default: module.ExamPage,
+  })),
+);
 const RulesPage = lazy(() =>
   import("../features/rules/RulesPage").then((module) => ({
     default: module.RulesPage,
@@ -48,6 +53,9 @@ function LessonRoute({ lesson, quiz }: { lesson: Lesson; quiz: boolean }) {
 function Page({ route }: { route: Route }) {
   if (route.name === "board") return <BoardPage />;
   if (route.name === "rules") return <RulesPage />;
+  if (route.name === "exam") {
+    return <ExamPage key={route.niveau} niveau={route.niveau} />;
+  }
   if (route.name === "shared") {
     return <SharedPage key={route.data} data={route.data} />;
   }
@@ -63,6 +71,9 @@ function Page({ route }: { route: Route }) {
 function pageTitle(route: Route): string {
   if (route.name === "board") return t("nav.board");
   if (route.name === "rules") return t("rules.heading");
+  if (route.name === "exam") {
+    return t("exam.heading", { niveau: t(`niveau.${route.niveau}`) });
+  }
   if (route.name === "shared") return t("shared.pageTitle");
   if (route.name === "lesson" || route.name === "quiz") {
     const title = findLesson(route.id)?.scenario.title;

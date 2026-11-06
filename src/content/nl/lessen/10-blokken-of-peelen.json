@@ -1,0 +1,927 @@
+{
+  "id": "blokken-of-peelen",
+  "order": 10,
+  "status": "concept",
+  "niveau": "gevorderd",
+  "vereisten": ["verdedigen-met-blok", "peel"],
+  "duurMinuten": 6,
+  "leerdoelen": [
+    "Na deze les kun je op basis van de set kiezen tussen blokken en peelen.",
+    "Na deze les kun je met z'n tweeën achter verdedigen bij een slechte set."
+  ],
+  "teVerifieren": [
+    "De grens tussen blokken en peelen is een kwestie van inschatten. Hanteren de trainers een maat?",
+    "De verdeling van het veld bij twee achter (A1 de lijn en korte bal, A2 de diagonaal) volgt les 6. Verdeelt Tweeslag het anders?"
+  ],
+  "scenario": {
+    "id": "blokken-of-peelen",
+    "title": "Wanneer blokken, wanneer peelen",
+    "description": "Je leest de set en beslist in een oogwenk: springen of terugtrekken. In de varianten zie je beide.",
+    "tags": ["blok", "peel", "beslissen"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "lees-de-set",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 11.5,
+          "y": 4,
+          "height": 2
+        },
+        "caption": "B2 gaat setten. A1 wacht aan het net en beslist pas als de bal in de lucht is. Twee vragen: hoe **ver van het net**, en hoe **hoog**?"
+      },
+      {
+        "id": "goede-set",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 9.6,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 9,
+          "y": 1.5,
+          "height": 3.4,
+          "arc": 2
+        },
+        "zones": [
+          {
+            "id": "z10",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 8,
+                "y": 0.5
+              },
+              {
+                "x": 9.5,
+                "y": 0.5
+              },
+              {
+                "x": 9.5,
+                "y": 2.6
+              },
+              {
+                "x": 8,
+                "y": 2.6
+              }
+            ],
+            "label": "Blok"
+          }
+        ],
+        "caption": "Ligt de set **dicht bij het net**, dan kan B1 hard slaan. Dan heeft blokken zin: A1 springt en sluit een kant af."
+      },
+      {
+        "id": "middel",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 10,
+          "y": 1.5,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z11",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 9.5,
+                "y": 0.5
+              },
+              {
+                "x": 10.8,
+                "y": 0.5
+              },
+              {
+                "x": 10.8,
+                "y": 2.6
+              },
+              {
+                "x": 9.5,
+                "y": 2.6
+              }
+            ],
+            "label": "Twijfel"
+          }
+        ],
+        "caption": "Op **twee meter** van het net wordt het lastig. Blokken kan, maar de aanvaller slaat makkelijk over je handen heen. Vaak moet je hier eerst kijken naar B1's aanloop."
+      },
+      {
+        "id": "slechte-set",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 3,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 11.6,
+            "y": 1.8
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 11.2,
+          "y": 1.8,
+          "height": 3
+        },
+        "zones": [
+          {
+            "id": "z12",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 10.8,
+                "y": 0.5
+              },
+              {
+                "x": 13,
+                "y": 0.5
+              },
+              {
+                "x": 13,
+                "y": 3
+              },
+              {
+                "x": 10.8,
+                "y": 3
+              }
+            ],
+            "label": "Peel"
+          }
+        ],
+        "caption": "Ligt de set **ver van het net** of is hij laag, dan kan B1 niet hard aanvallen en doet een blok niets. Nu peelt A1 en verdedigen jullie samen."
+      },
+      {
+        "id": "samen-achter",
+        "durationMs": 1300,
+        "players": {
+          "A1": {
+            "x": 4.6,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 3,
+            "y": 5
+          },
+          "B1": {
+            "x": 11.6,
+            "y": 1.8
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 11.2,
+          "y": 1.8,
+          "height": 3
+        },
+        "arrows": [
+          {
+            "id": "r9",
+            "kind": "run",
+            "from": {
+              "x": 7.4,
+              "y": 1.4
+            },
+            "to": {
+              "x": 4.6,
+              "y": 1.8
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "z13",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 3.2
+              },
+              {
+                "x": 0,
+                "y": 3.2
+              }
+            ]
+          },
+          {
+            "id": "z14",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 3.2
+              },
+              {
+                "x": 8,
+                "y": 3.2
+              },
+              {
+                "x": 8,
+                "y": 8
+              },
+              {
+                "x": 0,
+                "y": 8
+              }
+            ]
+          }
+        ],
+        "caption": "Met z'n tweeën achter verdeel je het veld: A1 neemt de **lijn en de korte bal**, A2 de **diagonaal**. Blijf laag en wacht tot B1 de bal raakt."
+      },
+      {
+        "id": "roepen",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": 4.6,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 3,
+            "y": 5
+          },
+          "B1": {
+            "x": 11.6,
+            "y": 1.8
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 11.2,
+          "y": 1.8,
+          "height": 3
+        },
+        "caption": "Beslis snel en **roep je keuze**. A2 moet weten of er een blok komt, want daar hangt de plek van A2 van af.",
+        "tip": "Twijfel je? Kies er één. Half springen is het slechtst van beide."
+      }
+    ],
+    "variants": [
+      {
+        "id": "blok",
+        "label": "Goede set",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "caption": "De set ligt dicht bij het net. A1 springt en sluit de lijn af."
+          },
+          {
+            "id": "blok",
+            "durationMs": 900,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "zones": [
+              {
+                "id": "z15",
+                "kind": "blocked",
+                "polygon": [
+                  {
+                    "x": 7.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2
+                  },
+                  {
+                    "x": 0,
+                    "y": 2.8
+                  },
+                  {
+                    "x": 0,
+                    "y": 0
+                  }
+                ]
+              }
+            ],
+            "caption": "A2 gaat naar de diagonaal. Samen dekken jullie de harde aanval."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 3.2,
+              "y": 5.4,
+              "height": 0.6
+            },
+            "arrows": [
+              {
+                "id": "s10",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 3.2,
+                  "y": 5.4
+                }
+              }
+            ],
+            "caption": "B1 slaat om het blok heen, en A2 staat precies daar."
+          }
+        ]
+      },
+      {
+        "id": "peel",
+        "label": "Slechte set",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 11.4,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11,
+              "y": 1.8,
+              "height": 3
+            },
+            "caption": "De set ligt ver van het net. Een blok zou niets doen."
+          },
+          {
+            "id": "peel",
+            "durationMs": 1100,
+            "players": {
+              "A1": {
+                "x": 4.6,
+                "y": 1.8
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 11.4,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11,
+              "y": 1.8,
+              "height": 3
+            },
+            "arrows": [
+              {
+                "id": "r11",
+                "kind": "run",
+                "from": {
+                  "x": 7.4,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 4.6,
+                  "y": 1.8
+                }
+              }
+            ],
+            "caption": "A1 peelt. Nu staan jullie met z'n tweeën achter."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 900,
+            "players": {
+              "A1": {
+                "x": 4.6,
+                "y": 1.8
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 11.4,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 4.8,
+              "y": 2,
+              "height": 0.7
+            },
+            "arrows": [
+              {
+                "id": "s12",
+                "kind": "shot",
+                "from": {
+                  "x": 11,
+                  "y": 1.8
+                },
+                "to": {
+                  "x": 4.8,
+                  "y": 2
+                }
+              }
+            ],
+            "caption": "B1 kan alleen rustig aanvallen, en A1 is op tijd."
+          }
+        ]
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "freeze-goed",
+      "kind": "freeze",
+      "prompt": "Wat doet A1 bij deze set?",
+      "scene": {
+        "alt": "B2 set de bal hoog en dicht bij het net, recht voor aanvaller B1. A1 staat aan het net. Het beeld stopt voor de sprong.",
+        "keyframes": [
+          {
+            "id": "start",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 9.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11.5,
+              "y": 4,
+              "height": 2
+            },
+            "caption": ""
+          },
+          {
+            "id": "set",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 9.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.9,
+              "y": 1.4,
+              "height": 3.4,
+              "arc": 2
+            },
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Peelen, terug van het net",
+        "Blokken",
+        "Naar de andere kant van het veld lopen"
+      ],
+      "correct": 1,
+      "explanation": "De set ligt dicht bij het net en B1 kan hard slaan. Dan heeft blokken zin."
+    },
+    {
+      "id": "freeze-slecht",
+      "kind": "freeze",
+      "prompt": "Wat doet A1 bij deze set?",
+      "scene": {
+        "alt": "B2 set de bal laag en ver van het net naar B1. A1 staat aan het net. Het beeld stopt voor de aanval.",
+        "keyframes": [
+          {
+            "id": "start",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 11.6,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 11.5,
+              "y": 5,
+              "height": 1.5
+            },
+            "caption": ""
+          },
+          {
+            "id": "set",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 11.6,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 11.2,
+              "y": 1.8,
+              "height": 2.8,
+              "arc": 1
+            },
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Peelen, terug van het net",
+        "Blokken",
+        "Blijven staan en kijken"
+      ],
+      "correct": 0,
+      "explanation": "De set ligt ver van het net. Een blok doet niets; een tweede verdediger wel."
+    },
+    {
+      "id": "twee-achter",
+      "kind": "placeBoth",
+      "prompt": "De set is slecht en A1 peelt. Zet A1 op de **lijn en korte bal** en A2 in de **diagonaal**.",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.4
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 3.5
+          },
+          "B1": {
+            "x": 11.4,
+            "y": 1.8
+          },
+          "B2": {
+            "x": 11.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 11,
+          "y": 1.8,
+          "height": 3
+        }
+      },
+      "targets": [
+        {
+          "playerId": "A1",
+          "target": [
+            {
+              "x": 2.5,
+              "y": 0.3
+            },
+            {
+              "x": 6,
+              "y": 0.3
+            },
+            {
+              "x": 6,
+              "y": 3
+            },
+            {
+              "x": 2.5,
+              "y": 3
+            }
+          ],
+          "tolerance": 0.4
+        },
+        {
+          "playerId": "A2",
+          "target": [
+            {
+              "x": 1,
+              "y": 3.5
+            },
+            {
+              "x": 5,
+              "y": 3.5
+            },
+            {
+              "x": 5,
+              "y": 7.5
+            },
+            {
+              "x": 1,
+              "y": 7.5
+            }
+          ],
+          "tolerance": 0.4
+        }
+      ],
+      "explanation": "A1 trekt terug naar de kant van de aanvaller, A2 houdt de diagonaal. Zo is het veld verdeeld."
+    },
+    {
+      "id": "fout-springen",
+      "kind": "spotError",
+      "prompt": "De set ligt ver van het net. Waar gaat het mis?",
+      "scene": {
+        "alt": "De set ligt ver van het net. A1 blijft aan het net staan om te blokken. B1 speelt de bal rustig op de lijn achter A1, waar niemand staat.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 11.4,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11,
+              "y": 1.8,
+              "height": 3
+            },
+            "caption": ""
+          },
+          {
+            "id": "aanval",
+            "durationMs": 1000,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 11.4,
+                "y": 1.8
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 3.6,
+              "y": 1.2,
+              "height": 0.3,
+              "arc": 1
+            },
+            "arrows": [
+              {
+                "id": "s13",
+                "kind": "shot",
+                "from": {
+                  "x": 11,
+                  "y": 1.8
+                },
+                "to": {
+                  "x": 3.6,
+                  "y": 1.2
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b2",
+          "label": "B2",
+          "playerId": "B2"
+        }
+      ],
+      "correct": "a1",
+      "explanation": "A1 had moeten peelen. Aan het net doet A1 niets en de lijn ligt helemaal open."
+    }
+  ]
+}

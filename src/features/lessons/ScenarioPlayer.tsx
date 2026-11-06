@@ -18,6 +18,8 @@ interface ScenarioPlayerProps {
   headerAction?: ReactNode;
   /** Melding boven het veld. */
   banner?: ReactNode;
+  /** Knoppen over het veld, zoals varianten. Kost zo geen hoogte op een lage telefoon. */
+  fieldAction?: ReactNode;
 }
 
 export function ScenarioPlayer({
@@ -28,6 +30,7 @@ export function ScenarioPlayer({
   finishAction,
   headerAction,
   banner,
+  fieldAction,
 }: ScenarioPlayerProps) {
   const orientation = useOrientation();
   const player = useStepPlayer(keyframes);
@@ -37,6 +40,14 @@ export function ScenarioPlayer({
   useEffect(() => {
     onStep?.(step);
   }, [onStep, step]);
+
+  // Bij veel stappen scrollt de balk: houd de huidige stap in beeld.
+  const timelineRef = useRef<HTMLOListElement>(null);
+  useEffect(() => {
+    timelineRef.current
+      ?.querySelector('[aria-current="step"]')
+      ?.scrollIntoView?.({ block: "nearest", inline: "nearest" });
+  }, [step]);
 
   // Het toetsenbord werkt op de hele pagina; de laatste versie van de speler staat in een ref.
   const playerRef = useRef(player);
@@ -62,6 +73,9 @@ export function ScenarioPlayer({
       {banner}
       <div className={styles.layout}>
         <div className={styles.field}>
+          {fieldAction ? (
+            <div className={styles.fieldAction}>{fieldAction}</div>
+          ) : null}
           <CourtScene
             view={{ orientation, flipped: false }}
             players={players}
@@ -79,7 +93,11 @@ export function ScenarioPlayer({
             {headerAction}
           </div>
 
-          <ol className={styles.timeline} aria-label={t("player.timeline")}>
+          <ol
+            ref={timelineRef}
+            className={styles.timeline}
+            aria-label={t("player.timeline")}
+          >
             {keyframes.map((item, index) => (
               <li key={item.id} className={styles.timelineItem}>
                 <button

@@ -94,7 +94,7 @@ test("de app werkt als opslag is geblokkeerd", async ({ page }) => {
 
 test("de regelpagina toont regels met bron", async ({ page }) => {
   await page.goto("./");
-  await page.getByRole("link", { name: "Regels" }).click();
+  await page.getByRole("link", { name: "Regels", exact: true }).click();
   await expect(page.getByRole("heading", { name: "Spelregels" })).toBeVisible();
   await expect(page.getByText(/2,43 m/)).toBeVisible();
   await expect(page.getByText(/2,35 m/)).toBeVisible();

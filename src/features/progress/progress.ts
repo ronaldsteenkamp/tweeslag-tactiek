@@ -111,6 +111,16 @@ export function withQuizResult(
   return { ...progress, [lessonId]: { ...current, score: best, total } };
 }
 
+export function withExamResult(
+  exams: ProgressFile["toetsen"],
+  niveau: string,
+  score: number,
+  total: number,
+): ProgressFile["toetsen"] {
+  const best = Math.min(total, Math.max(score, exams[niveau]?.score ?? 0));
+  return { ...exams, [niveau]: { score: best, total } };
+}
+
 export function lessonStatus(lesson: LessonProgress | undefined): LessonStatus {
   if (!lesson) return "new";
   return lesson.score === undefined ? "busy" : "done";
@@ -125,6 +135,7 @@ export function doneLessonIds(progress: Progress): Set<string> {
 interface ProgressState extends Omit<ProgressFile, "version"> {
   reachStep: (lessonId: string, step: number) => void;
   finishQuiz: (lessonId: string, score: number, total: number) => void;
+  finishExam: (niveau: string, score: number, total: number) => void;
   setAlleOntgrendeld: (value: boolean) => void;
 }
 
@@ -149,6 +160,10 @@ export const useProgressStore = create<ProgressState>((set, get) => {
       update(withStep(get().lessons, lessonId, step)),
     finishQuiz: (lessonId, score, total) =>
       update(withQuizResult(get().lessons, lessonId, score, total)),
+    finishExam: (niveau, score, total) => {
+      set({ toetsen: withExamResult(get().toetsen, niveau, score, total) });
+      persist();
+    },
     setAlleOntgrendeld: (value) => {
       set({ alleOntgrendeld: value });
       persist();

@@ -5,6 +5,7 @@ import rulesFile from "./nl/regels.json";
 
 const clubSchema = z.object({
   bloksignalen: z.record(z.string(), z.string().min(1)),
+  roepwoorden: z.record(z.string(), z.string().min(1)),
 });
 
 const rulesSchema = z.object({
@@ -20,16 +21,16 @@ const rulesSchema = z.object({
   ),
 });
 
-const { bloksignalen } = clubSchema.parse(club);
+const { bloksignalen, roepwoorden } = clubSchema.parse(club);
 
-/** Vervangt {signaal.lijn} en dergelijke door de afspraken van de vereniging. */
+/** Vervangt {signaal.lijn} en {roep.lijn} door de afspraken van de vereniging. */
 export function applyClubTerms(content: unknown): unknown {
   const text = JSON.stringify(content).replace(
-    /\{signaal\.(\w+)\}/g,
-    (_match, name: string) => {
-      const signal = bloksignalen[name];
-      if (!signal) throw new Error(`Onbekend bloksignaal: ${name}`);
-      return signal;
+    /\{(signaal|roep)\.(\w+)\}/g,
+    (_match, group: string, name: string) => {
+      const term = (group === "roep" ? roepwoorden : bloksignalen)[name];
+      if (!term) throw new Error(`Onbekende term: ${group}.${name}`);
+      return term;
     },
   );
   return JSON.parse(text);

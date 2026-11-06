@@ -5,6 +5,7 @@ import {
   loadProgress,
   migrateV1,
   saveProgress,
+  withExamResult,
   withQuizResult,
   withStep,
   type ProgressFile,
@@ -148,6 +149,15 @@ describe("withQuizResult", () => {
       score: 2,
       total: 2,
     });
+  });
+});
+
+describe("withExamResult", () => {
+  it("bewaart de beste score per niveau", () => {
+    const first = withExamResult({}, "basis", 9, 14);
+    expect(withExamResult(first, "basis", 4, 14).basis?.score).toBe(9);
+    expect(withExamResult(first, "basis", 12, 14).basis?.score).toBe(12);
+    expect(withExamResult(first, "expert", 1, 12).basis?.score).toBe(9);
   });
 });
 

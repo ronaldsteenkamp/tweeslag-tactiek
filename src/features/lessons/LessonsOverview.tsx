@@ -1,5 +1,6 @@
 import { paths } from "../../app/router";
 import { lessons } from "../../content";
+import { isExamOpen } from "../../domain/exam";
 import { NIVEAUS, type Lesson, type Niveau } from "../../domain/schema";
 import { isNiveauOpen, lessonAccess } from "../../domain/unlock";
 import { t } from "../../i18n";
@@ -58,6 +59,36 @@ function LessonCard({ lesson, locked }: { lesson: Lesson; locked: boolean }) {
   );
 }
 
+function ExamCard({ niveau, open }: { niveau: Niveau; open: boolean }) {
+  const best = useProgressStore((state) => state.toetsen[niveau]);
+  const detail = best
+    ? t("exam.cardBest", { score: best.score, total: best.total })
+    : t(open ? "exam.cardOpen" : "exam.cardLocked");
+  const content = (
+    <span className={styles.body}>
+      <span className={styles.title}>
+        {t("exam.heading", { niveau: t(`niveau.${niveau}`) })}
+      </span>
+      <span className={styles.description}>{detail}</span>
+    </span>
+  );
+  return open ? (
+    <a
+      className={styles.card}
+      href={paths.exam(niveau)}
+      data-testid={`exam-${niveau}`}
+    >
+      <span className={styles.number} aria-hidden="true" />
+      {content}
+    </a>
+  ) : (
+    <div className={styles.card} data-locked data-testid={`exam-${niveau}`}>
+      <span className={styles.number} aria-hidden="true" />
+      {content}
+    </div>
+  );
+}
+
 function NiveauSection({ niveau }: { niveau: Niveau }) {
   const unlock = useUnlockState();
   const items = lessons.filter((lesson) => lesson.niveau === niveau);
@@ -100,6 +131,12 @@ function NiveauSection({ niveau }: { niveau: Niveau }) {
               />
             </li>
           ))}
+          <li>
+            <ExamCard
+              niveau={niveau}
+              open={isExamOpen(niveau, lessons, unlock)}
+            />
+          </li>
         </ol>
       )}
     </section>

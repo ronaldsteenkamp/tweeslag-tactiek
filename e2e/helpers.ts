@@ -55,8 +55,16 @@ export async function skipQuestions(page: Page, count: number) {
     const check = page.getByRole("button", { name: "Controleer" });
     const option = page.getByTestId("option").first();
     await expect(check.or(option).first()).toBeVisible();
-    if (await check.isVisible()) await check.click();
-    else await option.click();
+    if (await check.isVisible()) {
+      // Een routevraag wil eerst een route.
+      if (await check.isDisabled()) {
+        await page.locator("[data-entity]").first().focus();
+        await page.keyboard.press("ArrowLeft");
+      }
+      await check.click();
+    } else {
+      await option.click();
+    }
     await page
       .getByRole("button", { name: /Volgende vraag|Bekijk je score/ })
       .click();

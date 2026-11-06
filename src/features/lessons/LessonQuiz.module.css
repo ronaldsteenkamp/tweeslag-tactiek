@@ -32,6 +32,34 @@
   white-space: nowrap;
 }
 
+.status {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.timer {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.subheading {
+  margin: var(--space-2) 0 0;
+  font-size: var(--font-size-md);
+}
+
+.reviewList {
+  margin: 0;
+  padding-left: var(--space-4);
+}
+
+.reviewList li + li {
+  margin-top: var(--space-2);
+}
+
 .prompt {
   margin: 0;
   font-size: var(--font-size-lg);
@@ -253,6 +281,7 @@
   max-width: 32rem;
   margin-inline: auto;
   padding: var(--space-6) var(--space-4);
+  overflow-y: auto;
 }
 
 .result p {

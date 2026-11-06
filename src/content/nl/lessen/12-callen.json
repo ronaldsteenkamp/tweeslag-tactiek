@@ -1,0 +1,526 @@
+{
+  "id": "callen",
+  "order": 12,
+  "status": "concept",
+  "niveau": "gevorderd",
+  "vereisten": ["shots", "sets-lastig"],
+  "duurMinuten": 5,
+  "leerdoelen": [
+    "Na deze les kun je tijdens de aanloop van je partner de open zone roepen.",
+    "Na deze les weet je wat de verdediger je vertelt als die beweegt."
+  ],
+  "teVerifieren": [
+    "De roepwoorden staan in src/config/vereniging.json. Welke gebruikt Tweeslag?",
+    "“Niemand” heeft hier de betekenis: er staat geen blok. Andere clubs gebruiken het anders. Klopt dit voor Tweeslag?",
+    "“Cut” betekent hier: de korte diagonaal ligt open voor een cut shot."
+  ],
+  "scenario": {
+    "id": "callen",
+    "title": "Callen voor je aanvaller",
+    "description": "Jij hebt net geset en ziet wat je aanvaller niet ziet. Met één woord geef je de open zone door.",
+    "tags": ["callen", "communicatie"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "kijk-over",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.6,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "caption": "A2 heeft geset. A1 kijkt naar de bal en ziet de overkant niet. Daarom draait A2 meteen naar het net en kijkt naar **verdediger B2**."
+      },
+      {
+        "id": "lijn-open",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.6,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "r21",
+            "kind": "run",
+            "from": {
+              "x": 12,
+              "y": 4
+            },
+            "to": {
+              "x": 12,
+              "y": 6
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "z16",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 11,
+                "y": 0
+              },
+              {
+                "x": 15.6,
+                "y": 0
+              },
+              {
+                "x": 15.6,
+                "y": 2.4
+              },
+              {
+                "x": 11,
+                "y": 2.4
+              }
+            ],
+            "label": "Open"
+          }
+        ],
+        "caption": "B2 schuift naar de diagonaal. Dan ligt de lijn open. A2 roept **“{roep.lijn}”**, en A1 weet waar de bal heen moet."
+      },
+      {
+        "id": "hoek-open",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.6,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 1.6
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "r22",
+            "kind": "run",
+            "from": {
+              "x": 12,
+              "y": 6
+            },
+            "to": {
+              "x": 12,
+              "y": 1.6
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "z17",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 11,
+                "y": 4.6
+              },
+              {
+                "x": 15.6,
+                "y": 4.6
+              },
+              {
+                "x": 15.6,
+                "y": 7.8
+              },
+              {
+                "x": 11,
+                "y": 7.8
+              }
+            ],
+            "label": "Open"
+          }
+        ],
+        "caption": "B2 kiest de lijn. Nu ligt de diagonaal open, en A2 roept **“{roep.hoek}”**."
+      },
+      {
+        "id": "cut-open",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.6,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 14,
+            "y": 5.5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "zones": [
+          {
+            "id": "z18",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 8.4,
+                "y": 3.6
+              },
+              {
+                "x": 11,
+                "y": 3.6
+              },
+              {
+                "x": 11,
+                "y": 7
+              },
+              {
+                "x": 8.4,
+                "y": 7
+              }
+            ],
+            "label": "Open"
+          }
+        ],
+        "caption": "B2 staat diep. Dan ligt de korte diagonaal open. A2 roept **“{roep.cut}”**, en A1 speelt een cut shot vlak langs het net."
+      },
+      {
+        "id": "niemand",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.6,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 11,
+            "y": 1.6
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "arrows": [
+          {
+            "id": "r23",
+            "kind": "run",
+            "from": {
+              "x": 8.6,
+              "y": 1.4
+            },
+            "to": {
+              "x": 11,
+              "y": 1.6
+            }
+          }
+        ],
+        "caption": "B1 trekt terug van het net, dus er staat geen blok. A2 roept **“{roep.niemand}”**. A1 kan nu vrij slaan en kiest zelf de plek."
+      },
+      {
+        "id": "kort-en-vroeg",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": 5.6,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 6.6,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 1.4
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 1.6,
+          "height": 3.4
+        },
+        "caption": "Roep **één woord**, en op tijd: vóór A1 springt. Te laat roepen helpt niet meer. Bij twijfel roep je wat je het laatst zag bewegen.",
+        "tip": "Praten met je partner mag altijd tijdens de wedstrijd."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "freeze-lijn",
+      "kind": "freeze",
+      "prompt": "Je hebt geset en kijkt over het net. Wat roep je?",
+      "scene": {
+        "alt": "A2 heeft geset. A1 loopt aan. Aan de overkant schuift verdediger B2 naar de diagonaal, dus de lijn is leeg.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 5.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.6,
+                "y": 3.2
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 12,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4
+            },
+            "caption": ""
+          },
+          {
+            "id": "schuift",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 5.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.6,
+                "y": 3.2
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 12,
+                "y": 6
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4
+            },
+            "arrows": [
+              {
+                "id": "r24",
+                "kind": "run",
+                "from": {
+                  "x": 12,
+                  "y": 4
+                },
+                "to": {
+                  "x": 12,
+                  "y": 6
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "options": ["{roep.lijn}", "{roep.hoek}", "{roep.cut}"],
+      "correct": 0,
+      "explanation": "B2 staat in de diagonaal, dus de lijn ligt open. Je roept wat **open** is, niet waar de verdediger staat."
+    },
+    {
+      "id": "freeze-cut",
+      "kind": "freeze",
+      "prompt": "De verdediger blijft diep staan. Wat roep je?",
+      "scene": {
+        "alt": "A2 heeft geset. A1 loopt aan. Verdediger B2 loopt ver naar achteren, dus de korte bal langs het net ligt open.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 5.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.6,
+                "y": 3.2
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 12,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4
+            },
+            "caption": ""
+          },
+          {
+            "id": "diep",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 5.6,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6.6,
+                "y": 3.2
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 14.2,
+                "y": 5.5
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 1.6,
+              "height": 3.4
+            },
+            "arrows": [
+              {
+                "id": "r25",
+                "kind": "run",
+                "from": {
+                  "x": 12,
+                  "y": 4
+                },
+                "to": {
+                  "x": 14.2,
+                  "y": 5.5
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "options": ["{roep.niemand}", "{roep.lijn}", "{roep.cut}"],
+      "correct": 2,
+      "explanation": "B2 staat diep, dus de korte diagonaal ligt open: daar past een cut shot."
+    },
+    {
+      "id": "wanneer-roepen",
+      "kind": "choice",
+      "prompt": "Wanneer roep je de open zone?",
+      "options": [
+        "Tijdens de aanloop, vóór je partner springt",
+        "Als je partner de bal al raakt",
+        "Pas als de rally voorbij is"
+      ],
+      "correct": 0,
+      "explanation": "Je partner heeft de informatie nodig voor de sprong. Daarna is het te laat."
+    },
+    {
+      "id": "volgorde-callen",
+      "kind": "order",
+      "prompt": "Zet de stappen van de setter op volgorde.",
+      "items": [
+        "Set de bal",
+        "Draai naar het net",
+        "Kijk waar de verdediger heen gaat",
+        "Roep de open zone"
+      ],
+      "explanation": "Eerst de set, dan pas kijken. Een goede call na een slechte set helpt je aanvaller niet."
+    }
+  ]
+}

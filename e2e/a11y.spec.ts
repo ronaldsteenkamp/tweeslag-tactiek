@@ -69,6 +69,8 @@ const screens: [string, string, ((page: Page) => Promise<void>)?][] = [
   ],
   ["freeze frame", "./#/les/peel/quiz", (page) => skipQuestions(page, 2)],
   ["looplijn", "./#/les/peel/quiz", (page) => skipQuestions(page, 3)],
+  ["gesloten niveautoets", "./#/toets/gevorderd"],
+  ["vergrendelde les", "./#/les/opslagtactiek"],
   ["regels", "./#/regels"],
   ["tactiekbord", "./#/bord"],
   ["menu", "./#/bord", (page) => button(page, "Menu").click()],
@@ -110,7 +112,7 @@ test("elke pagina heeft één h1 en een eigen titel", async ({ page }) => {
 
 test("de focus gaat naar de inhoud bij een nieuwe pagina", async ({ page }) => {
   await page.goto("./");
-  await page.getByRole("link", { name: "Regels" }).click();
+  await page.getByRole("link", { name: "Regels", exact: true }).click();
   await expect(page.locator("main")).toBeFocused();
 });
 

@@ -1,4 +1,10 @@
 {
+  "roepwoorden": {
+    "lijn": "lijn",
+    "hoek": "hoek",
+    "niemand": "niemand",
+    "cut": "cut"
+  },
   "bloksignalen": {
     "lijn": "één vinger",
     "hoek": "twee vingers",

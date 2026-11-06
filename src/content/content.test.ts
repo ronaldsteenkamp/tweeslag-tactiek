@@ -41,15 +41,19 @@ describe("lessen", () => {
 
   it("bevatten geen niet-ingevulde bloksignalen", () => {
     expect(JSON.stringify(lessons)).not.toContain("{signaal");
+    expect(JSON.stringify(lessons)).not.toContain("{roep");
   });
 
   it.each(lessons.map((lesson) => [lesson.id, lesson] as const))(
-    "%s heeft 4 tot 7 stappen met uitleg",
+    "%s heeft genoeg stappen met uitleg",
     (_id, lesson) => {
-      const { keyframes } = lesson.scenario;
-      expect(keyframes.length).toBeGreaterThanOrEqual(4);
-      // Meer past niet als tikdoelen van 44 px op een smalle telefoon.
-      expect(keyframes.length).toBeLessThanOrEqual(7);
+      const { keyframes, variants } = lesson.scenario;
+      const basis = lesson.niveau === "basis";
+      expect(keyframes.length).toBeGreaterThanOrEqual(basis ? 4 : 5);
+      expect(keyframes.length).toBeLessThanOrEqual(basis ? 7 : 10);
+      for (const variant of variants ?? []) {
+        expect(variant.keyframes.length).toBeLessThanOrEqual(10);
+      }
       for (const keyframe of keyframes) {
         expect(keyframe.caption.length).toBeGreaterThan(0);
       }
@@ -64,6 +68,19 @@ describe("lessen", () => {
       expect(new Set(ids).size).toBe(ids.length);
     },
   );
+
+  it.each(
+    lessons
+      .filter((lesson) => lesson.niveau !== "basis")
+      .map((lesson) => [lesson.id, lesson] as const),
+  )("%s heeft minstens drie vragen, met een nieuw type", (_id, lesson) => {
+    expect(lesson.quiz.length).toBeGreaterThanOrEqual(3);
+    expect(
+      lesson.quiz.some(
+        (question) => question.kind !== "choice" && question.kind !== "drag",
+      ),
+    ).toBe(true);
+  });
 
   it("beginnen sleepvragen buiten de doelzone", () => {
     for (const lesson of lessons) {
@@ -123,6 +140,16 @@ describe("applyClubTerms", () => {
     expect(applyClubTerms({ caption: "{signaal.lijn}" })).toEqual({
       caption: "één vinger",
     });
+  });
+
+  it("vult een bekend roepwoord in", () => {
+    expect(applyClubTerms({ caption: "{roep.lijn}" })).toEqual({
+      caption: "lijn",
+    });
+  });
+
+  it("weigert een onbekend roepwoord", () => {
+    expect(() => applyClubTerms("{roep.onzin}")).toThrow();
   });
 
   it("weigert een onbekend signaal", () => {

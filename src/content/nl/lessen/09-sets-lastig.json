@@ -1,0 +1,648 @@
+{
+  "id": "sets-lastig",
+  "order": 9,
+  "status": "concept",
+  "niveau": "gevorderd",
+  "vereisten": ["opbouw"],
+  "duurMinuten": 6,
+  "leerdoelen": [
+    "Na deze les kun je kiezen tussen een bump set en een bovenhandse set.",
+    "Na deze les weet je hoe hoog en hoe ver van het net een goede set ligt.",
+    "Na deze les kun je je set aanpassen aan wind en zon."
+  ],
+  "teVerifieren": [
+    "“Ongeveer een meter van het net” is een richtlijn. Welke afstand leren de trainers aan?",
+    "De wind- en zonadviezen zijn vuistregels uit de praktijk, geen regels.",
+    "Dat de bump set de veilige keuze is bij wind, is gangbaar maar niet voor iedereen hetzelfde."
+  ],
+  "scenario": {
+    "id": "sets-lastig",
+    "title": "Sets onder lastige omstandigheden",
+    "description": "Bump set of bovenhands, hoogte en afstand tot het net, en wat je doet bij wind en zon.",
+    "tags": ["set", "wind", "zon"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "goede-set",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 4.5,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 6,
+            "y": 3.6
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 1.6,
+          "height": 3.2
+        },
+        "zones": [
+          {
+            "id": "z5",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 6.3,
+                "y": 0.8
+              },
+              {
+                "x": 7.2,
+                "y": 0.8
+              },
+              {
+                "x": 7.2,
+                "y": 2.4
+              },
+              {
+                "x": 6.3,
+                "y": 2.4
+              }
+            ],
+            "label": "Goed"
+          }
+        ],
+        "caption": "Een goede set ligt **ongeveer een meter van het net** en is hoog genoeg. Zo kan je aanvaller aanlopen en alle kanten op slaan."
+      },
+      {
+        "id": "bump",
+        "durationMs": 1100,
+        "players": {
+          "A1": {
+            "x": 4.5,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 5,
+            "y": 2.4
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 5.2,
+          "y": 2.6,
+          "height": 1
+        },
+        "caption": "De **bump set** speel je onderhands. Hij is minder precies, maar veilig: je maakt geen dubbel contact. Bij een lastige pass is dit vaak de beste keuze."
+      },
+      {
+        "id": "bovenhands",
+        "durationMs": 1100,
+        "players": {
+          "A1": {
+            "x": 4.5,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 6,
+            "y": 3.6
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 6,
+          "y": 3.4,
+          "height": 2.4
+        },
+        "caption": "De **bovenhandse set** is preciezer. Maar de bal moet in één beweging los: raak je hem twee keer na elkaar, dan is het **dubbel contact** en een fout."
+      },
+      {
+        "id": "afstand",
+        "durationMs": 700,
+        "players": {
+          "A1": {
+            "x": 4.5,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 6,
+            "y": 3.6
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 1.6,
+          "height": 3.2
+        },
+        "zones": [
+          {
+            "id": "z6",
+            "kind": "blocked",
+            "polygon": [
+              {
+                "x": 7.5,
+                "y": 0.6
+              },
+              {
+                "x": 8,
+                "y": 0.6
+              },
+              {
+                "x": 8,
+                "y": 2.8
+              },
+              {
+                "x": 7.5,
+                "y": 2.8
+              }
+            ],
+            "label": "Te dicht"
+          },
+          {
+            "id": "z7",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 6.3,
+                "y": 0.6
+              },
+              {
+                "x": 7.3,
+                "y": 0.6
+              },
+              {
+                "x": 7.3,
+                "y": 2.8
+              },
+              {
+                "x": 6.3,
+                "y": 2.8
+              }
+            ],
+            "label": "Goed"
+          },
+          {
+            "id": "z8",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 3.8,
+                "y": 0.6
+              },
+              {
+                "x": 5.8,
+                "y": 0.6
+              },
+              {
+                "x": 5.8,
+                "y": 2.8
+              },
+              {
+                "x": 3.8,
+                "y": 2.8
+              }
+            ],
+            "label": "Te ver"
+          }
+        ],
+        "caption": "Te **dicht** op het net en het blok pakt de bal. Te **ver** en de aanvaller kan niet hard over het blok slaan. De zone ertussen is je doel."
+      },
+      {
+        "id": "hoogte",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 2,
+            "y": 3
+          },
+          "A2": {
+            "x": 3.2,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 5.4,
+          "y": 3,
+          "height": 4.6,
+          "arc": 2
+        },
+        "arrows": [
+          {
+            "id": "b6",
+            "kind": "ball",
+            "from": {
+              "x": 3.2,
+              "y": 5.5
+            },
+            "to": {
+              "x": 5.4,
+              "y": 3
+            }
+          }
+        ],
+        "caption": "Na een slechte pass moet je partner ver lopen. Set dan **hoger**, en mik op het midden van het veld. Dat geeft de aanvaller tijd om op te komen."
+      },
+      {
+        "id": "wind",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 4.5,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 6,
+            "y": 3.6
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 6.2,
+          "y": 1.6,
+          "height": 2.8
+        },
+        "zones": [
+          {
+            "id": "z9",
+            "kind": "cover",
+            "polygon": [
+              {
+                "x": 5.4,
+                "y": 0.6
+              },
+              {
+                "x": 6.6,
+                "y": 0.6
+              },
+              {
+                "x": 6.6,
+                "y": 2.6
+              },
+              {
+                "x": 5.4,
+                "y": 2.6
+              }
+            ],
+            "label": "Wind naar net"
+          }
+        ],
+        "caption": "Blaast de wind **naar het net**, set dan verder van het net. Blaast hij **van het net af**, set dan dichterbij. Bij harde wind set je ook lager."
+      },
+      {
+        "id": "zon",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 4.5,
+            "y": 1.8
+          },
+          "A2": {
+            "x": 6,
+            "y": 3.6
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 1.6,
+          "height": 2.8
+        },
+        "caption": "Kijkt je aanvaller tegen de **zon** in, set dan lager of iets opzij, zodat de bal niet in de zon verdwijnt.",
+        "tip": "Na een kantwissel kijkt je partner ergens anders heen: pas je set aan."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "freeze-slechte-pass",
+      "kind": "freeze",
+      "prompt": "De pass komt laag en ver van het net, en het waait hard. Welke set kies je?",
+      "scene": {
+        "alt": "A1 passt de bal laag en ver van het net. A2 moet naar achteren lopen. Het beeld stopt als A2 onder de bal staat.",
+        "keyframes": [
+          {
+            "id": "pass",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 3,
+                "y": 2
+              },
+              "A2": {
+                "x": 6.5,
+                "y": 4
+              },
+              "B1": {
+                "x": 8.8,
+                "y": 2
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 3,
+              "y": 2,
+              "height": 0.6
+            },
+            "caption": ""
+          },
+          {
+            "id": "bal-laag",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 3,
+                "y": 2
+              },
+              "A2": {
+                "x": 4,
+                "y": 4.5
+              },
+              "B1": {
+                "x": 8.8,
+                "y": 2
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 4.1,
+              "y": 4.4,
+              "height": 1,
+              "arc": 1.2
+            },
+            "arrows": [
+              {
+                "id": "r7",
+                "kind": "run",
+                "from": {
+                  "x": 6.5,
+                  "y": 4
+                },
+                "to": {
+                  "x": 4,
+                  "y": 4.5
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Bovenhands, strak op het net",
+        "Bump set, hoog naar het midden",
+        "Direct over het net spelen"
+      ],
+      "correct": 1,
+      "explanation": "Bij een lastige pass en wind is de bump set veilig. Hoog naar het midden geeft je aanvaller tijd om aan te lopen."
+    },
+    {
+      "id": "route-naar-pass",
+      "kind": "route",
+      "prompt": "De pass valt diep in het veld. Teken de route van A2 naar de bal.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 4
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 3,
+          "y": 5.5,
+          "height": 2.5
+        }
+      },
+      "target": [
+        {
+          "x": 2.4,
+          "y": 4.8
+        },
+        {
+          "x": 3.8,
+          "y": 4.8
+        },
+        {
+          "x": 3.8,
+          "y": 6.2
+        },
+        {
+          "x": 2.4,
+          "y": 6.2
+        }
+      ],
+      "tolerance": 0.3,
+      "maxDetour": 1.4,
+      "explanation": "Loop zo direct mogelijk naar de plek waar de bal valt, zodat je er stil onder staat voor je set."
+    },
+    {
+      "id": "fout-te-dicht",
+      "kind": "spotError",
+      "prompt": "De aanval van A1 wordt gestopt. Waar ging het mis?",
+      "scene": {
+        "alt": "A2 set de bal bijna boven het net. A1 springt, maar B1 blokt de bal direct terug.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 5,
+                "y": 1.6
+              },
+              "A2": {
+                "x": 6,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.5
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 6,
+              "y": 3.4,
+              "height": 2.2
+            },
+            "caption": ""
+          },
+          {
+            "id": "te-dicht",
+            "durationMs": 1100,
+            "players": {
+              "A1": {
+                "x": 7,
+                "y": 1.5
+              },
+              "A2": {
+                "x": 6,
+                "y": 3.4
+              },
+              "B1": {
+                "x": 8.6,
+                "y": 1.5
+              },
+              "B2": {
+                "x": 12,
+                "y": 5
+              }
+            },
+            "ball": {
+              "x": 7.8,
+              "y": 1.5,
+              "height": 3.2,
+              "arc": 1.5
+            },
+            "arrows": [
+              {
+                "id": "b8",
+                "kind": "ball",
+                "from": {
+                  "x": 6,
+                  "y": 3.4
+                },
+                "to": {
+                  "x": 7.8,
+                  "y": 1.5
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b1",
+          "label": "B1",
+          "playerId": "B1"
+        }
+      ],
+      "correct": "a2",
+      "explanation": "A2 zette de bal te dicht op het net. Daar kan de blokker hem makkelijk pakken."
+    },
+    {
+      "id": "wind-naar-net",
+      "kind": "choice",
+      "prompt": "De wind blaast naar het net toe. Waar mik je je set?",
+      "options": [
+        "Verder van het net",
+        "Dichter bij het net",
+        "Precies op het net"
+      ],
+      "correct": 0,
+      "explanation": "De wind duwt de bal naar het net. Mik daarom verder van het net, anders waait hij te ver door."
+    },
+    {
+      "id": "dubbel",
+      "kind": "choice",
+      "prompt": "Wanneer is een bovenhandse set fout?",
+      "options": [
+        "Als hij lager dan het net blijft",
+        "Als je de bal twee keer na elkaar raakt",
+        "Als de pass slecht was"
+      ],
+      "correct": 1,
+      "explanation": "Dat is dubbel contact. De bal moet in één beweging je handen verlaten."
+    }
+  ]
+}

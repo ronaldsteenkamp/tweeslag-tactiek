@@ -1,0 +1,579 @@
+{
+  "id": "tweede-bal",
+  "order": 13,
+  "status": "concept",
+  "niveau": "gevorderd",
+  "vereisten": ["sets-lastig"],
+  "duurMinuten": 5,
+  "leerdoelen": [
+    "Na deze les weet je wanneer je de tweede bal direct overspeelt.",
+    "Na deze les ken je de regels voor een bal over het net op het tweede contact.",
+    "Na deze les kun je de tweede bal van de tegenstander verdedigen."
+  ],
+  "teVerifieren": [
+    "Wanneer de tweede bal loont, is tactiek en verschilt per wedstrijd.",
+    "De regels komen uit FIVB 13.2.3 en 13.2.5. Controleer of de scheidsrechters bij jullie toernooien dit ook zo toepassen.",
+    "De tip om als blokker aan het net te wachten tot de tweede bal is gespeeld, is een vuistregel."
+  ],
+  "scenario": {
+    "id": "tweede-bal",
+    "title": "De tweede bal",
+    "description": "Op het tweede contact over het net spelen verrast de tegenstander, maar er gelden strenge regels.",
+    "tags": ["tweede bal", "aanval", "regels"],
+    "level": "gevorderd",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "pass",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 4
+          },
+          "B1": {
+            "x": 11,
+            "y": 2
+          },
+          "B2": {
+            "x": 12.5,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 3.4,
+          "height": 3
+        },
+        "arrows": [
+          {
+            "id": "b26",
+            "kind": "ball",
+            "from": {
+              "x": 3,
+              "y": 2
+            },
+            "to": {
+              "x": 6.8,
+              "y": 3.4
+            }
+          }
+        ],
+        "caption": "A1 passt hoog en dicht bij het net. Normaal wordt dit een set. Maar B1 staat ver van het net: de tegenstander is nog niet klaar."
+      },
+      {
+        "id": "shot-on-two",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 7,
+            "y": 3.4
+          },
+          "B1": {
+            "x": 11,
+            "y": 2
+          },
+          "B2": {
+            "x": 12.5,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 10,
+          "y": 6,
+          "height": 0.6,
+          "arc": 1.2
+        },
+        "arrows": [
+          {
+            "id": "s27",
+            "kind": "shot",
+            "from": {
+              "x": 6.8,
+              "y": 3.4
+            },
+            "to": {
+              "x": 10,
+              "y": 6
+            }
+          }
+        ],
+        "caption": "A2 speelt de bal op het **tweede contact** meteen over, naar een lege plek: een **shot on two**. De tegenstander rekende op een set en is te laat."
+      },
+      {
+        "id": "wanneer",
+        "durationMs": 800,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 4
+          },
+          "B1": {
+            "x": 11,
+            "y": 2
+          },
+          "B2": {
+            "x": 12.5,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 3.4,
+          "height": 3
+        },
+        "zones": [
+          {
+            "id": "z19",
+            "kind": "target",
+            "polygon": [
+              {
+                "x": 8.4,
+                "y": 3
+              },
+              {
+                "x": 11,
+                "y": 3
+              },
+              {
+                "x": 11,
+                "y": 7.6
+              },
+              {
+                "x": 8.4,
+                "y": 7.6
+              }
+            ],
+            "label": "Leeg"
+          }
+        ],
+        "caption": "Het werkt als de pass **dicht bij het net** ligt en er een gat is: geen blokker aan het net, of de verdediger staat diep."
+      },
+      {
+        "id": "regels",
+        "durationMs": 600,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 4
+          },
+          "B1": {
+            "x": 11,
+            "y": 2
+          },
+          "B2": {
+            "x": 12.5,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 3.4,
+          "height": 3
+        },
+        "caption": "Regels: een aanval met **open hand** is fout. Bovenhands over het net moet **loodrecht op je schouders**, behalve als je echt probeert te setten voor je partner."
+      },
+      {
+        "id": "aanval-op-twee",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 7.2,
+            "y": 3.2
+          },
+          "B1": {
+            "x": 11,
+            "y": 2
+          },
+          "B2": {
+            "x": 12.5,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 12,
+          "y": 1.5,
+          "height": 0.3,
+          "arc": 0.5
+        },
+        "arrows": [
+          {
+            "id": "s28",
+            "kind": "shot",
+            "from": {
+              "x": 7,
+              "y": 3.4
+            },
+            "to": {
+              "x": 12,
+              "y": 1.5
+            }
+          }
+        ],
+        "caption": "Ligt de pass hoog op het net, dan kan de setter ook **springen en slaan**. Dat mag wel: een harde aanval is geen tip."
+      },
+      {
+        "id": "verdedigen",
+        "durationMs": 1000,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 4
+          },
+          "B1": {
+            "x": 8.6,
+            "y": 3
+          },
+          "B2": {
+            "x": 11,
+            "y": 5
+          }
+        },
+        "ball": {
+          "x": 6.8,
+          "y": 3.4,
+          "height": 3
+        },
+        "arrows": [
+          {
+            "id": "r29",
+            "kind": "run",
+            "from": {
+              "x": 11,
+              "y": 2
+            },
+            "to": {
+              "x": 8.6,
+              "y": 3
+            }
+          }
+        ],
+        "caption": "Andersom: ligt de pass van de tegenstander dicht op het net? Blijf als blokker **aan het net** tot de tweede bal is gespeeld, en let op de korte bal."
+      }
+    ]
+  },
+  "quiz": [
+    {
+      "id": "mag-het",
+      "kind": "choice",
+      "prompt": "Welke tweede bal over het net is toegestaan?",
+      "options": [
+        "Een tip met open hand",
+        "Een bovenhandse bal loodrecht op je schouders",
+        "Een bovenhandse bal schuin langs je schouders, zonder dat je wilde setten"
+      ],
+      "correct": 1,
+      "explanation": "Een aanval met open hand is fout. Bovenhands over het net moet loodrecht op de schouderlijn gaan, tenzij je echt probeerde te setten."
+    },
+    {
+      "id": "freeze-overspelen",
+      "kind": "freeze",
+      "prompt": "De pass ligt hoog op het net. Wat doet A2?",
+      "scene": {
+        "alt": "A1 passt hoog tot vlak bij het net. Aan de overkant staat niemand aan het net en beide spelers staan aan dezelfde kant. De andere kant is leeg.",
+        "keyframes": [
+          {
+            "id": "pass",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 3,
+                "y": 2
+              },
+              "A2": {
+                "x": 6.5,
+                "y": 4
+              },
+              "B1": {
+                "x": 11.5,
+                "y": 2
+              },
+              "B2": {
+                "x": 13,
+                "y": 3
+              }
+            },
+            "ball": {
+              "x": 3,
+              "y": 2,
+              "height": 0.8
+            },
+            "caption": ""
+          },
+          {
+            "id": "bij-het-net",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 3,
+                "y": 2
+              },
+              "A2": {
+                "x": 7,
+                "y": 3.6
+              },
+              "B1": {
+                "x": 11.5,
+                "y": 2
+              },
+              "B2": {
+                "x": 13,
+                "y": 3
+              }
+            },
+            "ball": {
+              "x": 7,
+              "y": 3.6,
+              "height": 3,
+              "arc": 1.5
+            },
+            "arrows": [
+              {
+                "id": "b30",
+                "kind": "ball",
+                "from": {
+                  "x": 3,
+                  "y": 2
+                },
+                "to": {
+                  "x": 7,
+                  "y": 3.6
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "options": [
+        "Rustig setten voor A1",
+        "De bal direct naar de lege kant spelen",
+        "De bal laten vallen"
+      ],
+      "correct": 1,
+      "explanation": "Er staat geen blokker aan het net en een kant is leeg. Dan kan de tweede bal direct over, mits volgens de regels."
+    },
+    {
+      "id": "fout-blokker-weg",
+      "kind": "spotError",
+      "prompt": "De pass van team B ligt op het net. Waar gaat het bij team A mis?",
+      "scene": {
+        "alt": "De pass van team B ligt dicht op het net. A1 is al van het net weggelopen. B1 speelt de bal op het tweede contact kort over het net.",
+        "keyframes": [
+          {
+            "id": "pass",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 5,
+                "y": 2
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 8.8,
+                "y": 3.6
+              },
+              "B2": {
+                "x": 11,
+                "y": 2
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 3.6,
+              "height": 3
+            },
+            "caption": ""
+          },
+          {
+            "id": "tweede",
+            "durationMs": 900,
+            "players": {
+              "A1": {
+                "x": 5,
+                "y": 2
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 8.8,
+                "y": 3.6
+              },
+              "B2": {
+                "x": 11,
+                "y": 2
+              }
+            },
+            "ball": {
+              "x": 6.6,
+              "y": 3,
+              "height": 0.4,
+              "arc": 1
+            },
+            "arrows": [
+              {
+                "id": "s31",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 3.6
+                },
+                "to": {
+                  "x": 6.6,
+                  "y": 3
+                }
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b2",
+          "label": "B2",
+          "playerId": "B2"
+        }
+      ],
+      "correct": "a1",
+      "explanation": "A1 liep te vroeg weg van het net. Ligt de pass op het net, wacht dan tot de tweede bal is gespeeld."
+    },
+    {
+      "id": "plaats-tegen-tweede",
+      "kind": "placeBoth",
+      "prompt": "De pass van team B ligt op het net. Zet A1 aan het net tegenover B1, en A2 klaar voor de korte bal in het midden.",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 4,
+            "y": 1.6
+          },
+          "A2": {
+            "x": 2,
+            "y": 6
+          },
+          "B1": {
+            "x": 8.8,
+            "y": 3.6
+          },
+          "B2": {
+            "x": 11,
+            "y": 2
+          }
+        },
+        "ball": {
+          "x": 8.8,
+          "y": 3.6,
+          "height": 3
+        }
+      },
+      "targets": [
+        {
+          "playerId": "A1",
+          "target": [
+            {
+              "x": 6.8,
+              "y": 2.6
+            },
+            {
+              "x": 7.9,
+              "y": 2.6
+            },
+            {
+              "x": 7.9,
+              "y": 4.6
+            },
+            {
+              "x": 6.8,
+              "y": 4.6
+            }
+          ],
+          "tolerance": 0.3
+        },
+        {
+          "playerId": "A2",
+          "target": [
+            {
+              "x": 3.5,
+              "y": 2.5
+            },
+            {
+              "x": 6,
+              "y": 2.5
+            },
+            {
+              "x": 6,
+              "y": 6
+            },
+            {
+              "x": 3.5,
+              "y": 6
+            }
+          ],
+          "tolerance": 0.4
+        }
+      ],
+      "explanation": "De blokker wacht aan het net tot de tweede bal is gespeeld. De verdediger staat wat dichterbij dan normaal, voor de korte bal."
+    }
+  ]
+}

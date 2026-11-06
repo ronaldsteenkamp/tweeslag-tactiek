@@ -115,6 +115,10 @@
   color: var(--color-brand);
 }
 
+.card[data-locked] .title {
+  color: var(--color-text-muted);
+}
+
 .number {
   flex: none;
   width: 1.75rem;
