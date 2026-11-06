@@ -25,6 +25,13 @@
   --color-ball-line: #1c1b22;
   --color-shadow: rgb(28 27 34 / 30%);
 
+  --color-arrow-run: #123a6b;
+  --color-arrow-ball: #1c1b22;
+  --color-arrow-shot: #a3123a;
+  --color-zone-cover: rgb(11 79 158 / 20%);
+  --color-zone-target: rgb(0 120 90 / 28%);
+  --color-zone-blocked: rgb(163 18 58 / 35%);
+
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;

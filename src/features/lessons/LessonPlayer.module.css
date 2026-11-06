@@ -1,0 +1,184 @@
+.layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.field {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 12rem;
+  background: var(--color-sand-outer);
+}
+
+.panel {
+  display: flex;
+  flex: 0 1 auto;
+  flex-direction: column;
+  gap: var(--space-2);
+  min-height: 0;
+  max-height: 60%;
+  padding: var(--space-2) var(--space-3);
+  background: var(--color-surface);
+}
+
+.title {
+  margin: 0;
+  font-size: var(--font-size-lg);
+  line-height: 1.25;
+}
+
+.timeline {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timelineItem {
+  flex: 1;
+  min-width: var(--tap-target);
+}
+
+.stepButton {
+  width: 100%;
+  min-height: var(--tap-target);
+  border: 1px solid var(--color-border);
+  border-left-width: 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.timelineItem:first-child .stepButton {
+  border-left-width: 1px;
+  border-radius: var(--radius) 0 0 var(--radius);
+}
+
+.timelineItem:last-child .stepButton {
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.stepButton[data-done] {
+  background: var(--color-sand);
+}
+
+.stepButton[aria-current="step"] {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.caption {
+  flex: 1 1 auto;
+  min-height: 3rem;
+  overflow-y: auto;
+}
+
+.stepLabel {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.captionText {
+  margin: 0;
+}
+
+.done {
+  margin: var(--space-2) 0 0;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1.3fr;
+  gap: var(--space-2);
+}
+
+.control,
+.primary,
+.speed {
+  min-height: var(--tap-target);
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.primary {
+  border-color: var(--color-brand);
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+}
+
+.control:disabled,
+.primary:disabled {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.speeds {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.speedLabel {
+  flex: 1;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.speed {
+  min-width: 3.25rem;
+  font-weight: 500;
+}
+
+.speed[aria-pressed="true"] {
+  background: var(--color-sand);
+  font-weight: 700;
+}
+
+/* Op een lage telefoon gaat de ruimte naar veld en uitleg; de titel blijft voor schermlezers. */
+@media (orientation: portrait) and (max-height: 44rem) {
+  .title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .field {
+    min-height: 10rem;
+  }
+
+  .panel {
+    max-height: 68%;
+  }
+}
+
+@media (orientation: landscape) {
+  .layout {
+    flex-direction: row;
+  }
+
+  .field {
+    min-height: 0;
+  }
+
+  .panel {
+    flex: 0 0 min(24rem, 42%);
+    max-height: none;
+    padding: var(--space-3) var(--space-4);
+  }
+}

@@ -1,0 +1,303 @@
+{
+  "id": "opbouw",
+  "order": 3,
+  "status": "concept",
+  "scenario": {
+    "id": "opbouw",
+    "title": "De opbouw: pass, set, aanval",
+    "description": "De drie contacten van een aanval, en waarom de passer meestal aanvalt.",
+    "tags": ["pass", "set", "aanval"],
+    "level": "beginner",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1",
+        "role": "attacker"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2",
+        "role": "setter"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1",
+        "role": "server"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "drie-contacten",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 3.5,
+            "y": 2
+          },
+          "A2": {
+            "x": 3.5,
+            "y": 6
+          },
+          "B1": {
+            "x": 17.2,
+            "y": 6
+          },
+          "B2": {
+            "x": 9.5,
+            "y": 3
+          }
+        },
+        "ball": {
+          "x": 16.6,
+          "y": 5.5,
+          "height": 1
+        },
+        "caption": "Een team mag de bal **maximaal drie keer** raken voordat die over het net moet. De vaste volgorde is: **pass, set, aanval**."
+      },
+      {
+        "id": "ontvangst",
+        "durationMs": 1500,
+        "players": {
+          "A1": {
+            "x": 3.6,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 4,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 16,
+            "y": 5
+          },
+          "B2": {
+            "x": 10,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 4.1,
+          "y": 2,
+          "height": 0.8,
+          "arc": 3.5
+        },
+        "arrows": [
+          {
+            "id": "opslagbaan",
+            "kind": "ball",
+            "from": {
+              "x": 16.6,
+              "y": 5.5
+            },
+            "to": {
+              "x": 4.1,
+              "y": 2
+            }
+          }
+        ],
+        "caption": "De opslag komt op de helft van A1. A1 roept “mijn!” en maakt zich klaar voor de **pass**: het eerste contact."
+      },
+      {
+        "id": "pass",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": 3.6,
+            "y": 1.7
+          },
+          "A2": {
+            "x": 6,
+            "y": 4.3
+          },
+          "B1": {
+            "x": 13,
+            "y": 5
+          },
+          "B2": {
+            "x": 9,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 6.2,
+          "y": 3.9,
+          "height": 3,
+          "arc": 1.5
+        },
+        "arrows": [
+          {
+            "id": "passbaan",
+            "kind": "ball",
+            "from": {
+              "x": 4.1,
+              "y": 2
+            },
+            "to": {
+              "x": 6.2,
+              "y": 3.9
+            }
+          },
+          {
+            "id": "a2-naar-bal",
+            "kind": "run",
+            "from": {
+              "x": 4,
+              "y": 5.5
+            },
+            "to": {
+              "x": 5.8,
+              "y": 4.5
+            }
+          }
+        ],
+        "caption": "A1 passt hoog naar het midden. A2 hoefde niet te passen en loopt meteen naar de bal om te **setten**."
+      },
+      {
+        "id": "set",
+        "durationMs": 1300,
+        "players": {
+          "A1": {
+            "x": 5.2,
+            "y": 2
+          },
+          "A2": {
+            "x": 6,
+            "y": 4.3
+          },
+          "B1": {
+            "x": 12,
+            "y": 6.8
+          },
+          "B2": {
+            "x": 9,
+            "y": 2.5
+          }
+        },
+        "ball": {
+          "x": 7,
+          "y": 2.2,
+          "height": 3.4,
+          "arc": 1.5
+        },
+        "arrows": [
+          {
+            "id": "setbaan",
+            "kind": "ball",
+            "from": {
+              "x": 6.2,
+              "y": 3.9
+            },
+            "to": {
+              "x": 7,
+              "y": 2.2
+            }
+          },
+          {
+            "id": "aanloop",
+            "kind": "run",
+            "from": {
+              "x": 3.6,
+              "y": 1.7
+            },
+            "to": {
+              "x": 5.2,
+              "y": 2
+            }
+          }
+        ],
+        "caption": "A2 speelt de bal hoog terug, dicht bij het net. De **passer is meestal de aanvaller**: A1 paste, A2 sette, dus A1 loopt aan. Bovenhands setten mag, maar de bal moet schoon van je handen komen."
+      },
+      {
+        "id": "aanval",
+        "durationMs": 900,
+        "players": {
+          "A1": {
+            "x": 7,
+            "y": 2.2
+          },
+          "A2": {
+            "x": 5.5,
+            "y": 4.3
+          },
+          "B1": {
+            "x": 12,
+            "y": 6.8
+          },
+          "B2": {
+            "x": 9,
+            "y": 2.5
+          }
+        },
+        "ball": {
+          "x": 14,
+          "y": 6.5
+        },
+        "arrows": [
+          {
+            "id": "aanvalsbaan",
+            "kind": "shot",
+            "from": {
+              "x": 7,
+              "y": 2.2
+            },
+            "to": {
+              "x": 14,
+              "y": 6.5
+            }
+          }
+        ],
+        "caption": "A1 springt en slaat de bal over het net: het derde contact. Let op: een **open-hand tip** mag niet. Plaats je de bal met je vingers, houd ze dan stijf en tegen elkaar."
+      },
+      {
+        "id": "schakelen",
+        "durationMs": 1400,
+        "players": {
+          "A1": {
+            "x": 6.8,
+            "y": 3
+          },
+          "A2": {
+            "x": 2.8,
+            "y": 4.5
+          },
+          "B1": {
+            "x": 12.5,
+            "y": 5.5
+          },
+          "B2": {
+            "x": 11,
+            "y": 3
+          }
+        },
+        "ball": {
+          "x": 13,
+          "y": 5.8,
+          "height": 1
+        },
+        "arrows": [
+          {
+            "id": "a2-terug",
+            "kind": "run",
+            "from": {
+              "x": 5.5,
+              "y": 4.3
+            },
+            "to": {
+              "x": 3,
+              "y": 4.5
+            }
+          }
+        ],
+        "caption": "Komt de bal terug, dan begint alles opnieuw. Schakel dus meteen naar verdedigen. Onthoud ook: **een blok telt bij beachvolleybal als contact**. Na een blok heb je nog maar twee contacten over."
+      }
+    ]
+  }
+}

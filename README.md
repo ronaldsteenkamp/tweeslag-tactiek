@@ -26,4 +26,6 @@ npm run dev
 
 Huisstijl staat in `src/config/branding.ts` en `src/styles/tokens.css`.
 
+Lessen staan als JSON in `src/content/nl/lessen/`. Openstaande inhoudelijke vragen staan in `content/TWIJFELGEVALLEN.md`.
+
 De volledige documentatie volgt in fase 5.

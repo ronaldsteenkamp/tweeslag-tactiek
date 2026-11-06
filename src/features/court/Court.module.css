@@ -89,3 +89,63 @@
   fill: var(--color-shadow);
   pointer-events: none;
 }
+
+.zoneCover {
+  fill: var(--color-zone-cover);
+}
+
+.zoneTarget {
+  fill: var(--color-zone-target);
+}
+
+.zoneBlocked {
+  fill: url(#hatch);
+}
+
+.hatchLine {
+  fill: var(--color-zone-blocked);
+}
+
+.zoneLabel {
+  fill: var(--color-text);
+  stroke: var(--color-sand);
+  stroke-width: 10;
+  paint-order: stroke;
+  font-size: 56px;
+  font-weight: 700;
+  text-anchor: middle;
+}
+
+.arrowRun,
+.arrowBall,
+.arrowShot {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.arrowRun {
+  stroke: var(--color-arrow-run);
+  stroke-dasharray: 30 24;
+}
+
+.arrowBall {
+  stroke: var(--color-arrow-ball);
+}
+
+.arrowShot {
+  stroke: var(--color-arrow-shot);
+  stroke-width: 16;
+}
+
+.markerRun {
+  fill: var(--color-arrow-run);
+}
+
+.markerBall {
+  fill: var(--color-arrow-ball);
+}
+
+.markerShot {
+  fill: var(--color-arrow-shot);
+}

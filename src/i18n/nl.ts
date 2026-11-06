@@ -1,6 +1,9 @@
 export const nl = {
   "app.tagline": "Beachvolleybal: posities en tactiek",
   "app.logoAlt": "Logo van {club}",
+  "nav.label": "Hoofdmenu",
+  "nav.lessons": "Lessen",
+  "nav.board": "Tactiekbord",
   "court.title": "Beachvolleybalveld van 16 bij 8 meter, van bovenaf gezien",
   "court.hint":
     "Sleep een speler of de bal. Met het toetsenbord: tab en pijltjes.",
@@ -10,6 +13,25 @@ export const nl = {
   "court.teamB": "Team B",
   "court.player": "Speler {label}, team {team}, op {x} bij {y} meter",
   "court.ball": "Bal, op {x} bij {y} meter",
+  "level.beginner": "Beginner",
+  "level.gevorderd": "Gevorderd",
+  "lessons.heading": "Lessen",
+  "lessons.intro":
+    "Leer stap voor stap hoe beachvolleybal werkt. Jij speelt steeds bij team A, de blauwe rondjes.",
+  "lessons.minutes": "{minutes} min",
+  "lessons.concept": "Concept",
+  "player.timeline": "Stappen van deze les",
+  "player.goToStep": "Ga naar stap {step}",
+  "player.stepOf": "Stap {step} van {total}",
+  "player.previous": "Vorige",
+  "player.next": "Volgende",
+  "player.play": "Afspelen",
+  "player.pause": "Pauze",
+  "player.replay": "Opnieuw",
+  "player.speed": "Tempo",
+  "player.done": "Les klaar!",
+  "player.nextLesson": "Verder met: {title}",
+  "player.backToLessons": "Terug naar de lessen",
 } as const;
 
 export type MessageKey = keyof typeof nl;

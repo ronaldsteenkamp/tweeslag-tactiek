@@ -1,0 +1,227 @@
+import { memo, type ReactNode } from "react";
+import {
+  COURT,
+  distance,
+  metersToSvg,
+  NET_X,
+  UNITS_PER_METER,
+  viewBoxSize,
+  type CourtView,
+} from "../../domain/geometry";
+import type { Arrow, Player, Position, Zone } from "../../domain/schema";
+import styles from "./Court.module.css";
+
+export const PLAYER_RADIUS = 0.5 * UNITS_PER_METER;
+export const BALL_RADIUS = 0.3 * UNITS_PER_METER;
+
+/** Hoe ver de bal per meter hoogte op het scherm omhoog schuift en groter wordt. */
+const LIFT_PER_METER = 26;
+const GROWTH_PER_METER = 0.07;
+const RUN_ARROW_GAP = 0.6;
+
+export const CourtSurface = memo(function CourtSurface({
+  view,
+}: {
+  view: CourtView;
+}) {
+  const { width, height } = viewBoxSize(view.orientation);
+  const corner1 = metersToSvg({ x: 0, y: 0 }, view);
+  const corner2 = metersToSvg({ x: COURT.length, y: COURT.width }, view);
+  const net1 = metersToSvg({ x: NET_X, y: -0.5 }, view);
+  const net2 = metersToSvg({ x: NET_X, y: COURT.width + 0.5 }, view);
+
+  return (
+    <g aria-hidden="true">
+      <rect className={styles.sand} width={width} height={height} />
+      <rect
+        className={styles.court}
+        x={Math.min(corner1.sx, corner2.sx)}
+        y={Math.min(corner1.sy, corner2.sy)}
+        width={Math.abs(corner2.sx - corner1.sx)}
+        height={Math.abs(corner2.sy - corner1.sy)}
+      />
+      <line
+        className={styles.net}
+        x1={net1.sx}
+        y1={net1.sy}
+        x2={net2.sx}
+        y2={net2.sy}
+      />
+      <circle className={styles.post} cx={net1.sx} cy={net1.sy} r={12} />
+      <circle className={styles.post} cx={net2.sx} cy={net2.sy} r={12} />
+    </g>
+  );
+});
+
+/** Team A is rond en team B vierkant: zo hangt het verschil niet alleen van kleur af. */
+export function PlayerShape({ player }: { player: Player }) {
+  return (
+    <>
+      {player.team === "A" ? (
+        <circle className={styles.teamA} r={PLAYER_RADIUS} />
+      ) : (
+        <rect
+          className={styles.teamB}
+          x={-PLAYER_RADIUS * 0.9}
+          y={-PLAYER_RADIUS * 0.9}
+          width={PLAYER_RADIUS * 1.8}
+          height={PLAYER_RADIUS * 1.8}
+          rx={10}
+        />
+      )}
+      <text className={styles.tokenLabel} dy="0.36em" aria-hidden="true">
+        {player.id}
+      </text>
+    </>
+  );
+}
+
+/** De schaduw blijft op de grond; hoe hoger de bal, hoe verder die ervan los komt. */
+export function BallShape({ height = 0 }: { height?: number }) {
+  const lift = height * LIFT_PER_METER;
+  const scale = 1 + height * GROWTH_PER_METER;
+
+  return (
+    <>
+      <ellipse
+        className={styles.ballShadow}
+        cx={8}
+        cy={14}
+        rx={BALL_RADIUS}
+        ry={BALL_RADIUS * 0.8}
+      />
+      <g transform={`translate(0 ${-lift}) scale(${scale})`}>
+        <circle className={styles.ball} r={BALL_RADIUS} />
+        <path
+          className={styles.ballSeam}
+          d={`M ${-BALL_RADIUS} 0 Q 0 ${-BALL_RADIUS * 0.7} ${BALL_RADIUS} 0 M 0 ${-BALL_RADIUS} Q ${
+            BALL_RADIUS * 0.7
+          } 0 0 ${BALL_RADIUS}`}
+        />
+      </g>
+    </>
+  );
+}
+
+const ARROW_STYLE: Record<Arrow["kind"], string | undefined> = {
+  run: styles.arrowRun,
+  ball: styles.arrowBall,
+  shot: styles.arrowShot,
+};
+
+const ZONE_STYLE: Record<Zone["kind"], string | undefined> = {
+  cover: styles.zoneCover,
+  target: styles.zoneTarget,
+  blocked: styles.zoneBlocked,
+};
+
+function Marker({ id, className }: { id: string; className?: string }) {
+  return (
+    <marker
+      id={id}
+      viewBox="0 0 10 10"
+      refX="8"
+      refY="5"
+      markerWidth="42"
+      markerHeight="42"
+      markerUnits="userSpaceOnUse"
+      orient="auto-start-reverse"
+    >
+      <path className={className} d="M 0 0 L 10 5 L 0 10 z" />
+    </marker>
+  );
+}
+
+export function OverlayDefs(): ReactNode {
+  return (
+    <defs>
+      <Marker id="arrow-run" className={styles.markerRun} />
+      <Marker id="arrow-ball" className={styles.markerBall} />
+      <Marker id="arrow-shot" className={styles.markerShot} />
+      <pattern
+        id="hatch"
+        width="36"
+        height="36"
+        patternUnits="userSpaceOnUse"
+        patternTransform="rotate(45)"
+      >
+        <rect className={styles.hatchLine} width="10" height="36" />
+      </pattern>
+    </defs>
+  );
+}
+
+function zoneCenter(zone: Zone, view: CourtView) {
+  const points = zone.polygon.map((point) => metersToSvg(point, view));
+  const sum = points.reduce(
+    (total, point) => ({
+      sx: total.sx + point.sx,
+      sy: total.sy + point.sy,
+    }),
+    { sx: 0, sy: 0 },
+  );
+  return { sx: sum.sx / points.length, sy: sum.sy / points.length };
+}
+
+/** Een looplijn eindigt bij een speler: stop ervoor, anders valt de pijlpunt eronder. */
+function arrowEnd(arrow: Arrow): Position {
+  const length = distance(arrow.from, arrow.to);
+  if (arrow.kind !== "run" || length <= RUN_ARROW_GAP * 2) return arrow.to;
+  const keep = (length - RUN_ARROW_GAP) / length;
+  return {
+    x: arrow.from.x + (arrow.to.x - arrow.from.x) * keep,
+    y: arrow.from.y + (arrow.to.y - arrow.from.y) * keep,
+  };
+}
+
+export const Overlays = memo(function Overlays({
+  arrows = [],
+  zones = [],
+  view,
+}: {
+  arrows?: Arrow[];
+  zones?: Zone[];
+  view: CourtView;
+}) {
+  return (
+    <g aria-hidden="true" data-testid="overlays">
+      {zones.map((zone) => {
+        const center = zoneCenter(zone, view);
+        const points = zone.polygon
+          .map((point) => metersToSvg(point, view))
+          .map((point) => `${point.sx},${point.sy}`)
+          .join(" ");
+        return (
+          <g key={zone.id}>
+            <polygon className={ZONE_STYLE[zone.kind]} points={points} />
+            {zone.label ? (
+              <text
+                className={styles.zoneLabel}
+                x={center.sx}
+                y={center.sy}
+                dy="0.36em"
+              >
+                {zone.label}
+              </text>
+            ) : null}
+          </g>
+        );
+      })}
+      {arrows.map((arrow) => {
+        const from = metersToSvg(arrow.from, view);
+        const to = metersToSvg(arrowEnd(arrow), view);
+        return (
+          <line
+            key={arrow.id}
+            className={ARROW_STYLE[arrow.kind]}
+            x1={from.sx}
+            y1={from.sy}
+            x2={to.sx}
+            y2={to.sy}
+            markerEnd={`url(#arrow-${arrow.kind})`}
+          />
+        );
+      })}
+    </g>
+  );
+});

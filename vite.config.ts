@@ -1,7 +1,7 @@
 import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 import { defineConfig } from "vitest/config";
-import { branding } from "./src/config/branding";
+import { branding } from "./src/config/branding.ts";
 
 // GitHub Pages serveert de site onder /<repo-naam>/.
 const base = process.env.BASE_PATH ?? "/tweeslag-tactiek/";

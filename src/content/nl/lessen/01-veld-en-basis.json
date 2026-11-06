@@ -1,0 +1,323 @@
+{
+  "id": "veld-en-basis",
+  "order": 1,
+  "status": "concept",
+  "scenario": {
+    "id": "veld-en-basis",
+    "title": "Het veld en de basis",
+    "description": "Hoe groot het veld is, wie er serveert en hoe je punten scoort.",
+    "tags": ["basis", "regels", "opslag"],
+    "level": "beginner",
+    "players": [
+      {
+        "id": "A1",
+        "team": "A",
+        "label": "A1"
+      },
+      {
+        "id": "A2",
+        "team": "A",
+        "label": "A2"
+      },
+      {
+        "id": "B1",
+        "team": "B",
+        "label": "B1"
+      },
+      {
+        "id": "B2",
+        "team": "B",
+        "label": "B2"
+      }
+    ],
+    "keyframes": [
+      {
+        "id": "veld",
+        "durationMs": 0,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 3,
+            "y": 6
+          },
+          "B1": {
+            "x": 13,
+            "y": 2
+          },
+          "B2": {
+            "x": 13,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 3.7,
+          "y": 2.6
+        },
+        "zones": [
+          {
+            "id": "helft",
+            "kind": "cover",
+            "label": "8 × 8 m",
+            "polygon": [
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 0
+              },
+              {
+                "x": 8,
+                "y": 8
+              },
+              {
+                "x": 0,
+                "y": 8
+              }
+            ]
+          }
+        ],
+        "caption": "Een beachveld is **16 × 8 meter**: twee helften van 8 × 8 meter met het net in het midden. Je speelt **2 tegen 2**, zonder wissels."
+      },
+      {
+        "id": "lijnen",
+        "durationMs": 600,
+        "players": {
+          "A1": {
+            "x": 3,
+            "y": 2
+          },
+          "A2": {
+            "x": 3,
+            "y": 6
+          },
+          "B1": {
+            "x": 13,
+            "y": 2
+          },
+          "B2": {
+            "x": 13,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 3.7,
+          "y": 2.6
+        },
+        "caption": "Er is **geen middenlijn** en **geen aanvalslijn**. Je ziet alleen de twee zijlijnen en de twee eindlijnen, en die horen bij het veld. Je hebt ook geen vaste posities: je mag op je eigen helft overal staan."
+      },
+      {
+        "id": "opslagzone",
+        "durationMs": 1400,
+        "players": {
+          "A1": {
+            "x": -1.2,
+            "y": 1.2
+          },
+          "A2": {
+            "x": 5,
+            "y": 6
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -0.6,
+          "y": 1.7,
+          "height": 1
+        },
+        "arrows": [
+          {
+            "id": "naar-opslag",
+            "kind": "run",
+            "from": {
+              "x": 3,
+              "y": 2
+            },
+            "to": {
+              "x": -0.6,
+              "y": 1.2
+            }
+          }
+        ],
+        "zones": [
+          {
+            "id": "opslagzone",
+            "kind": "target",
+            "label": "Opslagzone",
+            "polygon": [
+              {
+                "x": -3,
+                "y": 0
+              },
+              {
+                "x": 0,
+                "y": 0
+              },
+              {
+                "x": 0,
+                "y": 8
+              },
+              {
+                "x": -3,
+                "y": 8
+              }
+            ]
+          }
+        ],
+        "caption": "Rond het veld ligt een **vrije zone** van minimaal 3 meter. Je serveert vanuit de **opslagzone**: de hele breedte van 8 meter achter de eindlijn."
+      },
+      {
+        "id": "opslag",
+        "durationMs": 1500,
+        "players": {
+          "A1": {
+            "x": -1.2,
+            "y": 1.2
+          },
+          "A2": {
+            "x": 5,
+            "y": 6
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 5.4
+          }
+        },
+        "ball": {
+          "x": 11.6,
+          "y": 6,
+          "height": 1,
+          "arc": 3.5
+        },
+        "arrows": [
+          {
+            "id": "opslagbaan",
+            "kind": "ball",
+            "from": {
+              "x": -0.6,
+              "y": 1.7
+            },
+            "to": {
+              "x": 11.6,
+              "y": 6
+            }
+          }
+        ],
+        "caption": "Je hebt **5 seconden** na het fluitsignaal om te serveren. Op het moment dat je slaat, mag je de eindlijn niet raken. Daarna mag je gewoon het veld in lopen."
+      },
+      {
+        "id": "zelfde-server",
+        "durationMs": 1200,
+        "players": {
+          "A1": {
+            "x": -1.2,
+            "y": 1.2
+          },
+          "A2": {
+            "x": 5,
+            "y": 6
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": -0.6,
+          "y": 1.7,
+          "height": 1
+        },
+        "caption": "Elke rally levert een punt op. **Wint het serverende team de rally?** Dan serveert dezelfde speler opnieuw. Hier blijft A1 dus serveren."
+      },
+      {
+        "id": "wissel-server",
+        "durationMs": 1600,
+        "players": {
+          "A1": {
+            "x": 3.5,
+            "y": 2
+          },
+          "A2": {
+            "x": 3.5,
+            "y": 6
+          },
+          "B1": {
+            "x": 10,
+            "y": 3
+          },
+          "B2": {
+            "x": 17.2,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 16.6,
+          "y": 6.5,
+          "height": 1
+        },
+        "arrows": [
+          {
+            "id": "naar-opslag-b",
+            "kind": "run",
+            "from": {
+              "x": 12,
+              "y": 6
+            },
+            "to": {
+              "x": 16.6,
+              "y": 6
+            }
+          }
+        ],
+        "caption": "**Wint het ontvangende team de rally?** Dan krijgt dat team de opslag. De speler die de vorige keer *niet* serveerde, is nu aan de beurt. Die volgorde ligt vast; verder is er geen rotatie."
+      },
+      {
+        "id": "telling",
+        "durationMs": 600,
+        "players": {
+          "A1": {
+            "x": 3.5,
+            "y": 2
+          },
+          "A2": {
+            "x": 3.5,
+            "y": 6
+          },
+          "B1": {
+            "x": 10,
+            "y": 3
+          },
+          "B2": {
+            "x": 17.2,
+            "y": 6
+          }
+        },
+        "ball": {
+          "x": 16.6,
+          "y": 6.5,
+          "height": 1
+        },
+        "caption": "Wie als eerste **2 sets** wint, wint de wedstrijd. Een set gaat tot **21 punten**, een derde set tot **15**, altijd met 2 punten verschil. Je wisselt van kant na elke **7 punten** samen, in de derde set na elke **5**."
+      }
+    ]
+  }
+}

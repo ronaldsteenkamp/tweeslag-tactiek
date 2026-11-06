@@ -1,31 +1,24 @@
-import { useSyncExternalStore } from "react";
 import { branding } from "../config/branding";
-import type { Orientation } from "../domain/geometry";
-import { useBoardStore } from "../features/court/boardStore";
-import { Court } from "../features/court/Court";
+import { findLesson } from "../content";
+import { BoardPage } from "../features/court/BoardPage";
+import { LessonPlayer } from "../features/lessons/LessonPlayer";
+import { LessonsOverview } from "../features/lessons/LessonsOverview";
 import { t } from "../i18n";
 import styles from "./App.module.css";
+import { parseRoute, paths, useHash, type Route } from "./router";
 
-const portraitQuery = window.matchMedia("(orientation: portrait)");
-
-function subscribeToOrientation(onChange: () => void) {
-  portraitQuery.addEventListener("change", onChange);
-  return () => portraitQuery.removeEventListener("change", onChange);
-}
-
-function useOrientation(): Orientation {
-  const isPortrait = useSyncExternalStore(
-    subscribeToOrientation,
-    () => portraitQuery.matches,
-  );
-  return isPortrait ? "portrait" : "landscape";
+function Page({ route }: { route: Route }) {
+  if (route.name === "board") return <BoardPage />;
+  if (route.name === "lesson") {
+    const lesson = findLesson(route.id);
+    if (lesson) return <LessonPlayer key={lesson.id} lesson={lesson} />;
+  }
+  return <LessonsOverview />;
 }
 
 export function App() {
-  const orientation = useOrientation();
-  const flipped = useBoardStore((state) => state.flipped);
-  const reset = useBoardStore((state) => state.reset);
-  const toggleFlipped = useBoardStore((state) => state.toggleFlipped);
+  const route = parseRoute(useHash());
+  const onBoard = route.name === "board";
 
   return (
     <div className={styles.shell}>
@@ -37,41 +30,30 @@ export function App() {
           width={36}
           height={36}
         />
-        <div>
-          <h1 className={styles.title}>{branding.appName}</h1>
+        <div className={styles.brand}>
+          <p className={styles.title}>{branding.appName}</p>
           <p className={styles.tagline}>{t("app.tagline")}</p>
         </div>
+        <nav className={styles.nav} aria-label={t("nav.label")}>
+          <a
+            className={styles.navLink}
+            href={paths.lessons}
+            aria-current={onBoard ? undefined : "page"}
+          >
+            {t("nav.lessons")}
+          </a>
+          <a
+            className={styles.navLink}
+            href={paths.board}
+            aria-current={onBoard ? "page" : undefined}
+          >
+            {t("nav.board")}
+          </a>
+        </nav>
       </header>
 
       <main className={styles.main}>
-        <div className={styles.field}>
-          <Court view={{ orientation, flipped }} />
-        </div>
-        <div className={styles.panel}>
-          <p className={styles.hint}>{t("court.hint")}</p>
-          <ul className={styles.legend}>
-            <li>
-              <span className={styles.legendA} aria-hidden="true" />{" "}
-              {t("court.teamA")}
-            </li>
-            <li>
-              <span className={styles.legendB} aria-hidden="true" />{" "}
-              {t("court.teamB")}
-            </li>
-          </ul>
-          <div className={styles.actions}>
-            <button className={styles.button} type="button" onClick={reset}>
-              {t("court.reset")}
-            </button>
-            <button
-              className={styles.button}
-              type="button"
-              onClick={toggleFlipped}
-            >
-              {t("court.flip")}
-            </button>
-          </div>
-        </div>
+        <Page route={route} />
       </main>
     </div>
   );

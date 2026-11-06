@@ -1,0 +1,96 @@
+.layout {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.field {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  background: var(--color-sand-outer);
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface);
+}
+
+.hint {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm);
+}
+
+.legend {
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-sm);
+}
+
+.legend li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.legendA,
+.legendB {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+}
+
+.legendA {
+  border-radius: 50%;
+  background: var(--color-team-a);
+}
+
+.legendB {
+  border-radius: 2px;
+  background: var(--color-team-b);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.button {
+  flex: 1;
+  min-height: var(--tap-target);
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (orientation: landscape) {
+  .layout {
+    flex-direction: row;
+  }
+
+  .panel {
+    flex: 0 0 16rem;
+    overflow-y: auto;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .button {
+    flex: none;
+  }
+}

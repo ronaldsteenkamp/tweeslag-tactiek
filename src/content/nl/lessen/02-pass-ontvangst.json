@@ -1,0 +1,169 @@
+{
+  "id": "pass-ontvangst",
+  "order": 2,
+  "status": "concept",
+  "scenario": {
+    "id": "pass-ontvangst",
+    "title": "Pass-ontvangst",
+    "description": "Zo verdeel je het veld, neem je de middenbal en praat je met je partner.",
+    "tags": ["pass", "ontvangst", "communicatie"],
+    "level": "beginner",
+    "players": [
+      { "id": "A1", "team": "A", "label": "A1", "role": "receiver" },
+      { "id": "A2", "team": "A", "label": "A2", "role": "receiver" },
+      { "id": "B1", "team": "B", "label": "B1", "role": "server" },
+      { "id": "B2", "team": "B", "label": "B2" }
+    ],
+    "keyframes": [
+      {
+        "id": "verdelen",
+        "durationMs": 0,
+        "players": {
+          "A1": { "x": 3.5, "y": 2 },
+          "A2": { "x": 3.5, "y": 6 },
+          "B1": { "x": 17.2, "y": 2 },
+          "B2": { "x": 9.5, "y": 5 }
+        },
+        "ball": { "x": 16.6, "y": 2.5, "height": 1 },
+        "zones": [
+          {
+            "id": "helft-a1",
+            "kind": "cover",
+            "polygon": [
+              { "x": 0, "y": 0 },
+              { "x": 8, "y": 0 },
+              { "x": 8, "y": 4 },
+              { "x": 0, "y": 4 }
+            ]
+          },
+          {
+            "id": "helft-a2",
+            "kind": "target",
+            "polygon": [
+              { "x": 0, "y": 4 },
+              { "x": 8, "y": 4 },
+              { "x": 8, "y": 8 },
+              { "x": 0, "y": 8 }
+            ]
+          }
+        ],
+        "caption": "Bij de ontvangst verdeel je je helft in tweeën: ieder neemt ongeveer de **helft van de breedte**. Sta niet op de eindlijn: naar voren bewegen gaat makkelijker dan naar achteren."
+      },
+      {
+        "id": "mijn",
+        "durationMs": 1500,
+        "players": {
+          "A1": { "x": 4.3, "y": 1.6 },
+          "A2": { "x": 4, "y": 5.5 },
+          "B1": { "x": 16.5, "y": 3 },
+          "B2": { "x": 10, "y": 4 }
+        },
+        "ball": { "x": 4.8, "y": 1.9, "height": 0.8, "arc": 3.5 },
+        "arrows": [
+          {
+            "id": "opslagbaan",
+            "kind": "ball",
+            "from": { "x": 16.6, "y": 2.5 },
+            "to": { "x": 4.8, "y": 1.9 }
+          }
+        ],
+        "caption": "Komt de bal op jouw helft, dan is hij van jou. Roep zo vroeg mogelijk **“mijn!”**, zodat je partner meteen weet wat er gebeurt."
+      },
+      {
+        "id": "pass",
+        "durationMs": 1200,
+        "players": {
+          "A1": { "x": 4.3, "y": 1.6 },
+          "A2": { "x": 6, "y": 4.3 },
+          "B1": { "x": 13, "y": 3 },
+          "B2": { "x": 9, "y": 4 }
+        },
+        "ball": { "x": 6.2, "y": 3.9, "height": 3, "arc": 1.5 },
+        "arrows": [
+          {
+            "id": "passbaan",
+            "kind": "ball",
+            "from": { "x": 4.8, "y": 1.9 },
+            "to": { "x": 6.2, "y": 3.9 }
+          },
+          {
+            "id": "partner-loopt",
+            "kind": "run",
+            "from": { "x": 4, "y": 5.5 },
+            "to": { "x": 5.8, "y": 4.5 }
+          }
+        ],
+        "caption": "Pass de bal **hoog en naar het midden**, een stukje van het net af. Zo heeft je partner tijd om onder de bal te komen. Je partner loopt daar meteen heen."
+      },
+      {
+        "id": "middenbal",
+        "durationMs": 1600,
+        "players": {
+          "A1": { "x": 3.5, "y": 2 },
+          "A2": { "x": 3.5, "y": 6 },
+          "B1": { "x": 17.2, "y": 2 },
+          "B2": { "x": 9.5, "y": 5 }
+        },
+        "ball": { "x": 16.6, "y": 2.5, "height": 1 },
+        "zones": [
+          {
+            "id": "midden",
+            "kind": "blocked",
+            "label": "Middenbal",
+            "polygon": [
+              { "x": 0, "y": 3 },
+              { "x": 8, "y": 3 },
+              { "x": 8, "y": 5 },
+              { "x": 0, "y": 5 }
+            ]
+          }
+        ],
+        "caption": "De lastigste opslag komt precies **tussen jullie in**. Spreek daarom **vóór de rally** af wie de middenbal neemt. Wat jullie ook kiezen: houd je er allebei aan."
+      },
+      {
+        "id": "een-speler",
+        "durationMs": 1600,
+        "players": {
+          "A1": { "x": 5.3, "y": 2.4 },
+          "A2": { "x": 3.9, "y": 4.3 },
+          "B1": { "x": 16.5, "y": 3 },
+          "B2": { "x": 10, "y": 4 }
+        },
+        "ball": { "x": 4.5, "y": 4, "height": 0.8, "arc": 3.5 },
+        "arrows": [
+          {
+            "id": "opslag-midden",
+            "kind": "ball",
+            "from": { "x": 16.6, "y": 2.5 },
+            "to": { "x": 4.5, "y": 4 }
+          },
+          {
+            "id": "a2-naar-bal",
+            "kind": "run",
+            "from": { "x": 3.5, "y": 6 },
+            "to": { "x": 3.9, "y": 4.5 }
+          },
+          {
+            "id": "a1-maakt-ruimte",
+            "kind": "run",
+            "from": { "x": 3.5, "y": 2 },
+            "to": { "x": 5.2, "y": 2.4 }
+          }
+        ],
+        "caption": "In dit voorbeeld neemt A2 de middenbal en roept **“mijn!”**. A1 maakt ruimte en beweegt alvast richting net om de volgende bal te spelen. **Nooit allebei** naar de bal, en nooit allebei laten vallen."
+      },
+      {
+        "id": "praten",
+        "durationMs": 800,
+        "players": {
+          "A1": { "x": 3.5, "y": 2 },
+          "A2": { "x": 3.5, "y": 6 },
+          "B1": { "x": 17.2, "y": 2 },
+          "B2": { "x": 9.5, "y": 5 }
+        },
+        "ball": { "x": 16.6, "y": 2.5, "height": 1 },
+        "caption": "Blijf praten. **Vóór de opslag**: wie neemt de middenbal? **Tijdens de rally**: “mijn!”. Gaat een bal over de lijn, help je partner dan met **“uit!”**."
+      }
+    ]
+  }
+}

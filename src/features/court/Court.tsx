@@ -6,9 +6,7 @@ import {
   type PointerEvent,
 } from "react";
 import {
-  COURT,
   metersToSvg,
-  NET_X,
   nearestWithin,
   svgToMeters,
   UNITS_PER_METER,
@@ -20,9 +18,14 @@ import { BALL_ID, type Player, type Position } from "../../domain/types";
 import { t } from "../../i18n";
 import { PLAYERS, useBoardStore } from "./boardStore";
 import styles from "./Court.module.css";
+import {
+  BALL_RADIUS,
+  BallShape,
+  CourtSurface,
+  PLAYER_RADIUS,
+  PlayerShape,
+} from "./parts";
 
-const PLAYER_RADIUS = 0.5 * UNITS_PER_METER;
-const BALL_RADIUS = 0.3 * UNITS_PER_METER;
 /** Tikdoel in meters: op een telefoon van 360 px breed is dit ruim 44 px doorsnede. */
 const HIT_RADIUS_METERS = 0.9;
 const KEY_STEP_METERS = 0.5;
@@ -75,34 +78,6 @@ function keyToDirection(
   return { dx: target.x - origin.x, dy: target.y - origin.y };
 }
 
-function CourtLines({ view }: { view: CourtView }) {
-  const corner1 = metersToSvg({ x: 0, y: 0 }, view);
-  const corner2 = metersToSvg({ x: COURT.length, y: COURT.width }, view);
-  const net1 = metersToSvg({ x: NET_X, y: -0.5 }, view);
-  const net2 = metersToSvg({ x: NET_X, y: COURT.width + 0.5 }, view);
-
-  return (
-    <g aria-hidden="true">
-      <rect
-        className={styles.court}
-        x={Math.min(corner1.sx, corner2.sx)}
-        y={Math.min(corner1.sy, corner2.sy)}
-        width={Math.abs(corner2.sx - corner1.sx)}
-        height={Math.abs(corner2.sy - corner1.sy)}
-      />
-      <line
-        className={styles.net}
-        x1={net1.sx}
-        y1={net1.sy}
-        x2={net2.sx}
-        y2={net2.sy}
-      />
-      <circle className={styles.post} cx={net1.sx} cy={net1.sy} r={12} />
-      <circle className={styles.post} cx={net2.sx} cy={net2.sy} r={12} />
-    </g>
-  );
-}
-
 function useTokenPosition(id: string): Position {
   const position = useBoardStore((state) => state.positions[id]);
   if (!position) throw new Error(`Onbekend item op het veld: ${id}`);
@@ -137,21 +112,7 @@ const PlayerToken = memo(function PlayerToken({
     >
       <circle className={styles.hit} r={HIT_RADIUS_METERS * UNITS_PER_METER} />
       <circle className={styles.focus} r={PLAYER_RADIUS + 22} />
-      {player.team === "A" ? (
-        <circle className={styles.teamA} r={PLAYER_RADIUS} />
-      ) : (
-        <rect
-          className={styles.teamB}
-          x={-PLAYER_RADIUS * 0.9}
-          y={-PLAYER_RADIUS * 0.9}
-          width={PLAYER_RADIUS * 1.8}
-          height={PLAYER_RADIUS * 1.8}
-          rx={10}
-        />
-      )}
-      <text className={styles.tokenLabel} dy="0.36em" aria-hidden="true">
-        {player.label}
-      </text>
+      <PlayerShape player={player} />
     </g>
   );
 });
@@ -176,20 +137,7 @@ const BallToken = memo(function BallToken({ view }: { view: CourtView }) {
     >
       <circle className={styles.hit} r={HIT_RADIUS_METERS * UNITS_PER_METER} />
       <circle className={styles.focus} r={BALL_RADIUS + 22} />
-      <ellipse
-        className={styles.ballShadow}
-        cx={8}
-        cy={14}
-        rx={BALL_RADIUS}
-        ry={BALL_RADIUS * 0.8}
-      />
-      <circle className={styles.ball} r={BALL_RADIUS} />
-      <path
-        className={styles.ballSeam}
-        d={`M ${-BALL_RADIUS} 0 Q 0 ${-BALL_RADIUS * 0.7} ${BALL_RADIUS} 0 M 0 ${-BALL_RADIUS} Q ${
-          BALL_RADIUS * 0.7
-        } 0 0 ${BALL_RADIUS}`}
-      />
+      <BallShape />
     </g>
   );
 });
@@ -295,8 +243,7 @@ export function Court({ view }: { view: CourtView }) {
       onPointerCancel={handlePointerCancel}
       onKeyDown={handleKeyDown}
     >
-      <rect className={styles.sand} width={width} height={height} />
-      <CourtLines view={view} />
+      <CourtSurface view={view} />
       {PLAYERS.map((player) => (
         <PlayerToken key={player.id} player={player} view={view} />
       ))}

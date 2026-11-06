@@ -20,7 +20,7 @@ async function dragWithMouse(
 }
 
 test.beforeEach(async ({ page }) => {
-  await page.goto("./");
+  await page.goto("./#/bord");
   await expect(page.getByTestId("court")).toBeVisible();
 });
 
