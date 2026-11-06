@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./app/App";
 import { branding } from "./config/branding";
+import "./features/install/installPrompt";
 import "./styles/global.css";
 
 document.documentElement.style.setProperty(

@@ -2,6 +2,7 @@ import { paths } from "../../app/router";
 import { lessons } from "../../content";
 import { estimateMinutes } from "../../domain/interpolate";
 import { t } from "../../i18n";
+import { InstallBanner } from "../install/InstallBanner";
 import {
   lessonStatus,
   useProgressStore,
@@ -34,6 +35,7 @@ export function LessonsOverview() {
     <div className={styles.page}>
       <h1 className={styles.heading}>{t("lessons.heading")}</h1>
       <p className={styles.intro}>{t("lessons.intro")}</p>
+      <InstallBanner />
       <p className={styles.summary} data-testid="lessons-summary">
         {t("lessons.summary", { done: doneCount, total: lessons.length })}
       </p>

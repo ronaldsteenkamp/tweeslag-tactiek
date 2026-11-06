@@ -30,6 +30,18 @@ test("het manifest voldoet aan de eisen om te installeren", async ({
     const response = await request.get(new URL(icon.src, manifestUrl).href);
     expect(response.ok(), icon.src).toBe(true);
   }
+
+  expect(manifest.id).toBe("/tweeslag-tactiek/");
+  expect(manifest.shortcuts).toHaveLength(3);
+  const factors = manifest.screenshots.map(
+    (shot: { form_factor: string }) => shot.form_factor,
+  );
+  expect(factors).toContain("narrow");
+  expect(factors).toContain("wide");
+  for (const shot of manifest.screenshots as { src: string }[]) {
+    const response = await request.get(new URL(shot.src, manifestUrl).href);
+    expect(response.ok(), shot.src).toBe(true);
+  }
 });
 
 test("de hele app werkt offline na het eerste bezoek", async ({
@@ -79,4 +91,41 @@ test("een gedeelde link opent ook offline", async ({ page, context }) => {
   await page.reload();
   await expect(page.getByText(/Gedeeld scenario:/)).toBeVisible();
   await context.setOffline(false);
+});
+
+test("zonder browservoorstel toont de knop de uitleg", async ({ page }) => {
+  await page.goto("./");
+  await page.getByRole("button", { name: "Installeren" }).click();
+  await expect(page.getByRole("dialog")).toContainText("Zet op beginscherm");
+});
+
+test("de knop gebruikt het voorstel van de browser", async ({ page }) => {
+  await page.goto("./");
+  await page.evaluate(() => {
+    const event = new Event("beforeinstallprompt", { cancelable: true });
+    Object.assign(event, {
+      prompt: async () => {
+        document.body.dataset.prompted = "ja";
+      },
+      userChoice: Promise.resolve({ outcome: "accepted" }),
+    });
+    window.dispatchEvent(event);
+  });
+  await page.getByRole("button", { name: "Installeren" }).click();
+  await expect(page.locator("body")).toHaveAttribute("data-prompted", "ja");
+  await expect(page.getByRole("button", { name: "Installeren" })).toBeHidden();
+  await expect(page.getByRole("dialog")).toHaveCount(0);
+});
+
+test("in de geïnstalleerde app staat geen installatieknop", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(navigator, "standalone", { value: true });
+  });
+  await page.goto("./");
+  await expect(page.getByRole("heading", { name: "Lessen" })).toBeVisible();
+  await expect(page.getByRole("button", { name: "Installeren" })).toHaveCount(
+    0,
+  );
 });

@@ -9,6 +9,12 @@ De app is installeerbaar (PWA) en werkt offline, handig naast het veld. Er is ge
 
 Live: <https://ronaldsteenkamp.github.io/tweeslag-tactiek/>
 
+## Installeren
+
+Open de link en tik op **Installeren** in het lessenoverzicht. Op een iPhone kan dat alleen via Safari: deelknop en dan _Zet op beginscherm_. Daarna staat de app op je beginscherm, opent hij zonder browserbalk en werkt hij offline.
+
+De schermafbeeldingen in het installatievenster staan in `public/screenshots/`.
+
 ## Lokaal draaien
 
 Je hebt Node.js 24 of nieuwer nodig.

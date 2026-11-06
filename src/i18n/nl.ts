@@ -115,6 +115,21 @@ export const nl = {
   "shared.errorTooLarge": "Deze link is te lang om te openen.",
   "shared.errorVersion":
     "Deze link is gemaakt met een andere versie van de app. Werk de app bij en probeer het opnieuw.",
+  "install.title": "Installeer de app",
+  "install.text": "Op je beginscherm en ook zonder internet.",
+  "install.button": "Installeren",
+  "install.helpTitle": "De app installeren",
+  "install.helpIntro":
+    "Je browser kan de app niet zelf installeren. Met deze stappen zet je hem op je toestel.",
+  "install.iphone": "iPhone en iPad",
+  "install.iphoneSteps":
+    "Open deze pagina in Safari. Tik op de deelknop en kies Zet op beginscherm.",
+  "install.android": "Android",
+  "install.androidSteps":
+    "Open deze pagina in Chrome. Tik op de drie puntjes en kies App installeren of Toevoegen aan startscherm.",
+  "install.computer": "Computer",
+  "install.computerSteps":
+    "Open deze pagina in Chrome of Edge en klik op het installatie-icoon in de adresbalk.",
   "rules.heading": "Spelregels",
   "rules.intro":
     "Een samenvatting van de regels die je in het spel nodig hebt. De nummers verwijzen naar de officiële FIVB-regels. Op een toernooi kan de organisator afwijken.",
