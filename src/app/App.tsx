@@ -1,10 +1,11 @@
 import { branding } from "../config/branding";
 import { findLesson } from "../content";
-import { BoardPage } from "../features/court/BoardPage";
+import { BoardPage } from "../features/board/BoardPage";
 import { LessonPlayer } from "../features/lessons/LessonPlayer";
 import { LessonQuiz } from "../features/lessons/LessonQuiz";
 import { LessonsOverview } from "../features/lessons/LessonsOverview";
 import { RulesPage } from "../features/rules/RulesPage";
+import { SharedPage } from "../features/share/SharedPage";
 import { t } from "../i18n";
 import styles from "./App.module.css";
 import { parseRoute, paths, useHash, type Route } from "./router";
@@ -12,6 +13,9 @@ import { parseRoute, paths, useHash, type Route } from "./router";
 function Page({ route }: { route: Route }) {
   if (route.name === "board") return <BoardPage />;
   if (route.name === "rules") return <RulesPage />;
+  if (route.name === "shared") {
+    return <SharedPage key={route.data} data={route.data} />;
+  }
   if (route.name === "lesson" || route.name === "quiz") {
     const lesson = findLesson(route.id);
     if (lesson && route.name === "quiz") {

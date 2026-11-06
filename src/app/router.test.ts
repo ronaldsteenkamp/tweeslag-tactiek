@@ -17,6 +17,13 @@ describe("parseRoute", () => {
     expect(parseRoute("#/les/pass/quiz")).toEqual({ name: "quiz", id: "pass" });
   });
 
+  it("herkent een gedeelde link", () => {
+    expect(parseRoute("#/s/abc+-$")).toEqual({
+      name: "shared",
+      data: "abc+-$",
+    });
+  });
+
   it("valt bij onbekende paden terug op het overzicht", () => {
     expect(parseRoute("#/onzin")).toEqual({ name: "lessons" });
     expect(parseRoute("#/les/")).toEqual({ name: "lessons" });

@@ -371,11 +371,11 @@
       "kind": "choice",
       "prompt": "Je partner houdt de **linkerhand** op met **{signaal.lijn}**. Wat betekent dat?",
       "options": [
-        "Blok lijn tegen de aanvaller links",
         "Blok hoek tegen de aanvaller links",
-        "Blok lijn tegen de aanvaller rechts"
+        "Blok lijn tegen de aanvaller rechts",
+        "Blok lijn tegen de aanvaller links"
       ],
-      "correct": 0,
+      "correct": 2,
       "explanation": "De hand zegt om welke aanvaller het gaat, de vingers wat de blokker doet."
     },
     {
@@ -383,11 +383,11 @@
       "kind": "choice",
       "prompt": "Waarom geef je het signaal achter je rug?",
       "options": [
+        "Zodat de scheidsrechter het kan controleren",
         "Zodat je partner het ziet en de tegenstander niet",
-        "Omdat de regels dat verplichten",
-        "Zodat de scheidsrechter het kan controleren"
+        "Omdat de regels dat verplichten"
       ],
-      "correct": 0,
+      "correct": 1,
       "explanation": "Het is een tactische afspraak, geen regel: de tegenstander mag niet weten wat je van plan bent."
     }
   ]

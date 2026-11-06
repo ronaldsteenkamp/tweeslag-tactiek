@@ -5,6 +5,7 @@ export type Route =
   | { name: "lesson"; id: string }
   | { name: "quiz"; id: string }
   | { name: "rules" }
+  | { name: "shared"; data: string }
   | { name: "board" };
 
 export function parseRoute(hash: string): Route {
@@ -12,6 +13,7 @@ export function parseRoute(hash: string): Route {
   const [section, id, part] = path.split("/");
   if (section === "bord") return { name: "board" };
   if (section === "regels") return { name: "rules" };
+  if (section === "s") return { name: "shared", data: id ?? "" };
   if (section === "les" && id) {
     return part === "quiz" ? { name: "quiz", id } : { name: "lesson", id };
   }

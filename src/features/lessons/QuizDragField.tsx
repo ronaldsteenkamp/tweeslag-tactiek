@@ -1,5 +1,6 @@
 import {
   clampToArea,
+  formatMeters,
   metersToSvg,
   UNITS_PER_METER,
   viewBoxSize,
@@ -7,7 +8,6 @@ import {
 } from "../../domain/geometry";
 import type { DragQuestion, Player, Position } from "../../domain/schema";
 import { t } from "../../i18n";
-import { formatMeters } from "../court/Court";
 import styles from "../court/Court.module.css";
 import {
   BallShape,

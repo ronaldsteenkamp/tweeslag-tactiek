@@ -9,10 +9,10 @@ export type Speed = (typeof SPEEDS)[number];
 /** paused: stil. step: één overgang en dan stoppen. play: alle stappen achter elkaar. */
 type Mode = "paused" | "step" | "play";
 
-export function useStepPlayer(keyframes: Keyframe[]) {
+export function useStepPlayer(keyframes: Keyframe[], autoPlay = false) {
   const [step, setStep] = useState(0);
   const [progress, setProgressState] = useState(1);
-  const [mode, setMode] = useState<Mode>("paused");
+  const [mode, setMode] = useState<Mode>(autoPlay ? "play" : "paused");
   const [speed, setSpeed] = useState<Speed>(1);
   const reducedMotion = useReducedMotion();
 

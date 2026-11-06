@@ -28,7 +28,7 @@ interface Drag {
   start: Position;
 }
 
-function clientToMeters(
+export function clientToMeters(
   svg: SVGSVGElement,
   clientX: number,
   clientY: number,
@@ -75,10 +75,17 @@ interface TokenDragOptions {
   /** De items die versleept mogen worden, met hun huidige positie. */
   getPositions: () => Record<string, Position>;
   onMove: (id: string, position: Position) => void;
+  /** Een sleepbeweging of toetsaanslag is afgerond. */
+  onEnd?: () => void;
 }
 
 /** Slepen met muis, vinger en pen, en verplaatsen met de pijltjestoetsen. */
-export function useTokenDrag({ view, getPositions, onMove }: TokenDragOptions) {
+export function useTokenDrag({
+  view,
+  getPositions,
+  onMove,
+  onEnd,
+}: TokenDragOptions) {
   const svgRef = useRef<SVGSVGElement>(null);
   const dragRef = useRef<Drag | null>(null);
 
@@ -114,11 +121,12 @@ export function useTokenDrag({ view, getPositions, onMove }: TokenDragOptions) {
     return () => svg.removeEventListener("touchstart", blockScrollOnToken);
   }, []);
 
-  function onPointerDown(event: PointerEvent<SVGSVGElement>) {
-    if (dragRef.current || event.button !== 0) return;
+  /** Geeft true terug als er een item is opgepakt. */
+  function onPointerDown(event: PointerEvent<SVGSVGElement>): boolean {
+    if (dragRef.current || event.button !== 0) return false;
     const svg = event.currentTarget;
     const token = findToken(svg, event.clientX, event.clientY);
-    if (!token) return;
+    if (!token) return false;
     const { id, start, pointer } = token;
 
     event.preventDefault();
@@ -132,6 +140,7 @@ export function useTokenDrag({ view, getPositions, onMove }: TokenDragOptions) {
       offset: { x: start.x - pointer.x, y: start.y - pointer.y },
       start,
     };
+    return true;
   }
 
   function onPointerMove(event: PointerEvent<SVGSVGElement>) {
@@ -151,7 +160,9 @@ export function useTokenDrag({ view, getPositions, onMove }: TokenDragOptions) {
   }
 
   function onPointerUp(event: PointerEvent<SVGSVGElement>) {
-    if (dragRef.current?.pointerId === event.pointerId) dragRef.current = null;
+    if (dragRef.current?.pointerId !== event.pointerId) return;
+    dragRef.current = null;
+    onEnd?.();
   }
 
   function onPointerCancel(event: PointerEvent<SVGSVGElement>) {
@@ -159,6 +170,7 @@ export function useTokenDrag({ view, getPositions, onMove }: TokenDragOptions) {
     if (drag?.pointerId !== event.pointerId) return;
     onMove(drag.id, drag.start);
     dragRef.current = null;
+    onEnd?.();
   }
 
   function onKeyDown(event: KeyboardEvent<SVGSVGElement>) {
@@ -175,6 +187,7 @@ export function useTokenDrag({ view, getPositions, onMove }: TokenDragOptions) {
       x: current.x + direction.dx * step,
       y: current.y + direction.dy * step,
     });
+    onEnd?.();
   }
 
   return {

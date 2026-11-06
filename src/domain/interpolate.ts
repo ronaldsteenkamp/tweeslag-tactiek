@@ -57,10 +57,12 @@ export function frameAt(
 }
 
 const MIN_HOLD_MS = 2000;
+const EMPTY_HOLD_MS = 600;
 const HOLD_MS_PER_CHARACTER = 45;
 
 /** Leestijd bij automatisch afspelen. */
 export function holdMs(caption: string): number {
+  if (!caption) return EMPTY_HOLD_MS;
   return Math.max(MIN_HOLD_MS, caption.length * HOLD_MS_PER_CHARACTER);
 }
 

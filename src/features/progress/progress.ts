@@ -1,5 +1,6 @@
 import { z } from "zod";
 import { create } from "zustand";
+import { browserStorage } from "../storage";
 
 const STORAGE_KEY = "tweeslag-tactiek.voortgang.v1";
 
@@ -66,14 +67,6 @@ export function withQuizResult(
 export function lessonStatus(lesson: LessonProgress | undefined): LessonStatus {
   if (!lesson) return "new";
   return lesson.score === undefined ? "busy" : "done";
-}
-
-function browserStorage(): ProgressStorage | undefined {
-  try {
-    return window.localStorage;
-  } catch {
-    return undefined;
-  }
 }
 
 interface ProgressState {

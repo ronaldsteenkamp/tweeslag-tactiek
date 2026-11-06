@@ -76,6 +76,10 @@ export function clampToArea(position: Position): Position {
   };
 }
 
+export function formatMeters(value: number): string {
+  return value.toFixed(1).replace(".", ",");
+}
+
 export function distance(a: Position, b: Position): number {
   return Math.hypot(a.x - b.x, a.y - b.y);
 }

@@ -28,4 +28,6 @@ Huisstijl staat in `src/config/branding.ts` en `src/styles/tokens.css`.
 
 Lessen staan als JSON in `src/content/nl/lessen/` en de spelregels in `src/content/nl/regels.json`. De eigen bloksignalen van de vereniging stel je in via `src/config/vereniging.json`. Openstaande inhoudelijke vragen staan in `content/TWIJFELGEVALLEN.md`.
 
+Deellinks staan in de URL-hash (`#/s/...`) in een compact formaat; zie `src/domain/share.ts`.
+
 De volledige documentatie volgt in fase 5.

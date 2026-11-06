@@ -52,14 +52,7 @@
   stroke: none;
 }
 
-.token:focus-visible .dragHalo {
-  fill: none;
-  stroke: var(--color-focus);
-  stroke-width: 8;
-  stroke-dasharray: 18 14;
-}
-
-.focus {
+.token:focus-visible .focus {
   stroke: var(--color-focus);
   stroke-width: 10;
 }
@@ -162,4 +155,35 @@
 
 .markerShot {
   fill: var(--color-arrow-shot);
+}
+
+/* Op het bord is de hele SVG bewerkbaar en scrollt de pagina niet. */
+.boardSvg {
+  touch-action: none;
+}
+
+.boardSvg[data-tool="select"] [data-overlay] {
+  cursor: move;
+}
+
+.boardSvg:not([data-tool="select"]) {
+  cursor: crosshair;
+}
+
+.arrowHit {
+  stroke: transparent;
+  stroke-width: 70;
+  stroke-linecap: round;
+}
+
+[data-selected] polygon,
+[data-selected] line:not(.arrowHit) {
+  stroke: var(--color-focus);
+  stroke-width: 14;
+}
+
+.grid line {
+  stroke: var(--color-court-line);
+  stroke-width: 2;
+  opacity: 0.3;
 }

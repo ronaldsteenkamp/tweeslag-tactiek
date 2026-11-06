@@ -178,10 +178,15 @@ export const Overlays = memo(function Overlays({
   arrows = [],
   zones = [],
   view,
+  selectedId,
+  interactive = false,
 }: {
   arrows?: Arrow[];
   zones?: Zone[];
   view: CourtView;
+  selectedId?: string | null;
+  /** Op het tactiekbord zijn lijnen en zones te selecteren. */
+  interactive?: boolean;
 }) {
   return (
     <g aria-hidden="true" data-testid="overlays">
@@ -192,7 +197,11 @@ export const Overlays = memo(function Overlays({
           .map((point) => `${point.sx},${point.sy}`)
           .join(" ");
         return (
-          <g key={zone.id}>
+          <g
+            key={zone.id}
+            data-overlay={interactive ? zone.id : undefined}
+            data-selected={zone.id === selectedId || undefined}
+          >
             <polygon className={ZONE_STYLE[zone.kind]} points={points} />
             {zone.label ? (
               <text
@@ -211,15 +220,29 @@ export const Overlays = memo(function Overlays({
         const from = metersToSvg(arrow.from, view);
         const to = metersToSvg(arrowEnd(arrow), view);
         return (
-          <line
+          <g
             key={arrow.id}
-            className={ARROW_STYLE[arrow.kind]}
-            x1={from.sx}
-            y1={from.sy}
-            x2={to.sx}
-            y2={to.sy}
-            markerEnd={`url(#arrow-${arrow.kind})`}
-          />
+            data-overlay={interactive ? arrow.id : undefined}
+            data-selected={arrow.id === selectedId || undefined}
+          >
+            {interactive ? (
+              <line
+                className={styles.arrowHit}
+                x1={from.sx}
+                y1={from.sy}
+                x2={to.sx}
+                y2={to.sy}
+              />
+            ) : null}
+            <line
+              className={ARROW_STYLE[arrow.kind]}
+              x1={from.sx}
+              y1={from.sy}
+              x2={to.sx}
+              y2={to.sy}
+              markerEnd={`url(#arrow-${arrow.kind})`}
+            />
+          </g>
         );
       })}
     </g>
