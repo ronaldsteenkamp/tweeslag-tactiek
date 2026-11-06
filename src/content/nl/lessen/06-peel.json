@@ -318,6 +318,130 @@
       ],
       "tolerance": 0.5,
       "explanation": "A1 trekt terug van het net en neemt de kant van de lijn. A2 houdt de diagonaal."
+    },
+    {
+      "id": "freeze-peel",
+      "kind": "freeze",
+      "prompt": "De set zweeft ver van het net. Wat doet A1 nu?",
+      "scene": {
+        "alt": "B2 set de bal naar B1, ruim twee meter van het net. A1 staat aan het net tegenover B1. A2 staat achterin. Het beeld stopt voor de aanval.",
+        "keyframes": [
+          {
+            "id": "pass",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.5
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 10.4,
+                "y": 1.5
+              },
+              "B2": {
+                "x": 12,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 12,
+              "y": 4,
+              "height": 1.5
+            }
+          },
+          {
+            "id": "set",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 7.4,
+                "y": 1.5
+              },
+              "A2": {
+                "x": 3,
+                "y": 5
+              },
+              "B1": {
+                "x": 10.4,
+                "y": 1.5
+              },
+              "B2": {
+                "x": 12,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 10.2,
+              "y": 1.6,
+              "height": 3.4,
+              "arc": 2
+            }
+          }
+        ]
+      },
+      "options": [
+        "Springen voor het blok",
+        "Terugtrekken als tweede verdediger",
+        "Blijven staan aan het net"
+      ],
+      "correct": 1,
+      "explanation": "De set ligt ver van het net, dus een blok levert weinig op. A1 peelt en wordt tweede verdediger."
+    },
+    {
+      "id": "route-peel",
+      "kind": "route",
+      "prompt": "Teken de route van A1 bij een peel.",
+      "playerId": "A1",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.4,
+            "y": 1.5
+          },
+          "A2": {
+            "x": 3,
+            "y": 5
+          },
+          "B1": {
+            "x": 10.4,
+            "y": 1.5
+          },
+          "B2": {
+            "x": 12,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 10.2,
+          "y": 1.6,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 2.5,
+          "y": 0.3
+        },
+        {
+          "x": 6,
+          "y": 0.3
+        },
+        {
+          "x": 6,
+          "y": 3
+        },
+        {
+          "x": 2.5,
+          "y": 3
+        }
+      ],
+      "tolerance": 0.5,
+      "maxDetour": 1.5,
+      "explanation": "A1 loopt zo recht mogelijk van het net weg, want de aanval komt eraan. Elke omweg kost tijd."
     }
   ]
 }

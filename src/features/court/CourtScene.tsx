@@ -1,3 +1,4 @@
+import type { MouseEvent } from "react";
 import {
   facingAngle,
   metersToSvg,
@@ -5,7 +6,7 @@ import {
   type CourtView,
 } from "../../domain/geometry";
 import type { FrameState } from "../../domain/interpolate";
-import type { Arrow, Player, Zone } from "../../domain/schema";
+import type { Arrow, Player, Position, Zone } from "../../domain/schema";
 import { t } from "../../i18n";
 import styles from "./Court.module.css";
 import {
@@ -15,6 +16,7 @@ import {
   Overlays,
   PlayerShape,
 } from "./parts";
+import { clientToMeters, hitRadiusMeters } from "./useTokenDrag";
 
 interface CourtSceneProps {
   view: CourtView;
@@ -22,18 +24,30 @@ interface CourtSceneProps {
   frame: FrameState;
   arrows?: Arrow[];
   zones?: Zone[];
+  /**
+   * Tikken op het veld, met de plek in meters en het tikbereik. Alleen als extra: wie de muis
+   * niet gebruikt, kiest met de knoppen naast het veld.
+   */
+  onTap?: (point: Position, hitRadius: number) => void;
 }
 
-/** Het veld als afbeelding, zonder bediening. De uitleg staat in de tekst ernaast. */
+/** Het veld als afbeelding. De uitleg staat in de tekst ernaast. */
 export function CourtScene({
   view,
   players,
   frame,
   arrows,
   zones,
+  onTap,
 }: CourtSceneProps) {
   const { width, height } = viewBoxSize(view.orientation);
   const ball = metersToSvg(frame.ball, view);
+
+  function handleClick(event: MouseEvent<SVGSVGElement>) {
+    const svg = event.currentTarget;
+    const point = clientToMeters(svg, event.clientX, event.clientY, view);
+    if (point) onTap?.(point, hitRadiusMeters(svg));
+  }
 
   return (
     <svg
@@ -42,6 +56,7 @@ export function CourtScene({
       role="img"
       aria-label={t("court.title")}
       data-testid="scene"
+      {...(onTap ? { onClick: handleClick } : {})}
     >
       <OverlayDefs />
       <CourtSurface view={view} />

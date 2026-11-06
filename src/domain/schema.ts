@@ -94,14 +94,40 @@ export const scenarioSchema = z
     }
   });
 
+const questionBase = {
+  id: z.string().min(1),
+  prompt: z.string().min(1).max(200),
+  explanation: z.string().min(1).max(300),
+};
+
+const setupSchema = z.object({
+  players: z.record(z.string(), positionSchema),
+  ball: ballSchema,
+});
+
+const polygonSchema = z.array(positionSchema).min(3).max(12);
+/** Hoeveel meter naast de doelzone nog goed rekent. */
+const toleranceSchema = z.number().min(0).max(2);
+
+/** Een stap in een vraag. De uitleg is niet verplicht: die staat bij de vraag. */
+const sceneFrameSchema = keyframeSchema.extend({
+  caption: z.string().max(600).default(""),
+});
+
+function sceneSchema(minFrames: number) {
+  return z.object({
+    keyframes: z.array(sceneFrameSchema).min(minFrames).max(6),
+    /** Wat er gebeurt, in woorden, voor wie het veld niet kan zien. */
+    alt: z.string().min(1).max(300),
+  });
+}
+
 export const choiceQuestionSchema = z
   .object({
-    id: z.string().min(1),
+    ...questionBase,
     kind: z.literal("choice"),
-    prompt: z.string().min(1).max(200),
     options: z.array(z.string().min(1)).min(2).max(5),
     correct: z.number().int().min(0),
-    explanation: z.string().min(1).max(300),
   })
   .refine((question) => question.correct < question.options.length, {
     message: "correct moet naar een bestaande optie wijzen",
@@ -110,53 +136,193 @@ export const choiceQuestionSchema = z
 
 export const dragQuestionSchema = z
   .object({
-    id: z.string().min(1),
+    ...questionBase,
     kind: z.literal("drag"),
-    prompt: z.string().min(1).max(200),
     /** De speler die verplaatst moet worden. */
     playerId: z.string().min(1),
-    setup: z.object({
-      players: z.record(z.string(), positionSchema),
-      ball: ballSchema,
-    }),
+    setup: setupSchema,
     arrows: z.array(arrowSchema).optional(),
     zones: z.array(zoneSchema).optional(),
-    target: z.array(positionSchema).min(3).max(12),
-    /** Hoeveel meter naast de doelzone nog goed rekent. */
-    tolerance: z.number().min(0).max(2),
-    explanation: z.string().min(1).max(300),
+    target: polygonSchema,
+    tolerance: toleranceSchema,
   })
   .refine((question) => question.playerId in question.setup.players, {
     message: "playerId moet in de beginopstelling staan",
     path: ["playerId"],
   });
 
-export const quizQuestionSchema = z.union([
+const placementSchema = z.object({
+  playerId: z.string().min(1),
+  target: polygonSchema,
+  tolerance: toleranceSchema,
+});
+
+/** Meerdere spelers tegelijk plaatsen, elk met een eigen doelzone. */
+export const placeBothQuestionSchema = z
+  .object({
+    ...questionBase,
+    kind: z.literal("placeBoth"),
+    setup: setupSchema,
+    arrows: z.array(arrowSchema).optional(),
+    zones: z.array(zoneSchema).optional(),
+    targets: z.array(placementSchema).min(2).max(4),
+  })
+  .superRefine((question, context) => {
+    const ids = question.targets.map((target) => target.playerId);
+    if (new Set(ids).size !== ids.length) {
+      context.addIssue({
+        code: "custom",
+        path: ["targets"],
+        message: "Elke speler mag maar één doelzone hebben",
+      });
+    }
+    for (const id of ids) {
+      if (!(id in question.setup.players)) {
+        context.addIssue({
+          code: "custom",
+          path: ["targets"],
+          message: `${id} moet in de beginopstelling staan`,
+        });
+      }
+    }
+  });
+
+/** De animatie stopt op een beslissend moment; daarna kies je wat er moet gebeuren. */
+export const freezeQuestionSchema = z
+  .object({
+    ...questionBase,
+    kind: z.literal("freeze"),
+    scene: sceneSchema(2),
+    options: z.array(z.string().min(1)).min(2).max(4),
+    correct: z.number().int().min(0),
+  })
+  .refine((question) => question.correct < question.options.length, {
+    message: "correct moet naar een bestaande optie wijzen",
+    path: ["correct"],
+  });
+
+/** Teken de looproute van een speler. */
+export const routeQuestionSchema = z
+  .object({
+    ...questionBase,
+    kind: z.literal("route"),
+    playerId: z.string().min(1),
+    setup: setupSchema,
+    arrows: z.array(arrowSchema).optional(),
+    zones: z.array(zoneSchema).optional(),
+    target: polygonSchema,
+    tolerance: toleranceSchema,
+    /** Hoeveel keer de rechte lijn de route mag zijn. */
+    maxDetour: z.number().min(1).max(3),
+  })
+  .refine((question) => question.playerId in question.setup.players, {
+    message: "playerId moet in de beginopstelling staan",
+    path: ["playerId"],
+  });
+
+/** Iets om aan te tikken: een speler of een zone op het veld. */
+export const spotSchema = z
+  .object({
+    id: z.string().min(1),
+    label: z.string().min(1).max(40),
+    playerId: z.string().min(1).optional(),
+    polygon: polygonSchema.optional(),
+  })
+  .refine((spot) => (spot.playerId === undefined) !== !spot.polygon, {
+    message: "Een plek is een speler of een zone, niet allebei",
+  });
+
+/** Een situatie met een tactische fout; je tikt aan waar het misgaat. */
+export const spotErrorQuestionSchema = z
+  .object({
+    ...questionBase,
+    kind: z.literal("spotError"),
+    scene: sceneSchema(1),
+    spots: z.array(spotSchema).min(2).max(5),
+    /** Het id van de plek waar het misgaat. */
+    correct: z.string().min(1),
+  })
+  .refine(
+    (question) => question.spots.some((spot) => spot.id === question.correct),
+    {
+      message: "correct moet naar een bestaande plek wijzen",
+      path: ["correct"],
+    },
+  );
+
+/** Zet de stappen op volgorde. In het bestand staan ze in de goede volgorde. */
+export const orderQuestionSchema = z
+  .object({
+    ...questionBase,
+    kind: z.literal("order"),
+    items: z.array(z.string().min(1).max(100)).min(3).max(6),
+  })
+  .refine(
+    (question) => new Set(question.items).size === question.items.length,
+    {
+      message: "Elke stap moet anders zijn",
+      path: ["items"],
+    },
+  );
+
+export const quizQuestionSchema = z.discriminatedUnion("kind", [
   choiceQuestionSchema,
   dragQuestionSchema,
+  placeBothQuestionSchema,
+  freezeQuestionSchema,
+  routeQuestionSchema,
+  spotErrorQuestionSchema,
+  orderQuestionSchema,
 ]);
 
 export const NIVEAUS = ["basis", "gevorderd", "expert"] as const;
 
 const lessonIdSchema = z.string().regex(/^[a-z0-9-]+$/);
 
-export const lessonSchema = z.object({
-  id: lessonIdSchema,
-  order: z.number().int().min(1),
-  /** concept: nog niet inhoudelijk goedgekeurd door de vereniging. */
-  status: z.enum(["concept", "definitief"]),
-  niveau: z.enum(NIVEAUS),
-  /** Id's van lessen die eerst afgerond moeten zijn. */
-  vereisten: z.array(lessonIdSchema).max(6),
-  /** Geschatte duur van de les met quiz. */
-  duurMinuten: z.number().int().min(1).max(60),
-  /** Wat je na de les kunt, in korte zinnen. */
-  leerdoelen: z.array(z.string().min(1).max(120)).min(2).max(3),
-  /** Punten die de vereniging nog moet nakijken. JSON kent geen commentaar. */
-  teVerifieren: z.array(z.string().min(1).max(300)).max(20).optional(),
-  scenario: scenarioSchema,
-  quiz: z.array(quizQuestionSchema).min(1).max(10),
-});
+export const lessonSchema = z
+  .object({
+    id: lessonIdSchema,
+    order: z.number().int().min(1),
+    /** concept: nog niet inhoudelijk goedgekeurd door de vereniging. */
+    status: z.enum(["concept", "definitief"]),
+    niveau: z.enum(NIVEAUS),
+    /** Id's van lessen die eerst afgerond moeten zijn. */
+    vereisten: z.array(lessonIdSchema).max(6),
+    /** Geschatte duur van de les met quiz. */
+    duurMinuten: z.number().int().min(1).max(60),
+    /** Wat je na de les kunt, in korte zinnen. */
+    leerdoelen: z.array(z.string().min(1).max(120)).min(2).max(3),
+    /** Punten die de vereniging nog moet nakijken. JSON kent geen commentaar. */
+    teVerifieren: z.array(z.string().min(1).max(300)).max(20).optional(),
+    scenario: scenarioSchema,
+    quiz: z.array(quizQuestionSchema).min(1).max(10),
+  })
+  .superRefine((lesson, context) => {
+    const expected = lesson.scenario.players.map((player) => player.id);
+    lesson.quiz.forEach((question, index) => {
+      if (question.kind !== "freeze" && question.kind !== "spotError") return;
+      const path = ["quiz", index];
+      for (const frame of question.scene.keyframes) {
+        if (!expected.every((id) => id in frame.players)) {
+          context.addIssue({
+            code: "custom",
+            path,
+            message: `Stap ${frame.id} van ${question.id} mist een speler`,
+          });
+        }
+      }
+      if (question.kind !== "spotError") return;
+      for (const { playerId } of question.spots) {
+        if (playerId && !expected.includes(playerId)) {
+          context.addIssue({
+            code: "custom",
+            path,
+            message: `${question.id}: speler ${playerId} bestaat niet`,
+          });
+        }
+      }
+    });
+  });
 
 export type Position = z.infer<typeof positionSchema>;
 export type Player = z.infer<typeof playerSchema>;
@@ -168,6 +334,13 @@ export type Keyframe = z.infer<typeof keyframeSchema>;
 export type Scenario = z.infer<typeof scenarioSchema>;
 export type ChoiceQuestion = z.infer<typeof choiceQuestionSchema>;
 export type DragQuestion = z.infer<typeof dragQuestionSchema>;
+export type PlaceBothQuestion = z.infer<typeof placeBothQuestionSchema>;
+export type FreezeQuestion = z.infer<typeof freezeQuestionSchema>;
+export type RouteQuestion = z.infer<typeof routeQuestionSchema>;
+export type SpotErrorQuestion = z.infer<typeof spotErrorQuestionSchema>;
+export type OrderQuestion = z.infer<typeof orderQuestionSchema>;
+export type Spot = z.infer<typeof spotSchema>;
+export type Placement = z.infer<typeof placementSchema>;
 export type QuizQuestion = z.infer<typeof quizQuestionSchema>;
 export type Lesson = z.infer<typeof lessonSchema>;
 export type Niveau = Lesson["niveau"];

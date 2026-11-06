@@ -1,4 +1,5 @@
-import type { Position } from "./schema";
+import { COURT } from "./geometry";
+import type { Placement, Position, RouteQuestion, Spot } from "./schema";
 
 export function isInsidePolygon(point: Position, polygon: Position[]): boolean {
   let inside = false;
@@ -45,4 +46,128 @@ export function isInTarget(
     const next = polygon[(index + 1) % polygon.length] ?? corner;
     return distanceToSegment(point, corner, next) <= tolerance;
   });
+}
+
+/** De spelers die nog niet in hun doelzone staan. */
+export function misplacedPlayers(
+  positions: Record<string, Position>,
+  placements: Placement[],
+): string[] {
+  return placements
+    .filter(({ playerId, target, tolerance }) => {
+      const position = positions[playerId];
+      return !position || !isInTarget(position, target, tolerance);
+    })
+    .map(({ playerId }) => playerId);
+}
+
+/** Kleinere stapjes zijn trillingen van de hand, geen route. */
+const MIN_ROUTE_STEP_METERS = 0.2;
+/** Marge op de omweg, zodat een korte route met een bibberige hand ook kan. */
+const DETOUR_SLACK_METERS = 0.5;
+
+export function addRoutePoint(route: Position[], point: Position): Position[] {
+  const last = route[route.length - 1];
+  if (last && distance(last, point) < MIN_ROUTE_STEP_METERS) return route;
+  return [...route, point];
+}
+
+function distance(a: Position, b: Position): number {
+  return Math.hypot(a.x - b.x, a.y - b.y);
+}
+
+export function routeLength(route: Position[]): number {
+  return route.reduce((sum, point, index) => {
+    const previous = route[index - 1];
+    return previous ? sum + distance(previous, point) : sum;
+  }, 0);
+}
+
+export type RouteVerdict = "ok" | "net" | "end" | "detour";
+
+export function gradeRoute(
+  route: Position[],
+  question: Pick<RouteQuestion, "target" | "tolerance" | "maxDetour">,
+): RouteVerdict {
+  const start = route[0];
+  const end = route[route.length - 1];
+  if (!start || !end) return "end";
+
+  const netX = COURT.length / 2;
+  const startSide = Math.sign(start.x - netX);
+  if (route.some((point) => Math.sign(point.x - netX) === -startSide)) {
+    return "net";
+  }
+  if (!isInTarget(end, question.target, question.tolerance)) return "end";
+  const allowed = distance(start, end) * question.maxDetour;
+  return routeLength(route) > allowed + DETOUR_SLACK_METERS ? "detour" : "ok";
+}
+
+/** Het id van de plek op dit punt. Spelers gaan voor op zones. */
+export function spotAt(
+  point: Position,
+  spots: Spot[],
+  players: Record<string, Position>,
+  hitRadius: number,
+): string | null {
+  let nearest: { id: string; gap: number } | null = null;
+  for (const spot of spots) {
+    const position = spot.playerId ? players[spot.playerId] : undefined;
+    if (!position) continue;
+    const gap = distance(point, position);
+    if (gap <= hitRadius && (!nearest || gap < nearest.gap)) {
+      nearest = { id: spot.id, gap };
+    }
+  }
+  if (nearest) return nearest.id;
+  const zone = spots.find(
+    (spot) => spot.polygon && isInsidePolygon(point, spot.polygon),
+  );
+  return zone?.id ?? null;
+}
+
+function hash(text: string): number {
+  let value = 2166136261;
+  for (const character of text) {
+    value = Math.imul(value ^ (character.codePointAt(0) ?? 0), 16777619);
+  }
+  return value >>> 0;
+}
+
+/**
+ * Een vaste, door elkaar gehusselde volgorde van de indexen 0 tot count.
+ * Vast per vraag, zodat een uitleg of test ernaar kan verwijzen, en nooit al goed.
+ */
+export function shuffledOrder(count: number, seed: string): number[] {
+  const order = Array.from({ length: count }, (_, index) => index);
+  let state = hash(seed);
+  for (let index = count - 1; index > 0; index--) {
+    state = (Math.imul(state, 1664525) + 1013904223) >>> 0;
+    const other = state % (index + 1);
+    const current = order[index] as number;
+    order[index] = order[other] as number;
+    order[other] = current;
+  }
+  if (isInOrder(order)) order.push(order.shift() as number);
+  return order;
+}
+
+export function isInOrder(order: number[]): boolean {
+  return order.every((value, index) => value === index);
+}
+
+/** Verplaatst een item een plek omhoog (-1) of omlaag (1). */
+export function moveItem(
+  order: number[],
+  index: number,
+  delta: -1 | 1,
+): number[] {
+  const target = index + delta;
+  const moved = order[index];
+  const other = order[target];
+  if (moved === undefined || other === undefined) return order;
+  const next = [...order];
+  next[index] = other;
+  next[target] = moved;
+  return next;
 }

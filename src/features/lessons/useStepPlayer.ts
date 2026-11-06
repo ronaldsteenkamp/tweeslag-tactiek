@@ -4,8 +4,8 @@ import type { Keyframe } from "../../domain/schema";
 import { useReducedMotion } from "../court/media";
 
 /** Stappen door een scenario. Volgende laat de beweging zien; terugspringen gaat direct. */
-export function useStepPlayer(keyframes: Keyframe[]) {
-  const [step, setStep] = useState(0);
+export function useStepPlayer(keyframes: Keyframe[], startStep = 0) {
+  const [step, setStep] = useState(startStep);
   const [progress, setProgressState] = useState(1);
   const reducedMotion = useReducedMotion();
 
@@ -59,6 +59,7 @@ export function useStepPlayer(keyframes: Keyframe[]) {
     step,
     lastStep,
     keyframe,
+    moving,
     frame: frameAt(keyframes, step, progress),
     next,
     previous,

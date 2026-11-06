@@ -1,30 +1,5 @@
-import { expect, test, type Page } from "@playwright/test";
-
-async function dragTokenToMeters(page: Page, id: string, x: number, y: number) {
-  const token = page.getByTestId(`token-${id}`);
-  const box = await token.locator("circle").first().boundingBox();
-  if (!box) throw new Error("Token is niet zichtbaar");
-  const start = { x: box.x + box.width / 2, y: box.y + box.height / 2 };
-
-  // Reken het doel om met dezelfde matrix als de app gebruikt.
-  const target = await page.getByTestId("quiz-court").evaluate(
-    (svg: SVGSVGElement, meters) => {
-      const landscape = svg.viewBox.baseVal.width > svg.viewBox.baseVal.height;
-      const sx = landscape ? (meters.x + 3) * 100 : (meters.y + 3) * 100;
-      const sy = landscape ? (meters.y + 3) * 100 : (19 - meters.x) * 100;
-      const matrix = svg.getScreenCTM();
-      if (!matrix) throw new Error("Geen schermmatrix");
-      const point = new DOMPoint(sx, sy).matrixTransform(matrix);
-      return { x: point.x, y: point.y };
-    },
-    { x, y },
-  );
-
-  await page.mouse.move(start.x, start.y);
-  await page.mouse.down();
-  await page.mouse.move(target.x, target.y, { steps: 8 });
-  await page.mouse.up();
-}
+import { expect, test } from "@playwright/test";
+import { dragTokenToMeters } from "./helpers";
 
 test("op een lage telefoon is een token 22 px naast het midden te pakken", async ({
   page,

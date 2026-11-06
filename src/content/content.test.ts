@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { estimateMinutes } from "../domain/interpolate";
-import { isInTarget } from "../domain/quiz";
+import { isInTarget, misplacedPlayers } from "../domain/quiz";
 import { lessonGraphProblems } from "../domain/unlock";
 import { NIVEAUS } from "../domain/schema";
 import { applyClubTerms, lessons, rules } from "./index";
@@ -78,6 +78,42 @@ describe("lessen", () => {
           ).toBe(false);
         }
       }
+    }
+  });
+});
+
+describe("nieuwe vraagtypes", () => {
+  const questions = lessons.flatMap((lesson) => lesson.quiz);
+
+  it("beginnen plaatsvragen niet al goed", () => {
+    for (const question of questions) {
+      if (question.kind !== "placeBoth") continue;
+      expect(
+        misplacedPlayers(question.setup.players, question.targets).length,
+        question.id,
+      ).toBeGreaterThan(0);
+    }
+  });
+
+  it("beginnen routevragen buiten de doelzone", () => {
+    for (const question of questions) {
+      if (question.kind !== "route") continue;
+      const start = question.setup.players[question.playerId];
+      expect(start, question.id).toBeDefined();
+      if (start) {
+        expect(
+          isInTarget(start, question.target, question.tolerance),
+          question.id,
+        ).toBe(false);
+      }
+    }
+  });
+
+  it("hebben spots die niet op elkaar liggen", () => {
+    for (const question of questions) {
+      if (question.kind !== "spotError") continue;
+      const labels = question.spots.map((spot) => spot.label);
+      expect(new Set(labels).size, question.id).toBe(labels.length);
     }
   });
 });

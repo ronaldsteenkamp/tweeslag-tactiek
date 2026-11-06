@@ -1,5 +1,6 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
+import { skipQuestions } from "./helpers";
 
 const button = (page: Page, name: string) =>
   page.getByRole("button", { name, exact: true });
@@ -35,6 +36,39 @@ const screens: [string, string, ((page: Page) => Promise<void>)?][] = [
     "./#/les/bloksignalen/quiz",
     (page) => button(page, "De diagonaal").click(),
   ],
+  [
+    "beide spelers plaatsen",
+    "./#/les/verdedigen-met-blok/quiz",
+    (page) => skipQuestions(page, 3),
+  ],
+  [
+    "fout zoeken",
+    "./#/les/verdedigen-met-blok/quiz",
+    (page) => skipQuestions(page, 4),
+  ],
+  [
+    "feedback op fout zoeken",
+    "./#/les/verdedigen-met-blok/quiz",
+    async (page) => {
+      await skipQuestions(page, 4);
+      await button(page, "A1").click();
+    },
+  ],
+  [
+    "volgorde",
+    "./#/les/verdedigen-met-blok/quiz",
+    (page) => skipQuestions(page, 5),
+  ],
+  [
+    "feedback op volgorde",
+    "./#/les/verdedigen-met-blok/quiz",
+    async (page) => {
+      await skipQuestions(page, 5);
+      await button(page, "Controleer").click();
+    },
+  ],
+  ["freeze frame", "./#/les/peel/quiz", (page) => skipQuestions(page, 2)],
+  ["looplijn", "./#/les/peel/quiz", (page) => skipQuestions(page, 3)],
   ["regels", "./#/regels"],
   ["tactiekbord", "./#/bord"],
   ["menu", "./#/bord", (page) => button(page, "Menu").click()],

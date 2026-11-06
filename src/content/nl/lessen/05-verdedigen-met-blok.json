@@ -556,6 +556,193 @@
       ],
       "correct": 1,
       "explanation": "De korte diagonaal ligt voor de verdediger en naast het blok. Daar is niemand."
+    },
+    {
+      "id": "blok-lijn-beide",
+      "kind": "placeBoth",
+      "prompt": "B1 krijgt de set aan het net. Jullie spelen **blok lijn**. Zet A1 en A2 goed neer.",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 5,
+            "y": 3
+          },
+          "A2": {
+            "x": 6.5,
+            "y": 2
+          },
+          "B1": {
+            "x": 9,
+            "y": 1.2
+          },
+          "B2": {
+            "x": 10.5,
+            "y": 4
+          }
+        },
+        "ball": {
+          "x": 8.6,
+          "y": 1.4,
+          "height": 3.4
+        }
+      },
+      "targets": [
+        {
+          "playerId": "A1",
+          "target": [
+            {
+              "x": 6.8,
+              "y": 0.2
+            },
+            {
+              "x": 7.9,
+              "y": 0.2
+            },
+            {
+              "x": 7.9,
+              "y": 2
+            },
+            {
+              "x": 6.8,
+              "y": 2
+            }
+          ],
+          "tolerance": 0.3
+        },
+        {
+          "playerId": "A2",
+          "target": [
+            {
+              "x": 0.5,
+              "y": 3.5
+            },
+            {
+              "x": 5,
+              "y": 3.5
+            },
+            {
+              "x": 5,
+              "y": 7.5
+            },
+            {
+              "x": 0.5,
+              "y": 7.5
+            }
+          ],
+          "tolerance": 0.4
+        }
+      ],
+      "explanation": "A1 staat aan het net tegenover de aanvaller en sluit de lijn af. A2 verdedigt de diagonaal, waar de harde aanval heen moet."
+    },
+    {
+      "id": "fout-blok-lijn",
+      "kind": "spotError",
+      "prompt": "Jullie hadden **blok lijn** afgesproken. Waar gaat het mis?",
+      "scene": {
+        "alt": "A1 blokt de lijn aan het net. A2 staat achterin langs dezelfde lijn. De diagonaal is leeg en B1 slaat daar de bal in.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 1.6
+              },
+              "B1": {
+                "x": 9,
+                "y": 1.2
+              },
+              "B2": {
+                "x": 10.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.6,
+              "y": 1.4,
+              "height": 3.4
+            }
+          },
+          {
+            "id": "aanval",
+            "durationMs": 1000,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 1.6
+              },
+              "B1": {
+                "x": 9,
+                "y": 1.2
+              },
+              "B2": {
+                "x": 10.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 3.2,
+              "y": 5.6,
+              "height": 0.3
+            },
+            "arrows": [
+              {
+                "id": "aanval",
+                "kind": "shot",
+                "from": {
+                  "x": 8.6,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 3.2,
+                  "y": 5.6
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "spots": [
+        {
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
+        },
+        {
+          "id": "b1",
+          "label": "B1",
+          "playerId": "B1"
+        }
+      ],
+      "correct": "a2",
+      "explanation": "A2 staat achter het blok op de lijn, die A1 al afsluit. Bij blok lijn hoort A2 in de diagonaal te staan."
+    },
+    {
+      "id": "volgorde-blok",
+      "kind": "order",
+      "prompt": "Zet deze rally op volgorde.",
+      "items": [
+        "A1 geeft achter de rug het bloksignaal",
+        "A2 serveert",
+        "B1 krijgt de set bij het net",
+        "A1 blokt de lijn en A2 gaat naar de diagonaal",
+        "B1 slaat om het blok heen de diagonaal in"
+      ],
+      "explanation": "Eerst het plan, dan de opslag. Pas als de set er is, gaan blokker en verdediger naar hun plek."
     }
   ]
 }

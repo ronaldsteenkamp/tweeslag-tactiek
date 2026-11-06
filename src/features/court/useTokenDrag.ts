@@ -42,7 +42,7 @@ export function clientToMeters(
   return svgToMeters({ sx: point.x, sy: point.y }, view);
 }
 
-function hitRadiusMeters(svg: SVGSVGElement): number {
+export function hitRadiusMeters(svg: SVGSVGElement): number {
   const matrix = svg.getScreenCTM();
   if (!matrix) return HIT_RADIUS_METERS;
   const pixelsPerMeter = Math.hypot(matrix.a, matrix.b) * UNITS_PER_METER;
