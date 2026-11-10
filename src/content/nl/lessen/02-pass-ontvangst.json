@@ -368,79 +368,30 @@
   },
   "quiz": [
     {
-      "id": "ontvangstpositie",
-      "kind": "drag",
-      "prompt": "A1 staat op de eindlijn. Sleep A1 naar een goede ontvangstpositie.",
-      "playerId": "A1",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 0,
-            "y": 1
-          },
-          "A2": {
-            "x": 3.5,
-            "y": 6
-          },
-          "B1": {
-            "x": 17.2,
-            "y": 2
-          },
-          "B2": {
-            "x": 9.5,
-            "y": 5
-          }
-        },
-        "ball": {
-          "x": 16.6,
-          "y": 2.5,
-          "height": 1
-        }
-      },
-      "target": [
-        {
-          "x": 2,
-          "y": 0.5
-        },
-        {
-          "x": 5.5,
-          "y": 0.5
-        },
-        {
-          "x": 5.5,
-          "y": 3.5
-        },
-        {
-          "x": 2,
-          "y": 3.5
-        }
+      "id": "middenbal-afspraak",
+      "kind": "choice",
+      "prompt": "Jullie spraken vóór de rally af dat A2 de middenbal neemt. De opslag komt precies tussen jullie in, en A1 staat er een stap dichterbij. Wie neemt hem?",
+      "options": [
+        "A1, want die staat het dichtst bij",
+        "Wie het eerst “mijn!” roept",
+        "Allebei een stap ernaartoe, voor de zekerheid",
+        "A2, zoals afgesproken, ook al staat A1 dichterbij"
       ],
-      "tolerance": 0.4,
-      "explanation": "Neem je eigen helft van de breedte en sta een stuk voor de eindlijn: naar voren bewegen is makkelijker."
+      "correct": 3,
+      "explanation": "De afspraak is er juist voor deze bal. Kiest A1 op het moment zelf toch, dan gaan er twee naar de bal of laten ze hem allebei vallen. Roepen helpt, maar jullie kunnen tegelijk roepen. Houd je aan wat je afsprak."
     },
     {
-      "id": "middenbal",
+      "id": "pass-naar-het-midden",
       "kind": "choice",
-      "prompt": "Wie neemt de middenbal?",
+      "prompt": "Jij passt een opslag. Je partner staat nog diep aan de andere kant van het veld. Waar pass je naartoe?",
       "options": [
-        "Jullie allebei, voor de zekerheid",
-        "Altijd de speler die de bal het laatst speelde",
-        "Degene die jullie vooraf hebben afgesproken"
+        "Naar je partner toe, dan hoeft die niet te lopen",
+        "Hoog naar het midden, een stuk van het net af",
+        "Strak tegen het net, zoals bij zaalvolleybal",
+        "Laag naar het midden, dan is de bal er sneller"
       ],
-      "correct": 2,
-      "explanation": "Spreek het vóór de rally af en houd je eraan. Dan gaat er nooit niemand of iedereen naar de bal."
-    },
-    {
-      "id": "mijn",
-      "kind": "choice",
-      "prompt": "Wanneer roep je “mijn!”?",
-      "options": [
-        "Als je de bal raakt",
-        "Alleen bij een middenbal",
-        "Zo vroeg mogelijk"
-      ],
-      "correct": 2,
-      "explanation": "Hoe eerder je roept, hoe eerder je partner kan bewegen."
+      "correct": 1,
+      "explanation": "Je partner loopt meteen naar het midden, en een hoge pass geeft tijd om daar te komen. Pass je naar je partner toe, dan komt de set diep uit het veld, ver van het net. Strak tegen het net of laag geeft je partner geen tijd."
     }
   ]
 }

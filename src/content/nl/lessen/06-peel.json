@@ -257,74 +257,11 @@
   },
   "quiz": [
     {
-      "id": "wanneer",
-      "kind": "choice",
-      "prompt": "Wanneer is een peel vooral een goede keuze?",
-      "options": [
-        "Altijd bij de eerste opslag",
-        "Als de set ver van het net ligt",
-        "Als de set strak op het net ligt"
-      ],
-      "correct": 1,
-      "explanation": "Ligt de set ver van het net, dan levert blokken weinig op. Een extra verdediger levert meer op."
-    },
-    {
-      "id": "peel-a1",
-      "kind": "drag",
-      "prompt": "De set ligt ver van het net. Sleep A1 naar een plek om als tweede verdediger te staan.",
-      "playerId": "A1",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 7.4,
-            "y": 1.5
-          },
-          "A2": {
-            "x": 3,
-            "y": 5
-          },
-          "B1": {
-            "x": 10.4,
-            "y": 1.5
-          },
-          "B2": {
-            "x": 12,
-            "y": 4
-          }
-        },
-        "ball": {
-          "x": 10.2,
-          "y": 1.6,
-          "height": 3.4
-        }
-      },
-      "target": [
-        {
-          "x": 2.5,
-          "y": 0.3
-        },
-        {
-          "x": 6,
-          "y": 0.3
-        },
-        {
-          "x": 6,
-          "y": 3
-        },
-        {
-          "x": 2.5,
-          "y": 3
-        }
-      ],
-      "tolerance": 0.5,
-      "explanation": "A1 trekt terug van het net en neemt de kant van de lijn. A2 houdt de diagonaal."
-    },
-    {
-      "id": "freeze-peel",
+      "id": "signaal-maar-ver",
       "kind": "freeze",
-      "prompt": "De set zweeft ver van het net. Wat doet A1 nu?",
+      "prompt": "A1 gaf vooraf {signaal.lijn}, maar kijk waar de set van B2 komt. Wat doet A1?",
       "scene": {
-        "alt": "B2 set de bal naar B1, ruim twee meter van het net. A1 staat aan het net tegenover B1. A2 staat achterin. Het beeld stopt voor de aanval.",
+        "alt": "A1 staat aan het net en gaf blok lijn. B2 set de bal ver van het net naar B1. Het beeld stopt voor de aanval.",
         "keyframes": [
           {
             "id": "pass",
@@ -332,15 +269,15 @@
             "players": {
               "A1": {
                 "x": 7.4,
-                "y": 1.5
+                "y": 1.4
               },
               "A2": {
                 "x": 3,
-                "y": 5
+                "y": 5.5
               },
               "B1": {
                 "x": 10.4,
-                "y": 1.5
+                "y": 1.6
               },
               "B2": {
                 "x": 12,
@@ -351,7 +288,8 @@
               "x": 12,
               "y": 4,
               "height": 1.5
-            }
+            },
+            "caption": ""
           },
           {
             "id": "set",
@@ -359,15 +297,15 @@
             "players": {
               "A1": {
                 "x": 7.4,
-                "y": 1.5
+                "y": 1.4
               },
               "A2": {
                 "x": 3,
-                "y": 5
+                "y": 5.5
               },
               "B1": {
-                "x": 10.4,
-                "y": 1.5
+                "x": 11.6,
+                "y": 1.8
               },
               "B2": {
                 "x": 12,
@@ -375,73 +313,100 @@
               }
             },
             "ball": {
-              "x": 10.2,
-              "y": 1.6,
+              "x": 11.4,
+              "y": 1.8,
               "height": 3.4,
               "arc": 2
-            }
+            },
+            "caption": ""
           }
         ]
       },
       "options": [
-        "Springen voor het blok",
-        "Terugtrekken als tweede verdediger",
-        "Blijven staan aan het net"
+        "Peelen en roepen dat er geen blok komt",
+        "Toch springen en de lijn afsluiten, want dat was afgesproken",
+        "Aan het net blijven staan voor de korte bal",
+        "Springen en recht op de bal blokken"
       ],
-      "correct": 1,
-      "explanation": "De set ligt ver van het net, dus een blok levert weinig op. A1 peelt en wordt tweede verdediger."
+      "correct": 0,
+      "explanation": "Het signaal is een plan voor een gewone set. Bij een set ver van het net slaat B1 niet hard over het blok en sluit A1 weinig af. Wie toch springt, laat de lijn en de korte bal leeg. Roep het, zodat A2 weet dat er geen blok komt."
     },
     {
-      "id": "route-peel",
-      "kind": "route",
-      "prompt": "Teken de route van A1 bij een peel.",
-      "playerId": "A1",
+      "id": "peel-tegen-b2",
+      "kind": "placeBoth",
+      "prompt": "B2 valt aan, dicht bij de zijlijn aan de kant van B2. De set ligt ver van het net en A1 peelt. Verdeel het veld volgens de afspraak van Tweeslag.",
       "setup": {
         "players": {
           "A1": {
-            "x": 7.4,
-            "y": 1.5
+            "x": 7.5,
+            "y": 6.3
           },
           "A2": {
             "x": 3,
-            "y": 5
+            "y": 6.2
           },
           "B1": {
-            "x": 10.4,
-            "y": 1.5
+            "x": 12,
+            "y": 2
           },
           "B2": {
-            "x": 12,
-            "y": 4
+            "x": 11.6,
+            "y": 6.4
           }
         },
         "ball": {
-          "x": 10.2,
-          "y": 1.6,
+          "x": 11,
+          "y": 6.4,
           "height": 3.4
         }
       },
-      "target": [
+      "targets": [
         {
-          "x": 2.5,
-          "y": 0.3
+          "playerId": "A1",
+          "target": [
+            {
+              "x": 2.5,
+              "y": 5
+            },
+            {
+              "x": 6.2,
+              "y": 5
+            },
+            {
+              "x": 6.2,
+              "y": 7.7
+            },
+            {
+              "x": 2.5,
+              "y": 7.7
+            }
+          ],
+          "tolerance": 0.4
         },
         {
-          "x": 6,
-          "y": 0.3
-        },
-        {
-          "x": 6,
-          "y": 3
-        },
-        {
-          "x": 2.5,
-          "y": 3
+          "playerId": "A2",
+          "target": [
+            {
+              "x": 0.5,
+              "y": 0.4
+            },
+            {
+              "x": 4.5,
+              "y": 0.4
+            },
+            {
+              "x": 4.5,
+              "y": 4
+            },
+            {
+              "x": 0.5,
+              "y": 4
+            }
+          ],
+          "tolerance": 0.4
         }
       ],
-      "tolerance": 0.5,
-      "maxDetour": 1.5,
-      "explanation": "A1 loopt zo recht mogelijk van het net weg, want de aanval komt eraan. Elke omweg kost tijd."
+      "explanation": "A1 neemt de lijn en de korte bal aan de kant van de aanvaller, nu dus aan de kant van B2. A2 neemt de diagonaal, en die loopt naar de andere zijlijn. Wie het veld verdeelt zoals in de les, kijkt naar B1 in plaats van naar de aanvaller."
     }
   ]
 }

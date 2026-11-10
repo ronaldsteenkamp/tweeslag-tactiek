@@ -335,169 +335,92 @@
   },
   "quiz": [
     {
-      "id": "freeze-wie",
+      "id": "derde-bal-ver",
+      "kind": "choice",
+      "prompt": "A2 haalt de weggepaste bal, maar de set komt laag en vijf meter van het net. A1 staat goed en voelt zich sterk. Wat doet A1?",
+      "options": [
+        "Hard aanvallen: A1 staat goed",
+        "Een open-hand tip kort over het net",
+        "Veilig onderhands, hoog en diep in de hoek",
+        "Bovenhands, schuin over het net naar de lijn"
+      ],
+      "correct": 2,
+      "explanation": "Of A1 hard kan aanvallen, hangt ook af van de set. Laag en op vijf meter kom je niet hard over het blok. Een fout kost een punt, een hoge diepe bal niet. Een open-hand tip is fout, en bovenhands schuin over het net ook."
+    },
+    {
+      "id": "wie-neemt-wegpass",
       "kind": "freeze",
-      "prompt": "A1 passt de bal ver weg. Wie neemt de tweede bal?",
+      "prompt": "Kijk waar de pass heen gaat. Wie speelt de volgende bal?",
       "scene": {
-        "alt": "A1 passt de bal ver achter het veld. A2 staat bij het net. Het beeld stopt als de bal in de lucht is.",
+        "alt": "A1 passt de bal ver achter het veld weg, naast de zijlijn. A1 staat er het dichtst bij, A2 staat aan de andere kant van het veld.",
         "keyframes": [
           {
-            "id": "voor",
+            "id": "pass",
             "durationMs": 0,
             "players": {
               "A1": {
-                "x": 3,
-                "y": 5.5
+                "x": 1.8,
+                "y": 1.4
               },
               "A2": {
-                "x": 6.5,
-                "y": 3.5
+                "x": 4,
+                "y": 6
               },
               "B1": {
-                "x": 8.8,
+                "x": 12,
                 "y": 2
               },
               "B2": {
                 "x": 12,
-                "y": 5
+                "y": 6
               }
             },
             "ball": {
-              "x": 3,
-              "y": 5.5,
+              "x": 1.8,
+              "y": 1.4,
               "height": 0.8
             },
             "caption": ""
           },
           {
             "id": "weg",
-            "durationMs": 1200,
+            "durationMs": 1300,
             "players": {
               "A1": {
-                "x": 3,
-                "y": 5.5
+                "x": 1.8,
+                "y": 1.4
               },
               "A2": {
-                "x": 6.5,
-                "y": 3.5
+                "x": 4,
+                "y": 6
               },
               "B1": {
-                "x": 8.8,
+                "x": 12,
                 "y": 2
               },
               "B2": {
                 "x": 12,
-                "y": 5
+                "y": 6
               }
             },
             "ball": {
-              "x": 1,
-              "y": 7.6,
-              "height": 3,
-              "arc": 1.5
+              "x": -1.5,
+              "y": -1.6,
+              "height": 2.2,
+              "arc": 2
             },
-            "arrows": [
-              {
-                "id": "b31",
-                "kind": "ball",
-                "from": {
-                  "x": 3,
-                  "y": 5.5
-                },
-                "to": {
-                  "x": 1,
-                  "y": 7.6
-                }
-              }
-            ],
             "caption": ""
           }
         ]
       },
       "options": [
-        "A1, die staat het dichtst bij",
-        "A2",
-        "Niemand, de bal is weg"
+        "A1, want die staat het dichtst bij",
+        "Wie het eerst “mijn!” roept",
+        "Niemand: de bal gaat naast het veld",
+        "A2, hoe ver het ook is"
       ],
-      "correct": 1,
-      "explanation": "A1 mag de bal niet twee keer na elkaar raken. A2 moet dus lopen, hoe ver het ook is."
-    },
-    {
-      "id": "route-tweede-bal",
-      "kind": "route",
-      "prompt": "Teken de route van A2 naar de bal die ver is weggepasst.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 3,
-            "y": 5.5
-          },
-          "A2": {
-            "x": 6.5,
-            "y": 3.5
-          },
-          "B1": {
-            "x": 8.8,
-            "y": 2
-          },
-          "B2": {
-            "x": 12,
-            "y": 5
-          }
-        },
-        "ball": {
-          "x": 1,
-          "y": 7.6,
-          "height": 3
-        }
-      },
-      "target": [
-        {
-          "x": 0.4,
-          "y": 6.8
-        },
-        {
-          "x": 2,
-          "y": 6.8
-        },
-        {
-          "x": 2,
-          "y": 8.4
-        },
-        {
-          "x": 0.4,
-          "y": 8.4
-        }
-      ],
-      "tolerance": 0.3,
-      "maxDetour": 1.3,
-      "explanation": "Elke meter telt. Loop zo recht mogelijk, en draai bij de bal met je borst naar het veld."
-    },
-    {
-      "id": "volgorde-oos",
-      "kind": "order",
-      "prompt": "Zet out of system op volgorde.",
-      "items": [
-        "De pass gaat ver weg",
-        "De partner loopt naar de bal en roept",
-        "De passer loopt naar het midden",
-        "De partner speelt de bal hoog naar het midden",
-        "De derde bal gaat aanvallend of veilig over"
-      ],
-      "explanation": "De passer maakt ruimte en de partner houdt de bal hoog. Daarna kies je wat nog kan."
-    },
-    {
-      "id": "veilig-kiezen",
-      "kind": "choice",
-      "prompt": "De set ligt ver van het net en je staat slecht. Wat doe je met de derde bal?",
-      "options": [
-        "Hard slaan, koste wat kost",
-        "Veilig, hoog en diep over het net",
-        "Laten vallen"
-      ],
-      "correct": 1,
-      "explanation": "Zonder goede aanval is een veilige bal beter dan een fout. De rally gaat dan door."
+      "correct": 3,
+      "explanation": "A1 mag de bal niet twee keer na elkaar raken, ook al staat A1 er het dichtst bij. Dus moet A2 er heen, hoe ver het ook is. Zolang de bal de grond niet raakt, is hij nog in het spel."
     }
   ]
 }

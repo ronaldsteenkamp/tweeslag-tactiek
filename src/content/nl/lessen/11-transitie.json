@@ -341,89 +341,69 @@
   },
   "quiz": [
     {
-      "id": "route-blokker",
+      "id": "blokker-speelt-twee",
+      "kind": "choice",
+      "prompt": "A1 raakt bij het blok de bal, die vlak achter A1 valt. A1 speelt hem zelf hoog naar het midden. Wie speelt de volgende bal, en wat moet ermee?",
+      "options": [
+        "A2 set voor A1, die nog moet aanvallen",
+        "A1 nog een keer, want het blok telt niet als aanraking van A1",
+        "Niemand: A1 mocht na het blok de bal niet spelen",
+        "A2, en die moet hem over het net spelen"
+      ],
+      "correct": 3,
+      "explanation": "Het blok is contact één, de bal van A1 contact twee. A1 mocht die spelen, want na een blok mag de blokker de eerste bal. Nu speelt A2 de derde bal, en die moet over. Wie A2 laat setten, vergeet dat het blok meetelt."
+    },
+    {
+      "id": "route-naar-aanloop",
       "kind": "route",
-      "prompt": "A2 verdedigde de bal naar het midden. Teken de route van blokker A1 naar de bal.",
+      "prompt": "A1 blokt, maar raakt de bal niet. Een korte bal valt vlak bij het net, en A1 speelt hem hoog naar het midden. A2 gaat setten. Teken de route van A1 naar het begin van de aanloop.",
       "playerId": "A1",
       "setup": {
         "players": {
           "A1": {
-            "x": 7.5,
-            "y": 1
+            "x": 7.2,
+            "y": 2
           },
           "A2": {
             "x": 3,
-            "y": 5.5
+            "y": 5
           },
           "B1": {
-            "x": 9,
-            "y": 1.2
+            "x": 9.4,
+            "y": 1.4
           },
           "B2": {
-            "x": 10.5,
+            "x": 11.5,
             "y": 4
           }
         },
         "ball": {
           "x": 5,
-          "y": 3.6,
-          "height": 3.5
+          "y": 4,
+          "height": 3
         }
       },
       "target": [
         {
-          "x": 4.4,
-          "y": 2.8
-        },
-        {
-          "x": 5.8,
-          "y": 2.8
-        },
-        {
-          "x": 5.8,
-          "y": 4.4
+          "x": 1.8,
+          "y": 1.5
         },
         {
           "x": 4.4,
-          "y": 4.4
+          "y": 1.5
+        },
+        {
+          "x": 4.4,
+          "y": 5.5
+        },
+        {
+          "x": 1.8,
+          "y": 5.5
         }
       ],
-      "tolerance": 0.3,
-      "maxDetour": 1.4,
-      "explanation": "De blokker raakte de bal niet en geeft dus de set. Loop direct naar de bal en sta er stil onder."
-    },
-    {
-      "id": "volgorde-transitie",
-      "kind": "order",
-      "prompt": "Zet de transitie op volgorde.",
-      "items": [
-        "A2 verdedigt de bal hoog naar het midden",
-        "A1 landt en loopt naar de bal",
-        "A2 maakt ruimte voor een aanloop",
-        "A1 set dicht bij het net",
-        "A2 loopt aan en valt aan"
-      ],
-      "explanation": "Eerst de bal hoog houden, dan looplijnen. De speler die verdedigde, is meestal de aanvaller."
-    },
-    {
-      "id": "wie-set",
-      "kind": "choice",
-      "prompt": "A2 verdedigt de bal. Wie geeft de set?",
-      "options": [
-        "A2, want die heeft de bal gezien",
-        "A1, want die raakte de bal niet",
-        "Maakt niet uit, wie het eerst roept"
-      ],
-      "correct": 1,
-      "explanation": "A2 mag de bal niet twee keer achter elkaar raken. Afspraak is dus: wie de bal niet raakte, set."
-    },
-    {
-      "id": "blok-telt",
-      "kind": "choice",
-      "prompt": "A1 raakt de bal bij het blok. Hoeveel contacten heeft team A dan nog?",
-      "options": ["Twee", "Drie", "Eén"],
-      "correct": 0,
-      "explanation": "Een blokcontact telt als contact van je team. Daarna heb je er nog twee, en de blokker mag de eerste daarvan spelen."
+      "tolerance": 0.4,
+      "maxDetour": 1.5,
+      "explanation": "A1 raakte de bal, dus A2 set en A1 valt aan. Vanaf het net heb je geen aanloop: loop eerst ver genoeg terug, het veld in. Wie bij het net blijft wachten, kan alleen nog zacht spelen."
     }
   ]
 }

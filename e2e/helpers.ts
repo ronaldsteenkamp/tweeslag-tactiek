@@ -71,6 +71,12 @@ export async function skipQuestions(page: Page, count: number) {
   }
 }
 
+/** Zet alle lessen open, zodat ook gevorderde en expertquizzen bereikbaar zijn. */
+export async function unlockAll(page: Page) {
+  await page.goto("./");
+  await page.getByRole("checkbox", { name: /Alles ontgrendelen/ }).check();
+}
+
 /** Start een quiz op expertniveau zonder tijdslimiet. */
 export async function startUntimed(page: Page) {
   await page.getByRole("button", { name: "Start zonder tijdslimiet" }).click();
@@ -78,6 +84,7 @@ export async function startUntimed(page: Page) {
 
 /** Zet de stappen van een volgordevraag goed met de knoppen omhoog. */
 export async function solveOrder(page: Page, items: string[]) {
+  await expect(page.getByRole("listitem")).toHaveCount(items.length);
   for (const [place, item] of items.entries()) {
     const list = page.getByRole("listitem");
     const current = (await list.allTextContents()).findIndex((text) =>

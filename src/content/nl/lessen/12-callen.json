@@ -333,11 +333,11 @@
   },
   "quiz": [
     {
-      "id": "freeze-lijn",
+      "id": "call-laatste-beweging",
       "kind": "freeze",
-      "prompt": "Je hebt geset en kijkt over het net. Wat roep je?",
+      "prompt": "Je hebt geset en kijkt over het net. B1 blokt recht op de bal. Kijk naar B2. Wat roep je, volgens de afspraak van Tweeslag?",
       "scene": {
-        "alt": "A2 heeft geset. A1 loopt aan. Aan de overkant schuift verdediger B2 naar de diagonaal, dus de lijn is leeg.",
+        "alt": "A2 set voor A1. B2 staat eerst op de lijn en loopt tijdens de set naar de diagonaal. B1 staat aan het net. Het beeld stopt als A1 gaat springen.",
         "keyframes": [
           {
             "id": "set",
@@ -353,26 +353,26 @@
               },
               "B1": {
                 "x": 8.6,
-                "y": 1.4
+                "y": 1.6
               },
               "B2": {
                 "x": 12,
-                "y": 4
+                "y": 1.8
               }
             },
             "ball": {
-              "x": 7,
-              "y": 1.6,
-              "height": 3.4
+              "x": 6.6,
+              "y": 3.2,
+              "height": 2
             },
             "caption": ""
           },
           {
-            "id": "schuift",
+            "id": "aanloop",
             "durationMs": 1200,
             "players": {
               "A1": {
-                "x": 5.6,
+                "x": 6.4,
                 "y": 1.6
               },
               "A2": {
@@ -381,7 +381,7 @@
               },
               "B1": {
                 "x": 8.6,
-                "y": 1.4
+                "y": 1.6
               },
               "B2": {
                 "x": 12,
@@ -391,136 +391,34 @@
             "ball": {
               "x": 7,
               "y": 1.6,
-              "height": 3.4
+              "height": 3.4,
+              "arc": 1.5
             },
-            "arrows": [
-              {
-                "id": "r24",
-                "kind": "run",
-                "from": {
-                  "x": 12,
-                  "y": 4
-                },
-                "to": {
-                  "x": 12,
-                  "y": 6
-                }
-              }
-            ],
             "caption": ""
           }
         ]
       },
-      "options": ["{roep.lijn}", "{roep.hoek}", "{roep.cut}"],
-      "correct": 0,
-      "explanation": "B2 staat in de diagonaal, dus de lijn ligt open. Je roept wat **open** is, niet waar de verdediger staat."
-    },
-    {
-      "id": "freeze-cut",
-      "kind": "freeze",
-      "prompt": "De verdediger blijft diep staan. Wat roep je?",
-      "scene": {
-        "alt": "A2 heeft geset. A1 loopt aan. Verdediger B2 loopt ver naar achteren, dus de korte bal langs het net ligt open.",
-        "keyframes": [
-          {
-            "id": "set",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 5.6,
-                "y": 1.6
-              },
-              "A2": {
-                "x": 6.6,
-                "y": 3.2
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.4
-              },
-              "B2": {
-                "x": 12,
-                "y": 4
-              }
-            },
-            "ball": {
-              "x": 7,
-              "y": 1.6,
-              "height": 3.4
-            },
-            "caption": ""
-          },
-          {
-            "id": "diep",
-            "durationMs": 1200,
-            "players": {
-              "A1": {
-                "x": 5.6,
-                "y": 1.6
-              },
-              "A2": {
-                "x": 6.6,
-                "y": 3.2
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.4
-              },
-              "B2": {
-                "x": 14.2,
-                "y": 5.5
-              }
-            },
-            "ball": {
-              "x": 7,
-              "y": 1.6,
-              "height": 3.4
-            },
-            "arrows": [
-              {
-                "id": "r25",
-                "kind": "run",
-                "from": {
-                  "x": 12,
-                  "y": 4
-                },
-                "to": {
-                  "x": 14.2,
-                  "y": 5.5
-                }
-              }
-            ],
-            "caption": ""
-          }
-        ]
-      },
-      "options": ["{roep.niemand}", "{roep.lijn}", "{roep.cut}"],
-      "correct": 2,
-      "explanation": "B2 staat diep, dus de korte diagonaal ligt open: daar past een cut shot."
-    },
-    {
-      "id": "wanneer-roepen",
-      "kind": "choice",
-      "prompt": "Wanneer roep je de open zone?",
       "options": [
-        "Tijdens de aanloop, vóór je partner springt",
-        "Als je partner de bal al raakt",
-        "Pas als de rally voorbij is"
+        "Je roept “{roep.lijn}”",
+        "Je roept “{roep.hoek}”",
+        "Je roept “{roep.cut}”",
+        "Je roept “{roep.niemand}”"
       ],
       "correct": 0,
-      "explanation": "Je partner heeft de informatie nodig voor de sprong. Daarna is het te laat."
+      "explanation": "Wat telt, is waar B2 staat als A1 slaat. B2 begon op de lijn, maar liep naar de diagonaal: nu ligt de lijn open. Wie roept wat hij het eerst zag, stuurt A1 recht op B2 af."
     },
     {
-      "id": "volgorde-callen",
-      "kind": "order",
-      "prompt": "Zet de stappen van de setter op volgorde.",
-      "items": [
-        "Set de bal",
-        "Draai naar het net",
-        "Kijk waar de verdediger heen gaat",
-        "Roep de open zone"
+      "id": "call-blok-en-diep",
+      "kind": "choice",
+      "prompt": "B1 springt en sluit de lijn af. B2 staat diep in de diagonaal. A1 loopt aan. Wat roep je, volgens de afspraak van Tweeslag?",
+      "options": [
+        "Je roept “{roep.lijn}”, want B2 staat niet op de lijn",
+        "Je roept “{roep.hoek}”, want daar is veel ruimte",
+        "Je roept “{roep.cut}”",
+        "Je roept “{roep.niemand}”, want B2 staat ver weg"
       ],
-      "explanation": "Eerst de set, dan pas kijken. Een goede call na een slechte set helpt je aanvaller niet."
+      "correct": 2,
+      "explanation": "Op de lijn staat geen verdediger, maar wel het blok. De diagonaal is diep gedekt door B2. Vlak achter het net in de diagonaal staat niemand: daar moet de cut shot heen."
     }
   ]
 }

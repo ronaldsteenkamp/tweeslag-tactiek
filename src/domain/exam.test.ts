@@ -39,6 +39,16 @@ describe("pickExamQuestions", () => {
     );
   });
 
+  it("neemt bij een les met één of twee vragen al die vragen mee", () => {
+    const small = [lesson("b1", "basis", 1), lesson("b2", "basis", 2)];
+    for (const random of [() => 0, () => 0.5, () => 0.99]) {
+      const ids = pickExamQuestions(small, "basis", random)
+        .map((item) => item.question.id)
+        .sort();
+      expect(ids).toEqual(["b1-0", "b2-0", "b2-1"]);
+    }
+  });
+
   it("trekt geen vraag dubbel", () => {
     const ids = pickExamQuestions(lessons, "gevorderd").map(
       (item) => item.question.id,

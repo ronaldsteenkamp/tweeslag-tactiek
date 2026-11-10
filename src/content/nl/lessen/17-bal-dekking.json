@@ -11,7 +11,8 @@
   ],
   "teVerifieren": [
     "De dekplek (dicht bij de aanvaller, laag, een stap van het net af) is schematisch. Welke afstand leren de trainers?",
-    "De keuze aan welke kant je dekt, verschilt per set. Is de uitleg zo duidelijk?"
+    "De keuze aan welke kant je dekt, verschilt per set. Is de uitleg zo duidelijk?",
+    "De quiz heeft één vraag. De dekplek zelf is schematisch en staat letterlijk in de les. Welke afstand of welk moment leren de trainers, zodat er een inzichtvraag over kan?"
   ],
   "scenario": {
     "id": "bal-dekking",
@@ -298,215 +299,17 @@
   },
   "quiz": [
     {
-      "id": "sleep-dekking",
-      "kind": "drag",
-      "prompt": "A1 valt aan op de lijn. Sleep A2 naar de plek om te dekken.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 6.8,
-            "y": 1.7
-          },
-          "A2": {
-            "x": 6.4,
-            "y": 6
-          },
-          "B1": {
-            "x": 8.6,
-            "y": 1.6
-          },
-          "B2": {
-            "x": 12,
-            "y": 5
-          }
-        },
-        "ball": {
-          "x": 7,
-          "y": 1.7,
-          "height": 3.4
-        }
-      },
-      "target": [
-        {
-          "x": 4.6,
-          "y": 1.2
-        },
-        {
-          "x": 6.4,
-          "y": 1.2
-        },
-        {
-          "x": 6.4,
-          "y": 3.6
-        },
-        {
-          "x": 4.6,
-          "y": 3.6
-        }
-      ],
-      "tolerance": 0.4,
-      "explanation": "Sta dicht bij de aanvaller, een stap van het net af. Een geblokte bal komt kort en snel."
-    },
-    {
-      "id": "fout-kijken",
-      "kind": "spotError",
-      "prompt": "De bal wordt teruggeblokt en valt op de grond. Waar ging het mis?",
-      "scene": {
-        "alt": "A1 slaat aan op de lijn. A2 blijft na de set ver weg staan aan de andere kant van het veld. B1 blokt de bal terug en hij valt vlak achter A1 in het zand.",
-        "keyframes": [
-          {
-            "id": "set",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 6.8,
-                "y": 1.7
-              },
-              "A2": {
-                "x": 6.4,
-                "y": 6
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.6
-              },
-              "B2": {
-                "x": 12,
-                "y": 5
-              }
-            },
-            "ball": {
-              "x": 7,
-              "y": 1.7,
-              "height": 3.4
-            },
-            "caption": ""
-          },
-          {
-            "id": "geblokt",
-            "durationMs": 800,
-            "players": {
-              "A1": {
-                "x": 6.8,
-                "y": 1.7
-              },
-              "A2": {
-                "x": 6.4,
-                "y": 6
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.6
-              },
-              "B2": {
-                "x": 12,
-                "y": 5
-              }
-            },
-            "ball": {
-              "x": 5.8,
-              "y": 2,
-              "height": 0,
-              "arc": 0.3
-            },
-            "arrows": [
-              {
-                "id": "b24",
-                "kind": "ball",
-                "from": {
-                  "x": 7.6,
-                  "y": 1.7
-                },
-                "to": {
-                  "x": 5.8,
-                  "y": 2
-                }
-              }
-            ],
-            "caption": ""
-          }
-        ]
-      },
-      "spots": [
-        {
-          "id": "a1",
-          "label": "A1",
-          "playerId": "A1"
-        },
-        {
-          "id": "a2",
-          "label": "A2",
-          "playerId": "A2"
-        },
-        {
-          "id": "b1",
-          "label": "B1",
-          "playerId": "B1"
-        }
-      ],
-      "correct": "a2",
-      "explanation": "A2 bleef staan na de set. Had A2 gedekt, dan was deze bal nog te spelen."
-    },
-    {
-      "id": "drie-contacten",
+      "id": "blok-van-de-tegenstander",
       "kind": "choice",
-      "prompt": "B1 blokt de aanval van A1 terug. Hoeveel contacten heeft team A?",
-      "options": ["Eén", "Twee", "Drie"],
-      "correct": 2,
-      "explanation": "Het blok is een contact van team B. Team A begint weer opnieuw met drie contacten."
-    },
-    {
-      "id": "route-dekking",
-      "kind": "route",
-      "prompt": "A2 heeft geset. Teken de route van A2 naar de dekking.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 6.8,
-            "y": 1.7
-          },
-          "A2": {
-            "x": 6.4,
-            "y": 5
-          },
-          "B1": {
-            "x": 8.6,
-            "y": 1.6
-          },
-          "B2": {
-            "x": 12,
-            "y": 5
-          }
-        },
-        "ball": {
-          "x": 7,
-          "y": 1.7,
-          "height": 3.4
-        }
-      },
-      "target": [
-        {
-          "x": 4.6,
-          "y": 1.2
-        },
-        {
-          "x": 6.4,
-          "y": 1.2
-        },
-        {
-          "x": 6.4,
-          "y": 3.6
-        },
-        {
-          "x": 4.6,
-          "y": 3.6
-        }
+      "prompt": "A1 slaat, B1 blokt de bal terug en A2 houdt hem hoog. Wat gebeurt er met de volgende bal?",
+      "options": [
+        "A1 set, en daarna moet de bal over: het blok was al een contact",
+        "A1 set, en A2 valt aan: jullie hebben nog twee contacten",
+        "A2 speelt nog een keer, want A2 staat er",
+        "De bal moet meteen over het net"
       ],
-      "tolerance": 0.3,
-      "maxDetour": 1.4,
-      "explanation": "Direct naar je aanvaller toe, en een stap van het net af. Daar ben je op tijd voor een geblokte bal."
+      "correct": 1,
+      "explanation": "Het blok van B1 is een contact van team B, niet van jullie. De dekking van A2 is jullie eerste contact, dus er zijn er nog twee. A2 raakte de bal, dus A1 set. Verwar het niet met een blok van je eigen blokker: dat telt wel."
     }
   ]
 }

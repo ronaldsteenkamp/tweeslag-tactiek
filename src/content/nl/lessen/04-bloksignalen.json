@@ -368,21 +368,49 @@
         "id": "opslagsignaal",
         "durationMs": 1500,
         "players": {
-          "A1": { "x": 7.2, "y": 4 },
-          "A2": { "x": -1.2, "y": 5.5 },
-          "B1": { "x": 12, "y": 2 },
-          "B2": { "x": 12, "y": 6 }
+          "A1": {
+            "x": 7.2,
+            "y": 4
+          },
+          "A2": {
+            "x": -1.2,
+            "y": 5.5
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 12,
+            "y": 6
+          }
         },
-        "ball": { "x": -0.6, "y": 5, "height": 1 },
+        "ball": {
+          "x": -0.6,
+          "y": 5,
+          "height": 1
+        },
         "zones": [
           {
             "id": "doel",
             "kind": "target",
             "polygon": [
-              { "x": 13, "y": 0.3 },
-              { "x": 15.6, "y": 0.3 },
-              { "x": 15.6, "y": 3.6 },
-              { "x": 13, "y": 3.6 }
+              {
+                "x": 13,
+                "y": 0.3
+              },
+              {
+                "x": 15.6,
+                "y": 0.3
+              },
+              {
+                "x": 15.6,
+                "y": 3.6
+              },
+              {
+                "x": 13,
+                "y": 3.6
+              }
             ],
             "label": "Doel"
           }
@@ -391,8 +419,14 @@
           {
             "id": "opslag",
             "kind": "ball",
-            "from": { "x": -0.6, "y": 5 },
-            "to": { "x": 12, "y": 2 }
+            "from": {
+              "x": -0.6,
+              "y": 5
+            },
+            "to": {
+              "x": 12,
+              "y": 2
+            }
           }
         ],
         "caption": "Ook de opslag spreek je af. Het signaal is **{opslag.doel}**, aan de kant van de tegenstander die de opslag krijgt. Hier links, dus B1. A2 bevestigt met **“oké”**.",
@@ -402,48 +436,167 @@
   },
   "quiz": [
     {
-      "id": "hoek-zone",
-      "kind": "choice",
-      "prompt": "Je partner geeft **{signaal.hoek}** aan, dus blok hoek. Welke zone verdedig jij?",
-      "options": ["De lijn", "De diagonaal", "De korte bal achter het blok"],
-      "correct": 0,
-      "explanation": "Bij blok hoek sluit je partner de diagonaal af. Jij verdedigt de lijn."
+      "id": "hand-en-signaal",
+      "kind": "drag",
+      "prompt": "A1 houdt achter de rug links {signaal.lijn} en rechts {signaal.hoek}. Jullie serveren op B2, rechts gezien vanuit A1. B2 passt en valt zelf aan. Sleep A2 naar je plek.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": {
+            "x": 7.5,
+            "y": 6.3
+          },
+          "A2": {
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 12,
+            "y": 2
+          },
+          "B2": {
+            "x": 9.6,
+            "y": 6.4
+          }
+        },
+        "ball": {
+          "x": 9,
+          "y": 6.6,
+          "height": 3.4
+        }
+      },
+      "target": [
+        {
+          "x": 0.5,
+          "y": 5.4
+        },
+        {
+          "x": 5,
+          "y": 5.4
+        },
+        {
+          "x": 5,
+          "y": 7.8
+        },
+        {
+          "x": 0.5,
+          "y": 7.8
+        }
+      ],
+      "tolerance": 0.4,
+      "explanation": "B2 staat rechts, dus het gaat om de rechterhand: blok hoek. A1 sluit de diagonaal af en jij pakt de lijn aan de kant van B2. Ga je naar de diagonaal, dan las je de linkerhand. Die hoort bij B1."
     },
     {
-      "id": "linkerhand",
-      "kind": "choice",
-      "prompt": "Je partner houdt de **linkerhand** op met **{signaal.lijn}**. Wat betekent dat?",
+      "id": "signaal-niet-gevolgd",
+      "kind": "freeze",
+      "prompt": "A1 gaf {signaal.hoek} voor B1. Kijk naar het blok en naar A2. Wat gaat hier mis?",
+      "scene": {
+        "alt": "A1 springt bij het net en sluit de lijn af. A2 staat achterin, ook in de lijn. De diagonaal is leeg. Het beeld stopt voor de aanval.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 2.5,
+                "y": 1.4
+              },
+              "B1": {
+                "x": 10.4,
+                "y": 2.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 11.5,
+              "y": 4,
+              "height": 2
+            },
+            "caption": ""
+          },
+          {
+            "id": "aanloop",
+            "durationMs": 1200,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 2.5,
+                "y": 1.2
+              },
+              "B1": {
+                "x": 9.6,
+                "y": 1.6
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 9,
+              "y": 1.4,
+              "height": 3.4,
+              "arc": 2
+            },
+            "zones": [
+              {
+                "id": "blok",
+                "kind": "blocked",
+                "polygon": [
+                  {
+                    "x": 7.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2
+                  },
+                  {
+                    "x": 0,
+                    "y": 2.8
+                  },
+                  {
+                    "x": 0,
+                    "y": 0
+                  }
+                ]
+              }
+            ],
+            "caption": ""
+          }
+        ]
+      },
       "options": [
-        "Blok hoek tegen de aanvaller links",
-        "Blok lijn tegen de aanvaller rechts",
-        "Blok lijn tegen de aanvaller links"
+        "A2 staat verkeerd: bij {signaal.hoek} hoort A2 in de diagonaal",
+        "Niets: zo dekken ze samen de lijn extra goed",
+        "A1 blokt de lijn in plaats van de diagonaal, dus de diagonaal ligt open",
+        "A2 had naar het net moeten komen voor de korte bal"
       ],
       "correct": 2,
-      "explanation": "De hand zegt om welke aanvaller het gaat, de vingers wat de blokker doet."
+      "explanation": "A2 doet wat het signaal zegt: bij {signaal.hoek} verdedig je de lijn. A1 niet: het blok hoort op de diagonaal. Nu dekken twee spelers de lijn en ligt de diagonaal leeg."
     },
     {
-      "id": "waarom-rug",
+      "id": "opslagsignaal-gemist",
       "kind": "choice",
-      "prompt": "Waarom geef je het signaal achter je rug?",
+      "prompt": "A1 wiebelt met de rechterhand, maar jij ziet het niet goed. Je zegt niets en serveert op B1, links. B1 passt en valt zelf aan. Waarom is dat een probleem?",
       "options": [
-        "Zodat de scheidsrechter het kan controleren",
-        "Zodat je partner het ziet en de tegenstander niet",
-        "Omdat de regels dat verplichten"
+        "Je overtreedt een regel, dus de tegenstander krijgt het punt",
+        "A1 stond klaar voor B2 en moet nu laat naar de andere aanvaller. Daarom bevestig je met “oké”",
+        "Geen probleem: het bloksignaal voor B1 blijft gewoon gelden",
+        "Het signaal vervalt, dus jullie verdedigen allebei achterin"
       ],
       "correct": 1,
-      "explanation": "Het is een tactische afspraak, geen regel: de tegenstander mag niet weten wat je van plan bent."
-    },
-    {
-      "id": "opslag-doel",
-      "kind": "choice",
-      "prompt": "Je partner geeft het opslagsignaal (**{opslag.doel}**) met de **rechterhand**. Wat doe jij?",
-      "options": [
-        "Op de tegenstander links serveren",
-        "“Oké” zeggen en op de tegenstander rechts serveren",
-        "Kort tussen de twee spelers serveren"
-      ],
-      "correct": 1,
-      "explanation": "De hand wijst de kant van het doel aan. Met “oké” weet je partner dat je het signaal hebt gezien."
+      "explanation": "A1 wees B2 aan en zette zich klaar voor de aanval van B2. Nu valt B1 aan en moet A1 laat wisselen. Het blok tegen B1 is nog afgesproken, maar komt te laat. Daarom bevestig je het opslagsignaal, of vraag je het opnieuw."
     }
   ]
 }

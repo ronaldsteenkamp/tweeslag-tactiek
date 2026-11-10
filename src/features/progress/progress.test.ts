@@ -143,6 +143,14 @@ describe("withQuizResult", () => {
     expect(withQuizResult(first, "pass", 3, 3).pass?.score).toBe(3);
   });
 
+  it("houdt een les afgerond als de quiz naar één vraag is gegaan", () => {
+    const old = { "verdedigen-met-blok": { maxStep: 6, score: 5, total: 6 } };
+    expect(lessonStatus(old["verdedigen-met-blok"])).toBe("done");
+    const next = withQuizResult(old, "verdedigen-met-blok", 0, 1);
+    expect(next["verdedigen-met-blok"]).toMatchObject({ score: 1, total: 1 });
+    expect(lessonStatus(next["verdedigen-met-blok"])).toBe("done");
+  });
+
   it("houdt de score binnen het totaal als de quiz korter is geworden", () => {
     const first = withQuizResult({}, "pass", 3, 3);
     expect(withQuizResult(first, "pass", 1, 2).pass).toMatchObject({

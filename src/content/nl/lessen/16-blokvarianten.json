@@ -16,7 +16,8 @@
     "De uitleg over het draaien van de handen is beknopt. Willen de trainers dit anders of uitgebreider?",
     "Drie vingers is hier een schijnblok (hoek laten zien, lijn pakken); in Start 2 Beachvolley (Topvolley Belgium) is “3” dubbel dia. Welke betekenis gebruiken de trainers?",
     "Het switchblok wordt in België met pink en wijsvinger aangegeven in plaats van vier vingers. Welk signaal spreekt Tweeslag af?",
-    "De afloopkant bij een set ver van het net (lijn naar de lijn, hoek naar de diagonaal) komt uit één bron (AVP). Leren de trainers het zo?"
+    "De afloopkant bij een set ver van het net (lijn naar de lijn, hoek naar de diagonaal) komt uit één bron (AVP). Leren de trainers het zo?",
+    "Er is geen quizvraag over het spreidblok: de les zegt niet wanneer je het kiest. Tegen welke aanvaller of set gebruiken de trainers het?"
   ],
   "scenario": {
     "id": "blokvarianten",
@@ -674,21 +675,49 @@
             "id": "toon-hoek",
             "durationMs": 0,
             "players": {
-              "A1": { "x": 7.5, "y": 1.7 },
-              "A2": { "x": 2.5, "y": 1.6 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 2.5,
+                "y": 1.6
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
             "zones": [
               {
                 "id": "z20",
                 "kind": "blocked",
                 "polygon": [
-                  { "x": 7.5, "y": 1.2 },
-                  { "x": 7.5, "y": 3 },
-                  { "x": 0, "y": 8 },
-                  { "x": 0, "y": 4.4 }
+                  {
+                    "x": 7.5,
+                    "y": 1.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 3
+                  },
+                  {
+                    "x": 0,
+                    "y": 8
+                  },
+                  {
+                    "x": 0,
+                    "y": 4.4
+                  }
                 ]
               }
             ],
@@ -698,24 +727,52 @@
             "id": "duik-lijn",
             "durationMs": 900,
             "players": {
-              "A1": { "x": 7.5, "y": 1 },
-              "A2": { "x": 3, "y": 5.5 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
             "arrows": [
               {
                 "id": "r20",
                 "kind": "run",
-                "from": { "x": 7.5, "y": 1.7 },
-                "to": { "x": 7.5, "y": 1 }
+                "from": {
+                  "x": 7.5,
+                  "y": 1.7
+                },
+                "to": {
+                  "x": 7.5,
+                  "y": 1
+                }
               },
               {
                 "id": "r21",
                 "kind": "run",
-                "from": { "x": 2.5, "y": 1.6 },
-                "to": { "x": 3, "y": 5.5 }
+                "from": {
+                  "x": 2.5,
+                  "y": 1.6
+                },
+                "to": {
+                  "x": 3,
+                  "y": 5.5
+                }
               }
             ],
             "zones": [
@@ -723,20 +780,44 @@
                 "id": "z21",
                 "kind": "blocked",
                 "polygon": [
-                  { "x": 7.5, "y": 0.2 },
-                  { "x": 7.5, "y": 2 },
-                  { "x": 0, "y": 2.8 },
-                  { "x": 0, "y": 0 }
+                  {
+                    "x": 7.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2
+                  },
+                  {
+                    "x": 0,
+                    "y": 2.8
+                  },
+                  {
+                    "x": 0,
+                    "y": 0
+                  }
                 ]
               },
               {
                 "id": "z22",
                 "kind": "cover",
                 "polygon": [
-                  { "x": 0.5, "y": 3.5 },
-                  { "x": 5, "y": 3.5 },
-                  { "x": 5, "y": 7.5 },
-                  { "x": 0.5, "y": 7.5 }
+                  {
+                    "x": 0.5,
+                    "y": 3.5
+                  },
+                  {
+                    "x": 5,
+                    "y": 3.5
+                  },
+                  {
+                    "x": 5,
+                    "y": 7.5
+                  },
+                  {
+                    "x": 0.5,
+                    "y": 7.5
+                  }
                 ]
               }
             ],
@@ -746,18 +827,41 @@
             "id": "aanval",
             "durationMs": 800,
             "players": {
-              "A1": { "x": 7.5, "y": 1 },
-              "A2": { "x": 3, "y": 5.5 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.7, "y": 1, "height": 0.4, "arc": 0.6 },
+            "ball": {
+              "x": 8.7,
+              "y": 1,
+              "height": 0.4,
+              "arc": 0.6
+            },
             "arrows": [
               {
                 "id": "s20",
                 "kind": "shot",
-                "from": { "x": 8.8, "y": 1.4 },
-                "to": { "x": 7.6, "y": 1 }
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 7.6,
+                  "y": 1
+                }
               }
             ],
             "caption": "B1 slaat hard de lijn in, recht in het blok. Gaat de bal toch de diagonaal in, dan staat A2 daar."
@@ -772,21 +876,49 @@
             "id": "toon-lijn",
             "durationMs": 0,
             "players": {
-              "A1": { "x": 7.5, "y": 1 },
-              "A2": { "x": 2.5, "y": 1.2 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 2.5,
+                "y": 1.2
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
             "zones": [
               {
                 "id": "z23",
                 "kind": "blocked",
                 "polygon": [
-                  { "x": 7.5, "y": 0.2 },
-                  { "x": 7.5, "y": 2 },
-                  { "x": 0, "y": 2.8 },
-                  { "x": 0, "y": 0 }
+                  {
+                    "x": 7.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2
+                  },
+                  {
+                    "x": 0,
+                    "y": 2.8
+                  },
+                  {
+                    "x": 0,
+                    "y": 0
+                  }
                 ]
               }
             ],
@@ -796,18 +928,40 @@
             "id": "duik-hoek",
             "durationMs": 900,
             "players": {
-              "A1": { "x": 7.5, "y": 1.7 },
-              "A2": { "x": 2.5, "y": 1.2 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 2.5,
+                "y": 1.2
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
             "arrows": [
               {
                 "id": "r22",
                 "kind": "run",
-                "from": { "x": 7.5, "y": 1 },
-                "to": { "x": 7.5, "y": 1.7 }
+                "from": {
+                  "x": 7.5,
+                  "y": 1
+                },
+                "to": {
+                  "x": 7.5,
+                  "y": 1.7
+                }
               }
             ],
             "zones": [
@@ -815,20 +969,44 @@
                 "id": "z24",
                 "kind": "blocked",
                 "polygon": [
-                  { "x": 7.5, "y": 1.2 },
-                  { "x": 7.5, "y": 3 },
-                  { "x": 0, "y": 8 },
-                  { "x": 0, "y": 4.4 }
+                  {
+                    "x": 7.5,
+                    "y": 1.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 3
+                  },
+                  {
+                    "x": 0,
+                    "y": 8
+                  },
+                  {
+                    "x": 0,
+                    "y": 4.4
+                  }
                 ]
               },
               {
                 "id": "z25",
                 "kind": "cover",
                 "polygon": [
-                  { "x": 0.5, "y": 0.2 },
-                  { "x": 5, "y": 0.2 },
-                  { "x": 5, "y": 2.6 },
-                  { "x": 0.5, "y": 2.6 }
+                  {
+                    "x": 0.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 5,
+                    "y": 2.6
+                  },
+                  {
+                    "x": 0.5,
+                    "y": 2.6
+                  }
                 ]
               }
             ],
@@ -838,18 +1016,41 @@
             "id": "aanval",
             "durationMs": 800,
             "players": {
-              "A1": { "x": 7.5, "y": 1.7 },
-              "A2": { "x": 2.6, "y": 1.3 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 2.6,
+                "y": 1.3
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 2.8, "y": 1.3, "height": 0.6, "arc": 1.5 },
+            "ball": {
+              "x": 2.8,
+              "y": 1.3,
+              "height": 0.6,
+              "arc": 1.5
+            },
             "arrows": [
               {
                 "id": "s21",
                 "kind": "shot",
-                "from": { "x": 8.8, "y": 1.4 },
-                "to": { "x": 2.8, "y": 1.3 }
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 2.8,
+                  "y": 1.3
+                }
               }
             ],
             "caption": "B1 ziet de lijn te laat dichtgaan en speelt een shot over het blok. A2 staat er al."
@@ -864,21 +1065,49 @@
             "id": "armen-wijd",
             "durationMs": 0,
             "players": {
-              "A1": { "x": 7.5, "y": 1.4 },
-              "A2": { "x": 3, "y": 4 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 3,
+                "y": 4
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
             "zones": [
               {
                 "id": "z26",
                 "kind": "blocked",
                 "polygon": [
-                  { "x": 7.5, "y": 0.3 },
-                  { "x": 7.5, "y": 2.5 },
-                  { "x": 4, "y": 4.2 },
-                  { "x": 4, "y": 0.3 }
+                  {
+                    "x": 7.5,
+                    "y": 0.3
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2.5
+                  },
+                  {
+                    "x": 4,
+                    "y": 4.2
+                  },
+                  {
+                    "x": 4,
+                    "y": 0.3
+                  }
                 ]
               }
             ],
@@ -888,18 +1117,40 @@
             "id": "verdediger",
             "durationMs": 900,
             "players": {
-              "A1": { "x": 7.5, "y": 1.4 },
-              "A2": { "x": 2, "y": 4.8 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 2,
+                "y": 4.8
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
             "arrows": [
               {
                 "id": "r23",
                 "kind": "run",
-                "from": { "x": 3, "y": 4 },
-                "to": { "x": 2, "y": 4.8 }
+                "from": {
+                  "x": 3,
+                  "y": 4
+                },
+                "to": {
+                  "x": 2,
+                  "y": 4.8
+                }
               }
             ],
             "zones": [
@@ -907,20 +1158,44 @@
                 "id": "z27",
                 "kind": "blocked",
                 "polygon": [
-                  { "x": 7.5, "y": 0.3 },
-                  { "x": 7.5, "y": 2.5 },
-                  { "x": 4, "y": 4.2 },
-                  { "x": 4, "y": 0.3 }
+                  {
+                    "x": 7.5,
+                    "y": 0.3
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2.5
+                  },
+                  {
+                    "x": 4,
+                    "y": 4.2
+                  },
+                  {
+                    "x": 4,
+                    "y": 0.3
+                  }
                 ]
               },
               {
                 "id": "z28",
                 "kind": "cover",
                 "polygon": [
-                  { "x": 0.3, "y": 2.5 },
-                  { "x": 3.6, "y": 2.5 },
-                  { "x": 3.6, "y": 7.7 },
-                  { "x": 0.3, "y": 7.7 }
+                  {
+                    "x": 0.3,
+                    "y": 2.5
+                  },
+                  {
+                    "x": 3.6,
+                    "y": 2.5
+                  },
+                  {
+                    "x": 3.6,
+                    "y": 7.7
+                  },
+                  {
+                    "x": 0.3,
+                    "y": 7.7
+                  }
                 ]
               }
             ],
@@ -930,24 +1205,53 @@
             "id": "aanval",
             "durationMs": 900,
             "players": {
-              "A1": { "x": 7.5, "y": 1.4 },
-              "A2": { "x": 1.6, "y": 5.4 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1.4
+              },
+              "A2": {
+                "x": 1.6,
+                "y": 5.4
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 1.4, "y": 5.6, "height": 0.6, "arc": 2 },
+            "ball": {
+              "x": 1.4,
+              "y": 5.6,
+              "height": 0.6,
+              "arc": 2
+            },
             "arrows": [
               {
                 "id": "s22",
                 "kind": "shot",
-                "from": { "x": 8.8, "y": 1.4 },
-                "to": { "x": 1.4, "y": 5.6 }
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 1.4,
+                  "y": 5.6
+                }
               },
               {
                 "id": "r24",
                 "kind": "run",
-                "from": { "x": 2, "y": 4.8 },
-                "to": { "x": 1.6, "y": 5.4 }
+                "from": {
+                  "x": 2,
+                  "y": 4.8
+                },
+                "to": {
+                  "x": 1.6,
+                  "y": 5.4
+                }
               }
             ],
             "caption": "B1 tikt de bal over het blok naar achteren. A2 staat diep genoeg en is er op tijd."
@@ -958,100 +1262,49 @@
   },
   "quiz": [
     {
-      "id": "ball-beide",
-      "kind": "placeBoth",
-      "prompt": "Jullie spelen **ball**. Zet A1 aan het net tegenover B1 en A2 centraal achterin.",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 5,
-            "y": 3
-          },
-          "A2": {
-            "x": 6.4,
-            "y": 6
-          },
-          "B1": {
-            "x": 9.4,
-            "y": 1.4
-          },
-          "B2": {
-            "x": 11.5,
-            "y": 4
-          }
-        },
-        "ball": {
-          "x": 8.8,
-          "y": 1.4,
-          "height": 3.4
-        }
-      },
-      "targets": [
-        {
-          "playerId": "A1",
-          "target": [
-            {
-              "x": 6.8,
-              "y": 0.6
-            },
-            {
-              "x": 7.9,
-              "y": 0.6
-            },
-            {
-              "x": 7.9,
-              "y": 2.2
-            },
-            {
-              "x": 6.8,
-              "y": 2.2
-            }
-          ],
-          "tolerance": 0.3
-        },
-        {
-          "playerId": "A2",
-          "target": [
-            {
-              "x": 1,
-              "y": 2.5
-            },
-            {
-              "x": 4.5,
-              "y": 2.5
-            },
-            {
-              "x": 4.5,
-              "y": 5.5
-            },
-            {
-              "x": 1,
-              "y": 5.5
-            }
-          ],
-          "tolerance": 0.4
-        }
+      "id": "schijn-kiezen",
+      "kind": "choice",
+      "prompt": "B1 sloeg al drie keer hard de diagonaal in. Jullie willen dat B1 die slag nog eens kiest, maar dan recht in het blok. Welk signaal past volgens de afspraak van Tweeslag?",
+      "options": [
+        "Het signaal {signaal.hoek}: het blok staat meteen op de diagonaal",
+        "Het signaal {signaal.schijnLijn}: eerst hoek laten zien, dan de lijn",
+        "Het signaal {signaal.lijn}: dan ligt de diagonaal open",
+        "Het signaal {signaal.schijnHoek}: eerst lijn laten zien, dan de hoek in"
       ],
-      "explanation": "Bij ball staat er geen kant vast. De blokker blokt op de bal, en de verdediger blijft centraal om te kunnen reageren."
+      "correct": 3,
+      "explanation": "Met {signaal.hoek} ziet B1 de diagonaal dicht en kiest de lijn. Met {signaal.schijnHoek} lijkt de diagonaal open, en die kiest B1 graag. Op het laatste moment duikt A1 erin. Het signaal {signaal.schijnLijn} doet het omgekeerde."
     },
     {
-      "id": "freeze-schijn",
+      "id": "te-vroeg-duiken",
+      "kind": "choice",
+      "prompt": "Jullie spelen {signaal.schijnLijn}. A1 duikt al tijdens de aanloop van B1 de lijn in, en A2 schuift meteen mee naar de diagonaal. Wat speelt een goede aanvaller nu?",
+      "options": [
+        "Een shot over het blok de lijn in, want daar staat niemand meer",
+        "Hard op de lijn, recht in het blok",
+        "Hard de diagonaal in, langs A2",
+        "Een veilige bal, hoog naar het midden"
+      ],
+      "correct": 0,
+      "explanation": "Wie te vroeg beweegt, laat zien wat er openligt. B1 ziet het blok op de lijn en de verdediger in de diagonaal. Hard op de lijn heeft dan geen zin. Een shot over het blok wel: achter het blok staat niemand meer."
+    },
+    {
+      "id": "schijn-bij-slechte-set",
       "kind": "freeze",
-      "prompt": "Jullie spelen een schijnblok. B1 loopt aan. Wat doet A1 nu?",
+      "prompt": "Afgesproken was {signaal.schijnLijn}. Kijk naar de set. Wat doet A1?",
       "scene": {
-        "alt": "De set is in de lucht en B1 loopt aan. A1 staat aan het net alsof het een blok wordt. Het beeld stopt tijdens de aanloop.",
+        "alt": "A1 staat aan het net en laat hoek zien, A2 staat in de lijn. B2 set de bal laag, ongeveer twee meter van het net. Het beeld stopt na de set.",
         "keyframes": [
           {
-            "id": "set",
+            "id": "pass",
             "durationMs": 0,
             "players": {
               "A1": {
-                "x": 7.4,
-                "y": 1.4
+                "x": 7.5,
+                "y": 1.7
               },
               "A2": {
-                "x": 3,
-                "y": 5
+                "x": 2.5,
+                "y": 1.6
               },
               "B1": {
                 "x": 10.4,
@@ -1065,25 +1318,25 @@
             "ball": {
               "x": 11.5,
               "y": 4,
-              "height": 2
+              "height": 1.5
             },
             "caption": ""
           },
           {
-            "id": "aanloop",
-            "durationMs": 1200,
+            "id": "set",
+            "durationMs": 1100,
             "players": {
               "A1": {
-                "x": 7.4,
-                "y": 1.4
+                "x": 7.5,
+                "y": 1.7
               },
               "A2": {
-                "x": 3,
-                "y": 5
+                "x": 2.5,
+                "y": 1.6
               },
               "B1": {
-                "x": 9.8,
-                "y": 1.8
+                "x": 10.6,
+                "y": 2
               },
               "B2": {
                 "x": 11.5,
@@ -1091,118 +1344,194 @@
               }
             },
             "ball": {
-              "x": 9,
-              "y": 1.4,
-              "height": 3.4,
-              "arc": 2
+              "x": 10,
+              "y": 1.8,
+              "height": 2.2,
+              "arc": 1
             },
             "caption": ""
           }
         ]
       },
       "options": [
-        "Springen om te blokken",
-        "Nu terugtrekken van het net",
-        "Naar de kant van A2 lopen"
+        "Toch de schijnbeweging maken en de lijn in duiken: afspraak is afspraak",
+        "Hoek blokken, want dat liet A1 al zien",
+        "Peelen en roepen: bij deze set doet een blok niets",
+        "Half springen en kijken wat B1 doet"
       ],
-      "correct": 1,
-      "explanation": "Laat in de aanloop trek je terug. Dan rekent de aanvaller nog op je blok, maar ben je op tijd op je plek."
+      "correct": 2,
+      "explanation": "Een schijnblok is ook een blok. Bij een lage set op twee meter slaat B1 niet hard en doet een blok niets. Dan peelt A1 en roept het. Een afspraak volgen die niet meer past, kost jullie de verdediging."
     },
     {
-      "id": "regel-reiken",
-      "kind": "choice",
-      "prompt": "Wanneer mag je als blokker de bal aan de andere kant van het net raken?",
-      "options": [
-        "Altijd",
-        "Pas na de aanval van de tegenstander",
-        "Alleen bij een opslag"
-      ],
-      "correct": 1,
-      "explanation": "Je mag over het net reiken, maar de bal pas raken als de tegenstander heeft aangevallen. Een opslag blokken mag nooit."
-    },
-    {
-      "id": "volgorde-schijn",
-      "kind": "order",
-      "prompt": "Zet het schijnblok op volgorde.",
-      "items": [
-        "Spreek het schijnblok af met je partner",
-        "Sta klaar aan het net",
-        "Trek laat in de aanloop terug",
-        "Verdedig het shot over het blok"
-      ],
-      "explanation": "Je partner moet het vooraf weten. De timing van het terugtrekken maakt het verschil."
-    },
-    {
-      "id": "schijn-lijn-verdediger",
-      "kind": "drag",
-      "prompt": "Je partner geeft **{signaal.schijnLijn}** en laat nu hoek zien. Sleep A2 naar de plek waar je eindigt.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": { "x": 7.5, "y": 1.7 },
-          "A2": { "x": 2.5, "y": 1.6 },
-          "B1": { "x": 9.4, "y": 1.4 },
-          "B2": { "x": 11.5, "y": 4 }
-        },
-        "ball": { "x": 8.8, "y": 1.4, "height": 3.4 }
-      },
-      "target": [
-        { "x": 0.5, "y": 3.5 },
-        { "x": 5, "y": 3.5 },
-        { "x": 5, "y": 7.5 },
-        { "x": 0.5, "y": 7.5 }
-      ],
-      "tolerance": 0.4,
-      "explanation": "A1 duikt op het laatste moment de lijn in. Jij schuift mee naar de diagonaal."
-    },
-    {
-      "id": "schijn-hoek-start",
-      "kind": "choice",
-      "prompt": "Je partner geeft **{signaal.schijnHoek}**. Waar start jij als verdediger?",
-      "options": [
-        "Centraal, en dan afwachten",
-        "Vroeg in de lijn, voor het shot over het blok",
-        "Vroeg in de diagonaal"
-      ],
-      "correct": 1,
-      "explanation": "A1 laat eerst lijn zien en duikt dan de hoek in. De lijn is dus van jou, en daar kun je al vroeg staan."
-    },
-    {
-      "id": "spreid-fout",
+      "id": "schijn-hoek-fout",
       "kind": "spotError",
-      "prompt": "Jullie spelen een spreidblok. Waar gaat het mis?",
+      "prompt": "Afgesproken was {signaal.schijnHoek}. B1 scoort met een shot de lijn in. Wie houdt zich niet aan de afspraak? Tik de speler aan.",
       "scene": {
-        "alt": "A1 blokt met de armen wijd recht voor B1. A2 staat vlak achter het blok, en achterin is het veld leeg.",
+        "alt": "A1 laat eerst lijn zien en duikt dan de hoek in. A2 staat de hele tijd in de diagonaal. B1 speelt een shot over het blok de lijn in, waar niemand staat.",
         "keyframes": [
           {
-            "id": "set",
+            "id": "toon-lijn",
             "durationMs": 0,
             "players": {
-              "A1": { "x": 7.5, "y": 1.4 },
-              "A2": { "x": 5.4, "y": 2.4 },
-              "B1": { "x": 9.4, "y": 1.4 },
-              "B2": { "x": 11.5, "y": 4 }
+              "A1": {
+                "x": 7.5,
+                "y": 1
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
             },
-            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 }
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "zones": [
+              {
+                "id": "lijn",
+                "kind": "blocked",
+                "polygon": [
+                  {
+                    "x": 7.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 2
+                  },
+                  {
+                    "x": 0,
+                    "y": 2.8
+                  },
+                  {
+                    "x": 0,
+                    "y": 0
+                  }
+                ]
+              }
+            ],
+            "caption": ""
+          },
+          {
+            "id": "duik",
+            "durationMs": 900,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 8.8,
+              "y": 1.4,
+              "height": 3.4
+            },
+            "zones": [
+              {
+                "id": "hoek",
+                "kind": "blocked",
+                "polygon": [
+                  {
+                    "x": 7.5,
+                    "y": 1.2
+                  },
+                  {
+                    "x": 7.5,
+                    "y": 3
+                  },
+                  {
+                    "x": 0,
+                    "y": 8
+                  },
+                  {
+                    "x": 0,
+                    "y": 4.4
+                  }
+                ]
+              }
+            ],
+            "caption": ""
+          },
+          {
+            "id": "shot",
+            "durationMs": 800,
+            "players": {
+              "A1": {
+                "x": 7.5,
+                "y": 1.7
+              },
+              "A2": {
+                "x": 3,
+                "y": 5.5
+              },
+              "B1": {
+                "x": 9.4,
+                "y": 1.4
+              },
+              "B2": {
+                "x": 11.5,
+                "y": 4
+              }
+            },
+            "ball": {
+              "x": 2.8,
+              "y": 1.3,
+              "height": 0.4,
+              "arc": 1.5
+            },
+            "arrows": [
+              {
+                "id": "shot",
+                "kind": "shot",
+                "from": {
+                  "x": 8.8,
+                  "y": 1.4
+                },
+                "to": {
+                  "x": 2.8,
+                  "y": 1.3
+                }
+              }
+            ],
+            "caption": ""
           }
         ]
       },
       "spots": [
-        { "id": "a1", "label": "A1", "playerId": "A1" },
-        { "id": "a2", "label": "A2", "playerId": "A2" },
         {
-          "id": "achterin",
-          "label": "Achterin",
-          "polygon": [
-            { "x": 0.3, "y": 4.5 },
-            { "x": 3, "y": 4.5 },
-            { "x": 3, "y": 7.7 },
-            { "x": 0.3, "y": 7.7 }
-          ]
+          "id": "a1",
+          "label": "A1",
+          "playerId": "A1"
+        },
+        {
+          "id": "a2",
+          "label": "A2",
+          "playerId": "A2"
         }
       ],
       "correct": "a2",
-      "explanation": "A2 staat te dicht op het blok. Bij een spreidblok dek je wat om en over het blok gaat, dus sta je dieper."
+      "explanation": "A1 doet precies wat het signaal zegt: eerst lijn laten zien, dan de hoek in. Bij {signaal.schijnHoek} start A2 vroeg in de lijn, want die wordt van A2. A1 aanwijzen ligt voor de hand, omdat A1 als enige beweegt."
     }
   ]
 }

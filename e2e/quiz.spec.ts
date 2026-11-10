@@ -1,5 +1,5 @@
 import { expect, test } from "@playwright/test";
-import { dragTokenToMeters } from "./helpers";
+import { dragTokenToMeters, solveOrder } from "./helpers";
 
 test("op een lage telefoon is een token 22 px naast het midden te pakken", async ({
   page,
@@ -21,42 +21,45 @@ test("op een lage telefoon is een token 22 px naast het midden te pakken", async
 });
 
 test("een meerkeuzevraag goed en fout beantwoorden", async ({ page }) => {
-  await page.goto("./#/les/veld-en-basis/quiz");
+  await page.goto("./#/les/pass-ontvangst/quiz");
 
-  await page.getByRole("button", { name: "18 × 9 meter" }).click();
+  await page
+    .getByRole("button", { name: "A1, want die staat het dichtst bij" })
+    .click();
   await expect(page.getByTestId("feedback")).toContainText("Niet juist");
-  await expect(page.getByTestId("feedback")).toContainText("16 × 8 meter");
+  await expect(page.getByTestId("feedback")).toContainText(
+    "De afspraak is er juist voor deze bal",
+  );
 
   await page.getByRole("button", { name: "Probeer opnieuw" }).click();
-  await page.getByRole("button", { name: "16 × 8 meter" }).click();
+  await page.getByRole("button", { name: /^A2, zoals afgesproken/ }).click();
   await expect(page.getByTestId("feedback")).toContainText("Juist");
 });
 
 test("een sleepvraag goed en fout beantwoorden", async ({ page }) => {
-  await page.goto("./#/les/veld-en-basis/quiz");
-  await page.getByRole("button", { name: "16 × 8 meter" }).click();
-  await page.getByRole("button", { name: "Volgende vraag" }).click();
+  await page.goto("./#/les/bloksignalen/quiz");
 
-  await dragTokenToMeters(page, "A1", 5, 4);
+  // De linkerhand lezen in plaats van de rechter: A2 gaat naar de verkeerde kant.
+  await dragTokenToMeters(page, "A2", 3, 1.5);
   await page.getByRole("button", { name: "Controleer" }).click();
   await expect(page.getByTestId("feedback")).toContainText("Niet juist");
 
   await page.getByRole("button", { name: "Probeer opnieuw" }).click();
-  await dragTokenToMeters(page, "A1", -1.5, 4);
+  await dragTokenToMeters(page, "A2", 2.5, 6.6);
   await page.getByRole("button", { name: "Controleer" }).click();
   await expect(page.getByTestId("feedback")).toContainText("Juist");
 });
 
 test("de voortgang blijft bewaard na herladen", async ({ page }) => {
   await page.goto("./#/les/veld-en-basis/quiz");
-  await page.getByRole("button", { name: "16 × 8 meter" }).click();
-  await page.getByRole("button", { name: "Volgende vraag" }).click();
-  await dragTokenToMeters(page, "A1", -1.5, 4);
+  await solveOrder(page, ["B1", "A2", "B2", "A1"]);
   await page.getByRole("button", { name: "Controleer" }).click();
   await page.getByRole("button", { name: "Volgende vraag" }).click();
-  await page.getByRole("button", { name: "Dezelfde speler" }).click();
+  await page.getByRole("button", { name: /^Na 2 punten/ }).click();
+  await page.getByRole("button", { name: "Volgende vraag" }).click();
+  await page.getByRole("button", { name: /^Ja: de derde set/ }).click();
   await page.getByRole("button", { name: "Probeer opnieuw" }).click();
-  await page.getByRole("button", { name: /niet serveerde/ }).click();
+  await page.getByRole("button", { name: /^Nee: je moet/ }).click();
   await page.getByRole("button", { name: "Bekijk je score" }).click();
   await expect(page.getByTestId("quiz-score")).toContainText("2 van de 3");
 

@@ -170,7 +170,7 @@ test("een gevorderde les doorlopen tot en met de quiz", async ({ page }) => {
     await page.getByRole("button", { name: "Volgende", exact: true }).click();
   }
   await page.getByRole("link", { name: "Start de quiz" }).click();
-  await skipQuestions(page, 4);
+  await skipQuestions(page, 3);
   await expect(page.getByTestId("quiz-score")).toBeVisible();
   await page.getByRole("link", { name: "Terug naar de lessen" }).click();
   await expect(
@@ -215,22 +215,22 @@ test("een niveautoets afronden, met links naar de lessen", async ({ page }) => {
   await seedV2(page, allBasis);
   await page.goto("./");
   await page.getByTestId("exam-basis").click();
-  await expect(page.getByText("14 gemengde vragen")).toBeVisible();
+  await expect(page.getByText("13 gemengde vragen")).toBeVisible();
   await page.getByRole("button", { name: "Start de toets" }).click();
-  await skipQuestions(page, 14);
+  await skipQuestions(page, 13);
 
   const result = page.getByTestId("exam-result");
   await expect(page.getByTestId("exam-score")).toHaveText(
-    /^Je score: \d+ van de 14 vragen goed\.$/,
+    /^Je score: \d+ van de 13 vragen goed\.$/,
   );
   const scoreText = await page.getByTestId("exam-score").textContent();
   const score = Number(scoreText?.match(/\d+/)?.[0]);
   await expect(result.getByRole("link", { name: /^Naar les:/ })).toHaveCount(
-    14 - score,
+    13 - score,
   );
   await result.getByRole("link", { name: "Terug naar de lessen" }).click();
   await expect(page.getByTestId("exam-basis")).toContainText(
-    `Beste score ${score}/14`,
+    `Beste score ${score}/13`,
   );
 });
 
@@ -254,11 +254,11 @@ test("de niveautoets expert werkt, ook zonder tijdslimiet", async ({
 }) => {
   await seedV2(page, {}, true);
   await page.goto("./#/toets/expert");
-  await expect(page.getByText("12 gemengde vragen")).toBeVisible();
+  await expect(page.getByText("11 gemengde vragen")).toBeVisible();
   await startUntimed(page);
   await expect(page.getByTestId("timer")).toBeHidden();
-  await skipQuestions(page, 12);
-  await expect(page.getByTestId("exam-score")).toHaveText(/van de 12 vragen/);
+  await skipQuestions(page, 11);
+  await expect(page.getByTestId("exam-score")).toHaveText(/van de 11 vragen/);
 });
 
 test("een expertquiz kondigt de tijdslimiet vooraf aan", async ({ page }) => {
@@ -268,11 +268,11 @@ test("een expertquiz kondigt de tijdslimiet vooraf aan", async ({ page }) => {
   await expect(page.getByText(/met een tijdslimiet doen/)).toBeVisible();
   await page.getByRole("button", { name: "Start met tijdslimiet" }).click();
 
-  // Beide spelers plaatsen krijgt 35 seconden.
-  await expect(page.getByTestId("timer")).toHaveText("Nog 35 s");
+  // Een meerkeuzevraag krijgt 20 seconden.
+  await expect(page.getByTestId("timer")).toHaveText("Nog 20 s");
   await page.clock.runFor(10_000);
-  await expect(page.getByTestId("timer")).toHaveText("Nog 25 s");
-  await page.clock.runFor(26_000);
+  await expect(page.getByTestId("timer")).toHaveText("Nog 10 s");
+  await page.clock.runFor(11_000);
 
   const feedback = page.getByTestId("feedback");
   await expect(feedback).toContainText("De tijd is om.");
@@ -285,7 +285,7 @@ test("een expertquiz kondigt de tijdslimiet vooraf aan", async ({ page }) => {
 
 test("elke les heeft een quiz die uit te spelen is", async ({ page }) => {
   await seedV2(page, {}, true);
-  const quizzes = { blokvarianten: 7, "bal-dekking": 4, "out-of-system": 4 };
+  const quizzes = { blokvarianten: 4, "bal-dekking": 1, "out-of-system": 2 };
   for (const [lesson, count] of Object.entries(quizzes)) {
     await page.goto(`./#/les/${lesson}/quiz`);
     await startUntimed(page);
