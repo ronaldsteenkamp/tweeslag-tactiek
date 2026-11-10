@@ -31,6 +31,9 @@ Spelregels komen uit de FIVB-regels 2025-2028. Tactiek staat daar niet in en is 
 - TODO: verifiëren: de signalen zelf. Ze staan in `src/config/vereniging.json` en zijn in te vullen met de eigen afspraken van Tweeslag. De tekst in de lessen en quiz past zich daarop aan.
 - TODO: verifiëren: de indeling linkerhand en rechterhand, gezien vanuit de blokker die naar het net kijkt.
 - TODO: verifiëren: "ball" betekent hier: de blokker kiest geen kant vooraf en blokt recht op de bal.
+- TODO: verifiëren: vuist en open hand zijn niet eenduidig. De app gebruikt vuist = geen blok en open hand = ball; andere bronnen (AVP, Better at Beach, Start 2 Beachvolley) gebruiken de vuist juist voor "blok de bal". Wat spreekt Tweeslag af?
+- TODO: verifiëren: het opslagsignaal (wiebelen met de hand aan de kant van het doel, bevestigen met "oké"). Alleen de regels van GP Beach League noemen het wiebelen; het "oké" staat in geen van de bronnen.
+- TODO: verifiëren: varianten die niet zijn opgenomen: de duim als opslagsignaal, twee vingers boven elkaar voor kant en diepte van de opslag, het signaal hoog op de rug bij een set achterover, en de vuist met de pink uit.
 
 ## Les 5: Verdedigen met blok
 
@@ -103,6 +106,9 @@ Deze lijst komt uit het veld `teVerifieren` in de lesbestanden. Pas de punten da
 - TODO: verifiëren: “Ball” betekent hier: geen kant vooraf, en recht op de bal blokken (zoals in les 4). Klopt dat?
 - TODO: verifiëren: Het moment van terugtrekken bij het schijnblok is een vuistregel. Welke timing leren de trainers?
 - TODO: verifiëren: De uitleg over het draaien van de handen is beknopt. Willen de trainers dit anders of uitgebreider?
+- TODO: verifiëren: Drie vingers is hier een schijnblok (hoek laten zien, lijn pakken); in Start 2 Beachvolley (Topvolley Belgium) is “3” dubbel dia. Welke betekenis gebruiken de trainers?
+- TODO: verifiëren: Het switchblok wordt in België met pink en wijsvinger aangegeven in plaats van vier vingers. Welk signaal spreekt Tweeslag af?
+- TODO: verifiëren: De afloopkant bij een set ver van het net (lijn naar de lijn, hoek naar de diagonaal) komt uit één bron (AVP). Leren de trainers het zo?
 
 ### Les 17: Bal-dekking
 

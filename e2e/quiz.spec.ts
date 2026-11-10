@@ -109,3 +109,14 @@ test("een eigen signaal uit de instellingen staat in de les", async ({
   await page.goto("./#/les/bloksignalen/quiz");
   await expect(page.getByText("twee vingers")).toBeVisible();
 });
+
+test("het opslagsignaal staat in de les over bloksignalen", async ({
+  page,
+}) => {
+  await page.goto("./#/les/bloksignalen");
+  await page.getByRole("button", { name: "Ga naar stap 7" }).click();
+  await expect(page.getByTestId("caption")).toContainText(
+    "wiebelen met de hand",
+  );
+  await expect(page.getByTestId("tip")).toContainText("drie vingers");
+});

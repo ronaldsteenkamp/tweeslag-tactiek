@@ -192,6 +192,25 @@ test("de varianten van een les zijn te kiezen", async ({ page }) => {
   await expect(label).toHaveText("Stap 1 van 6");
 });
 
+test("de nieuwe bloksignalen staan als varianten in blokvarianten", async ({
+  page,
+}) => {
+  await seedV2(page, {}, true);
+  await page.goto("./#/les/blokvarianten");
+  const label = page.getByTestId("step-label");
+  const caption = page.getByTestId("caption");
+  const signals = {
+    "Schijn lijn": "drie vingers",
+    "Schijn hoek": "vier vingers",
+    Spreid: "duim en pink",
+  };
+  for (const [variant, signal] of Object.entries(signals)) {
+    await page.getByRole("button", { name: variant, exact: true }).click();
+    await expect(label).toHaveText("Stap 1 van 3");
+    await expect(caption).toContainText(signal);
+  }
+});
+
 test("een niveautoets afronden, met links naar de lessen", async ({ page }) => {
   await seedV2(page, allBasis);
   await page.goto("./");
@@ -266,10 +285,11 @@ test("een expertquiz kondigt de tijdslimiet vooraf aan", async ({ page }) => {
 
 test("elke les heeft een quiz die uit te spelen is", async ({ page }) => {
   await seedV2(page, {}, true);
-  for (const lesson of ["blokvarianten", "bal-dekking", "out-of-system"]) {
+  const quizzes = { blokvarianten: 7, "bal-dekking": 4, "out-of-system": 4 };
+  for (const [lesson, count] of Object.entries(quizzes)) {
     await page.goto(`./#/les/${lesson}/quiz`);
     await startUntimed(page);
-    await skipQuestions(page, 4);
+    await skipQuestions(page, count);
     await expect(page.getByTestId("quiz-score")).toBeVisible();
   }
 });

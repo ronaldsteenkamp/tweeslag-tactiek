@@ -1,5 +1,41 @@
 import { describe, expect, it } from "vitest";
-import { lessonSchema, scenarioSchema } from "./schema";
+import club from "../config/vereniging.json";
+import { clubSchema, lessonSchema, scenarioSchema } from "./schema";
+
+describe("clubSchema", () => {
+  it("accepteert vereniging.json", () => {
+    expect(clubSchema.safeParse(club).success).toBe(true);
+  });
+
+  it("eist de nieuwe bloksignalen", () => {
+    for (const key of ["schijnLijn", "schijnHoek", "spreid"]) {
+      const bloksignalen = Object.fromEntries(
+        Object.entries(club.bloksignalen).filter(([name]) => name !== key),
+      );
+      expect(clubSchema.safeParse({ ...club, bloksignalen }).success, key).toBe(
+        false,
+      );
+    }
+  });
+
+  it("eist opslagsignalen met een doel", () => {
+    const zonder = { ...club, opslagsignalen: undefined };
+    expect(clubSchema.safeParse(zonder).success).toBe(false);
+    expect(
+      clubSchema.safeParse({ ...club, opslagsignalen: { doel: "" } }).success,
+    ).toBe(false);
+  });
+
+  it("staat extra sleutels toe, maar geen lege tekst", () => {
+    const extra = {
+      ...club,
+      bloksignalen: { ...club.bloksignalen, nieuw: "x" },
+    };
+    expect(clubSchema.safeParse(extra).success).toBe(true);
+    const leeg = { ...club, bloksignalen: { ...club.bloksignalen, nieuw: "" } };
+    expect(clubSchema.safeParse(leeg).success).toBe(false);
+  });
+});
 
 const keyframe = {
   id: "k1",

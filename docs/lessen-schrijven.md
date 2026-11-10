@@ -4,12 +4,12 @@ Deze handleiding is voor iedereen die inhoud wil aanpassen. Programmeren is niet
 
 ## Waar staat wat?
 
-| Wat je wilt aanpassen       | Bestand                      |
-| --------------------------- | ---------------------------- |
-| Een les of quizvraag        | `src/content/nl/lessen/`     |
-| De spelregels               | `src/content/nl/regels.json` |
-| Bloksignalen en roepwoorden | `src/config/vereniging.json` |
-| Vragen die nog open staan   | `content/TWIJFELGEVALLEN.md` |
+| Wat je wilt aanpassen     | Bestand                      |
+| ------------------------- | ---------------------------- |
+| Een les of quizvraag      | `src/content/nl/lessen/`     |
+| De spelregels             | `src/content/nl/regels.json` |
+| Signalen en roepwoorden   | `src/config/vereniging.json` |
+| Vragen die nog open staan | `content/TWIJFELGEVALLEN.md` |
 
 ## Een tekst aanpassen op GitHub
 
@@ -425,12 +425,34 @@ Open `src/config/vereniging.json`:
     "lijn": "één vinger",
     "hoek": "twee vingers",
     "ball": "een open hand",
-    "geenBlok": "een vuist"
+    "geenBlok": "een vuist",
+    "schijnLijn": "drie vingers",
+    "schijnHoek": "vier vingers",
+    "spreid": "duim en pink"
+  },
+  "opslagsignalen": {
+    "doel": "wiebelen met de hand"
   }
 }
 ```
 
-Verander de tekst, en alle lessen en quizvragen passen zich aan. In een lesbestand gebruik je een signaal met `{signaal.lijn}` en een roepwoord met `{roep.lijn}`. Zet een signaal niet vooraan in een zin, want de tekst begint met een kleine letter.
+Verander de tekst, en alle lessen en quizvragen passen zich aan. In een lesbestand gebruik je:
+
+| Blok in `vereniging.json` | In een lesbestand | Voorbeeld              | Betekenis                                          |
+| ------------------------- | ----------------- | ---------------------- | -------------------------------------------------- |
+| `bloksignalen`            | `{signaal.…}`     | `{signaal.lijn}`       | Blok lijn                                          |
+|                           |                   | `{signaal.hoek}`       | Blok hoek (diagonaal)                              |
+|                           |                   | `{signaal.ball}`       | Geen kant vooraf, blok op de bal                   |
+|                           |                   | `{signaal.geenBlok}`   | Geen blok, de blokker trekt terug                  |
+|                           |                   | `{signaal.schijnLijn}` | Hoek laten zien, op het laatste moment lijn pakken |
+|                           |                   | `{signaal.schijnHoek}` | Lijn laten zien, op het laatste moment hoek pakken |
+|                           |                   | `{signaal.spreid}`     | Spreidblok, armen wijd                             |
+| `opslagsignalen`          | `{opslag.…}`      | `{opslag.doel}`        | Serveer op de tegenstander aan die kant            |
+| `roepwoorden`             | `{roep.…}`        | `{roep.lijn}`          | Wat je roept voor je aanvaller                     |
+
+Zet een signaal niet vooraan in een zin, want de tekst begint met een kleine letter. Het opslagsignaal is een werkwoord (“wiebelen met de hand”); schrijf de zin daarom zo dat dat past, bijvoorbeeld: “het opslagsignaal: **{opslag.doel}**”.
+
+De sleutels in de tabel zijn verplicht; laat ze staan en verander alleen de tekst erachter. Een nieuwe sleutel mag je toevoegen, die is dan meteen te gebruiken. Een verwijzing naar een sleutel die niet bestaat, laat `npm test` mislukken.
 
 ## Een les afronden
 

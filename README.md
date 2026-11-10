@@ -143,7 +143,7 @@ Op basisniveau heeft een les 4 tot 7 stappen en minstens twee quizvragen. Gevord
 
 - **Logo en kleur:** `src/config/branding.ts` en `public/logo.svg`. Draai daarna `npm run icons`..
 - **Kleuren, ruimte en typografie:** `src/styles/tokens.css`. Een test bewaakt het contrast.
-- **Bloksignalen en roepwoorden:** `src/config/vereniging.json`.
+- **Bloksignalen, opslagsignalen en roepwoorden:** `src/config/vereniging.json`.
 
 ## Vertalen
 

@@ -4,21 +4,25 @@
   "status": "concept",
   "niveau": "expert",
   "vereisten": ["aanvaller-lezen"],
-  "duurMinuten": 7,
+  "duurMinuten": 9,
   "leerdoelen": [
     "Na deze les ken je het lezende blok, het schijnblok en het draaien van je handen.",
-    "Na deze les kun je als verdediger reageren op elke blokvariant."
+    "Na deze les kun je als verdediger reageren op elke blokvariant.",
+    "Na deze les ken je de signalen voor schijn lijn, schijn hoek en het spreidblok."
   ],
   "teVerifieren": [
     "“Ball” betekent hier: geen kant vooraf, en recht op de bal blokken (zoals in les 4). Klopt dat?",
     "Het moment van terugtrekken bij het schijnblok is een vuistregel. Welke timing leren de trainers?",
-    "De uitleg over het draaien van de handen is beknopt. Willen de trainers dit anders of uitgebreider?"
+    "De uitleg over het draaien van de handen is beknopt. Willen de trainers dit anders of uitgebreider?",
+    "Drie vingers is hier een schijnblok (hoek laten zien, lijn pakken); in Start 2 Beachvolley (Topvolley Belgium) is “3” dubbel dia. Welke betekenis gebruiken de trainers?",
+    "Het switchblok wordt in België met pink en wijsvinger aangegeven in plaats van vier vingers. Welk signaal spreekt Tweeslag af?",
+    "De afloopkant bij een set ver van het net (lijn naar de lijn, hoek naar de diagonaal) komt uit één bron (AVP). Leren de trainers het zo?"
   ],
   "scenario": {
     "id": "blokvarianten",
     "title": "Blokvarianten",
-    "description": "Een blok dat leest, een schijnblok en gedraaide handen. Dezelfde aanval met blok lijn, blok hoek of peel zie je in de varianten.",
-    "tags": ["blok", "ball", "schijnblok"],
+    "description": "Een blok dat leest, een schijnblok en gedraaide handen. Dezelfde aanval met blok lijn, blok hoek, peel, schijn lijn, schijn hoek of een spreidblok zie je in de varianten.",
+    "tags": ["blok", "ball", "schijnblok", "spreidblok", "signalen"],
     "level": "gevorderd",
     "players": [
       {
@@ -192,7 +196,8 @@
             }
           }
         ],
-        "caption": "Laat in de aanloop trekt A1 **terug**. Te vroeg en de aanvaller ziet het. Te laat en je staat nergens."
+        "caption": "Laat in de aanloop trekt A1 **terug**. Te vroeg en de aanvaller ziet het. Te laat en je staat nergens.",
+        "tip": "Bij een set ver van het net bepaalt het signaal ook je **afloopkant**: bij lijn loop je naar de lijn af, bij hoek naar de diagonaal."
       },
       {
         "id": "shot-gepakt",
@@ -660,6 +665,294 @@
             "caption": "De aanval kan alle kanten op, maar nu staan er twee verdedigers."
           }
         ]
+      },
+      {
+        "id": "schijn-lijn",
+        "label": "Schijn lijn",
+        "keyframes": [
+          {
+            "id": "toon-hoek",
+            "durationMs": 0,
+            "players": {
+              "A1": { "x": 7.5, "y": 1.7 },
+              "A2": { "x": 2.5, "y": 1.6 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "zones": [
+              {
+                "id": "z20",
+                "kind": "blocked",
+                "polygon": [
+                  { "x": 7.5, "y": 1.2 },
+                  { "x": 7.5, "y": 3 },
+                  { "x": 0, "y": 8 },
+                  { "x": 0, "y": 4.4 }
+                ]
+              }
+            ],
+            "caption": "Bij **{signaal.schijnLijn}** laat A1 eerst **hoek** zien, en A2 staat in de lijn. Voor de aanvaller lijkt de lijn open voor een harde aanval."
+          },
+          {
+            "id": "duik-lijn",
+            "durationMs": 900,
+            "players": {
+              "A1": { "x": 7.5, "y": 1 },
+              "A2": { "x": 3, "y": 5.5 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "arrows": [
+              {
+                "id": "r20",
+                "kind": "run",
+                "from": { "x": 7.5, "y": 1.7 },
+                "to": { "x": 7.5, "y": 1 }
+              },
+              {
+                "id": "r21",
+                "kind": "run",
+                "from": { "x": 2.5, "y": 1.6 },
+                "to": { "x": 3, "y": 5.5 }
+              }
+            ],
+            "zones": [
+              {
+                "id": "z21",
+                "kind": "blocked",
+                "polygon": [
+                  { "x": 7.5, "y": 0.2 },
+                  { "x": 7.5, "y": 2 },
+                  { "x": 0, "y": 2.8 },
+                  { "x": 0, "y": 0 }
+                ]
+              },
+              {
+                "id": "z22",
+                "kind": "cover",
+                "polygon": [
+                  { "x": 0.5, "y": 3.5 },
+                  { "x": 5, "y": 3.5 },
+                  { "x": 5, "y": 7.5 },
+                  { "x": 0.5, "y": 7.5 }
+                ]
+              }
+            ],
+            "caption": "Op het laatste moment **duikt** A1 de lijn in. A2 schuift tegelijk naar de **diagonaal**."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": { "x": 7.5, "y": 1 },
+              "A2": { "x": 3, "y": 5.5 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.7, "y": 1, "height": 0.4, "arc": 0.6 },
+            "arrows": [
+              {
+                "id": "s20",
+                "kind": "shot",
+                "from": { "x": 8.8, "y": 1.4 },
+                "to": { "x": 7.6, "y": 1 }
+              }
+            ],
+            "caption": "B1 slaat hard de lijn in, recht in het blok. Gaat de bal toch de diagonaal in, dan staat A2 daar."
+          }
+        ]
+      },
+      {
+        "id": "schijn-hoek",
+        "label": "Schijn hoek",
+        "keyframes": [
+          {
+            "id": "toon-lijn",
+            "durationMs": 0,
+            "players": {
+              "A1": { "x": 7.5, "y": 1 },
+              "A2": { "x": 2.5, "y": 1.2 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "zones": [
+              {
+                "id": "z23",
+                "kind": "blocked",
+                "polygon": [
+                  { "x": 7.5, "y": 0.2 },
+                  { "x": 7.5, "y": 2 },
+                  { "x": 0, "y": 2.8 },
+                  { "x": 0, "y": 0 }
+                ]
+              }
+            ],
+            "caption": "Bij **{signaal.schijnHoek}** laat A1 eerst **lijn** zien. A2 start al **vroeg** in de lijn, want die wordt straks van A2."
+          },
+          {
+            "id": "duik-hoek",
+            "durationMs": 900,
+            "players": {
+              "A1": { "x": 7.5, "y": 1.7 },
+              "A2": { "x": 2.5, "y": 1.2 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "arrows": [
+              {
+                "id": "r22",
+                "kind": "run",
+                "from": { "x": 7.5, "y": 1 },
+                "to": { "x": 7.5, "y": 1.7 }
+              }
+            ],
+            "zones": [
+              {
+                "id": "z24",
+                "kind": "blocked",
+                "polygon": [
+                  { "x": 7.5, "y": 1.2 },
+                  { "x": 7.5, "y": 3 },
+                  { "x": 0, "y": 8 },
+                  { "x": 0, "y": 4.4 }
+                ]
+              },
+              {
+                "id": "z25",
+                "kind": "cover",
+                "polygon": [
+                  { "x": 0.5, "y": 0.2 },
+                  { "x": 5, "y": 0.2 },
+                  { "x": 5, "y": 2.6 },
+                  { "x": 0.5, "y": 2.6 }
+                ]
+              }
+            ],
+            "caption": "Laat **duikt** A1 de hoek in. De diagonaal is dicht, en A2 dekt het **lijnshot** over het blok."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 800,
+            "players": {
+              "A1": { "x": 7.5, "y": 1.7 },
+              "A2": { "x": 2.6, "y": 1.3 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 2.8, "y": 1.3, "height": 0.6, "arc": 1.5 },
+            "arrows": [
+              {
+                "id": "s21",
+                "kind": "shot",
+                "from": { "x": 8.8, "y": 1.4 },
+                "to": { "x": 2.8, "y": 1.3 }
+              }
+            ],
+            "caption": "B1 ziet de lijn te laat dichtgaan en speelt een shot over het blok. A2 staat er al."
+          }
+        ]
+      },
+      {
+        "id": "spreid",
+        "label": "Spreid",
+        "keyframes": [
+          {
+            "id": "armen-wijd",
+            "durationMs": 0,
+            "players": {
+              "A1": { "x": 7.5, "y": 1.4 },
+              "A2": { "x": 3, "y": 4 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "zones": [
+              {
+                "id": "z26",
+                "kind": "blocked",
+                "polygon": [
+                  { "x": 7.5, "y": 0.3 },
+                  { "x": 7.5, "y": 2.5 },
+                  { "x": 4, "y": 4.2 },
+                  { "x": 4, "y": 0.3 }
+                ]
+              }
+            ],
+            "caption": "Bij **{signaal.spreid}** blokt A1 recht voor de aanvaller, met de **armen wijd**. Zo sluit het blok zo veel mogelijk net af."
+          },
+          {
+            "id": "verdediger",
+            "durationMs": 900,
+            "players": {
+              "A1": { "x": 7.5, "y": 1.4 },
+              "A2": { "x": 2, "y": 4.8 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 },
+            "arrows": [
+              {
+                "id": "r23",
+                "kind": "run",
+                "from": { "x": 3, "y": 4 },
+                "to": { "x": 2, "y": 4.8 }
+              }
+            ],
+            "zones": [
+              {
+                "id": "z27",
+                "kind": "blocked",
+                "polygon": [
+                  { "x": 7.5, "y": 0.3 },
+                  { "x": 7.5, "y": 2.5 },
+                  { "x": 4, "y": 4.2 },
+                  { "x": 4, "y": 0.3 }
+                ]
+              },
+              {
+                "id": "z28",
+                "kind": "cover",
+                "polygon": [
+                  { "x": 0.3, "y": 2.5 },
+                  { "x": 3.6, "y": 2.5 },
+                  { "x": 3.6, "y": 7.7 },
+                  { "x": 0.3, "y": 7.7 }
+                ]
+              }
+            ],
+            "caption": "Een breed blok heeft minder kracht. A2 dekt wat **om en over** het blok gaat, en blijft daarom wat dieper staan."
+          },
+          {
+            "id": "aanval",
+            "durationMs": 900,
+            "players": {
+              "A1": { "x": 7.5, "y": 1.4 },
+              "A2": { "x": 1.6, "y": 5.4 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 1.4, "y": 5.6, "height": 0.6, "arc": 2 },
+            "arrows": [
+              {
+                "id": "s22",
+                "kind": "shot",
+                "from": { "x": 8.8, "y": 1.4 },
+                "to": { "x": 1.4, "y": 5.6 }
+              },
+              {
+                "id": "r24",
+                "kind": "run",
+                "from": { "x": 2, "y": 4.8 },
+                "to": { "x": 1.6, "y": 5.4 }
+              }
+            ],
+            "caption": "B1 tikt de bal over het blok naar achteren. A2 staat diep genoeg en is er op tijd."
+          }
+        ]
       }
     ]
   },
@@ -838,6 +1131,78 @@
         "Verdedig het shot over het blok"
       ],
       "explanation": "Je partner moet het vooraf weten. De timing van het terugtrekken maakt het verschil."
+    },
+    {
+      "id": "schijn-lijn-verdediger",
+      "kind": "drag",
+      "prompt": "Je partner geeft **{signaal.schijnLijn}** en laat nu hoek zien. Sleep A2 naar de plek waar je eindigt.",
+      "playerId": "A2",
+      "setup": {
+        "players": {
+          "A1": { "x": 7.5, "y": 1.7 },
+          "A2": { "x": 2.5, "y": 1.6 },
+          "B1": { "x": 9.4, "y": 1.4 },
+          "B2": { "x": 11.5, "y": 4 }
+        },
+        "ball": { "x": 8.8, "y": 1.4, "height": 3.4 }
+      },
+      "target": [
+        { "x": 0.5, "y": 3.5 },
+        { "x": 5, "y": 3.5 },
+        { "x": 5, "y": 7.5 },
+        { "x": 0.5, "y": 7.5 }
+      ],
+      "tolerance": 0.4,
+      "explanation": "A1 duikt op het laatste moment de lijn in. Jij schuift mee naar de diagonaal."
+    },
+    {
+      "id": "schijn-hoek-start",
+      "kind": "choice",
+      "prompt": "Je partner geeft **{signaal.schijnHoek}**. Waar start jij als verdediger?",
+      "options": [
+        "Centraal, en dan afwachten",
+        "Vroeg in de lijn, voor het shot over het blok",
+        "Vroeg in de diagonaal"
+      ],
+      "correct": 1,
+      "explanation": "A1 laat eerst lijn zien en duikt dan de hoek in. De lijn is dus van jou, en daar kun je al vroeg staan."
+    },
+    {
+      "id": "spreid-fout",
+      "kind": "spotError",
+      "prompt": "Jullie spelen een spreidblok. Waar gaat het mis?",
+      "scene": {
+        "alt": "A1 blokt met de armen wijd recht voor B1. A2 staat vlak achter het blok, en achterin is het veld leeg.",
+        "keyframes": [
+          {
+            "id": "set",
+            "durationMs": 0,
+            "players": {
+              "A1": { "x": 7.5, "y": 1.4 },
+              "A2": { "x": 5.4, "y": 2.4 },
+              "B1": { "x": 9.4, "y": 1.4 },
+              "B2": { "x": 11.5, "y": 4 }
+            },
+            "ball": { "x": 8.8, "y": 1.4, "height": 3.4 }
+          }
+        ]
+      },
+      "spots": [
+        { "id": "a1", "label": "A1", "playerId": "A1" },
+        { "id": "a2", "label": "A2", "playerId": "A2" },
+        {
+          "id": "achterin",
+          "label": "Achterin",
+          "polygon": [
+            { "x": 0.3, "y": 4.5 },
+            { "x": 3, "y": 4.5 },
+            { "x": 3, "y": 7.7 },
+            { "x": 0.3, "y": 7.7 }
+          ]
+        }
+      ],
+      "correct": "a2",
+      "explanation": "A2 staat te dicht op het blok. Bij een spreidblok dek je wat om en over het blok gaat, dus sta je dieper."
     }
   ]
 }

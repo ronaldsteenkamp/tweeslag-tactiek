@@ -133,6 +133,8 @@ for (const [width, height] of viewports) {
 test("elke uitleg past zonder scrollen op een kleine telefoon", async ({
   page,
 }) => {
+  // Loopt elke stap van elke les langs; dat duurt langer dan de standaard 30 s.
+  test.setTimeout(120_000);
   await page.setViewportSize({ width: 360, height: 640 });
   await page.goto("./");
   await page.getByRole("checkbox", { name: /Alles ontgrendelen/ }).check();
