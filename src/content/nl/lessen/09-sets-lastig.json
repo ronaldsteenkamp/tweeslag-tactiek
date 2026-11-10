@@ -381,268 +381,30 @@
   },
   "quiz": [
     {
-      "id": "freeze-slechte-pass",
-      "kind": "freeze",
-      "prompt": "De pass komt laag en ver van het net, en het waait hard. Welke set kies je?",
-      "scene": {
-        "alt": "A1 passt de bal laag en ver van het net. A2 moet naar achteren lopen. Het beeld stopt als A2 onder de bal staat.",
-        "keyframes": [
-          {
-            "id": "pass",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 3,
-                "y": 2
-              },
-              "A2": {
-                "x": 6.5,
-                "y": 4
-              },
-              "B1": {
-                "x": 8.8,
-                "y": 2
-              },
-              "B2": {
-                "x": 12,
-                "y": 5
-              }
-            },
-            "ball": {
-              "x": 3,
-              "y": 2,
-              "height": 0.6
-            },
-            "caption": ""
-          },
-          {
-            "id": "bal-laag",
-            "durationMs": 1200,
-            "players": {
-              "A1": {
-                "x": 3,
-                "y": 2
-              },
-              "A2": {
-                "x": 4,
-                "y": 4.5
-              },
-              "B1": {
-                "x": 8.8,
-                "y": 2
-              },
-              "B2": {
-                "x": 12,
-                "y": 5
-              }
-            },
-            "ball": {
-              "x": 4.1,
-              "y": 4.4,
-              "height": 1,
-              "arc": 1.2
-            },
-            "arrows": [
-              {
-                "id": "r7",
-                "kind": "run",
-                "from": {
-                  "x": 6.5,
-                  "y": 4
-                },
-                "to": {
-                  "x": 4,
-                  "y": 4.5
-                }
-              }
-            ],
-            "caption": ""
-          }
-        ]
-      },
-      "options": [
-        "Bovenhands, strak op het net",
-        "Bump set, hoog naar het midden",
-        "Direct over het net spelen"
-      ],
-      "correct": 1,
-      "explanation": "Bij een lastige pass en wind is de bump set veilig. Hoog naar het midden geeft je aanvaller tijd om aan te lopen."
-    },
-    {
-      "id": "route-naar-pass",
-      "kind": "route",
-      "prompt": "De pass valt diep in het veld. Teken de route van A2 naar de bal.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 3,
-            "y": 2
-          },
-          "A2": {
-            "x": 6.5,
-            "y": 4
-          },
-          "B1": {
-            "x": 8.8,
-            "y": 2
-          },
-          "B2": {
-            "x": 12,
-            "y": 5
-          }
-        },
-        "ball": {
-          "x": 3,
-          "y": 5.5,
-          "height": 2.5
-        }
-      },
-      "target": [
-        {
-          "x": 2.4,
-          "y": 4.8
-        },
-        {
-          "x": 3.8,
-          "y": 4.8
-        },
-        {
-          "x": 3.8,
-          "y": 6.2
-        },
-        {
-          "x": 2.4,
-          "y": 6.2
-        }
-      ],
-      "tolerance": 0.3,
-      "maxDetour": 1.4,
-      "explanation": "Loop zo direct mogelijk naar de plek waar de bal valt, zodat je er stil onder staat voor je set."
-    },
-    {
-      "id": "fout-te-dicht",
-      "kind": "spotError",
-      "prompt": "De aanval van A1 wordt gestopt. Waar ging het mis?",
-      "scene": {
-        "alt": "A2 set de bal bijna boven het net. A1 springt, maar B1 blokt de bal direct terug.",
-        "keyframes": [
-          {
-            "id": "set",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 5,
-                "y": 1.6
-              },
-              "A2": {
-                "x": 6,
-                "y": 3.4
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.5
-              },
-              "B2": {
-                "x": 12,
-                "y": 5
-              }
-            },
-            "ball": {
-              "x": 6,
-              "y": 3.4,
-              "height": 2.2
-            },
-            "caption": ""
-          },
-          {
-            "id": "te-dicht",
-            "durationMs": 1100,
-            "players": {
-              "A1": {
-                "x": 7,
-                "y": 1.5
-              },
-              "A2": {
-                "x": 6,
-                "y": 3.4
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.5
-              },
-              "B2": {
-                "x": 12,
-                "y": 5
-              }
-            },
-            "ball": {
-              "x": 7.8,
-              "y": 1.5,
-              "height": 3.2,
-              "arc": 1.5
-            },
-            "arrows": [
-              {
-                "id": "b8",
-                "kind": "ball",
-                "from": {
-                  "x": 6,
-                  "y": 3.4
-                },
-                "to": {
-                  "x": 7.8,
-                  "y": 1.5
-                }
-              }
-            ],
-            "caption": ""
-          }
-        ]
-      },
-      "spots": [
-        {
-          "id": "a1",
-          "label": "A1",
-          "playerId": "A1"
-        },
-        {
-          "id": "a2",
-          "label": "A2",
-          "playerId": "A2"
-        },
-        {
-          "id": "b1",
-          "label": "B1",
-          "playerId": "B1"
-        }
-      ],
-      "correct": "a2",
-      "explanation": "A2 zette de bal te dicht op het net. Daar kan de blokker hem makkelijk pakken."
-    },
-    {
-      "id": "wind-naar-net",
+      "id": "wind-naar-het-net",
       "kind": "choice",
-      "prompt": "De wind blaast naar het net toe. Waar mik je je set?",
+      "prompt": "De pass is goed, maar de wind blaast hard naar het net toe. Hoe set je?",
       "options": [
-        "Verder van het net",
-        "Dichter bij het net",
-        "Precies op het net"
+        "Verder van het net en lager",
+        "Dichter bij het net, de wind duwt de bal toch terug",
+        "Verder van het net en extra hoog, voor tijd",
+        "Op de normale plek, een meter van het net"
       ],
       "correct": 0,
-      "explanation": "De wind duwt de bal naar het net. Mik daarom verder van het net, anders waait hij te ver door."
+      "explanation": "De wind duwt de bal naar het net, dus je set verder ervan af. Bij harde wind set je ook lager: hoe langer de bal hangt, hoe meer de wind ermee doet. Extra hoog voelt veilig, maar geeft de wind juist meer tijd."
     },
     {
-      "id": "dubbel",
+      "id": "pass-met-draaiing",
       "kind": "choice",
-      "prompt": "Wanneer is een bovenhandse set fout?",
+      "prompt": "De pass komt laag, snel en met veel draaiing naar je toe. Je partner moet na een slechte ontvangst ver lopen. Welke set kies je?",
       "options": [
-        "Als hij lager dan het net blijft",
-        "Als je de bal twee keer na elkaar raakt",
-        "Als de pass slecht was"
+        "Bovenhands, want dat is preciezer",
+        "Laag en snel, zodat je partner niet hoeft te wachten",
+        "Bovenhands, dicht op het net",
+        "Onderhands, hoog naar het midden"
       ],
-      "correct": 1,
-      "explanation": "Dat is dubbel contact. De bal moet in één beweging je handen verlaten."
+      "correct": 3,
+      "explanation": "Bij zo'n bal is de bump set veiliger: bovenhands maak je snel dubbel contact. Je partner moet ver lopen, dus set je hoog naar het midden. Bovenhands is preciezer, maar dat helpt niet als de set wordt afgefloten."
     }
   ]
 }

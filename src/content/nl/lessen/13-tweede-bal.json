@@ -299,23 +299,11 @@
   },
   "quiz": [
     {
-      "id": "mag-het",
-      "kind": "choice",
-      "prompt": "Welke tweede bal over het net is toegestaan?",
-      "options": [
-        "Een tip met open hand",
-        "Een bovenhandse bal loodrecht op je schouders",
-        "Een bovenhandse bal schuin langs je schouders, zonder dat je wilde setten"
-      ],
-      "correct": 1,
-      "explanation": "Een aanval met open hand is fout. Bovenhands over het net moet loodrecht op de schouderlijn gaan, tenzij je echt probeerde te setten."
-    },
-    {
-      "id": "freeze-overspelen",
+      "id": "pass-te-ver",
       "kind": "freeze",
-      "prompt": "De pass ligt hoog op het net. Wat doet A2?",
+      "prompt": "Er staat geen blokker aan het net. Kijk naar de pass. Wat speelt A2?",
       "scene": {
-        "alt": "A1 passt hoog tot vlak bij het net. Aan de overkant staat niemand aan het net en beide spelers staan aan dezelfde kant. De andere kant is leeg.",
+        "alt": "A1 passt de bal hoog, maar ruim twee meter van het net. B1 staat ver van het net. Het beeld stopt als A2 onder de bal staat.",
         "keyframes": [
           {
             "id": "pass",
@@ -323,257 +311,92 @@
             "players": {
               "A1": {
                 "x": 3,
-                "y": 2
+                "y": 6
               },
               "A2": {
-                "x": 6.5,
-                "y": 4
+                "x": 4.5,
+                "y": 3
               },
               "B1": {
-                "x": 11.5,
+                "x": 11,
                 "y": 2
               },
               "B2": {
-                "x": 13,
-                "y": 3
+                "x": 12,
+                "y": 6
               }
             },
             "ball": {
               "x": 3,
-              "y": 2,
+              "y": 6,
               "height": 0.8
             },
             "caption": ""
           },
           {
-            "id": "bij-het-net",
-            "durationMs": 1200,
+            "id": "onder-de-bal",
+            "durationMs": 1300,
             "players": {
               "A1": {
                 "x": 3,
-                "y": 2
+                "y": 6
               },
               "A2": {
-                "x": 7,
-                "y": 3.6
+                "x": 5.6,
+                "y": 4
               },
               "B1": {
-                "x": 11.5,
+                "x": 11,
                 "y": 2
               },
               "B2": {
-                "x": 13,
-                "y": 3
+                "x": 12,
+                "y": 6
               }
             },
             "ball": {
-              "x": 7,
-              "y": 3.6,
-              "height": 3,
+              "x": 5.6,
+              "y": 4,
+              "height": 3.2,
               "arc": 1.5
             },
-            "arrows": [
-              {
-                "id": "b30",
-                "kind": "ball",
-                "from": {
-                  "x": 3,
-                  "y": 2
-                },
-                "to": {
-                  "x": 7,
-                  "y": 3.6
-                }
-              }
-            ],
             "caption": ""
           }
         ]
       },
       "options": [
-        "Rustig setten voor A1",
-        "De bal direct naar de lege kant spelen",
-        "De bal laten vallen"
+        "Meteen over: B1 staat niet aan het net",
+        "Een gewone set: de pass ligt te ver van het net voor een tweede bal",
+        "Springen en slaan op de tweede bal",
+        "Bovenhands over het net, naar achteren"
       ],
       "correct": 1,
-      "explanation": "Er staat geen blokker aan het net en een kant is leeg. Dan kan de tweede bal direct over, mits volgens de regels."
+      "explanation": "Een tweede bal werkt alleen als de pass dicht bij het net ligt. Vanaf ruim twee meter is de bal lang onderweg en is B1 op tijd. Het lege net verleidt, maar de pass beslist. Set dus gewoon."
     },
     {
-      "id": "fout-blokker-weg",
-      "kind": "spotError",
-      "prompt": "De pass van team B ligt op het net. Waar gaat het bij team A mis?",
-      "scene": {
-        "alt": "De pass van team B ligt dicht op het net. A1 is al van het net weggelopen. B1 speelt de bal op het tweede contact kort over het net.",
-        "keyframes": [
-          {
-            "id": "pass",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 5,
-                "y": 2
-              },
-              "A2": {
-                "x": 3,
-                "y": 5.5
-              },
-              "B1": {
-                "x": 8.8,
-                "y": 3.6
-              },
-              "B2": {
-                "x": 11,
-                "y": 2
-              }
-            },
-            "ball": {
-              "x": 8.8,
-              "y": 3.6,
-              "height": 3
-            },
-            "caption": ""
-          },
-          {
-            "id": "tweede",
-            "durationMs": 900,
-            "players": {
-              "A1": {
-                "x": 5,
-                "y": 2
-              },
-              "A2": {
-                "x": 3,
-                "y": 5.5
-              },
-              "B1": {
-                "x": 8.8,
-                "y": 3.6
-              },
-              "B2": {
-                "x": 11,
-                "y": 2
-              }
-            },
-            "ball": {
-              "x": 6.6,
-              "y": 3,
-              "height": 0.4,
-              "arc": 1
-            },
-            "arrows": [
-              {
-                "id": "s31",
-                "kind": "shot",
-                "from": {
-                  "x": 8.8,
-                  "y": 3.6
-                },
-                "to": {
-                  "x": 6.6,
-                  "y": 3
-                }
-              }
-            ],
-            "caption": ""
-          }
-        ]
-      },
-      "spots": [
-        {
-          "id": "a1",
-          "label": "A1",
-          "playerId": "A1"
-        },
-        {
-          "id": "a2",
-          "label": "A2",
-          "playerId": "A2"
-        },
-        {
-          "id": "b2",
-          "label": "B2",
-          "playerId": "B2"
-        }
+      "id": "bovenhands-schuin",
+      "kind": "choice",
+      "prompt": "A2 speelt de tweede bal bovenhands over het net, schuin naar de zijkant. A2 wilde niet setten, maar meteen scoren. Mag dat?",
+      "options": [
+        "Ja: het is geen tip met open hand",
+        "Ja: bij de tweede bal mag dat, zolang de bal schoon van je handen komt",
+        "Alleen als de bal je vingertoppen niet raakt",
+        "Nee: bovenhands over het net moet loodrecht op je schouders"
       ],
-      "correct": "a1",
-      "explanation": "A1 liep te vroeg weg van het net. Ligt de pass op het net, wacht dan tot de tweede bal is gespeeld."
+      "correct": 3,
+      "explanation": "Bovenhands over het net moet loodrecht op je schouderlijn, behalve als je echt voor je partner probeert te setten. Dat wilde A2 niet. Het is geen open-hand tip, maar het is wel fout."
     },
     {
-      "id": "plaats-tegen-tweede",
-      "kind": "placeBoth",
-      "prompt": "De pass van team B ligt op het net. Zet A1 aan het net tegenover B1, en A2 klaar voor de korte bal in het midden.",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 4,
-            "y": 1.6
-          },
-          "A2": {
-            "x": 2,
-            "y": 6
-          },
-          "B1": {
-            "x": 8.8,
-            "y": 3.6
-          },
-          "B2": {
-            "x": 11,
-            "y": 2
-          }
-        },
-        "ball": {
-          "x": 8.8,
-          "y": 3.6,
-          "height": 3
-        }
-      },
-      "targets": [
-        {
-          "playerId": "A1",
-          "target": [
-            {
-              "x": 6.8,
-              "y": 2.6
-            },
-            {
-              "x": 7.9,
-              "y": 2.6
-            },
-            {
-              "x": 7.9,
-              "y": 4.6
-            },
-            {
-              "x": 6.8,
-              "y": 4.6
-            }
-          ],
-          "tolerance": 0.3
-        },
-        {
-          "playerId": "A2",
-          "target": [
-            {
-              "x": 3.5,
-              "y": 2.5
-            },
-            {
-              "x": 6,
-              "y": 2.5
-            },
-            {
-              "x": 6,
-              "y": 6
-            },
-            {
-              "x": 3.5,
-              "y": 6
-            }
-          ],
-          "tolerance": 0.4
-        }
+      "id": "blokker-bij-pass-op-net",
+      "kind": "choice",
+      "prompt": "De pass van team B komt hoog op het net. Jij blokt voor team A en gaf {signaal.lijn}. Wat doe je?",
+      "options": [
+        "Aan het net blijven tot de tweede bal gespeeld is",
+        "Alvast terugtrekken voor een peel",
+        "Naar de lijn schuiven, zoals afgesproken"
       ],
-      "explanation": "De blokker wacht aan het net tot de tweede bal is gespeeld. De verdediger staat wat dichterbij dan normaal, voor de korte bal."
+      "correct": 0,
+      "explanation": "Een pass hoog op het net is een kans voor team B om meteen over te spelen of te slaan. Trek je terug, dan ligt de korte bal open. Je signaal geldt pas als er echt een set en een aanval komen."
     }
   ]
 }

@@ -397,21 +397,35 @@
   },
   "quiz": [
     {
-      "id": "waarom-blokker",
+      "id": "tegenwind-float",
       "kind": "choice",
-      "prompt": "Waarom serveer je vaak op de blokker?",
+      "prompt": "Je serveert met de wind tegen. De ontvanger heeft vooral moeite met ballen die grillig bewegen. Welke opslag kies je?",
       "options": [
-        "De blokker mag dan niet aanvallen",
-        "De blokker moet passen, aanvallen en is daarna laat bij het net",
-        "De blokker mag dan niet meer blokken"
+        "Een spin, want tegen de wind in heb je kracht nodig",
+        "Een float: de tegenwind laat hem extra bewegen en houdt hem binnen",
+        "Een korte opslag, want de wind blaast hem toch terug",
+        "Maakt niet uit: tegenwind remt elke opslag even veel"
       ],
       "correct": 1,
-      "explanation": "Passen en aanvallen kost kracht en tijd, waardoor de blokker later aan het net staat. Het mag allemaal gewoon: het is tactiek, geen regel."
+      "explanation": "Tegenwind laat een float extra bewegen en houdt de bal binnen. Dat is precies wat deze ontvanger lastig vindt. Een spin is lastig door snelheid, niet door beweging. En een korte opslag zonder reden geeft die extra beweging weg."
     },
     {
-      "id": "route-na-opslag",
-      "kind": "route",
-      "prompt": "A1 heeft geserveerd en A2 blokt. Teken de route van A1 naar de plek om te verdedigen.",
+      "id": "wind-mee-na-wissel",
+      "kind": "choice",
+      "prompt": "Met de wind tegen scoorde je met lange opslagen tot op de eindlijn. Na de kantwissel heb je wind mee. Wat pas je aan?",
+      "options": [
+        "Niets: wat werkt, houd je vast",
+        "Harder slaan, want de wind remt de bal af",
+        "Korter mikken, want met wind mee gaat een lange bal sneller uit",
+        "Meer floaten, want die beweegt nu extra"
+      ],
+      "correct": 2,
+      "explanation": "Na de kantwissel blaast de wind andersom. Met wind mee gaat een lange bal sneller uit, dus mik je korter. Je plan houd je vast, maar de lengte pas je aan de wind aan. Een float beweegt extra bij tegenwind, niet bij wind mee."
+    },
+    {
+      "id": "verdedigen-na-opslag",
+      "kind": "drag",
+      "prompt": "Jij (A1) hebt geserveerd en B1 krijgt de set. A2 blokt B1 met {signaal.lijn}. Sleep A1 naar de plek waar je de aanval verdedigt.",
       "playerId": "A1",
       "setup": {
         "players": {
@@ -420,157 +434,44 @@
             "y": 2
           },
           "A2": {
-            "x": 7.4,
-            "y": 4
+            "x": 7.5,
+            "y": 1.2
           },
           "B1": {
-            "x": 12,
-            "y": 2
+            "x": 9.6,
+            "y": 1.6
           },
           "B2": {
-            "x": 12,
-            "y": 6
+            "x": 11,
+            "y": 5
           }
         },
         "ball": {
-          "x": 12,
-          "y": 2,
-          "height": 1
+          "x": 9,
+          "y": 1.6,
+          "height": 3.4
         }
       },
       "target": [
         {
-          "x": 2.5,
-          "y": 2
+          "x": 0.5,
+          "y": 3.5
         },
         {
-          "x": 5.5,
-          "y": 2
+          "x": 5,
+          "y": 3.5
         },
         {
-          "x": 5.5,
-          "y": 6
+          "x": 5,
+          "y": 7.5
         },
         {
-          "x": 2.5,
-          "y": 6
+          "x": 0.5,
+          "y": 7.5
         }
       ],
       "tolerance": 0.4,
-      "maxDetour": 1.4,
-      "explanation": "Na de opslag loop je meteen het veld in. Je partner staat aan het net, dus jij bent de verdediger."
-    },
-    {
-      "id": "fout-plan",
-      "kind": "spotError",
-      "prompt": "Jullie plan is de opslag op blokker **B1**. Waar gaat het mis?",
-      "scene": {
-        "alt": "A1 serveert vanachter de eindlijn. De bal gaat naar B2, de verdediger. B1, de blokker, hoeft de bal niet te passen.",
-        "keyframes": [
-          {
-            "id": "voor",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": -1,
-                "y": 2
-              },
-              "A2": {
-                "x": 7,
-                "y": 4
-              },
-              "B1": {
-                "x": 12,
-                "y": 2
-              },
-              "B2": {
-                "x": 12,
-                "y": 6
-              }
-            },
-            "ball": {
-              "x": -1,
-              "y": 2,
-              "height": 2
-            },
-            "caption": ""
-          },
-          {
-            "id": "opslag",
-            "durationMs": 1300,
-            "players": {
-              "A1": {
-                "x": -1,
-                "y": 2
-              },
-              "A2": {
-                "x": 7,
-                "y": 4
-              },
-              "B1": {
-                "x": 12,
-                "y": 2
-              },
-              "B2": {
-                "x": 12,
-                "y": 6
-              }
-            },
-            "ball": {
-              "x": 12,
-              "y": 6,
-              "height": 1,
-              "arc": 3
-            },
-            "arrows": [
-              {
-                "id": "b5",
-                "kind": "ball",
-                "from": {
-                  "x": -1,
-                  "y": 2
-                },
-                "to": {
-                  "x": 12,
-                  "y": 6
-                }
-              }
-            ],
-            "caption": ""
-          }
-        ]
-      },
-      "spots": [
-        {
-          "id": "a1",
-          "label": "A1",
-          "playerId": "A1"
-        },
-        {
-          "id": "a2",
-          "label": "A2",
-          "playerId": "A2"
-        },
-        {
-          "id": "b2",
-          "label": "B2",
-          "playerId": "B2"
-        }
-      ],
-      "correct": "a1",
-      "explanation": "A1 serveert op B2. Daarmee kan blokker B1 uitrusten en op tijd aan het net staan, en dat wilden jullie juist niet."
-    },
-    {
-      "id": "wind-mee",
-      "kind": "choice",
-      "prompt": "Je serveert met de wind mee. Waar let je op?",
-      "options": [
-        "Een lange bal gaat sneller uit",
-        "De bal valt extra kort",
-        "Je moet harder slaan"
-      ],
-      "correct": 0,
-      "explanation": "De wind draagt de bal verder. Mik daarom wat korter of lager."
+      "explanation": "Na de opslag ben jij de verdediger. A2 sluit de lijn af, dus jij gaat naar de diagonaal. Wie vanaf de opslag recht het veld in loopt, komt achter het blok op de lijn uit, en die is al dicht."
     }
   ]
 }

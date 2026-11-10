@@ -444,145 +444,31 @@
   },
   "quiz": [
     {
-      "id": "lijn-a2",
-      "kind": "drag",
-      "prompt": "Je partner blokt de **lijn**. Sleep A2 naar de plek die jij verdedigt.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 7.4,
-            "y": 1.2
-          },
-          "A2": {
-            "x": 6.5,
-            "y": 4
-          },
-          "B1": {
-            "x": 9,
-            "y": 1.2
-          },
-          "B2": {
-            "x": 10.5,
-            "y": 4
-          }
-        },
-        "ball": {
-          "x": 8.6,
-          "y": 1.4,
-          "height": 3.4
-        }
-      },
-      "target": [
-        {
-          "x": 0.5,
-          "y": 3.5
-        },
-        {
-          "x": 5,
-          "y": 3.5
-        },
-        {
-          "x": 5,
-          "y": 7.5
-        },
-        {
-          "x": 0.5,
-          "y": 7.5
-        }
-      ],
-      "tolerance": 0.4,
-      "explanation": "Bij blok lijn verdedig jij de diagonaal, want daar moet de harde aanval heen."
-    },
-    {
-      "id": "hoek-a2",
-      "kind": "drag",
-      "prompt": "Je partner blokt de **hoek**. Sleep A2 naar de plek die jij verdedigt.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 7.4,
-            "y": 1.2
-          },
-          "A2": {
-            "x": 6.5,
-            "y": 4
-          },
-          "B1": {
-            "x": 9,
-            "y": 1.2
-          },
-          "B2": {
-            "x": 10.5,
-            "y": 4
-          }
-        },
-        "ball": {
-          "x": 8.6,
-          "y": 1.4,
-          "height": 3.4
-        }
-      },
-      "target": [
-        {
-          "x": 0.5,
-          "y": 0.2
-        },
-        {
-          "x": 5,
-          "y": 0.2
-        },
-        {
-          "x": 5,
-          "y": 2.6
-        },
-        {
-          "x": 0.5,
-          "y": 2.6
-        }
-      ],
-      "tolerance": 0.4,
-      "explanation": "Bij blok hoek verdedig jij de lijn."
-    },
-    {
-      "id": "open-zone",
-      "kind": "choice",
-      "prompt": "Jullie spelen blok lijn en A2 staat diep in de diagonaal. Welke bal is dan het lastigst?",
-      "options": [
-        "Een harde aanval recht in het blok",
-        "Een korte bal in de diagonaal",
-        "Een harde aanval recht op A2"
-      ],
-      "correct": 1,
-      "explanation": "De korte diagonaal ligt voor de verdediger en naast het blok. Daar is niemand."
-    },
-    {
-      "id": "blok-lijn-beide",
+      "id": "blok-hoek-tegen-b2",
       "kind": "placeBoth",
-      "prompt": "B1 krijgt de set aan het net. Jullie spelen **blok lijn**. Zet A1 en A2 goed neer.",
+      "prompt": "B2 krijgt de set aan het net, dicht bij de zijlijn aan de kant van B2. Jullie spelen blok hoek. Zet A1 en A2 goed neer.",
       "setup": {
         "players": {
           "A1": {
-            "x": 5,
-            "y": 3
+            "x": 7.4,
+            "y": 1.6
           },
           "A2": {
-            "x": 6.5,
+            "x": 3,
+            "y": 4
+          },
+          "B1": {
+            "x": 12,
             "y": 2
           },
-          "B1": {
-            "x": 9,
-            "y": 1.2
-          },
           "B2": {
-            "x": 10.5,
-            "y": 4
+            "x": 9.6,
+            "y": 6.4
           }
         },
         "ball": {
-          "x": 8.6,
-          "y": 1.4,
+          "x": 9,
+          "y": 6.6,
           "height": 3.4
         }
       },
@@ -592,19 +478,19 @@
           "target": [
             {
               "x": 6.8,
-              "y": 0.2
+              "y": 5.4
             },
             {
               "x": 7.9,
-              "y": 0.2
+              "y": 5.4
             },
             {
               "x": 7.9,
-              "y": 2
+              "y": 6.9
             },
             {
               "x": 6.8,
-              "y": 2
+              "y": 6.9
             }
           ],
           "tolerance": 0.3
@@ -614,135 +500,25 @@
           "target": [
             {
               "x": 0.5,
-              "y": 3.5
+              "y": 5.4
             },
             {
               "x": 5,
-              "y": 3.5
+              "y": 5.4
             },
             {
               "x": 5,
-              "y": 7.5
+              "y": 7.8
             },
             {
               "x": 0.5,
-              "y": 7.5
+              "y": 7.8
             }
           ],
           "tolerance": 0.4
         }
       ],
-      "explanation": "A1 staat aan het net tegenover de aanvaller en sluit de lijn af. A2 verdedigt de diagonaal, waar de harde aanval heen moet."
-    },
-    {
-      "id": "fout-blok-lijn",
-      "kind": "spotError",
-      "prompt": "Jullie hadden **blok lijn** afgesproken. Waar gaat het mis?",
-      "scene": {
-        "alt": "A1 blokt de lijn aan het net. A2 staat achterin langs dezelfde lijn. De diagonaal is leeg en B1 slaat daar de bal in.",
-        "keyframes": [
-          {
-            "id": "set",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 7.5,
-                "y": 1
-              },
-              "A2": {
-                "x": 3,
-                "y": 1.6
-              },
-              "B1": {
-                "x": 9,
-                "y": 1.2
-              },
-              "B2": {
-                "x": 10.5,
-                "y": 4
-              }
-            },
-            "ball": {
-              "x": 8.6,
-              "y": 1.4,
-              "height": 3.4
-            }
-          },
-          {
-            "id": "aanval",
-            "durationMs": 1000,
-            "players": {
-              "A1": {
-                "x": 7.5,
-                "y": 1
-              },
-              "A2": {
-                "x": 3,
-                "y": 1.6
-              },
-              "B1": {
-                "x": 9,
-                "y": 1.2
-              },
-              "B2": {
-                "x": 10.5,
-                "y": 4
-              }
-            },
-            "ball": {
-              "x": 3.2,
-              "y": 5.6,
-              "height": 0.3
-            },
-            "arrows": [
-              {
-                "id": "aanval",
-                "kind": "shot",
-                "from": {
-                  "x": 8.6,
-                  "y": 1.4
-                },
-                "to": {
-                  "x": 3.2,
-                  "y": 5.6
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "spots": [
-        {
-          "id": "a1",
-          "label": "A1",
-          "playerId": "A1"
-        },
-        {
-          "id": "a2",
-          "label": "A2",
-          "playerId": "A2"
-        },
-        {
-          "id": "b1",
-          "label": "B1",
-          "playerId": "B1"
-        }
-      ],
-      "correct": "a2",
-      "explanation": "A2 staat achter het blok op de lijn, die A1 al afsluit. Bij blok lijn hoort A2 in de diagonaal te staan."
-    },
-    {
-      "id": "volgorde-blok",
-      "kind": "order",
-      "prompt": "Zet deze rally op volgorde.",
-      "items": [
-        "A1 geeft achter de rug het bloksignaal",
-        "A2 serveert",
-        "B1 krijgt de set bij het net",
-        "A1 blokt de lijn en A2 gaat naar de diagonaal",
-        "B1 slaat om het blok heen de diagonaal in"
-      ],
-      "explanation": "Eerst het plan, dan de opslag. Pas als de set er is, gaan blokker en verdediger naar hun plek."
+      "explanation": "A1 gaat tegenover B2 staan, want die valt aan. Bij blok hoek sluit A1 de diagonaal af, en dan is de lijn aan de kant van B2 voor A2. Wie A2 op de lijn aan de kant van B1 zet, kijkt naar de verkeerde aanvaller."
     }
   ]
 }

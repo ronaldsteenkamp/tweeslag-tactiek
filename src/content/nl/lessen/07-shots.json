@@ -303,79 +303,30 @@
   },
   "quiz": [
     {
-      "id": "cut-landt",
+      "id": "welk-shot",
       "kind": "choice",
-      "prompt": "Waar landt een cut shot?",
+      "prompt": "Jij valt aan. Het blok staat op de lijn. De verdediger staat diep in de diagonaal en schuift al naar de lijnkant, klaar voor een bal over het blok. Welk shot speel je?",
       "options": [
-        "Recht achter het blok",
-        "Kort in de diagonaal, dicht bij het net",
-        "Diep langs de zijlijn"
+        "Een high line, hoog over het blok en diep langs de zijlijn",
+        "Hard op de lijn, langs het blok",
+        "Een hoge bal diep in de diagonaal",
+        "Een cut shot, kort de diagonaal in"
       ],
-      "correct": 1,
-      "explanation": "De cut shot gaat scherp langs het net en blijft kort in de diagonaal."
+      "correct": 3,
+      "explanation": "De verdediger staat diep en dekt al de bal over het blok. Het blok neemt de harde lijn weg. Vlak achter het net in de diagonaal staat niemand: daar landt de cut shot. Een high line gaat recht naar waar de verdediger heen schuift."
     },
     {
-      "id": "wat-mag",
+      "id": "te-vroeg-naar-voren",
       "kind": "choice",
-      "prompt": "Welke aanval is een **fout**?",
+      "prompt": "Jij verdedigt de diagonaal. B1 loopt aan en jij verwacht een cut shot, dus je zet alvast een paar stappen naar voren. Wat is het risico?",
       "options": [
-        "Een harde klap met je open handpalm",
-        "De bal plaatsen met open hand, zoals een tip",
-        "Een pokey met je knokkels"
+        "B1 ziet het en speelt de bal diep, over je heen",
+        "Geen: je staat al dichter bij de cut shot",
+        "Het is een fout: je mag pas bewegen als de bal geraakt is",
+        "Je loopt je blokker in de weg"
       ],
-      "correct": 1,
-      "explanation": "Een open-hand tip is een fout. Plaats je de bal met je vingers, houd ze dan stijf en tegen elkaar."
-    },
-    {
-      "id": "verwacht-cut",
-      "kind": "drag",
-      "prompt": "De aanvaller kijkt scherp langs het net en jij verwacht een cut shot. Sleep A2 erheen.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 7.5,
-            "y": 1
-          },
-          "A2": {
-            "x": 3,
-            "y": 5.5
-          },
-          "B1": {
-            "x": 9,
-            "y": 1.2
-          },
-          "B2": {
-            "x": 10.5,
-            "y": 4
-          }
-        },
-        "ball": {
-          "x": 8.6,
-          "y": 1.4,
-          "height": 3.4
-        }
-      },
-      "target": [
-        {
-          "x": 4,
-          "y": 4
-        },
-        {
-          "x": 7.6,
-          "y": 4
-        },
-        {
-          "x": 7.6,
-          "y": 8
-        },
-        {
-          "x": 4,
-          "y": 8
-        }
-      ],
-      "tolerance": 0.4,
-      "explanation": "Tegen een cut shot moet je naar voren, kort in de diagonaal."
+      "correct": 0,
+      "explanation": "Wie te vroeg beweegt, verraadt waar hij heen gaat. B1 kijkt vlak voor de slag naar de verdediger en speelt de open plek, nu diep achter je. Beweeg pas als B1 de bal raakt. Dat is tactiek, geen regel."
     }
   ]
 }

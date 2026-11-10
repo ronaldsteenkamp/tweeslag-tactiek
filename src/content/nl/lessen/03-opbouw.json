@@ -312,75 +312,30 @@
   },
   "quiz": [
     {
-      "id": "contacten",
+      "id": "contacten-na-blok",
       "kind": "choice",
-      "prompt": "Hoeveel contacten heeft een team, en telt een blok mee?",
+      "prompt": "B1 slaat, A1 raakt de bal bij het blok en hij valt op jullie helft. A2 speelt hem omhoog. Hoeveel contacten heeft team A daarna nog?",
       "options": [
-        "Vier, en een blok telt mee",
-        "Drie, en een blok telt mee",
-        "Drie, en een blok telt niet mee"
+        "Twee: een blok telt niet mee, net als in de zaal",
+        "Geen: na een blok moet de bal meteen over",
+        "Eén: blok en A2 zijn er al twee, dus de volgende bal moet over",
+        "Drie: na een blok begin je opnieuw"
       ],
-      "correct": 1,
-      "explanation": "Maximaal drie contacten, en bij beachvolleybal telt een blok als contact."
+      "correct": 2,
+      "explanation": "Bij beachvolleybal telt een blok als contact. Het blok van A1 is het eerste, de bal van A2 het tweede. Er is er nog één, en daarmee moet de bal over. Met de zaalgewoonte, waarbij het blok niet telt, verlies je hier het punt."
     },
     {
-      "id": "naar-de-bal",
-      "kind": "drag",
-      "prompt": "A1 heeft gepast. Sleep A2 naar de bal om te setten.",
-      "playerId": "A2",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 3.6,
-            "y": 1.7
-          },
-          "A2": {
-            "x": 4,
-            "y": 6.5
-          },
-          "B1": {
-            "x": 13,
-            "y": 5
-          },
-          "B2": {
-            "x": 9,
-            "y": 4
-          }
-        },
-        "ball": {
-          "x": 6.2,
-          "y": 3.9,
-          "height": 3
-        }
-      },
-      "target": [
-        {
-          "x": 5.2,
-          "y": 3
-        },
-        {
-          "x": 7.2,
-          "y": 3
-        },
-        {
-          "x": 7.2,
-          "y": 5
-        },
-        {
-          "x": 5.2,
-          "y": 5
-        }
-      ],
-      "tolerance": 0.4,
-      "explanation": "De speler die niet hoeft te passen, loopt naar de bal om te setten."
-    },
-    {
-      "id": "wie-aanvalt",
+      "id": "pass-blijft-hangen",
       "kind": "choice",
-      "prompt": "A1 past en A2 set. Wie valt aan?",
-      "options": ["A1", "A2", "Wie het dichtst bij het net staat"],
-      "correct": 0,
-      "explanation": "De passer is meestal de aanvaller: de partner heeft de set al gespeeld."
+      "prompt": "De opslag komt op A2. A2 passt, maar de bal blijft vlak bij A2 hangen. A1 staat aan de andere kant van het veld. Wat gebeurt er nu?",
+      "options": [
+        "A2 set, want de bal ligt bij A2, en A1 valt aan",
+        "A2 speelt de bal meteen over het net",
+        "Wie het dichtst bij staat, set",
+        "A1 loopt naar de bal en set, en A2 valt aan"
+      ],
+      "correct": 3,
+      "explanation": "A2 mag de bal niet twee keer na elkaar raken, hoe dichtbij hij ook ligt. Dus A1 komt setten, en de passer valt aan. Wie A2 laat setten of overspelen omdat de bal daar ligt, maakt een dubbele aanraking."
     }
   ]
 }

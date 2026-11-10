@@ -68,27 +68,15 @@ describe("lessen", () => {
     },
   );
 
+  // Er is geen minimum: liever één goede vraag dan een makkelijke erbij.
   it.each(lessons.map((lesson) => [lesson.id, lesson] as const))(
-    "%s heeft een quiz met minstens twee vragen",
+    "%s heeft een quiz met unieke vraag-id's",
     (_id, lesson) => {
-      expect(lesson.quiz.length).toBeGreaterThanOrEqual(2);
+      expect(lesson.quiz.length).toBeGreaterThanOrEqual(1);
       const ids = lesson.quiz.map((question) => question.id);
       expect(new Set(ids).size).toBe(ids.length);
     },
   );
-
-  it.each(
-    lessons
-      .filter((lesson) => lesson.niveau !== "basis")
-      .map((lesson) => [lesson.id, lesson] as const),
-  )("%s heeft minstens drie vragen, met een nieuw type", (_id, lesson) => {
-    expect(lesson.quiz.length).toBeGreaterThanOrEqual(3);
-    expect(
-      lesson.quiz.some(
-        (question) => question.kind !== "choice" && question.kind !== "drag",
-      ),
-    ).toBe(true);
-  });
 
   it("beginnen sleepvragen buiten de doelzone", () => {
     for (const lesson of lessons) {
@@ -107,8 +95,58 @@ describe("lessen", () => {
   });
 });
 
-describe("nieuwe vraagtypes", () => {
+describe("quizvragen", () => {
   const questions = lessons.flatMap((lesson) => lesson.quiz);
+  const rawQuizzes = Object.entries(lessonFiles).map(([path, file]) => {
+    const quiz = (file as { quiz: unknown }).quiz;
+    return [path, quiz] as const;
+  });
+
+  it("zetten het goede antwoord niet steeds op dezelfde plek", () => {
+    const positions = questions.flatMap((question) =>
+      question.kind === "choice" || question.kind === "freeze"
+        ? [question.correct]
+        : [],
+    );
+    const counts = new Map<number, number>();
+    for (const position of positions) {
+      counts.set(position, (counts.get(position) ?? 0) + 1);
+    }
+    for (const [position, count] of counts) {
+      expect(count / positions.length, `plek ${position}`).toBeLessThan(0.35);
+    }
+  });
+
+  it("gebruiken samen minstens vijf vraagtypes", () => {
+    expect(
+      new Set(questions.map((question) => question.kind)).size,
+    ).toBeGreaterThanOrEqual(5);
+  });
+
+  it.each(rawQuizzes)(
+    "%s gebruikt {signaal.*} en geen letterlijke signalen",
+    (_path, quiz) => {
+      const text = JSON.stringify(quiz);
+      const literal = [
+        ...Object.values(clubTerms.bloksignalen),
+        ...Object.values(clubTerms.opslagsignalen),
+      ].filter((term) => text.includes(term));
+      expect(literal).toEqual([]);
+    },
+  );
+
+  it.each(rawQuizzes)(
+    "%s zet een signaal of roepwoord niet vooraan in een zin",
+    (_path, quiz) => {
+      const strings: string[] = [];
+      JSON.stringify(quiz, (_key, value: unknown) => {
+        if (typeof value === "string") strings.push(value);
+        return value;
+      });
+      const atStart = /(^|[.!?:]\s+)[*“"]*\{(signaal|opslag|roep)\./;
+      expect(strings.filter((text) => atStart.test(text))).toEqual([]);
+    },
+  );
 
   it("beginnen plaatsvragen niet al goed", () => {
     for (const question of questions) {

@@ -557,11 +557,11 @@
   },
   "quiz": [
     {
-      "id": "freeze-diep",
+      "id": "verdediger-dichtbij",
       "kind": "freeze",
-      "prompt": "Je loopt aan en ziet de verdediger diep staan. Wat speel je?",
+      "prompt": "Jij bent A1. Kijk waar B2 staat. Wat speel je?",
       "scene": {
-        "alt": "A1 loopt aan op de set. Verdediger B2 staat ver achterin. Vlak achter het net is het leeg. Het beeld stopt voor de sprong.",
+        "alt": "A2 set voor A1. B1 blokt de lijn. B2 komt naar voren en staat dicht bij het net in de diagonaal. Het beeld stopt als A1 springt.",
         "keyframes": [
           {
             "id": "set",
@@ -580,8 +580,8 @@
                 "y": 1.4
               },
               "B2": {
-                "x": 12,
-                "y": 4.5
+                "x": 12.5,
+                "y": 5.5
               }
             },
             "ball": {
@@ -592,7 +592,7 @@
             "caption": ""
           },
           {
-            "id": "aanloop",
+            "id": "sprong",
             "durationMs": 1200,
             "players": {
               "A1": {
@@ -608,7 +608,7 @@
                 "y": 1.4
               },
               "B2": {
-                "x": 14,
+                "x": 10.4,
                 "y": 5
               }
             },
@@ -618,214 +618,55 @@
               "height": 3.4,
               "arc": 1.5
             },
-            "caption": ""
-          }
-        ]
-      },
-      "options": [
-        "Een cut shot kort in de diagonaal",
-        "Hard recht op de verdediger",
-        "Hoog en diep"
-      ],
-      "correct": 0,
-      "explanation": "De verdediger staat diep, dus het veld ervoor ligt open."
-    },
-    {
-      "id": "freeze-lijn",
-      "kind": "freeze",
-      "prompt": "De verdediger staat op de lijn, het blok ook. Wat speel je?",
-      "scene": {
-        "alt": "A1 loopt aan. B1 blokt de lijn en verdediger B2 staat ook aan de kant van de lijn. De diagonaal is leeg. Het beeld stopt voor de sprong.",
-        "keyframes": [
-          {
-            "id": "set",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 5.6,
-                "y": 1.6
-              },
-              "A2": {
-                "x": 6.4,
-                "y": 3.4
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.9
-              },
-              "B2": {
-                "x": 12,
-                "y": 1.6
-              }
-            },
-            "ball": {
-              "x": 6.4,
-              "y": 3.4,
-              "height": 2
-            },
-            "caption": ""
-          },
-          {
-            "id": "aanloop",
-            "durationMs": 1200,
-            "players": {
-              "A1": {
-                "x": 6.6,
-                "y": 1.6
-              },
-              "A2": {
-                "x": 6.4,
-                "y": 3.4
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.9
-              },
-              "B2": {
-                "x": 12,
-                "y": 1.6
-              }
-            },
-            "ball": {
-              "x": 7,
-              "y": 1.6,
-              "height": 3.4,
-              "arc": 1.5
-            },
-            "caption": ""
-          }
-        ]
-      },
-      "options": [
-        "Een high line",
-        "Een pokey over het blok",
-        "Hard de diagonaal in"
-      ],
-      "correct": 2,
-      "explanation": "Blok en verdediger staan aan dezelfde kant. De diagonaal is leeg, dus daar sla je de bal hard in."
-    },
-    {
-      "id": "fout-recht-op",
-      "kind": "spotError",
-      "prompt": "De aanval van A1 wordt makkelijk verdedigd. Waar ging het mis?",
-      "scene": {
-        "alt": "B1 blokt de lijn. B2 staat in de diagonaal. A1 slaat hard de diagonaal in, recht op B2. Verder ligt de korte bal open.",
-        "keyframes": [
-          {
-            "id": "set",
-            "durationMs": 0,
-            "players": {
-              "A1": {
-                "x": 6.6,
-                "y": 1.6
-              },
-              "A2": {
-                "x": 6.4,
-                "y": 3.4
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.4
-              },
-              "B2": {
-                "x": 12,
-                "y": 5.5
-              }
-            },
-            "ball": {
-              "x": 7,
-              "y": 1.6,
-              "height": 3.4
-            },
-            "caption": ""
-          },
-          {
-            "id": "aanval",
-            "durationMs": 800,
-            "players": {
-              "A1": {
-                "x": 6.6,
-                "y": 1.6
-              },
-              "A2": {
-                "x": 6.4,
-                "y": 3.4
-              },
-              "B1": {
-                "x": 8.6,
-                "y": 1.4
-              },
-              "B2": {
-                "x": 12,
-                "y": 5.5
-              }
-            },
-            "ball": {
-              "x": 12,
-              "y": 5.5,
-              "height": 0.8
-            },
-            "arrows": [
+            "zones": [
               {
-                "id": "s13",
-                "kind": "shot",
-                "from": {
-                  "x": 7,
-                  "y": 1.6
-                },
-                "to": {
-                  "x": 12,
-                  "y": 5.5
-                }
+                "id": "blok",
+                "kind": "blocked",
+                "polygon": [
+                  {
+                    "x": 8.5,
+                    "y": 0.2
+                  },
+                  {
+                    "x": 8.5,
+                    "y": 2
+                  },
+                  {
+                    "x": 16,
+                    "y": 2.8
+                  },
+                  {
+                    "x": 16,
+                    "y": 0
+                  }
+                ]
               }
             ],
             "caption": ""
           }
         ]
       },
-      "spots": [
-        {
-          "id": "a1",
-          "label": "A1",
-          "playerId": "A1"
-        },
-        {
-          "id": "a2",
-          "label": "A2",
-          "playerId": "A2"
-        },
-        {
-          "id": "b1",
-          "label": "B1",
-          "playerId": "B1"
-        }
+      "options": [
+        "Een cut shot, kort de diagonaal in",
+        "Hard op de lijn, langs het blok",
+        "Een korte bal vlak achter het blok",
+        "Hoog en diep de diagonaal in, achter B2"
       ],
-      "correct": "a1",
-      "explanation": "A1 sloeg recht op de verdediger. Kijk in je aanloop waar die staat, en kies dan een open plek."
+      "correct": 3,
+      "explanation": "B2 staat dicht bij het net in de diagonaal, precies waar de cut shot landt. Het veld achter B2 is leeg, dus hoog en diep geeft B2 geen kans. De lijn is dicht door het blok."
     },
     {
-      "id": "blok-uit",
+      "id": "fake-achter-het-blok",
       "kind": "choice",
-      "prompt": "Je slaat de bal op de handen van het blok, en hij gaat uit. Wie krijgt het punt?",
+      "prompt": "B1 blokt de lijn. Tijdens je aanloop stapt B2 opvallend vroeg naar de lijn, achter het blok. Wat speel je?",
       "options": [
-        "Jouw team",
-        "De tegenstander",
-        "De rally wordt overgespeeld"
+        "Een high line over het blok: B2 springt straks terug naar de diagonaal",
+        "Hard de diagonaal in: die is nu leeg",
+        "Hard op de lijn, recht op het blok",
+        "Een hoge bal diep in de diagonaal"
       ],
       "correct": 0,
-      "explanation": "De tegenstander raakte de bal als laatste. Daarom is dit een goede keuze als het blok alles afsluit."
-    },
-    {
-      "id": "volgorde-fake",
-      "kind": "order",
-      "prompt": "Zet de fake van de verdediger op volgorde.",
-      "items": [
-        "Stap vroeg naar de lijn",
-        "De aanvaller ziet de diagonaal open",
-        "Vlak voor de slag terug naar de diagonaal",
-        "De aanval komt in de diagonaal"
-      ],
-      "explanation": "Je laat iets zien, zodat de aanvaller daarop reageert. Daarna ga je terug naar waar je de bal wilde hebben."
+      "explanation": "Achter het eigen blok op de lijn hoeft geen verdediger te staan: dat dekt het blok al. Dit is dus een fake, en B2 springt terug naar de diagonaal. Die lijkt open, maar daar wacht B2. De lijn diep achter het blok blijft echt leeg."
     }
   ]
 }

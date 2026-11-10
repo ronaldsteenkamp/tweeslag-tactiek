@@ -331,74 +331,36 @@
   },
   "quiz": [
     {
-      "id": "afmetingen",
-      "kind": "choice",
-      "prompt": "Hoe groot is een beachvolleybalveld?",
-      "options": ["18 × 9 meter", "14 × 7 meter", "16 × 8 meter"],
-      "correct": 2,
-      "explanation": "Een beachveld is 16 × 8 meter: twee helften van 8 × 8 meter."
+      "id": "serveervolgorde",
+      "kind": "order",
+      "prompt": "A1 serveert de eerste opslag. Bij team B serveert B1 als eerste. Daarna wint B de rally, dan A, dan B, dan A. Zet de serveerders van opslag 2 tot en met 5 op volgorde.",
+      "items": ["B1", "A2", "B2", "A1"],
+      "explanation": "B wint, dus B1 serveert. Dan wint A de opslag terug, en omdat A1 de vorige keer serveerde, is A2 aan de beurt. Daarna B2 en weer A1. Wie A1 meteen terug laat komen, vergeet dat de beurt binnen het team doorschuift."
     },
     {
-      "id": "opslagzone",
-      "kind": "drag",
-      "prompt": "A1 moet serveren. Sleep A1 naar een plek waar dat mag.",
-      "playerId": "A1",
-      "setup": {
-        "players": {
-          "A1": {
-            "x": 3,
-            "y": 2
-          },
-          "A2": {
-            "x": 3,
-            "y": 6
-          },
-          "B1": {
-            "x": 13,
-            "y": 2
-          },
-          "B2": {
-            "x": 13,
-            "y": 6
-          }
-        },
-        "ball": {
-          "x": 3.7,
-          "y": 2.6
-        }
-      },
-      "target": [
-        {
-          "x": -3,
-          "y": 0
-        },
-        {
-          "x": 0,
-          "y": 0
-        },
-        {
-          "x": 0,
-          "y": 8
-        },
-        {
-          "x": -3,
-          "y": 8
-        }
-      ],
-      "tolerance": 0,
-      "explanation": "Je serveert vanuit de opslagzone: 8 meter breed, achter de eindlijn."
-    },
-    {
-      "id": "wie-serveert",
+      "id": "kantwissel-derde-set",
       "kind": "choice",
-      "prompt": "Team A serveerde, maar team B wint de rally. Wie serveert nu?",
+      "prompt": "Je speelt de derde set en het staat 7-6. Na hoeveel punten wissel je weer van kant?",
       "options": [
-        "De speler van team B die het punt maakte",
-        "De speler van team B die de vorige keer niet serveerde",
-        "Dezelfde speler van team A"
+        "Na 1 punt: dan staat het samen op 14",
+        "Niet meer: de derde set gaat maar tot 15",
+        "Na 2 punten: dan staat het samen op 15"
       ],
-      "correct": 1,
-      "explanation": "Team B krijgt de opslag, en de serveervolgorde bepaalt wie: de speler die de vorige keer niet serveerde."
+      "correct": 2,
+      "explanation": "In de derde set wissel je na elke 5 punten samen: bij 5, 10 en 15. Het staat samen op 13, dus nog 2 punten. Wie 14 kiest, rekent met de 7 uit de eerste twee sets. En bij 15 samen is de set nog niet uit."
+    },
+    {
+      "id": "derde-set-14-14",
+      "kind": "choice",
+      "prompt": "Derde set, 14-14. Team A maakt het punt en staat op 15. Is de wedstrijd voorbij?",
+      "options": [
+        "Nee: je moet met twee punten verschil winnen",
+        "Ja: de derde set gaat tot 15",
+        "Ja, maar alleen als team A ook de opslag had",
+        "Nee: de derde set gaat tot 21"
+      ],
+      "correct": 0,
+      "explanation": "Ook de derde set win je met 2 punten verschil. Bij 15-14 speel je door, tot 16-14, 17-15 of verder. Tot 15 klopt, maar alleen als het verschil groot genoeg is."
     }
   ]
 }

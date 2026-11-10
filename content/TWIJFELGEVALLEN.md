@@ -35,14 +35,18 @@ Spelregels komen uit de FIVB-regels 2025-2028. Tactiek staat daar niet in en is 
 - TODO: verifiëren: het opslagsignaal (wiebelen met de hand aan de kant van het doel, bevestigen met "oké"). Alleen de regels van GP Beach League noemen het wiebelen; het "oké" staat in geen van de bronnen.
 - TODO: verifiëren: varianten die niet zijn opgenomen: de duim als opslagsignaal, twee vingers boven elkaar voor kant en diepte van de opslag, het signaal hoog op de rug bij een set achterover, en de vuist met de pink uit.
 
+- TODO: verifiëren: de quizvraag `opslagsignaal-gemist` gaat ervan uit dat de blokker zich na het opslagsignaal klaarzet voor de aanvaller die de opslag krijgt. De les zegt dat niet letterlijk. Klopt dat voor Tweeslag, dan kan het als zin in de opslagstap.
+
 ## Les 5: Verdedigen met blok
 
 - TODO: verifiëren: de zones en de open plekken zijn schematisch, geen exacte maten.
+- TODO: verifiëren: de quiz heeft nog één vraag (blok hoek tegen de aanvaller aan de andere kant). Wat je bij blok lijn en blok hoek weggeeft, staat letterlijk in de les, dus een vraag daarover toetst geen inzicht. Een les-stap over wat de verdediger doet als de aanvaller vaak shots speelt, zou ruimte geven voor een tweede vraag.
 
 ## Les 6: De peel
 
 - TODO: verifiëren: de verdeling (A1 de lijn en korte bal, A2 de diagonaal) is één variant. Verdeelt Tweeslag het veld anders?
 - TODO: verifiëren: wanneer je peelt. Ik noem een set ver van het net en een afspraak vooraf.
+- TODO: verifiëren: de quizvraag `peel-tegen-b2` spiegelt de verdeling naar de andere aanvaller: A1 neemt de lijn en de korte bal aan de kant van B2, A2 de diagonaal naar de andere zijlijn. De les laat alleen de kant van B1 zien.
 
 ## Les 7: Shots
 
@@ -109,11 +113,13 @@ Deze lijst komt uit het veld `teVerifieren` in de lesbestanden. Pas de punten da
 - TODO: verifiëren: Drie vingers is hier een schijnblok (hoek laten zien, lijn pakken); in Start 2 Beachvolley (Topvolley Belgium) is “3” dubbel dia. Welke betekenis gebruiken de trainers?
 - TODO: verifiëren: Het switchblok wordt in België met pink en wijsvinger aangegeven in plaats van vier vingers. Welk signaal spreekt Tweeslag af?
 - TODO: verifiëren: De afloopkant bij een set ver van het net (lijn naar de lijn, hoek naar de diagonaal) komt uit één bron (AVP). Leren de trainers het zo?
+- TODO: verifiëren: Er is geen quizvraag over het spreidblok: de les zegt niet wanneer je het kiest. Tegen welke aanvaller of set gebruiken de trainers het?
 
 ### Les 17: Bal-dekking
 
 - TODO: verifiëren: De dekplek (dicht bij de aanvaller, laag, een stap van het net af) is schematisch. Welke afstand leren de trainers?
 - TODO: verifiëren: De keuze aan welke kant je dekt, verschilt per set. Is de uitleg zo duidelijk?
+- TODO: verifiëren: De quiz heeft één vraag. De dekplek zelf is schematisch en staat letterlijk in de les. Welke afstand of welk moment leren de trainers, zodat er een inzichtvraag over kan?
 
 ### Les 18: Out of system
 

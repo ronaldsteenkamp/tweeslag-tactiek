@@ -1,9 +1,22 @@
 import AxeBuilder from "@axe-core/playwright";
 import { expect, test, type Page } from "@playwright/test";
-import { skipQuestions } from "./helpers";
+import { skipQuestions, startUntimed, unlockAll } from "./helpers";
 
 const button = (page: Page, name: string) =>
   page.getByRole("button", { name, exact: true });
+
+/** Opent een vraag in een les die nog op slot zit. */
+async function openLocked(
+  page: Page,
+  lesson: string,
+  skip: number,
+  expert = false,
+) {
+  await unlockAll(page);
+  await page.goto(`./#/les/${lesson}/quiz`);
+  if (expert) await startUntimed(page);
+  await skipQuestions(page, skip);
+}
 
 async function expectNoViolations(page: Page) {
   const { violations } = await new AxeBuilder({ page })
@@ -25,50 +38,35 @@ const screens: [string, string, ((page: Page) => Promise<void>)?][] = [
     "./#/les/shots",
     (page) => button(page, "Ga naar stap 5").click(),
   ],
-  ["sleepvraag", "./#/les/verdedigen-met-blok/quiz"],
+  ["sleepvraag", "./#/les/bloksignalen/quiz"],
   [
     "feedback op een sleepvraag",
-    "./#/les/verdedigen-met-blok/quiz",
+    "./#/les/bloksignalen/quiz",
     (page) => button(page, "Controleer").click(),
   ],
   [
     "feedback op een meerkeuzevraag",
-    "./#/les/bloksignalen/quiz",
-    (page) => button(page, "De diagonaal").click(),
+    "./#/les/pass-ontvangst/quiz",
+    (page) => button(page, "A1, want die staat het dichtst bij").click(),
   ],
-  [
-    "beide spelers plaatsen",
-    "./#/les/verdedigen-met-blok/quiz",
-    (page) => skipQuestions(page, 3),
-  ],
-  [
-    "fout zoeken",
-    "./#/les/verdedigen-met-blok/quiz",
-    (page) => skipQuestions(page, 4),
-  ],
+  ["beide spelers plaatsen", "./#/les/verdedigen-met-blok/quiz"],
+  ["fout zoeken", "./", (page) => openLocked(page, "blokvarianten", 3, true)],
   [
     "feedback op fout zoeken",
-    "./#/les/verdedigen-met-blok/quiz",
+    "./",
     async (page) => {
-      await skipQuestions(page, 4);
+      await openLocked(page, "blokvarianten", 3, true);
       await button(page, "A1").click();
     },
   ],
-  [
-    "volgorde",
-    "./#/les/verdedigen-met-blok/quiz",
-    (page) => skipQuestions(page, 5),
-  ],
+  ["volgorde", "./#/les/veld-en-basis/quiz"],
   [
     "feedback op volgorde",
-    "./#/les/verdedigen-met-blok/quiz",
-    async (page) => {
-      await skipQuestions(page, 5);
-      await button(page, "Controleer").click();
-    },
+    "./#/les/veld-en-basis/quiz",
+    (page) => button(page, "Controleer").click(),
   ],
-  ["freeze frame", "./#/les/peel/quiz", (page) => skipQuestions(page, 2)],
-  ["looplijn", "./#/les/peel/quiz", (page) => skipQuestions(page, 3)],
+  ["freeze frame", "./#/les/peel/quiz"],
+  ["looplijn", "./", (page) => openLocked(page, "transitie", 1)],
   ["gesloten niveautoets", "./#/toets/gevorderd"],
   [
     "lessenoverzicht met alles open",
