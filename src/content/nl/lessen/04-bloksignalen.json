@@ -7,7 +7,8 @@
   "duurMinuten": 3,
   "leerdoelen": [
     "Na deze les kun je de bloksignalen van Tweeslag lezen en geven.",
-    "Na deze les weet je welke hand bij welke aanvaller hoort."
+    "Na deze les weet je welke hand bij welke aanvaller hoort.",
+    "Na deze les kun je met een signaal afspreken op wie je serveert."
   ],
   "scenario": {
     "id": "bloksignalen",
@@ -362,6 +363,40 @@
           }
         ],
         "caption": "Het signaal **{signaal.geenBlok}** betekent **geen blok**: A1 springt niet en loopt terug van het net. Jullie verdedigen samen. Daarover gaat de les over de peel."
+      },
+      {
+        "id": "opslagsignaal",
+        "durationMs": 1500,
+        "players": {
+          "A1": { "x": 7.2, "y": 4 },
+          "A2": { "x": -1.2, "y": 5.5 },
+          "B1": { "x": 12, "y": 2 },
+          "B2": { "x": 12, "y": 6 }
+        },
+        "ball": { "x": -0.6, "y": 5, "height": 1 },
+        "zones": [
+          {
+            "id": "doel",
+            "kind": "target",
+            "polygon": [
+              { "x": 13, "y": 0.3 },
+              { "x": 15.6, "y": 0.3 },
+              { "x": 15.6, "y": 3.6 },
+              { "x": 13, "y": 3.6 }
+            ],
+            "label": "Doel"
+          }
+        ],
+        "arrows": [
+          {
+            "id": "opslag",
+            "kind": "ball",
+            "from": { "x": -0.6, "y": 5 },
+            "to": { "x": 12, "y": 2 }
+          }
+        ],
+        "caption": "Ook de opslag spreek je af. Het signaal is **{opslag.doel}**, aan de kant van de tegenstander die de opslag krijgt. Hier links, dus B1. A2 bevestigt met **“oké”**.",
+        "tip": "Er zijn meer signalen, zoals {signaal.schijnLijn} of {signaal.schijnHoek}. Die komen bij de blokvarianten."
       }
     ]
   },
@@ -397,6 +432,18 @@
       ],
       "correct": 1,
       "explanation": "Het is een tactische afspraak, geen regel: de tegenstander mag niet weten wat je van plan bent."
+    },
+    {
+      "id": "opslag-doel",
+      "kind": "choice",
+      "prompt": "Je partner geeft het opslagsignaal (**{opslag.doel}**) met de **rechterhand**. Wat doe jij?",
+      "options": [
+        "Op de tegenstander links serveren",
+        "“Oké” zeggen en op de tegenstander rechts serveren",
+        "Kort tussen de twee spelers serveren"
+      ],
+      "correct": 1,
+      "explanation": "De hand wijst de kant van het doel aan. Met “oké” weet je partner dat je het signaal hebt gezien."
     }
   ]
 }

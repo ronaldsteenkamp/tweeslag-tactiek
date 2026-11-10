@@ -9,6 +9,12 @@
     "lijn": "één vinger",
     "hoek": "twee vingers",
     "ball": "een open hand",
-    "geenBlok": "een vuist"
+    "geenBlok": "een vuist",
+    "schijnLijn": "drie vingers",
+    "schijnHoek": "vier vingers",
+    "spreid": "duim en pink"
+  },
+  "opslagsignalen": {
+    "doel": "wiebelen met de hand"
   }
 }

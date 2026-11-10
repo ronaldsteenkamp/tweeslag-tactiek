@@ -70,7 +70,7 @@
           "y": 2,
           "height": 2
         },
-        "caption": "Je opslag is je eerste aanval: jij kiest wie de eerste bal krijgt. Een gangbaar plan is serveren op **de blokker**, hier B1.",
+        "caption": "Je opslag is je eerste aanval: jij kiest wie de eerste bal krijgt. Gangbaar is **de blokker**, hier B1. A2 wijst het doel aan met het opslagsignaal: **{opslag.doel}**.",
         "tip": "Je partner mag het zicht op de opslag niet blokkeren (screening)."
       },
       {

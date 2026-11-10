@@ -2,8 +2,15 @@ import { describe, expect, it } from "vitest";
 import { estimateMinutes } from "../domain/interpolate";
 import { isInTarget, misplacedPlayers } from "../domain/quiz";
 import { lessonGraphProblems } from "../domain/unlock";
+import { lookupTerm, termRefs } from "../domain/clubTerms";
 import { NIVEAUS } from "../domain/schema";
-import { applyClubTerms, lessons, rules } from "./index";
+import {
+  applyClubTerms,
+  clubTerms,
+  lessonFiles,
+  lessons,
+  rules,
+} from "./index";
 
 describe("lessen", () => {
   it("laden allemaal zonder validatiefouten", () => {
@@ -41,6 +48,7 @@ describe("lessen", () => {
 
   it("bevatten geen niet-ingevulde bloksignalen", () => {
     expect(JSON.stringify(lessons)).not.toContain("{signaal");
+    expect(JSON.stringify(lessons)).not.toContain("{opslag");
     expect(JSON.stringify(lessons)).not.toContain("{roep");
   });
 
@@ -154,6 +162,50 @@ describe("applyClubTerms", () => {
 
   it("weigert een onbekend signaal", () => {
     expect(() => applyClubTerms("{signaal.onzin}")).toThrow();
+  });
+
+  it("vult de nieuwe bloksignalen in", () => {
+    expect(
+      applyClubTerms(
+        "{signaal.schijnLijn}/{signaal.schijnHoek}/{signaal.spreid}",
+      ),
+    ).toBe("drie vingers/vier vingers/duim en pink");
+  });
+
+  it("vult een opslagsignaal in en weigert een onbekend", () => {
+    expect(applyClubTerms({ caption: "{opslag.doel}" })).toEqual({
+      caption: "wiebelen met de hand",
+    });
+    expect(() => applyClubTerms("{opslag.onzin}")).toThrow();
+  });
+});
+
+describe("verwijzingen naar vereniging.json", () => {
+  const files = Object.entries(lessonFiles).map(
+    ([path, file]) => [path, termRefs(JSON.stringify(file))] as const,
+  );
+
+  it.each(files)(
+    "%s verwijst alleen naar bestaande sleutels",
+    (_path, refs) => {
+      const missing = refs
+        .filter((ref) => lookupTerm(clubTerms, ref) === undefined)
+        .map(({ group, name }) => `{${group}.${name}}`);
+      expect(missing).toEqual([]);
+    },
+  );
+
+  it("gebruikt elk blok- en opslagsignaal in minstens één les", () => {
+    const used = new Set(
+      files.flatMap(([, refs]) =>
+        refs.map((ref) => `${ref.group}.${ref.name}`),
+      ),
+    );
+    const expected = [
+      ...Object.keys(clubTerms.bloksignalen).map((name) => `signaal.${name}`),
+      ...Object.keys(clubTerms.opslagsignalen).map((name) => `opslag.${name}`),
+    ];
+    expect(expected.filter((key) => !used.has(key))).toEqual([]);
   });
 });
 

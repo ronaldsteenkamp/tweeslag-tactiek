@@ -324,6 +324,35 @@ export const lessonSchema = z
     });
   });
 
+const termSchema = z.string().min(1);
+
+/**
+ * De afspraken van de vereniging in src/config/vereniging.json. De vaste
+ * sleutels zijn verplicht, omdat de lessen ze gebruiken. Extra sleutels mogen.
+ */
+export const clubSchema = z.object({
+  roepwoorden: z
+    .object({
+      lijn: termSchema,
+      hoek: termSchema,
+      niemand: termSchema,
+      cut: termSchema,
+    })
+    .catchall(termSchema),
+  bloksignalen: z
+    .object({
+      lijn: termSchema,
+      hoek: termSchema,
+      ball: termSchema,
+      geenBlok: termSchema,
+      schijnLijn: termSchema,
+      schijnHoek: termSchema,
+      spreid: termSchema,
+    })
+    .catchall(termSchema),
+  opslagsignalen: z.object({ doel: termSchema }).catchall(termSchema),
+});
+
 export type Position = z.infer<typeof positionSchema>;
 export type Player = z.infer<typeof playerSchema>;
 export type TeamId = Player["team"];
@@ -344,3 +373,4 @@ export type Placement = z.infer<typeof placementSchema>;
 export type QuizQuestion = z.infer<typeof quizQuestionSchema>;
 export type Lesson = z.infer<typeof lessonSchema>;
 export type Niveau = Lesson["niveau"];
+export type ClubTerms = z.infer<typeof clubSchema>;

@@ -1,12 +1,8 @@
 import { z } from "zod";
 import club from "../config/vereniging.json";
-import { lessonSchema, type Lesson } from "../domain/schema";
+import { fillTerms } from "../domain/clubTerms";
+import { clubSchema, lessonSchema, type Lesson } from "../domain/schema";
 import rulesFile from "./nl/regels.json";
-
-const clubSchema = z.object({
-  bloksignalen: z.record(z.string(), z.string().min(1)),
-  roepwoorden: z.record(z.string(), z.string().min(1)),
-});
 
 const rulesSchema = z.object({
   sourceName: z.string(),
@@ -21,27 +17,23 @@ const rulesSchema = z.object({
   ),
 });
 
-const { bloksignalen, roepwoorden } = clubSchema.parse(club);
+export const clubTerms = clubSchema.parse(club);
 
-/** Vervangt {signaal.lijn} en {roep.lijn} door de afspraken van de vereniging. */
+/**
+ * Vervangt {signaal.lijn}, {opslag.doel} en {roep.lijn} door de afspraken
+ * van de vereniging.
+ */
 export function applyClubTerms(content: unknown): unknown {
-  const text = JSON.stringify(content).replace(
-    /\{(signaal|roep)\.(\w+)\}/g,
-    (_match, group: string, name: string) => {
-      const term = (group === "roep" ? roepwoorden : bloksignalen)[name];
-      if (!term) throw new Error(`Onbekende term: ${group}.${name}`);
-      return term;
-    },
-  );
-  return JSON.parse(text);
+  return JSON.parse(fillTerms(JSON.stringify(content), clubTerms));
 }
 
-const files = import.meta.glob<unknown>("./nl/lessen/*.json", {
+/** De lesbestanden zoals ze op schijf staan, dus nog met {signaal.…}. */
+export const lessonFiles = import.meta.glob<unknown>("./nl/lessen/*.json", {
   eager: true,
   import: "default",
 });
 
-export const lessons: Lesson[] = Object.values(files)
+export const lessons: Lesson[] = Object.values(lessonFiles)
   .map((file) => lessonSchema.parse(applyClubTerms(file)))
   .sort((a, b) => a.order - b.order);
 
