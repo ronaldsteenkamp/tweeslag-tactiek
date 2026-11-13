@@ -21,6 +21,11 @@ body,
   height: 100%;
 }
 
+/* Geen herlaad-cirkel bij omlaag trekken (Chrome kijkt hiervoor naar html, niet naar body) */
+html {
+  overscroll-behavior-y: none;
+}
+
 body {
   margin: 0;
   background: var(--color-bg);
